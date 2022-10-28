@@ -5,3 +5,8 @@ function App() {
 }
 
 export default App;
+
+// formik
+// redux-saga
+// react-router
+// husky + eslint
