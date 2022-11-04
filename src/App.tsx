@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
 
+console.log('hello');
 function App() {
-    return <div className="App">heloo</div>;
+  return <div className='App'>heloo</div>;
 }
 
 export default App;
