@@ -1,6 +1,5 @@
 import React from 'react';
 
-console.log('hello');
 function App() {
   return <div className='App'>heloo</div>;
 }
