@@ -16,20 +16,18 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "import"
-  ],
+  "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
-    "eol-last": [
-      "warn",
-      "always"
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "semi": true
+      }
     ],
+    "eol-last": ["warn", "always"],
     "arrow-spacing": [
       "warn",
       {
@@ -37,14 +35,7 @@
         "after": true
       }
     ],
-    "comma-dangle": [
-      "warn",
-      "never"
-    ],
-    "jsx-quotes": [
-      "warn",
-      "prefer-single"
-    ],
+    "jsx-quotes": ["warn", "prefer-single"],
     "key-spacing": [
       "warn",
       {
@@ -63,42 +54,29 @@
     "no-console": [
       "warn",
       {
-        "allow": [
-          "error",
-          "info"
-        ]
+        "allow": ["error", "info"]
       }
     ],
+    "no-restricted-exports": "off",
     "no-debugger": "warn",
     "prefer-template": "warn",
-    "quotes": [
-      "warn",
-      "single"
-    ],
+    "quotes": ["warn", "single"],
     "react/jsx-closing-tag-location": "warn",
     "semi": "warn",
-    "space-before-blocks": [
-      "warn",
-      "always"
-    ],
+    "space-before-blocks": ["warn", "always"],
     "space-infix-ops": [
       "warn",
       {
         "int32Hint": false
       }
     ],
-    "object-curly-spacing": [
-      "warn",
-      "always"
-    ],
+    "object-curly-spacing": ["warn", "always"],
     "template-curly-spacing": "off",
     "indent": [
       "warn",
       2,
       {
-        "ignoredNodes": [
-          "TemplateLiteral"
-        ]
+        "ignoredNodes": ["TemplateLiteral"]
       }
     ],
     "import/no-anonymous-default-export": [
@@ -108,6 +86,7 @@
         "allowObject": true
       }
     ],
-    "prefer-const": "warn"
+    "prefer-const": "warn",
+    "import/prefer-default-export": ["off"]
   }
 }
