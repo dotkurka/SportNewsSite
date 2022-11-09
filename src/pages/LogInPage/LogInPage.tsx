@@ -1,17 +1,20 @@
 import React from 'react';
+import Button from '../../components/Button';
+import Logo from '../../components/Logo';
 
 import './LogInPage.scss';
 
-function LogInPage() {
+const LogInPage = () => {
   return (
     <div className='log-in'>
       <div className='log-in-left'>
-        <div className='log-in-logo'>
-          <span className='log-in-logo-text'>Sport News</span>
-        </div>
+        <Logo />
+      </div>
+      <div>
+        <Button type='button'>Get Started</Button>
       </div>
     </div>
   );
-}
+};
 
 export default LogInPage;
