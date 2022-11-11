@@ -1,6 +1,4 @@
-import React from 'react';
-import Button from '../../components/Button';
-import Logo from '../../components/Logo';
+import { Button, Logo, TextLink } from '../../components';
 
 import './LogInPage.scss';
 
@@ -10,8 +8,11 @@ const LogInPage = () => {
       <div className='log-in-left'>
         <Logo />
       </div>
-      <div>
-        <Button type='button'>Get Started</Button>
+      <div className='log-in-right'>
+        <Button variant='contained' size='large' type='button'>
+          Sign up
+        </Button>
+        <TextLink variant='body1'>Select your teams</TextLink>
       </div>
     </div>
   );

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import './../../styles/Colors.scss';
+
+.text-link {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+
+  &-body1 {
+    font-size: 12px;
+    line-height: 17px;
+    color: $alizarinCrimson;
+    width: 104px;
+    height: 17px;
+
+    &:hover {
+      text-decoration-line: underline;
+      color: $roseMadder;
+    }
+
+    &:active {
+      text-decoration-line: underline;
+      color: $monza;
+    }
+
+    &[disabled] {
+      color: $azalea;
+    }
+  }
+
+  &-body2 {
+    font-size: 10px;
+    line-height: 14px;
+    color: $havelockBlue;
+
+    &:hover {
+      color: $crystalBlue;
+    }
+    &:active {
+      color: $windowsBlue;
+    }
+
+    &[disabled] {
+      color: $periwinkleGrey;
+    }
+  }
+}

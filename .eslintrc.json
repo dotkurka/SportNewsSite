@@ -1,25 +1,36 @@
 {
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
   "extends": [
-    "react-app",
-    "react-app/jest",
     "airbnb",
     "airbnb-typescript",
     "plugin:import/typescript",
     "plugin:import/recommended",
     "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module",
     "project": ["./tsconfig.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "import"],
+  "plugins": ["react", "@typescript-eslint", "import", "unused-imports"],
   "rules": {
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -27,73 +38,98 @@
         "semi": true
       }
     ],
-    "eol-last": ["warn", "always"],
-    "arrow-spacing": [
-      "warn",
+    "react/jsx-filename-extension": [
+      1,
       {
-        "before": true,
-        "after": true
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".md"]
       }
     ],
-    "jsx-quotes": ["warn", "prefer-single"],
-    "key-spacing": [
-      "warn",
-      {
-        "beforeColon": false,
-        "afterColon": true,
-        "mode": "strict"
-      }
-    ],
-    "keyword-spacing": [
-      "warn",
-      {
-        "before": true,
-        "after": true
-      }
-    ],
-    "no-console": [
-      "warn",
-      {
-        "allow": ["error", "info"]
-      }
-    ],
-    "no-restricted-exports": "off",
-    "no-debugger": "warn",
-    "prefer-template": "warn",
-    "quotes": ["warn", "single"],
-    "react/jsx-closing-tag-location": "warn",
-    "semi": "warn",
-    "space-before-blocks": ["warn", "always"],
-    "space-infix-ops": [
-      "warn",
-      {
-        "int32Hint": false
-      }
-    ],
-    "object-curly-spacing": ["warn", "always"],
-    "template-curly-spacing": "off",
-    "indent": [
-      "warn",
+    "linebreak-style": "off",
+    "react/function-component-definition": [
       2,
       {
-        "ignoredNodes": ["TemplateLiteral"]
+        "namedComponents": "arrow-function"
       }
     ],
-    "import/no-anonymous-default-export": [
-      "warn",
-      {
-        "allowAnonymousFunction": true,
-        "allowObject": true
-      }
-    ],
-    "prefer-const": "warn",
-    "import/prefer-default-export": ["off"],
-    "react/function-component-definition": "off",
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/no-array-index-key": "off",
-    "react/require-default-props": "off"
-  }
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "no-case-declarations": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-types": "off",
+    "class-methods-use-this": "off",
+    "no-nested-ternary": "off",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports"
+      }
+    ],
+    "import/no-unresolved": ["error", { "commonjs": true, "amd": true }],
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error",
+    "@next/next/inline-script-id": "off",
+    "import/order": [
+      1,
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ]
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["./**/*.d.ts"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
 }

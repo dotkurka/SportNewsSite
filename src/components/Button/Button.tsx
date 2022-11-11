@@ -1,16 +1,10 @@
-import React, { FC } from 'react';
+import type { IButton } from './types';
 
 import './Button.scss';
 
-interface IButton {
-  children: string;
-  variant?: string;
-  type?: 'button' | 'submit';
-}
-
-const Button: FC<IButton> = ({ children, variant, type = 'button' }) => {
+const Button = ({ children, variant = 'outline', type = 'button', size, ...props }: IButton) => {
   return (
-    <button className={`button ${variant}`} type={type}>
+    <button {...props} className={`button button-${size} button-${variant} `} type={type}>
       {children}
     </button>
   );

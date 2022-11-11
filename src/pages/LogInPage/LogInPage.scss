@@ -8,6 +8,7 @@ $height: 1024px;
   height: $height;
   background-color: rgb(255, 255, 255);
   position: relative;
+  display: flex;
 
   &-left {
     width: 642px;
