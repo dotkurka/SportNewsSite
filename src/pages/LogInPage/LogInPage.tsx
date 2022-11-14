@@ -18,7 +18,7 @@ const LogInPage = () => {
             type='text'
             label='Email'
             placeholder='jdhfjsdhfjhsd@gmail.com'
-            validation='error'
+            validation='valid'
           />
         </div>
       </div>

@@ -46,22 +46,8 @@ $crossSize: 20px;
   }
 }
 
-.input[data-validation='success'] {
+.input[data-validation='valid'] {
   border-color: #56bd5b;
-
-  & + span::after {
-    content: '';
-    position: absolute;
-    left: 326px;
-    top: 35px;
-    display: inline-block;
-    transform: rotate(45deg);
-    height: 11px;
-    width: 5px;
-    border-bottom: 2px solid #56bd5b;
-    border-right: 2px solid #56bd5b;
-    border-radius: 1px;
-  }
 
   &:hover {
     border-color: #56bd5b;
@@ -70,9 +56,21 @@ $crossSize: 20px;
   &:focus {
     border-color: #56bd5b;
   }
+
+  & + span {
+    position: absolute;
+    left: 322px;
+    width: 14px;
+    height: 10px;
+    background: url('../../assets/images/check-mark.svg');
+  }
 }
 
-.input[data-validation='error'] {
+.cross {
+  display: none;
+}
+
+.input-contain .input[data-validation='unvalid'] {
   border-color: #e1464e;
 
   &:hover {
@@ -83,26 +81,11 @@ $crossSize: 20px;
     border-color: #e1464e;
   }
 
-  & + span::after {
-    content: '';
+  & + span {
     position: absolute;
-    left: 326px;
-    top: 35px;
-    --color: #444;
-    --l: 7px; /* line-width */
-    width: $crossSize;
-    height: $crossSize;
-    background: linear-gradient(
-        to top right,
-        transparent calc(50% - var(--l) / 2),
-        var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
-        transparent calc(50% + var(--l) / 2)
-      ),
-      linear-gradient(
-        to bottom right,
-        transparent calc(50% - var(--l) / 2),
-        var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
-        transparent calc(50% + var(--l) / 2)
-      );
+    left: 324px;
+    width: 10px;
+    height: 10px;
+    background: url('../../assets/images/cross-mark.svg');
   }
 }

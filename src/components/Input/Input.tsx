@@ -1,11 +1,6 @@
-import './Input.scss';
+import type { IInput } from './types';
 
-interface IInput {
-  type: string;
-  label?: string;
-  placeholder?: string;
-  validation?: string;
-}
+import './Input.scss';
 
 const Input = ({ type, label, placeholder, validation }: IInput) => {
   return (
