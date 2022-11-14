@@ -1,11 +1,6 @@
-import './TextLink.scss';
+import type { ITextLink } from './types';
 
-interface ITextLink {
-  href?: string;
-  children: string;
-  disabled?: boolean;
-  variant?: string;
-}
+import './TextLink.scss';
 
 const TextLink = ({ href, variant = 'body1', children, ...props }: ITextLink) => {
   return (

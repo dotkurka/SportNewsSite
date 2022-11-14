@@ -1,4 +1,4 @@
-import { Button, Logo, TextLink } from '../../components';
+import { Button, Input, Logo, TextLink } from '../../components';
 
 import './LogInPage.scss';
 
@@ -13,6 +13,14 @@ const LogInPage = () => {
           Sign up
         </Button>
         <TextLink variant='body1'>Select your teams</TextLink>
+        <div>
+          <Input
+            type='text'
+            label='Email'
+            placeholder='jdhfjsdhfjhsd@gmail.com'
+            validation='error'
+          />
+        </div>
       </div>
     </div>
   );

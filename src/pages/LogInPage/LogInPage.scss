@@ -15,4 +15,12 @@ $height: 1024px;
     height: $height;
     background: url('./../../assets/picture/freddie-collins.png');
   }
+
+  &-right {
+    width: 798px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
