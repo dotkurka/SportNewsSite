@@ -2,5 +2,11 @@ export interface ITextLink {
   children: string;
   href?: string;
   disabled?: boolean;
-  variant?: string;
+  variant?: TextLinkVariant;
+}
+
+export enum TextLinkVariant {
+  Body1 = 'body1',
+  Body2 = 'body2',
+  Default = 'default',
 }

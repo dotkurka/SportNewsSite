@@ -1,4 +1,7 @@
 import { Button, Input, Logo, TextLink } from '../../components';
+import { ButtonVariant } from '../../components/Button/types';
+import { InputVariant } from '../../components/Input/types';
+import { TextLinkVariant } from '../../components/TextLink/types';
 
 import './LogInPage.scss';
 
@@ -9,16 +12,16 @@ const LogInPage = () => {
         <Logo />
       </div>
       <div className='log-in-right'>
-        <Button variant='contained' size='large' type='button'>
+        <Button variant={ButtonVariant.Contained} size='large' type='button'>
           Sign up
         </Button>
-        <TextLink variant='body1'>Select your teams</TextLink>
+        <TextLink variant={TextLinkVariant.Body2}>Select your teams</TextLink>
         <div>
           <Input
             type='text'
             label='Email'
             placeholder='jdhfjsdhfjhsd@gmail.com'
-            validation='valid'
+            variant={InputVariant.Succes}
           />
         </div>
       </div>

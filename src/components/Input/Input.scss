@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import './../../styles/Colors.scss';
 
 $crossSize: 20px;
 
@@ -14,7 +13,7 @@ $crossSize: 20px;
   box-sizing: border-box;
   width: 350px;
   height: 42px;
-  border: 1px solid #d4d9e2;
+  border: 1px solid $lightGrey;
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
@@ -22,6 +21,14 @@ $crossSize: 20px;
   line-height: 16px;
   padding: 0 14px;
   outline: none;
+
+  &:hover {
+    border-color: $greyChateau;
+  }
+
+  &:focus {
+    border-color: $greyChateau;
+  }
 
   &-label {
     top: 7px;
@@ -34,27 +41,19 @@ $crossSize: 20px;
     font-weight: 500;
     font-size: 10px;
     line-height: 11px;
-    color: #434c5d;
-  }
-
-  &:hover {
-    border-color: #a6a9af;
-  }
-
-  &:focus {
-    border-color: #a6a9af;
+    color: $riverBed;
   }
 }
 
-.input[data-validation='valid'] {
-  border-color: #56bd5b;
+.succes {
+  border-color: $boringGreen;
 
   &:hover {
-    border-color: #56bd5b;
+    border-color: $boringGreen;
   }
 
   &:focus {
-    border-color: #56bd5b;
+    border-color: $boringGreen;
   }
 
   & + span {
@@ -66,19 +65,15 @@ $crossSize: 20px;
   }
 }
 
-.cross {
-  display: none;
-}
-
-.input-contain .input[data-validation='unvalid'] {
-  border-color: #e1464e;
+.error {
+  border-color: $paleRed;
 
   &:hover {
-    border-color: #e1464e;
+    border-color: $paleRed;
   }
 
   &:focus {
-    border-color: #e1464e;
+    border-color: $paleRed;
   }
 
   & + span {

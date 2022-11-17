@@ -1,10 +1,17 @@
+import { TextLinkVariant } from './types';
+
 import type { ITextLink } from './types';
 
 import './TextLink.scss';
 
-const TextLink = ({ href, variant = 'body1', children, ...props }: ITextLink) => {
+const TextLink = ({ href, variant = TextLinkVariant.Default, children, ...props }: ITextLink) => {
+  const textLinkClass = {
+    [TextLinkVariant.Body1]: 'body1',
+    [TextLinkVariant.Body2]: 'body2',
+    [TextLinkVariant.Default]: 'body1',
+  };
   return (
-    <a {...props} className={`text-link text-link-${variant}`} href={href}>
+    <a {...props} className={`text-link text-link-${textLinkClass[variant]}`} href={href}>
       {children}
     </a>
   );
