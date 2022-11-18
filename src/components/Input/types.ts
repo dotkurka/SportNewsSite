@@ -3,6 +3,7 @@ export interface IInput {
   label?: string;
   placeholder?: string;
   variant?: InputVariant;
+  resPassword?: boolean;
 }
 
 export enum InputVariant {

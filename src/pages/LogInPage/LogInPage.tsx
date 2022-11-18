@@ -21,7 +21,14 @@ const LogInPage = () => {
             type='text'
             label='Email'
             placeholder='jdhfjsdhfjhsd@gmail.com'
-            variant={InputVariant.Succes}
+            variant={InputVariant.Error}
+          />
+          <Input
+            type='text'
+            label='Email'
+            placeholder='jdhfjsdhfjhsd@gmail.com'
+            variant={InputVariant.Error}
+            resPassword
           />
         </div>
       </div>

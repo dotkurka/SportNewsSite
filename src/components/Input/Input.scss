@@ -3,7 +3,8 @@
 $crossSize: 20px;
 
 .input-contain {
-  height: 90px;
+  height: 80px;
+  width: 350px;
   display: flex;
   position: relative;
   align-items: center;
@@ -11,7 +12,7 @@ $crossSize: 20px;
 
 .input {
   box-sizing: border-box;
-  width: 350px;
+  width: 100%;
   height: 42px;
   border: 1px solid $lightGrey;
   font-family: 'Open Sans';
@@ -31,7 +32,7 @@ $crossSize: 20px;
   }
 
   &-label {
-    top: 7px;
+    top: 0;
     height: 11px;
     position: absolute;
     letter-spacing: 0.9px;
@@ -43,44 +44,48 @@ $crossSize: 20px;
     line-height: 11px;
     color: $riverBed;
   }
-}
 
-.succes {
-  border-color: $boringGreen;
-
-  &:hover {
+  &-succes {
     border-color: $boringGreen;
+
+    &:hover {
+      border-color: $boringGreen;
+    }
+
+    &:focus {
+      border-color: $boringGreen;
+    }
   }
 
-  &:focus {
-    border-color: $boringGreen;
-  }
+  &-error {
+    border-color: $paleRed;
 
-  & + span {
-    position: absolute;
-    left: 322px;
-    width: 14px;
-    height: 10px;
-    background: url('../../assets/images/check-mark.svg');
+    &:hover {
+      border-color: $paleRed;
+    }
+
+    &:focus {
+      border-color: $paleRed;
+    }
   }
 }
 
 .error {
-  border-color: $paleRed;
+  position: absolute;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+}
 
-  &:hover {
-    border-color: $paleRed;
-  }
+.succes {
+  position: absolute;
+  right: 13px;
+  width: 14px;
+  height: 10px;
+}
 
-  &:focus {
-    border-color: $paleRed;
-  }
-
-  & + span {
-    position: absolute;
-    left: 324px;
-    width: 10px;
-    height: 10px;
-    background: url('../../assets/images/cross-mark.svg');
-  }
+.res-password {
+  position: absolute;
+  right: 0;
+  top: -7px;
 }
