@@ -1,6 +1,7 @@
 import { Button, Input, Logo, TextLink } from '../../components';
 import { ButtonVariant } from '../../components/Button/types';
 import { InputVariant } from '../../components/Input/types';
+import ShareButton from '../../components/ShareButton/ShareButton';
 import { TextLinkVariant } from '../../components/TextLink/types';
 
 import './LogInPage.scss';
@@ -28,8 +29,9 @@ const LogInPage = () => {
             label='Email'
             placeholder='jdhfjsdhfjhsd@gmail.com'
             variant={InputVariant.Error}
-            resPassword
+            description={<TextLink variant={TextLinkVariant.Body2}>Forgot password?</TextLink>}
           />
+          <ShareButton />
         </div>
       </div>
     </div>

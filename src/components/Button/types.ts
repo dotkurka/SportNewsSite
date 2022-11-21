@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
+
 export interface IButton {
-  children: string;
+  children: string | ReactNode;
   variant?: ButtonVariant;
   size?: 'large';
   type?: 'button' | 'submit';

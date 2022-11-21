@@ -1,9 +1,11 @@
+import type { ReactNode } from 'react';
+
 export interface IInput {
   type: string;
   label?: string;
   placeholder?: string;
   variant?: InputVariant;
-  resPassword?: boolean;
+  description?: ReactNode;
 }
 
 export enum InputVariant {

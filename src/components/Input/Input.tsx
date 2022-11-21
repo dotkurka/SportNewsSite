@@ -1,7 +1,5 @@
 import checkMark from '../../assets/images/check-mark.svg';
 import crossMark from '../../assets/images/cross-mark.svg';
-import TextLink from '../TextLink/TextLink';
-import { TextLinkVariant } from '../TextLink/types';
 
 import { InputVariant } from './types';
 
@@ -13,7 +11,7 @@ const Input = ({
   type,
   label,
   placeholder,
-  resPassword,
+  description,
   variant = InputVariant.Default,
 }: IInput) => {
   const inputClass = {
@@ -34,11 +32,7 @@ const Input = ({
         {label}
       </label>
 
-      {resPassword && (
-        <div className='res-password'>
-          <TextLink variant={TextLinkVariant.Body2}>Forgot password?</TextLink>
-        </div>
-      )}
+      {description && <div className='res-password'>{description}</div>}
 
       <input
         id='input'
