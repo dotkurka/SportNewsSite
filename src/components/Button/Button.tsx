@@ -21,7 +21,7 @@ const Button = ({
   return (
     <button
       {...props}
-      className={`button button-${size} button-${buttonClass[variant]} ${className || ''}`}
+      className={`button button-${buttonClass[variant]} ${size ? 'large' : ''} ${className || ''}`}
       type={type}
     >
       {children}

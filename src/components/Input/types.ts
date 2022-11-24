@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
+import type React from 'react';
 
-export interface IInput {
+interface IInput {
   type: string;
   label?: string;
   placeholder?: string;
   variant?: InputVariant;
   description?: ReactNode;
+  className?: string;
 }
 
 export enum InputVariant {
@@ -13,3 +15,5 @@ export enum InputVariant {
   Error = 'error',
   Default = 'default',
 }
+
+export type TInput = IInput & React.HTMLProps<HTMLInputElement>;

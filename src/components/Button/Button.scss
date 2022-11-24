@@ -10,13 +10,6 @@ $textColor: rgb(255, 255, 255);
   line-height: 17px;
   cursor: pointer;
 
-  &-large {
-    width: 130px !important;
-    height: 42px !important;
-    font-size: 14px;
-    line-height: 19px;
-  }
-
   &-outline {
     width: 137px;
     height: 32px;
@@ -76,4 +69,11 @@ $textColor: rgb(255, 255, 255);
       color: $monza;
     }
   }
+}
+
+.large {
+  width: 130px;
+  height: 42px;
+  font-size: 14px;
+  line-height: 19px;
 }

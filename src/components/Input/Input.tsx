@@ -3,7 +3,7 @@ import crossMark from '../../assets/images/cross-mark.svg';
 
 import { InputVariant } from './types';
 
-import type { IInput } from './types';
+import type { TInput } from './types';
 
 import './Input.scss';
 
@@ -12,8 +12,10 @@ const Input = ({
   label,
   placeholder,
   description,
+  className,
   variant = InputVariant.Default,
-}: IInput) => {
+  ...props
+}: TInput) => {
   const inputClass = {
     [InputVariant.Succes]: 'succes',
     [InputVariant.Error]: 'error',
@@ -27,7 +29,7 @@ const Input = ({
   };
 
   return (
-    <div className='input-contain'>
+    <div className={`input-contain ${className || ''}`}>
       <label className='input-label' htmlFor='input'>
         {label}
       </label>
@@ -35,7 +37,7 @@ const Input = ({
       {description && <div className='res-password'>{description}</div>}
 
       <input
-        id='input'
+        {...props}
         type={type}
         placeholder={placeholder}
         className={`input input-${inputClass[variant]} `}
