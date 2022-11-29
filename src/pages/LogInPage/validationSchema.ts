@@ -1,13 +1,11 @@
 import * as Yup from 'yup';
 
-const message = 'Incorrect user ID or password. Try again';
-
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email(message).required('Required'),
+  email: Yup.string().email('email inva').required('Required'),
   password: Yup.string()
-    .required(message)
-    .min(8, message)
-    .matches(/[a-zA-Z]/, message),
+    .required('Required')
+    .min(8, 'Min 8')
+    .matches(/[a-zA-Z]/, 'un Valid'),
 });
 
 export default validationSchema;

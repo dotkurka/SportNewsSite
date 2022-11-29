@@ -37,15 +37,17 @@ const LogInPage = () => {
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <Form className='form-contain' onSubmit={handleSubmit}>
               <div className='form-title'>Log in to Sport News</div>
-              {errors.email && errors.password && touched.email && errors.password ? (
-                <div className='form-error'>{errors.email && errors.password}</div>
+
+              {errors.password || errors.email ? (
+                <div className='form-error'>Incorrect user ID or password. Try again</div>
               ) : null}
+
               <div>
                 <Input
                   className='form-input'
                   placeholder='Email@gmail.com'
                   label='Email address'
-                  variant={errors.email ? InputVariant.Error : InputVariant.Succes}
+                  variant={errors.email && touched.email ? InputVariant.Error : InputVariant.Succes}
                   type='email'
                   name='email'
                   onChange={handleChange}
@@ -55,9 +57,11 @@ const LogInPage = () => {
 
                 <Input
                   className='form-input'
-                  placeholder='Email@gmail.com'
-                  label='Email address'
-                  variant={errors.password ? InputVariant.Error : InputVariant.Succes}
+                  placeholder='Enter your password'
+                  label='Password'
+                  variant={
+                    errors.password && touched.password ? InputVariant.Error : InputVariant.Succes
+                  }
                   type='password'
                   name='password'
                   onChange={handleChange}
@@ -68,6 +72,7 @@ const LogInPage = () => {
                   }
                 />
               </div>
+
               <Button
                 className='form-button'
                 variant={ButtonVariant.Contained}
