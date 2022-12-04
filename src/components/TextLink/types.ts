@@ -1,6 +1,7 @@
 export interface ITextLink {
   children: string;
   href?: string;
+  className?: string;
   disabled?: boolean;
   variant?: TextLinkVariant;
 }
