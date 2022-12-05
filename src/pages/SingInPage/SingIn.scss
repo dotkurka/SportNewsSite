@@ -1,0 +1,110 @@
+@import './../../styles/Colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+$height: 1024px;
+
+.sing-up {
+  width: 1440px;
+  height: $height;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: flex;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+
+  &-left {
+    width: 642px;
+    height: $height;
+    background: url('./../../assets/images/freddie-collins.png');
+  }
+
+  &-right {
+    width: 798px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 300px;
+      position: absolute;
+      top: 24px;
+      right: 56px;
+    }
+  }
+}
+
+.form {
+  &-contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 390px;
+    height: 441px; //281
+  }
+
+  &-title {
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+  }
+
+  &-button {
+    width: 100%;
+    margin-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  &-input {
+    width: 100%;
+  }
+
+  &-error {
+    font-size: 10px;
+    line-height: 14px;
+    color: $alizarinCrimson;
+  }
+
+  &-description {
+    font-size: 12px;
+    line-height: 16px;
+    color: $riverBed;
+  }
+
+  &-dual {
+    display: flex;
+    justify-content: space-between;
+
+    &-input {
+      width: 178px;
+    }
+  }
+
+  &-social {
+    width: 76.8px;
+    display: flex;
+    justify-content: space-between;
+
+    &-icon {
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+
+      &:hover * {
+        stroke: red;
+      }
+    }
+  }
+}
