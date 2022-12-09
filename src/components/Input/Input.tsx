@@ -23,10 +23,8 @@ const Input = ({
   };
 
   const imgVariant = {
-<<<<<<< HEAD
-=======
     // TODO touch
->>>>>>> 04e0b5b... fix: page and create folder 'Layout'
+
     [InputVariant.Succes]: checkMark,
     [InputVariant.Error]: crossMark,
     [InputVariant.Default]: null,
