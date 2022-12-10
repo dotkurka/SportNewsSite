@@ -1,5 +1,5 @@
 import SingInLayout from './layouts/SingInLayout/SingInLayout';
-import { LogIn } from './pages';
+import { NewPassword } from './pages';
 
 import './styles/App.scss';
 
@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className='App'>
       <SingInLayout>
-        <LogIn />
+        <NewPassword />
       </SingInLayout>
     </div>
   );
