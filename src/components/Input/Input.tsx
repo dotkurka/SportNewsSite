@@ -7,28 +7,35 @@ import type { TInput } from './types';
 
 import './Input.scss';
 
+const inputClass = {
+  [InputVariant.Succes]: 'succes',
+  [InputVariant.Error]: 'error',
+  [InputVariant.Default]: '',
+};
+
+const imgVariant = {
+  // TODO touched
+
+  [InputVariant.Succes]: checkMark,
+  [InputVariant.Error]: crossMark,
+  [InputVariant.Default]: null,
+};
+
 const Input = ({
   type,
   label,
   placeholder,
   description,
   className,
-  variant = InputVariant.Default,
+  touched,
+  errors,
   ...props
 }: TInput) => {
-  const inputClass = {
-    [InputVariant.Succes]: 'succes',
-    [InputVariant.Error]: 'error',
-    [InputVariant.Default]: '',
-  };
-
-  const imgVariant = {
-    // TODO touch
-
-    [InputVariant.Succes]: checkMark,
-    [InputVariant.Error]: crossMark,
-    [InputVariant.Default]: null,
-  };
+  const isValid = touched
+    ? errors
+      ? InputVariant.Error
+      : InputVariant.Succes
+    : InputVariant.Default;
 
   return (
     <div className={`input-contain ${className || ''}`}>
@@ -42,10 +49,10 @@ const Input = ({
         {...props}
         type={type}
         placeholder={placeholder}
-        className={`input input-${inputClass[variant]} `}
+        className={`input input-${inputClass[isValid]}`}
       />
 
-      {imgVariant && <img src={imgVariant[variant]} className={inputClass[variant]} alt='' />}
+      {imgVariant && <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />}
     </div>
   );
 };

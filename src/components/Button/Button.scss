@@ -3,16 +3,9 @@
 $textColor: rgb(255, 255, 255);
 
 .button {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 17px;
   cursor: pointer;
 
   &-outline {
-    width: 137px;
-    height: 32px;
     border: 1px solid $alizarinCrimson;
     background: none;
     color: $alizarinCrimson;
@@ -35,8 +28,6 @@ $textColor: rgb(255, 255, 255);
   }
 
   &-contained {
-    width: 137px;
-    height: 32px;
     border: none;
     background-color: $alizarinCrimson;
     color: $textColor;
@@ -76,4 +67,11 @@ $textColor: rgb(255, 255, 255);
   height: 42px;
   font-size: 14px;
   line-height: 19px;
+}
+
+.medium {
+  width: 137px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 17px;
 }

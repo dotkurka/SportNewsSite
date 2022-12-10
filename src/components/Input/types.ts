@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import type React from 'react';
 
 interface IInput {
+  errors?: string | undefined;
+  touched?: boolean;
   type: string;
   label?: string;
   placeholder?: string;

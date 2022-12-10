@@ -1,27 +1,32 @@
-import { ButtonVariant } from './types';
+import { ButtonSize, ButtonVariant } from './types';
 
 import type { IButton } from './types';
 
 import './Button.scss';
 
+const buttonClass = {
+  [ButtonVariant.Outline]: 'outline',
+  [ButtonVariant.Contained]: 'contained',
+  [ButtonVariant.Default]: '',
+};
+
+const buttonSize = {
+  [ButtonSize.Large]: 'large',
+  [ButtonSize.Medium]: 'medium',
+};
+
 const Button = ({
   children,
   variant = ButtonVariant.Outline,
   type = 'button',
-  size,
+  size = ButtonSize.Medium,
   className,
   ...props
 }: IButton) => {
-  const buttonClass = {
-    [ButtonVariant.Outline]: 'outline',
-    [ButtonVariant.Contained]: 'contained',
-    [ButtonVariant.Default]: '',
-  };
-
   return (
     <button
       {...props}
-      className={`button button-${buttonClass[variant]} ${size ? 'large' : ''} ${className || ''}`}
+      className={`button button-${buttonClass[variant]} ${buttonSize[size]} ${className || ''}`}
       type={type}
     >
       {children}
