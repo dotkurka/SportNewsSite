@@ -1,0 +1,47 @@
+@import '../../styles/Colors.scss';
+
+.sidebar {
+  width: 83px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+
+  &-list {
+    margin-top: 78px;
+  }
+
+  &-item {
+    width: 253px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-left: 65px;
+    text-decoration: none;
+    color: $greyCloud;
+    position: relative;
+    user-select: none;
+
+    &:hover {
+      color: $persianRed;
+
+      &::before {
+        content: '•';
+        scale: 1.5;
+        position: absolute;
+        left: 53px;
+      }
+      &:active {
+        &::after {
+          content: '';
+          height: 40px;
+          width: 6px;
+          background-color: $alizarinCrimson;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+  }
+}

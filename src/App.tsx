@@ -1,14 +1,11 @@
-import SingInLayout from './layouts/SingInLayout/SingInLayout';
-import { LogIn } from './pages';
+import { SideBar } from './components';
 
 import './styles/App.scss';
 
 const App = () => {
   return (
     <div className='App'>
-      <SingInLayout>
-        <LogIn />
-      </SingInLayout>
+      <SideBar />
     </div>
   );
 };
