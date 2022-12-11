@@ -31,11 +31,9 @@ const Input = ({
   errors,
   ...props
 }: TInput) => {
-  const isValid = touched
-    ? errors
-      ? InputVariant.Error
-      : InputVariant.Succes
-    : InputVariant.Default;
+  const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
+
+  const isValid = touched ? errorValid : InputVariant.Default;
 
   return (
     <div className={`input-contain ${className || ''}`}>
