@@ -4,23 +4,22 @@ import { ReactComponent as TwitterIcon } from '../../assets/images/twitter-follo
 import { ReactComponent as YoutubeIcon } from '../../assets/images/youtube-follow-icon.svg';
 
 import './SideBar.scss';
+import { SidebarData } from './SidebarData';
 
 const SideBar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar-list'>
-        <a href='dff' className='sidebar-item'>
-          dfdf
+        <a href='dff' className='sidebar-item home'>
+          Home
         </a>
-        <a href='dfdf' className='sidebar-item'>
-          dfdf
-        </a>
-        <a href='dfdf' className='sidebar-item'>
-          dfdf
-        </a>
-        <a href='href' className='sidebar-item'>
-          dfdf
-        </a>
+
+        {SidebarData.map(({ title, link }) => (
+          <a href={link} key={link} className='sidebar-item home'>
+            {title}
+          </a>
+        ))}
+
         <div className='sidebar-follow'>
           Follow
           <div className='sidebar-follow-icon'>
