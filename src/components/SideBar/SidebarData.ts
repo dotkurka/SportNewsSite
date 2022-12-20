@@ -1,12 +1,20 @@
 interface ISidebarData {
   title: string;
   link: string;
+  subItem?: {
+    title: string;
+    link: string;
+  };
 }
 
 export const SidebarData: ISidebarData[] = [
   {
     title: 'NBA',
     link: '/NBA',
+    subItem: {
+      title: 'AFC East',
+      link: '/AFCEast',
+    },
   },
   {
     title: 'NFL',

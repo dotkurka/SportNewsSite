@@ -11,3 +11,5 @@ export { default as ShareButton } from './ShareButton/ShareButton';
 export { default as Select } from './Select/Select';
 
 export { default as SideBar } from './SideBar/SideBar';
+
+export { default as SubSideBar } from './SubSideBar/SubSideBar';
