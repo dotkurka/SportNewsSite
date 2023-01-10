@@ -5,6 +5,7 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 19px;
+  position: absolute;
 
   &-list {
     margin-top: 78px;
@@ -34,7 +35,15 @@
       }
     }
 
-    &:active {
+    &-focus {
+      color: $persianRed;
+
+      &::before {
+        content: '•';
+        scale: 1.5;
+        position: absolute;
+        left: -11px;
+      }
       &::after {
         content: '';
         height: 40px;

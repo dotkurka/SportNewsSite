@@ -1,12 +1,13 @@
-import { SideBar, SubSideBar } from '../../components';
+import { SideBar } from '../../components';
+
+import { SidebarData } from './SidebarData';
 
 import './SideBarNav.scss';
 
 const SideBarNav = () => {
   return (
     <nav className='sidebar-nav'>
-      <SideBar />
-      <SubSideBar />
+      <SideBar data={SidebarData} />
     </nav>
   );
 };

@@ -1,38 +1,29 @@
-import { ReactComponent as FacebookIcon } from '../../assets/images/facebook-follow-icon.svg';
-import { ReactComponent as GoogleIcon } from '../../assets/images/google-follow-icon.svg';
-import { ReactComponent as TwitterIcon } from '../../assets/images/twitter-follow-icon.svg';
-import { ReactComponent as YoutubeIcon } from '../../assets/images/youtube-follow-icon.svg';
+import { Link } from 'react-router-dom';
+
+import SideBarFollow from './SideBarFollow';
+import SideBarItem from './SideBarItem';
+
+import type { ISidebarData } from '../../features/SideBarNav/SidebarData';
 
 import './SideBar.scss';
-import { SidebarData } from './SidebarData';
 
-const SideBar = () => {
+interface ISidebar {
+  data: ISidebarData[];
+}
+
+const SideBar = ({ data }: ISidebar) => {
   return (
     <div className='sidebar'>
       <div className='sidebar-list'>
-        <a href='dff' className='sidebar-item home'>
+        <Link to='dff' className='sidebar-item'>
           Home
-        </a>
+        </Link>
 
-        {SidebarData.map(({ title, link }) => (
-          <a href={link} key={link} className='sidebar-item home'>
-            {title}
-          </a>
+        {data.map((dataDise) => (
+          <SideBarItem item={dataDise} key={dataDise.path} />
         ))}
 
-        <div className='sidebar-follow'>
-          Follow
-          <div className='sidebar-follow-icon'>
-            <div className='sidebar-follow-icon-contain'>
-              <FacebookIcon className='sidebar-follow-icon-item' />
-              <TwitterIcon className='sidebar-follow-icon-item' />
-            </div>
-            <div className='sidebar-follow-icon-contain'>
-              <GoogleIcon className='sidebar-follow-icon-item' />
-              <YoutubeIcon className='sidebar-follow-icon-item' />
-            </div>
-          </div>
-        </div>
+        <SideBarFollow />
       </div>
     </div>
   );
