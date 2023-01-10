@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import SubSideBar from '../SubSideBar/SubSideBar';
 
 import SideBarFollow from './SideBarFollow';
 import SideBarItem from './SideBarItem';
@@ -12,19 +14,22 @@ interface ISidebar {
 }
 
 const SideBar = ({ data }: ISidebar) => {
+  const [subBar, setSubBar] = useState<ISidebarData>({ title: '', path: '' });
+
+  const subItem = (item: ISidebarData) => {
+    setSubBar(item);
+  };
+
   return (
     <div className='sidebar'>
       <div className='sidebar-list'>
-        <Link to='dff' className='sidebar-item'>
-          Home
-        </Link>
-
-        {data.map((dataDise) => (
-          <SideBarItem item={dataDise} key={dataDise.path} />
+        {data.map((dataSide) => (
+          <SideBarItem onClick={() => subItem(dataSide)} item={dataSide} key={dataSide.path} />
         ))}
 
         <SideBarFollow />
       </div>
+      {subBar.subItem && <SubSideBar subData={subBar} />}
     </div>
   );
 };

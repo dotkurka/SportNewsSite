@@ -1,13 +1,16 @@
 @import '../../styles/Colors.scss';
 
 .sidebar {
-  width: 253px;
+  width: 1440px;
   font-weight: 700;
   font-size: 14px;
   line-height: 19px;
   position: absolute;
+  display: flex;
 
   &-list {
+    width: 253px;
+    box-sizing: border-box;
     margin-top: 78px;
     padding-left: 65px;
   }

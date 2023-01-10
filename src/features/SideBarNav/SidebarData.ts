@@ -11,6 +11,10 @@ export interface ISidebarData {
 
 export const SidebarData: ISidebarData[] = [
   {
+    title: 'Home',
+    path: '/',
+  },
+  {
     title: 'NBA',
     path: '/NBA',
     subItem: [

@@ -1,7 +1,4 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import SubSideBar from '../SubSideBar/SubSideBar';
 
 import type { ISidebarData } from '../../features/SideBarNav/SidebarData';
 
@@ -9,28 +6,20 @@ import './SideBar.scss';
 
 interface ISideBarItem {
   item: ISidebarData;
+  onClick: () => void;
+  check?: boolean;
 }
 
-const SideBarItem = ({ item }: ISideBarItem) => {
-  const [subBar, setSubBar] = useState(false);
-
-  const subBarVisible = () => {
-    setSubBar(() => false);
-    setSubBar(() => true);
-  };
-
+const SideBarItem = ({ item, check, ...props }: ISideBarItem) => {
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div onClick={item.subItem && subBarVisible}>
-      <Link
-        to={item.path}
-        key={item.path}
-        className={`sidebar-item ${subBar ? 'sidebar-item-focus' : ''}`}
-      >
-        {item.title}
-      </Link>
-      {subBar && <SubSideBar subData={item} />}
-    </div>
+    <Link
+      {...props}
+      to={item.path}
+      key={item.path}
+      className={`sidebar-item ${check ? 'sidebar-item-focus' : ''}`}
+    >
+      {item.title}
+    </Link>
   );
 };
 
