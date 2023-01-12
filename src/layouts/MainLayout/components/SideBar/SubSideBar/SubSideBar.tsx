@@ -1,19 +1,14 @@
 import { Link } from 'react-router-dom';
 
-import type { ISidebarData } from '../../features/SideBarNav/SidebarData';
-
 import './SubSideBar.scss';
+import type { ISubSideBar } from './types';
 
-interface ISubSideBar {
-  subData: ISidebarData;
-}
-
-const SubSideBar = ({ subData }: ISubSideBar) => {
+const SubSideBar = ({ subData, ...props }: ISubSideBar) => {
   return (
     <div className='sub-sidebar'>
       <div className='sub-sidebar-list'>
         {subData.subItem?.map(({ title, path }) => (
-          <Link to={path} key={path} className='sub-sidebar-item'>
+          <Link {...props} to={path} key={path} className='sub-sidebar-item'>
             {title}
           </Link>
         ))}

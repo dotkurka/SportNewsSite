@@ -1,13 +1,4 @@
-export interface ISubItem {
-  title: string;
-  path: string;
-}
-
-export interface ISidebarData {
-  title: string;
-  path: string;
-  subItem?: ISubItem[];
-}
+import type { ISidebarData } from './types';
 
 export const SidebarData: ISidebarData[] = [
   {

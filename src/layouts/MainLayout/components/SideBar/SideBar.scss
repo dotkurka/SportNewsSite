@@ -1,4 +1,4 @@
-@import '../../styles/Colors.scss';
+@import '../../../../styles/Colors.scss';
 
 .sidebar {
   width: 1440px;
@@ -54,44 +54,6 @@
         background-color: $alizarinCrimson;
         position: absolute;
         right: 0;
-      }
-    }
-  }
-
-  &-follow {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    user-select: none;
-    color: $greyCloud;
-    width: 60px;
-    height: 93px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 15px;
-
-    &-icon {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 60px;
-      height: 60px;
-
-      &-contain {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      &-item {
-        cursor: pointer;
-
-        &:hover * {
-          fill: $alizarinCrimson;
-        }
       }
     }
   }

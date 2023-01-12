@@ -1,5 +1,6 @@
 import { Logo } from './components';
-import SideBarNav from './features/SideBarNav/SideBarNav';
+import { SidebarData } from './config/SideBarData/SidebarData';
+import SideBar from './layouts/MainLayout/components/SideBar/SideBar';
 
 import './styles/App.scss';
 
@@ -7,7 +8,7 @@ const App = () => {
   return (
     <div className='App'>
       <Logo />
-      <SideBarNav />
+      <SideBar data={SidebarData} />
     </div>
   );
 };
