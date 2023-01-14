@@ -26,6 +26,11 @@
     position: relative;
     user-select: none;
 
+    &-focus {
+      color: $alizarinCrimson;
+      background: rgba(215, 33, 48, 0.11);
+    }
+
     &:hover {
       color: $alizarinCrimson;
       background: rgba(215, 33, 48, 0.11);

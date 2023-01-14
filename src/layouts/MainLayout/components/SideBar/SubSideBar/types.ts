@@ -1,6 +1,7 @@
-import type { ISidebarData } from '../../../../../config/SideBarData/types';
+import type { ISubItem } from '../../../../../config/SideBarData/types';
 
 export interface ISubSideBar {
-  subData: ISidebarData;
+  subData: ISubItem;
   onClick?: () => void;
+  isActive?: boolean;
 }

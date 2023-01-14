@@ -3,17 +3,16 @@ import { Link } from 'react-router-dom';
 import './SubSideBar.scss';
 import type { ISubSideBar } from './types';
 
-const SubSideBar = ({ subData, ...props }: ISubSideBar) => {
+const SubSideBar = ({ subData, isActive, onClick }: ISubSideBar) => {
   return (
-    <div className='sub-sidebar'>
-      <div className='sub-sidebar-list'>
-        {subData.subItem?.map(({ title, path }) => (
-          <Link {...props} to={path} key={path} className='sub-sidebar-item'>
-            {title}
-          </Link>
-        ))}
-      </div>
-    </div>
+    <Link
+      onClick={onClick}
+      to={subData.path}
+      key={subData.path}
+      className={`sub-sidebar-item ${isActive ? 'sub-sidebar-item-focus' : ''}`}
+    >
+      {subData.title}
+    </Link>
   );
 };
 
