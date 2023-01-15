@@ -1,5 +1,5 @@
 import type { ISidebarData } from '../../../../config/SideBarData/types';
 
-export interface ISidebar {
+export interface ISideBar {
   data: ISidebarData[];
 }

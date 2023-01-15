@@ -7,7 +7,7 @@ const SideBarItem = ({ item, isActive, onClick }: ISideBarItem) => {
   return (
     <Link
       onClick={onClick}
-      to={item.path}
+      to={item.subItem ? '..' : item.path}
       key={item.path}
       className={`sidebar-item ${isActive ? 'sidebar-item-focus' : ''}`}
     >

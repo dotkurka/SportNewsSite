@@ -2,50 +2,51 @@ import { useState } from 'react';
 
 import SideBarFollow from './SideBarFollow/SideBarFollow';
 import SideBarItem from './SideBarItem/SideBarItem';
-import SubSideBar from './SubSideBar/SubSideBar';
+import SubMenuItem from './SubMenuItem/SubMenuItem';
 
 import './SideBar.scss';
 import type { ISidebarData } from '../../../../config/SideBarData/types';
-import type { ISidebar } from './types';
+import type { ISideBar } from './types';
 
-const SideBar = ({ data }: ISidebar) => {
-  const [subBar, setSubBar] = useState<ISidebarData>({ title: '', path: '' });
-  const [sub, setSub] = useState<ISidebarData>({ title: '', path: '' });
-  const [selected, setSelected] = useState<string | null>(null);
-  const [selectedSub, setSelectedSub] = useState<string | null>(null);
+const SideBar = ({ data }: ISideBar) => {
+  const [subMenu, setSubMenu] = useState<ISidebarData>({ title: '', path: '' });
+  const [secondSubMenu, setSecondSubMenu] = useState<ISidebarData>({ title: '', path: '' });
+  const [checked, setChecked] = useState<string | null>(null);
+  const [checkedSub, setCheckedSub] = useState<string | null>(null);
 
-  const closeSubItem = () => {
-    setSubBar({ title: '', path: '' });
-    setSub({ title: '', path: '' });
+  const closeSubMenu = () => {
+    setSubMenu({ title: '', path: '' });
+    setSecondSubMenu({ title: '', path: '' });
   };
 
-  const subuk = (item: ISidebarData) => {
-    if (item.title === sub.title) {
-      setSub({ title: '', path: '' });
-      setSelectedSub(null);
+  const getSecondSubItem = (item: ISidebarData) => {
+    if (item.title === secondSubMenu.title) {
+      setSecondSubMenu({ title: '', path: '' });
+      setCheckedSub(null);
     } else {
-      setSub(item);
-      setSelectedSub(item.title);
+      setSecondSubMenu(item);
+      setCheckedSub(item.title);
     }
   };
 
   const getSubItem = (item: ISidebarData) => {
-    if (item.title === subBar.title) {
-      closeSubItem();
-      setSelected(null);
+    if (item.title === subMenu.title) {
+      closeSubMenu();
+      setChecked(null);
     } else {
-      setSubBar(item);
-      setSelected(item.title);
+      setSecondSubMenu({ title: '', path: '' });
+      setSubMenu(item);
+      setChecked(item.title);
     }
   };
 
   return (
-    <div className='sidebar'>
-      <div className='sidebar-list'>
+    <div className={`sidebar ${subMenu.subItem ? 'active' : ''}`}>
+      <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
         {data.map((item) => (
           <SideBarItem
             onClick={() => getSubItem(item)}
-            isActive={item.title === selected}
+            isActive={item.title === checked}
             item={item}
             key={item.path}
           />
@@ -53,27 +54,29 @@ const SideBar = ({ data }: ISidebar) => {
 
         <SideBarFollow />
       </div>
-      {subBar.subItem && (
-        <div className='sub-sidebar'>
-          <div className='sub-sidebar-list'>
-            {subBar.subItem?.map((item) => (
-              <SubSideBar
-                isActive={item.title === selectedSub}
-                onClick={() => subuk(item)}
-                key={item.path}
-                subData={item}
-              />
-            ))}
-          </div>
+
+      {subMenu.subItem && (
+        <div className='sub-menu'>
+          {subMenu.subItem?.map((item) => (
+            <SubMenuItem
+              isActive={item.title === checkedSub}
+              onClick={() => getSecondSubItem(item)}
+              key={item.path}
+              subData={item}
+            />
+          ))}
         </div>
       )}
-      {sub.subItem && subBar.subItem && (
-        <div className='sub-sidebar'>
-          <div className='sub-sidebar-list'>
-            {sub.subItem?.map((item) => (
-              <SubSideBar onClick={() => closeSubItem()} key={item.path} subData={item} />
-            ))}
-          </div>
+      {secondSubMenu.subItem && subMenu.subItem && (
+        <div className='sub-menu second-menu'>
+          {secondSubMenu.subItem?.map((item) => (
+            <SubMenuItem
+              className='second-menu'
+              onClick={() => closeSubMenu()}
+              key={item.path}
+              subData={item}
+            />
+          ))}
         </div>
       )}
     </div>
