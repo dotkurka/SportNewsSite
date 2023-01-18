@@ -1,7 +1,7 @@
-import { ReactComponent as FacebookIcon } from '../../../../../assets/images/facebook-follow-icon.svg';
-import { ReactComponent as GoogleIcon } from '../../../../../assets/images/google-follow-icon.svg';
-import { ReactComponent as TwitterIcon } from '../../../../../assets/images/twitter-follow-icon.svg';
-import { ReactComponent as YoutubeIcon } from '../../../../../assets/images/youtube-follow-icon.svg';
+import { ReactComponent as FacebookIcon } from 'assets/images/facebook-follow-icon.svg';
+import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.svg';
+import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
+import { ReactComponent as YoutubeIcon } from 'assets/images/youtube-follow-icon.svg';
 
 import './SideBarFollow.scss';
 
