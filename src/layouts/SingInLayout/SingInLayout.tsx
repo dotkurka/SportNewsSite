@@ -20,7 +20,6 @@ const SingInLayout = ({ children }: ISingLayout) => {
           Already have an account?
           <Button variant={ButtonVariant.Outline}>Log in</Button>
         </div>
-
         {children}
       </div>
     </div>
