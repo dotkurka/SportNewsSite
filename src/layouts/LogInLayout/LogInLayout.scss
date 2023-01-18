@@ -1,0 +1,39 @@
+@import './../../styles/Colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+$height: 1024px;
+
+.log-in {
+  width: 1440px;
+  height: $height;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: flex;
+  font-size: 12px;
+  line-height: 17px;
+  box-shadow: 0px 0px 21px -17px rgba(0, 0, 0, 0.75);
+
+  &-left {
+    width: 640px;
+    height: $height;
+    background: url('./../../assets/images/freddie-collins.png');
+  }
+
+  &-right {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 300px;
+      position: absolute;
+      top: 24px;
+      right: 56px;
+    }
+  }
+}

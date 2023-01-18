@@ -1,7 +1,16 @@
-import React from "react";
+import SingInLayout from './layouts/SingInLayout/SingInLayout';
+import { NewPassword } from './pages';
 
-function App() {
-    return <div className="App"></div>;
-}
+import './styles/App.scss';
+
+const App = () => {
+  return (
+    <div className='App'>
+      <SingInLayout>
+        <NewPassword />
+      </SingInLayout>
+    </div>
+  );
+};
 
 export default App;
