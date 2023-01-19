@@ -1,0 +1,17 @@
+@import 'styles/Colors.scss';
+
+.sub-menu {
+  background: $white;
+  box-shadow: 13px 4px 14px rgba(0, 0, 0, 0.09);
+  width: 262.5px;
+  height: 879px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  padding-top: 78px;
+
+  &.second-menu {
+    background-color: $paleGrey;
+    width: 176px;
+  }
+}
