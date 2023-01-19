@@ -9,6 +9,7 @@ import type { IFormValues } from 'features/auth/types';
 
 const initialValues: IFormValues = {
   password: '',
+  confirmPassword: '',
 };
 
 const submit = () => {}; // TODO
@@ -16,7 +17,7 @@ const submit = () => {}; // TODO
 const NewPassword = () => {
   return (
     <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
+      {({ values, handleChange, errors, touched, handleBlur, handleSubmit }) => (
         // TODO add green string 'Your password has been updated.'
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Please enter your new password.</div>
@@ -28,6 +29,8 @@ const NewPassword = () => {
               label='new password'
               type='password'
               name='password'
+              errors={errors.password}
+              touched={touched.password}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
@@ -37,10 +40,12 @@ const NewPassword = () => {
               placeholder='confirm password'
               label='Password'
               type='password'
-              name='password'
+              name='confirmPassword'
+              errors={errors.confirmPassword}
+              touched={touched.confirmPassword}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.password}
+              value={values.confirmPassword}
             />
 
             <Button
