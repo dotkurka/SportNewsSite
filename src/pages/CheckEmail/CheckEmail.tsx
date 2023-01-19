@@ -1,4 +1,4 @@
-import emailIcon from '../../assets/images/check-email-icon.svg';
+import emailIcon from 'assets/images/check-email-icon.svg';
 
 interface IEmail {
   email: string;

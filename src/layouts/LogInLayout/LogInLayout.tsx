@@ -1,5 +1,5 @@
-import { Button, Logo } from '../../components';
-import { ButtonVariant } from '../../components/Button/types';
+import { Button, Logo } from 'components';
+import { ButtonVariant } from 'components/Button/types';
 
 import type { ReactNode } from 'react';
 

@@ -1,5 +1,5 @@
-import checkMark from '../../assets/images/check-mark.svg';
-import crossMark from '../../assets/images/cross-mark.svg';
+import checkMark from 'assets/images/check-mark.svg';
+import crossMark from 'assets/images/cross-mark.svg';
 
 import { InputVariant } from './types';
 

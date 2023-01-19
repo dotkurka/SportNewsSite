@@ -1,6 +1,7 @@
-import shareIcon from '../../assets/images/share-icon.svg';
-import Button from '../Button/Button';
-import { ButtonVariant } from '../Button/types';
+import shareIcon from 'assets/images/share-icon.svg';
+import Button from 'components/Button/Button';
+import { ButtonVariant } from 'components/Button/types';
+
 import './ShareButton.scss';
 
 interface IShareButton {

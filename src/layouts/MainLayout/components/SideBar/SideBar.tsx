@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
 import useClickOutside from 'hooks/useClickOutside';
-
-import SideBarFollow from './SideBarFollow/SideBarFollow';
-import SideBarItem from './SideBarItem/SideBarItem';
-import SubMenu from './SubMenu/SubMenu';
+import SideBarFollow from 'layouts/MainLayout/components/SideBar/SideBarFollow/SideBarFollow';
+import SideBarItem from 'layouts/MainLayout/components/SideBar/SideBarItem/SideBarItem';
+import SubMenu from 'layouts/MainLayout/components/SideBar/SubMenu/SubMenu';
 
 import './SideBar.scss';
 import type { ISideBar } from './types';

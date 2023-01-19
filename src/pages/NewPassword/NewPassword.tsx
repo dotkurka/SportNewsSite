@@ -1,11 +1,11 @@
 import { Form, Formik } from 'formik';
 
-import { Button, Input, TextLink } from '../../components';
-import { ButtonSize, ButtonVariant } from '../../components/Button/types';
-import { TextLinkVariant } from '../../components/TextLink/types';
-import validationSchema from '../../features/auth/validationSchema';
+import { Button, Input, TextLink } from 'components';
+import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { TextLinkVariant } from 'components/TextLink/types';
+import validationSchema from 'features/auth/validationSchema';
 
-import type { IFormValues } from '../../features/auth/types';
+import type { IFormValues } from 'features/auth/types';
 
 const initialValues: IFormValues = {
   password: '',
@@ -52,7 +52,7 @@ const NewPassword = () => {
               set new password
             </Button>
             <div className='form-text-link'>
-              <TextLink className='form-text-link-content' variant={TextLinkVariant.Body1}>
+              <TextLink className='form-text-link-content' variant={TextLinkVariant.Default}>
                 Back to Sign in
               </TextLink>
             </div>

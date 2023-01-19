@@ -1,4 +1,4 @@
-import SubMenuItem from '../SubMenuItem/SubMenuItem';
+import SubMenuItem from 'layouts/MainLayout/components/SideBar/SubMenuItem/SubMenuItem';
 
 import type { ISidebarData } from 'config/SideBarData/types';
 
