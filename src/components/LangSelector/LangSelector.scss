@@ -1,0 +1,23 @@
+@import '../../styles/Colors.scss';
+
+.lang-selector {
+  font-size: 12px;
+  line-height: 17px;
+  width: 56px;
+
+  &-item {
+    border: none;
+    background: $white;
+    width: 56px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 16px;
+
+    &:hover {
+      color: $alizarinCrimson;
+      background: $fireEngineRed;
+    }
+  }
+}
