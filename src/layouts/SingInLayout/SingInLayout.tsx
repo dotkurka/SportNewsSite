@@ -1,5 +1,5 @@
-import { Button, Logo } from '../../components';
-import { ButtonVariant } from '../../components/Button/types';
+import { Button, Logo } from 'components';
+import { ButtonVariant } from 'components/Button/types';
 
 import type { ReactNode } from 'react';
 
@@ -20,7 +20,6 @@ const SingInLayout = ({ children }: ISingLayout) => {
           Already have an account?
           <Button variant={ButtonVariant.Outline}>Log in</Button>
         </div>
-
         {children}
       </div>
     </div>

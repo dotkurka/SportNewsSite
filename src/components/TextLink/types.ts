@@ -7,7 +7,6 @@ export interface ITextLink {
 }
 
 export enum TextLinkVariant {
-  Body1 = 'body1',
   Body2 = 'body2',
-  Default = 'default',
+  Default = 'body1',
 }

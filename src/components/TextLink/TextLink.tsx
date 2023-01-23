@@ -5,7 +5,6 @@ import type { ITextLink } from './types';
 import './TextLink.scss';
 
 const textLinkClass = {
-  [TextLinkVariant.Body1]: 'body1',
   [TextLinkVariant.Body2]: 'body2',
   [TextLinkVariant.Default]: 'body1',
 };

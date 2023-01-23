@@ -1,13 +1,13 @@
 import { Form, Formik } from 'formik';
 
-import { Button, Input, TextLink } from '../../components';
-import { ButtonSize, ButtonVariant } from '../../components/Button/types';
-import { TextLinkVariant } from '../../components/TextLink/types';
-import validationSchema from '../../features/auth/validationSchema';
+import { Button, Input, TextLink } from 'components';
+import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { TextLinkVariant } from 'components/TextLink/types';
+import validationSchema from 'features/auth/validationSchema';
 
-import type { IFormValues } from '../../features/auth/types';
+import type { IFormValues } from 'features/auth/types';
 
-import '../../features/auth/style.scss';
+import 'features/auth/style.scss';
 
 const initialValues: IFormValues = {
   email: '',

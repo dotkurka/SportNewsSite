@@ -5,7 +5,7 @@ import './styles/App.scss';
 const App = () => {
   return (
     <div className='App'>
-      <LangSelector />
+      <LangSelector langueages={['dsd', 'sdsd']} initialLang='Eu' />
     </div>
   );
 };

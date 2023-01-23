@@ -1,14 +1,15 @@
 import { Form, Formik } from 'formik';
 
-import { Button, Input, TextLink } from '../../components';
-import { ButtonSize, ButtonVariant } from '../../components/Button/types';
-import { TextLinkVariant } from '../../components/TextLink/types';
-import validationSchema from '../../features/auth/validationSchema';
+import { Button, Input, TextLink } from 'components';
+import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { TextLinkVariant } from 'components/TextLink/types';
+import validationSchema from 'features/auth/validationSchema';
 
-import type { IFormValues } from '../../features/auth/types';
+import type { IFormValues } from 'features/auth/types';
 
 const initialValues: IFormValues = {
   password: '',
+  confirmPassword: '',
 };
 
 const submit = () => {}; // TODO
@@ -16,7 +17,7 @@ const submit = () => {}; // TODO
 const NewPassword = () => {
   return (
     <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
+      {({ values, handleChange, errors, touched, handleBlur, handleSubmit }) => (
         // TODO add green string 'Your password has been updated.'
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Please enter your new password.</div>
@@ -28,6 +29,8 @@ const NewPassword = () => {
               label='new password'
               type='password'
               name='password'
+              errors={errors.password}
+              touched={touched.password}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
@@ -37,10 +40,12 @@ const NewPassword = () => {
               placeholder='confirm password'
               label='Password'
               type='password'
-              name='password'
+              name='confirmPassword'
+              errors={errors.confirmPassword}
+              touched={touched.confirmPassword}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.password}
+              value={values.confirmPassword}
             />
 
             <Button
@@ -52,7 +57,7 @@ const NewPassword = () => {
               set new password
             </Button>
             <div className='form-text-link'>
-              <TextLink className='form-text-link-content' variant={TextLinkVariant.Body1}>
+              <TextLink className='form-text-link-content' variant={TextLinkVariant.Default}>
                 Back to Sign in
               </TextLink>
             </div>

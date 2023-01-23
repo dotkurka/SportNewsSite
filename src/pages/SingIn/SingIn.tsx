@@ -1,11 +1,11 @@
 import { Form, Formik } from 'formik';
 
-import { ReactComponent as FbIcon } from '../../assets/images/facebook-circle-icon.svg';
-import { ReactComponent as GmailIcon } from '../../assets/images/gmail-circle-icon.svg';
-import { Button, Input } from '../../components';
-import { ButtonSize, ButtonVariant } from '../../components/Button/types';
+import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg';
+import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
+import { Button, Input } from 'components';
+import { ButtonSize, ButtonVariant } from 'components/Button/types';
 
-import type { IFormValues } from '../../features/auth/types';
+import type { IFormValues } from 'features/auth/types';
 
 const initialValues: IFormValues = {
   fname: '',

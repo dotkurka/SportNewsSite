@@ -1,16 +1,21 @@
 import { useState } from 'react';
+
+import useClickOutside from 'hooks/useClickOutside';
+
 import './LangSelector.scss';
 
 interface ILangSelector {
-  lang: string;
+  langueages: string[];
+  initialLang: string;
 }
 
-const langData: ILangSelector[] = [{ lang: 'EN' }, { lang: 'UA' }, { lang: 'FR' }, { lang: 'DE ' }];
-
-const LangSelector = () => {
-  const [langue, setLangue] = useState<string>('EN');
+const LangSelector = ({ langueages, initialLang }: ILangSelector) => {
+  const [langue, setLangue] = useState<string>(initialLang);
   const [langShow, setLangShow] = useState(false);
+  const [selected, setSelected] = useState<string | null>(null);
 
+  const langRef = useClickOutside(() => setLangShow(false));
+  // TODO
   const changeLang = (item: string) => {
     setLangue(item);
     setLangShow(false);
@@ -18,19 +23,27 @@ const LangSelector = () => {
 
   const handleShowMenu = () => {
     setLangShow(!langShow);
+    setSelected(langue);
   };
 
   return (
-    <div className='lang-selector'>
-      <button onClick={() => handleShowMenu()} className='lang-selector-item'>
-        {langue}
-      </button>
+    <div ref={langRef} className='lang-selector'>
+      <div className='lang-selector-head'>
+        <button onClick={() => handleShowMenu()} className='lang-selector-item'>
+          {langue}
+        </button>
+      </div>
+
       {langShow && (
-        <ul className='lang-selector-menu '>
-          {langData.map((item) => (
-            <li key={item.lang}>
-              <button className='lang-selector-item' onClick={() => changeLang(item.lang)}>
-                {item.lang}
+        <ul>
+          {langueages.map((item) => (
+            <li className='lang-selector-list' key={item}>
+              <button
+                disabled={selected === item}
+                className={`lang-selector-item list ${selected === item ? 'selected' : ''}`}
+                onClick={() => changeLang(item)}
+              >
+                {item}
               </button>
             </li>
           ))}

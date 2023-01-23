@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-import SideBarFollow from './SideBarFollow/SideBarFollow';
-import SideBarItem from './SideBarItem/SideBarItem';
-import SubMenuItem from './SubMenuItem/SubMenuItem';
+import useClickOutside from 'hooks/useClickOutside';
+import SideBarFollow from 'layouts/MainLayout/components/SideBar/SideBarFollow/SideBarFollow';
+import SideBarItem from 'layouts/MainLayout/components/SideBar/SideBarItem/SideBarItem';
+import SubMenu from 'layouts/MainLayout/components/SideBar/SubMenu/SubMenu';
 
 import './SideBar.scss';
-import type { ISidebarData } from '../../../../config/SideBarData/types';
 import type { ISideBar } from './types';
+import type { ISidebarData } from 'config/SideBarData/types';
 
 const SideBar = ({ data }: ISideBar) => {
   const [subMenu, setSubMenu] = useState<ISidebarData>({ title: '', path: '' });
@@ -17,12 +18,15 @@ const SideBar = ({ data }: ISideBar) => {
   const closeSubMenu = () => {
     setSubMenu({ title: '', path: '' });
     setSecondSubMenu({ title: '', path: '' });
+    setCheckedSub(null);
   };
 
   const getSecondSubItem = (item: ISidebarData) => {
     if (item.title === secondSubMenu.title) {
       setSecondSubMenu({ title: '', path: '' });
       setCheckedSub(null);
+    } else if (!item.subItem) {
+      closeSubMenu();
     } else {
       setSecondSubMenu(item);
       setCheckedSub(item.title);
@@ -40,45 +44,25 @@ const SideBar = ({ data }: ISideBar) => {
     }
   };
 
+  const domNode = useClickOutside(() => closeSubMenu());
+
   return (
     <div className={`sidebar ${subMenu.subItem ? 'active' : ''}`}>
-      <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
-        {data.map((item) => (
-          <SideBarItem
-            onClick={() => getSubItem(item)}
-            isActive={item.title === checked}
-            item={item}
-            key={item.path}
-          />
-        ))}
-
-        <SideBarFollow />
+      <div ref={domNode} className='sidebar-contain'>
+        <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
+          {data.map((item) => (
+            <SideBarItem
+              onClick={() => getSubItem(item)}
+              isActive={item.title === checked}
+              item={item}
+              key={item.path}
+            />
+          ))}
+          <SideBarFollow />
+        </div>
+        <SubMenu checked={checkedSub} onClick={getSecondSubItem} subData={subMenu.subItem} />
+        <SubMenu onClick={closeSubMenu} className='second-menu' subData={secondSubMenu.subItem} />
       </div>
-
-      {subMenu.subItem && (
-        <div className='sub-menu'>
-          {subMenu.subItem?.map((item) => (
-            <SubMenuItem
-              isActive={item.title === checkedSub}
-              onClick={() => getSecondSubItem(item)}
-              key={item.path}
-              subData={item}
-            />
-          ))}
-        </div>
-      )}
-      {secondSubMenu.subItem && subMenu.subItem && (
-        <div className='sub-menu second-menu'>
-          {secondSubMenu.subItem?.map((item) => (
-            <SubMenuItem
-              className='second-menu'
-              onClick={() => closeSubMenu()}
-              key={item.path}
-              subData={item}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 };
