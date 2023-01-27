@@ -1,8 +1,17 @@
-@import '../../../../styles/Colors.scss';
+@import 'styles/Colors.scss';
 
 .navbar {
   width: 1440px;
-  height: 84px;
+  height: 83px;
   background-color: $white;
   display: flex;
+
+  &-contain {
+    width: 1188px;
+    height: 82px;
+    border-bottom: 1px solid $softPeach;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 }

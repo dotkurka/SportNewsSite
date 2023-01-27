@@ -18,7 +18,7 @@ const LogInLayout = ({ children }: ILogin) => {
       <div className='log-in-right'>
         <div className='log-in-right-header'>
           Don’t have an account?
-          <Button variant={ButtonVariant.Outline}>Get Started</Button>
+          <Button variant={ButtonVariant.Default}>Get Started</Button>
         </div>
 
         {children}

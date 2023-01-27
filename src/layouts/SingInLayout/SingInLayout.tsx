@@ -18,7 +18,7 @@ const SingInLayout = ({ children }: ISingLayout) => {
       <div className='sing-up-right'>
         <div className='sing-up-right-header'>
           Already have an account?
-          <Button variant={ButtonVariant.Outline}>Log in</Button>
+          <Button variant={ButtonVariant.Default}>Log in</Button>
         </div>
         {children}
       </div>

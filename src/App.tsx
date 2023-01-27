@@ -1,11 +1,11 @@
-import LangSelector from './components/LangSelector/LangSelector';
+import NavBar from 'layouts/MainLayout/components/NavBar/NavBar';
 
 import './styles/App.scss';
 
 const App = () => {
   return (
     <div className='App'>
-      <LangSelector langueages={['dsd', 'sdsd']} initialLang='Eu' />
+      <NavBar />
     </div>
   );
 };

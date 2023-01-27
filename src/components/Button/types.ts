@@ -10,7 +10,7 @@ export interface IButton {
 }
 
 export enum ButtonVariant {
-  Outline = 'outline',
+  Text = 'text',
   Contained = 'contained',
   Default = 'default',
 }

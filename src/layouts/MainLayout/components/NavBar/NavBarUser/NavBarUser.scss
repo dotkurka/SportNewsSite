@@ -1,0 +1,131 @@
+@import 'styles/Colors.scss';
+
+$sizeImg: 34px;
+
+.navbar-user {
+  position: relative;
+
+  &-head {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &-avatar {
+    width: $sizeImg;
+    height: $sizeImg;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  &-flag {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
+
+  &-title {
+    height: 25px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 27px;
+
+    &-name {
+      font-size: 12px;
+      color: $black;
+    }
+
+    &-status {
+      font-size: 8px;
+      color: $greyCloud;
+    }
+  }
+
+  &-menu {
+    width: 178px;
+    background-color: $white;
+    position: absolute;
+    top: 58px;
+    left: -24px;
+    box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.09);
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      left: 148px;
+      top: -12px;
+      transform: translate(-50%, 50%) rotate(45deg);
+      background-color: $white;
+    }
+
+    &-head {
+      height: 115px;
+      background-color: $white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 25px;
+      font-size: 12px;
+
+      &-name {
+        color: $black;
+        font-weight: 600;
+        line-height: 19px;
+      }
+
+      &-email {
+        color: $friarGrey;
+        font-weight: 400;
+        line-height: 19px;
+      }
+
+      &-button {
+        margin-top: 11px;
+        width: 109px;
+        height: 27px;
+        text-transform: uppercase;
+      }
+    }
+
+    &-list-item {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      box-sizing: border-box;
+      padding-left: 25px;
+      width: 100%;
+      height: 41px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $black;
+      user-select: none;
+      transition: 0.2s;
+      border: none;
+      background: $white;
+
+      &:hover {
+        color: $alizarinCrimson;
+        background: $fireEngineRed;
+      }
+
+      &.logout {
+        border-top: 1px solid $softPeach;
+      }
+    }
+  }
+
+  &-singup {
+    button {
+      width: 107px;
+    }
+  }
+}
