@@ -1,11 +1,11 @@
-import NavBar from 'layouts/MainLayout/components/NavBar/NavBar';
+import PageLayout from 'layouts/PageLayout/PageLayout';
 
 import './styles/App.scss';
 
 const App = () => {
   return (
     <div className='App'>
-      <NavBar />
+      <PageLayout> blabla</PageLayout>
     </div>
   );
 };

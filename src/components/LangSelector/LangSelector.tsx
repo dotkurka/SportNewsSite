@@ -1,13 +1,10 @@
 import { useState } from 'react';
 
+import arrowFlag from 'assets/images/arrow-down-flag.svg';
 import useClickOutside from 'hooks/useClickOutside';
 
 import './LangSelector.scss';
-
-interface ILangSelector {
-  langueages: string[];
-  initialLang: string;
-}
+import type { ILangSelector } from 'components/LangSelector/types';
 
 const LangSelector = ({ langueages, initialLang }: ILangSelector) => {
   const [langue, setLangue] = useState<string>(initialLang);
@@ -28,26 +25,24 @@ const LangSelector = ({ langueages, initialLang }: ILangSelector) => {
 
   return (
     <div ref={langRef} className='lang-selector'>
-      <div className='lang-selector-head'>
-        <button onClick={() => handleShowMenu()} className='lang-selector-item'>
-          {langue}
-        </button>
-      </div>
+      <button onClick={() => handleShowMenu()} className='lang-selector-item'>
+        {langue}
+        <img src={arrowFlag} alt='' />
+      </button>
 
       {langShow && (
-        <ul>
+        <div className='lang-selector-list'>
           {langueages.map((item) => (
-            <li className='lang-selector-list' key={item}>
-              <button
-                disabled={selected === item}
-                className={`lang-selector-item list ${selected === item ? 'selected' : ''}`}
-                onClick={() => changeLang(item)}
-              >
-                {item}
-              </button>
-            </li>
+            <button
+              key={item}
+              disabled={selected === item}
+              className={`lang-selector-item list ${selected === item ? 'selected' : ''}`}
+              onClick={() => changeLang(item)}
+            >
+              {item}
+            </button>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

@@ -1,5 +1,10 @@
-import searchIcon from 'assets/images/search-icon.svg';
+import { ReactComponent as FacebookIcon } from 'assets/images/facebook-follow-icon.svg';
+import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.svg';
+import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
 import { Logo } from 'components';
+import LangSelector from 'components/LangSelector/LangSelector';
+import { SidebarData } from 'config/SideBarData/SidebarData';
+import NavBarSearch from 'layouts/MainLayout/components/NavBar/NavBarSearch/NavBarSearch';
 import NavBarUser from 'layouts/MainLayout/components/NavBar/NavBarUser/NavBarUser';
 
 import type { IUserData } from 'layouts/MainLayout/components/NavBar/NavBarUser/types';
@@ -18,13 +23,26 @@ const NavBar = () => {
     <nav className='navbar'>
       <Logo />
       <div className='navbar-contain'>
-        <div className='navbar-search'>
-          <img src={searchIcon} alt='' />
-          <input placeholder='Search by ' />
+        <div className='navbar-contain-search'>
+          <NavBarSearch data={SidebarData} />
         </div>
-        <div className='navbar-social'> soc</div>
-        <div className='navbar-user'>
+        <div className='navbar-contain-social'>
+          <div className='navbar-social'>
+            <span>Share</span>
+            <a href='https://facebook.com/'>
+              <FacebookIcon className='navbar-social-item' />
+            </a>
+            <a href='https://www.google.com/'>
+              <GoogleIcon className='navbar-social-item' />
+            </a>
+            <a href='https://twitter.com/'>
+              <TwitterIcon className='navbar-social-item' />
+            </a>
+          </div>
+        </div>
+        <div className='navbar-contain-user'>
           <NavBarUser user={users} />
+          <LangSelector langueages={['EN', 'FR', 'UA', 'DE']} initialLang='EN' />
         </div>
       </div>
     </nav>

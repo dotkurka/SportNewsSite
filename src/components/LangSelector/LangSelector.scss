@@ -4,20 +4,15 @@
   font-size: 12px;
   line-height: 17px;
   width: 56px;
+  position: relative;
 
   &-list {
-    list-style: none;
-  }
-
-  &-head {
-    width: 100%;
+    position: absolute;
+    width: 56px;
     display: flex;
-    &::after {
-      content: url('../../assets/images/arrow-down-flag.svg');
-      position: relative;
-      right: 4px;
-      top: 6px;
-    }
+    flex-direction: column;
+    box-shadow: 0px 0px 37px rgba(0, 0, 0, 0.09);
+    background-color: $white;
   }
 
   &-item {
@@ -45,6 +40,12 @@
         color: $alizarinCrimson;
         background: $fireEngineRed;
       }
+    }
+
+    img {
+      position: absolute;
+      right: 0;
+      top: 14px;
     }
   }
 }

@@ -60,6 +60,7 @@ const SideBar = ({ data }: ISideBar) => {
           ))}
           <SideBarFollow />
         </div>
+
         <SubMenu checked={checkedSub} onClick={getSecondSubItem} subData={subMenu.subItem} />
         <SubMenu onClick={closeSubMenu} className='second-menu' subData={secondSubMenu.subItem} />
       </div>
