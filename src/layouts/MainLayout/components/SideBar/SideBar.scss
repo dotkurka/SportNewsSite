@@ -1,20 +1,27 @@
 @import 'styles/Colors.scss';
 
 .sidebar {
-  width: 1440px;
   font-weight: 700;
   font-size: 14px;
   line-height: 19px;
   box-sizing: border-box;
+  position: relative;
+  width: 253px;
+
+  &-bg {
+    position: absolute;
+
+    &.active {
+      width: 1440px;
+      height: max-content;
+      backdrop-filter: blur(11.5px);
+      transition: backdrop-filter 0.2s;
+    }
+  }
 
   &-contain {
     display: flex;
     width: min-content;
-  }
-
-  &.active {
-    backdrop-filter: blur(11.5px);
-    transition: backdrop-filter 0.2s;
   }
 
   &-list {
@@ -25,6 +32,7 @@
 
     &.active {
       background-color: $white;
+      overflow: hidden;
     }
   }
 
@@ -61,6 +69,7 @@
         position: absolute;
         left: -11px;
       }
+
       &::after {
         content: '';
         height: 40px;

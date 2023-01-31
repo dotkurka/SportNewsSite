@@ -12,6 +12,10 @@ interface IPageLayout {
 const PageLayout = ({ children }: IPageLayout) => {
   return (
     <div className='page-layout'>
+      <div className='page-layout-bg'>
+        <span className='page-layout-bg-first'>All</span>
+        <span className='page-layout-bg-last'>News</span>
+      </div>
       <NavBar />
       <div className='page-layout-contain'>
         <SideBar data={SidebarData} />

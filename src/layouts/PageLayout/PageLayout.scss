@@ -1,4 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .page-layout {
+  position: relative;
+
+  &-bg {
+    font-size: 141px;
+    line-height: 192px;
+    letter-spacing: 1.25893px;
+    color: rgba(204, 211, 224, 0.301628);
+    transform: rotate(90deg);
+    position: absolute;
+    z-index: -999999;
+    text-transform: uppercase;
+    user-select: none;
+
+    &-first {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      position: absolute;
+      left: 106px;
+      bottom: 150px;
+    }
+
+    &-last {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      position: absolute;
+      left: 637px;
+      bottom: 1113px;
+    }
+  }
+
   &-contain {
     display: flex;
   }
