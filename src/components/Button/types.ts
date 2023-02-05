@@ -7,6 +7,7 @@ export interface IButton {
   type?: 'button' | 'submit';
   disabled?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 export enum ButtonVariant {

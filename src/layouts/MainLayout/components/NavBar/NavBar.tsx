@@ -21,7 +21,9 @@ const users: IUserData = {
 const NavBar = () => {
   return (
     <nav className='navbar'>
-      <Logo />
+      <div className='navbar-logo'>
+        <Logo />
+      </div>
       <div className='navbar-contain'>
         <div className='navbar-contain-search'>
           <NavBarSearch data={SidebarData} />

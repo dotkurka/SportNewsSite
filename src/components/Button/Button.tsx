@@ -21,10 +21,12 @@ const Button = ({
   type = 'button',
   size = ButtonSize.Medium,
   className,
+  onClick,
   ...props
 }: IButton) => {
   return (
     <button
+      onClick={onClick}
       {...props}
       className={`button button-${buttonClass[variant]} ${buttonSize[size]} ${className || ''}`}
       type={type}

@@ -43,7 +43,11 @@ const ForgotPassword = () => {
               Request resent link
             </Button>
             <div className='form-text-link'>
-              <TextLink className='form-text-link-content' variant={TextLinkVariant.Default}>
+              <TextLink
+                to='/singin'
+                className='form-text-link-content'
+                variant={TextLinkVariant.Default}
+              >
                 Back to Sign in
               </TextLink>
             </div>

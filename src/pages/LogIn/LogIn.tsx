@@ -56,7 +56,7 @@ const LogIn = () => {
               onBlur={handleBlur}
               value={values.password}
               description={
-                <TextLink to='/ForgotPassword' variant={TextLinkVariant.Body2}>
+                <TextLink to='ForgotPassword' variant={TextLinkVariant.Body2}>
                   Forgot password?
                 </TextLink>
               }

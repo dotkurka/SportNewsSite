@@ -1,15 +1,12 @@
+import { Outlet } from 'react-router-dom';
+
 import { SidebarData } from 'config/SideBarData/SidebarData';
 import NavBar from 'layouts/MainLayout/components/NavBar/NavBar';
 import SideBar from 'layouts/MainLayout/components/SideBar/SideBar';
 
-import type { ReactNode } from 'react';
 import './PageLayout.scss';
 
-interface IPageLayout {
-  children: ReactNode | undefined;
-}
-
-const PageLayout = ({ children }: IPageLayout) => {
+const PageLayout = () => {
   return (
     <div className='page-layout'>
       <div className='page-layout-bg'>
@@ -19,7 +16,7 @@ const PageLayout = ({ children }: IPageLayout) => {
       <NavBar />
       <div className='page-layout-contain'>
         <SideBar data={SidebarData} />
-        {children}
+        <Outlet />
       </div>
     </div>
   );

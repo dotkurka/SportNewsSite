@@ -1,4 +1,4 @@
-import { ForgotPassword, LogIn, NewPassword } from 'pages';
+import { CheckEmail, ForgotPassword, LogIn, NewPassword } from 'pages';
 
 import type { ReactNode } from 'react';
 
@@ -7,19 +7,21 @@ interface IRoute {
   element: ReactNode;
 }
 
-const routes: IRoute[] = [
+export const routesLogIn: IRoute[] = [
   {
-    path: '/ForgotPassword',
+    path: 'ForgotPassword',
     element: <ForgotPassword />,
   },
   {
-    path: '/login',
+    path: '/',
     element: <LogIn />,
   },
   {
     path: '/NewPassword',
     element: <NewPassword />,
   },
+  {
+    path: '/CheckEmail',
+    element: <CheckEmail />,
+  },
 ];
-
-export default routes;
