@@ -3,15 +3,13 @@
 .page-layout {
   max-width: 1440px;
   margin: auto;
-  position: relative;
 
   &-bg {
     font-size: 141px;
     line-height: 192px;
     letter-spacing: 1.25893px;
     color: rgba(204, 211, 224, 0.301628);
-    transform: rotate(90deg);
-    position: absolute;
+    position: relative;
     z-index: -999999;
     text-transform: uppercase;
     user-select: none;
@@ -21,8 +19,9 @@
       font-style: normal;
       font-weight: 700;
       position: absolute;
-      left: 106px;
-      bottom: 150px;
+      top: 135px;
+      left: 115px;
+      transform: rotate(90deg);
     }
 
     &-last {
@@ -30,8 +29,9 @@
       font-style: normal;
       font-weight: 700;
       position: absolute;
-      left: 637px;
-      bottom: 1113px;
+      right: 0;
+      top: 740px;
+      transform: rotate(90deg);
     }
   }
 

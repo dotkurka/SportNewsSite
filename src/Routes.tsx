@@ -12,9 +12,9 @@ const Routes = () => {
 
       <Route path='/login' element={<LogInLayout />}>
         <Route index element={<LogIn />} />
-        <Route path='ForgotPassword' element={<ForgotPassword />} />
-        <Route path='CheckEmail' element={<CheckEmail />} />
-        <Route path='NewPassword' element={<NewPassword />} />
+        <Route path='forgot-password' element={<ForgotPassword />} />
+        <Route path='check-email' element={<CheckEmail />} />
+        <Route path='new-password' element={<NewPassword />} />
       </Route>
 
       <Route path='/singin' element={<SingInLayout />}>
