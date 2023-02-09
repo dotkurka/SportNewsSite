@@ -1,6 +1,6 @@
 export interface ILangSelector {
-  langueages: string[];
-  initialLang: string;
+  langueages: Langue[];
+  initialLang: Langue;
 }
 
 export enum Langue {
