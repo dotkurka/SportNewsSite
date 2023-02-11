@@ -5,7 +5,8 @@ $height: 1024px;
 
 .log-in {
   margin: auto;
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   height: $height;
   background-color: rgb(255, 255, 255);
   position: relative;

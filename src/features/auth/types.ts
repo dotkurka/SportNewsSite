@@ -5,3 +5,7 @@ export interface IFormValues {
   fname?: string;
   lname?: string;
 }
+
+export interface IForm {
+  className?: string;
+}

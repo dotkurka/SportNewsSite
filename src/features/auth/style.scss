@@ -115,15 +115,15 @@
 
 .check-email {
   width: 498px;
-  height: 179.46px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
 
   &-icon {
     height: 64px;
+    margin-bottom: 15px;
   }
 
   h1 {
@@ -135,9 +135,66 @@
   &-description {
     margin-top: 8px;
     width: 431px;
-    height: 39px;
     font-size: 14px;
     line-height: 19px;
     color: $shuttleGrey;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .form {
+    width: 344px;
+
+    &-title,
+    &-title-forgot {
+      color: $white;
+      text-align: center;
+    }
+
+    &-description {
+      color: $white;
+
+      &-forgot {
+        color: $periwinkleGrey;
+        width: 100%;
+      }
+    }
+
+    &-input {
+      label {
+        color: $white;
+      }
+
+      &-description {
+        color: $white;
+      }
+    }
+
+    &-text-link {
+      justify-content: flex-start;
+      margin-top: 16px;
+
+      &-content {
+        color: $white;
+      }
+    }
+  }
+
+  .check-email {
+    width: 344px;
+
+    h1 {
+      color: $white;
+    }
+
+    &-icon * {
+      fill: $white;
+    }
+
+    &-description {
+      width: 100%;
+      color: $periwinkleGrey;
+      margin-bottom: 20px;
+    }
   }
 }

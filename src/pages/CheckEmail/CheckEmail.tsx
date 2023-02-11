@@ -1,4 +1,4 @@
-import emailIcon from 'assets/images/check-email-icon.svg';
+import { ReactComponent as EmailIcon } from 'assets/images/check-email-icon.svg';
 
 interface IEmail {
   email?: string;
@@ -7,7 +7,7 @@ interface IEmail {
 const CheckEmail = ({ email }: IEmail) => {
   return (
     <div className='check-email'>
-      <img src={emailIcon} alt='' className='check-email-icon' />
+      <EmailIcon className='check-email-icon' />
       <div>
         <h1>Check your email {email} </h1>
         <div className='check-email-description'>
