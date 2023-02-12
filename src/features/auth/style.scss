@@ -81,7 +81,7 @@
     justify-content: center;
 
     &-content {
-      color: #000000;
+      color: $black;
       line-height: 16px;
     }
   }
@@ -98,7 +98,7 @@
       cursor: pointer;
 
       &:hover * {
-        fill: red;
+        fill: $alizarinCrimson;
       }
     }
   }
@@ -115,7 +115,6 @@
 
 .check-email {
   width: 498px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,7 +128,7 @@
   h1 {
     font-size: 24px;
     line-height: 33px;
-    color: #000000;
+    color: $black;
   }
 
   &-description {

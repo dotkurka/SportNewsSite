@@ -1,11 +1,11 @@
-import Routes from 'Routes';
+import { Survay } from 'components';
 
 import './styles/App.scss';
 
 const App = () => {
   return (
     <div className='App'>
-      <Routes />
+      <Survay />
     </div>
   );
 };

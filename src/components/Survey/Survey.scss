@@ -1,0 +1,90 @@
+@import 'styles/Colors.scss';
+
+$containWidth: 246px;
+
+.survey {
+  width: 285px;
+
+  &-head {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    background-color: $porcelain;
+
+    &-title {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      color: $riverBed;
+    }
+
+    &-date {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: $greyCloud;
+    }
+  }
+
+  &-contain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $paleGrey;
+
+    &-ques {
+      width: $containWidth;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      color: $gunmetal;
+      margin-top: 24px;
+    }
+
+    &-radio {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: $containWidth;
+      margin-top: 35px;
+
+      input {
+        accent-color: $black;
+        width: 16px;
+        height: 16px;
+        margin-right: 24px;
+      }
+
+      label {
+        display: flex;
+        justify-content: center;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $friarGrey;
+        margin: 10px 0 10px;
+      }
+    }
+
+    &-button {
+      width: $containWidth;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 44px;
+      margin-bottom: 22px;
+
+      &-small {
+        width: 90px;
+      }
+
+      &-large {
+        width: 140px;
+      }
+    }
+  }
+}
