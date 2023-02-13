@@ -1,15 +1,8 @@
 import SurveyForm from 'components/Survey/SurveyForm';
+
 import './Survey.scss';
 
-const inputValues = {
-  radio1: 'yes',
-  radio2: 'no',
-  radio3: 'maybe',
-};
-
-const initialValues = {
-  picked: '',
-};
+const inputValues = ['Yes', 'No', 'Meybe'];
 
 const Survey = () => {
   return (
@@ -22,7 +15,7 @@ const Survey = () => {
         <p className='survey-contain-ques'>
           Sed the amet est, Ad Piscing eliam est valorem Nonumiam Est game?
         </p>
-        <SurveyForm initialValues={initialValues} inputValues={inputValues} />
+        <SurveyForm inputValues={inputValues} />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import { Survay } from 'components';
-
 import './styles/App.scss';
 
 const App = () => {
