@@ -19,7 +19,7 @@ const LangSelector = ({ langueages, initialLang }: ILangSelector) => {
   };
 
   const handleShowMenu = () => {
-    setLangShow(!langShow);
+    setLangShow((land) => !land);
     setSelected(langue);
   };
 

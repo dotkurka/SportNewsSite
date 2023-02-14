@@ -1,15 +1,13 @@
+import { Outlet, useNavigate } from 'react-router-dom';
+
 import { Button, Logo } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 
-import type { ReactNode } from 'react';
-
 import './LogInLayout.scss';
 
-interface ILogin {
-  children: ReactNode | undefined;
-}
+const LogInLayout = () => {
+  const navigate = useNavigate();
 
-const LogInLayout = ({ children }: ILogin) => {
   return (
     <div className='log-in'>
       <div className='log-in-left'>
@@ -18,10 +16,11 @@ const LogInLayout = ({ children }: ILogin) => {
       <div className='log-in-right'>
         <div className='log-in-right-header'>
           Don’t have an account?
-          <Button variant={ButtonVariant.Default}>Get Started</Button>
+          <Button onClick={() => navigate('/singin')} variant={ButtonVariant.Default}>
+            Get Started
+          </Button>
         </div>
-
-        {children}
+        <Outlet />
       </div>
     </div>
   );

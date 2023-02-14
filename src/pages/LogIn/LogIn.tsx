@@ -55,7 +55,11 @@ const LogIn = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
-              description={<TextLink variant={TextLinkVariant.Body2}>Forgot password?</TextLink>}
+              description={
+                <TextLink to='forgot-password' variant={TextLinkVariant.Body2}>
+                  Forgot password?
+                </TextLink>
+              }
             />
             <Button
               className='form-button'

@@ -3,6 +3,7 @@
 .text-link {
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
 
   &-body1 {
     font-size: 12px;
@@ -33,6 +34,7 @@
 
     &:hover {
       color: $crystalBlue;
+      text-decoration-line: underline;
     }
 
     &:active {

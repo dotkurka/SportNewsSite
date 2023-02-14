@@ -1,7 +1,7 @@
 import emailIcon from 'assets/images/check-email-icon.svg';
 
 interface IEmail {
-  email: string;
+  email?: string;
 }
 
 const CheckEmail = ({ email }: IEmail) => {

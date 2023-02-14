@@ -3,6 +3,7 @@ import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.s
 import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
 import { Logo } from 'components';
 import LangSelector from 'components/LangSelector/LangSelector';
+import { Langue } from 'components/LangSelector/types';
 import { SidebarData } from 'config/SideBarData/SidebarData';
 import NavBarSearch from 'layouts/MainLayout/components/NavBar/NavBarSearch/NavBarSearch';
 import NavBarUser from 'layouts/MainLayout/components/NavBar/NavBarUser/NavBarUser';
@@ -21,7 +22,9 @@ const users: IUserData = {
 const NavBar = () => {
   return (
     <nav className='navbar'>
-      <Logo />
+      <div className='navbar-logo'>
+        <Logo />
+      </div>
       <div className='navbar-contain'>
         <div className='navbar-contain-search'>
           <NavBarSearch data={SidebarData} />
@@ -42,7 +45,10 @@ const NavBar = () => {
         </div>
         <div className='navbar-contain-user'>
           <NavBarUser user={users} />
-          <LangSelector langueages={['EN', 'FR', 'UA', 'DE']} initialLang='EN' />
+          <LangSelector
+            langueages={[Langue.de, Langue.en, Langue.fr, Langue.ua]}
+            initialLang={Langue.en}
+          />
         </div>
       </div>
     </nav>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { TextLinkVariant } from './types';
 
 import type { ITextLink } from './types';
@@ -10,20 +12,20 @@ const textLinkClass = {
 };
 
 const TextLink = ({
-  href,
+  to = '/',
   variant = TextLinkVariant.Default,
   className,
   children,
   ...props
 }: ITextLink) => {
   return (
-    <a
+    <Link
       {...props}
       className={`text-link text-link-${textLinkClass[variant]} ${className}`}
-      href={href}
+      to={to}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 
