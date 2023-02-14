@@ -47,21 +47,23 @@ const SideBar = ({ data }: ISideBar) => {
   const domNode = useClickOutside(() => closeSubMenu());
 
   return (
-    <div className={`sidebar ${subMenu.subItem ? 'active' : ''}`}>
-      <div ref={domNode} className='sidebar-contain'>
-        <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
-          {data.map((item) => (
-            <SideBarItem
-              onClick={() => getSubItem(item)}
-              isActive={item.title === checked}
-              item={item}
-              key={item.path}
-            />
-          ))}
-          <SideBarFollow />
+    <div className='sidebar'>
+      <div className={`sidebar-bg ${subMenu.subItem ? 'active' : ''}`}>
+        <div ref={domNode} className='sidebar-contain'>
+          <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
+            {data.map((item) => (
+              <SideBarItem
+                onClick={() => getSubItem(item)}
+                isActive={item.title === checked}
+                item={item}
+                key={item.path}
+              />
+            ))}
+            <SideBarFollow />
+          </div>
+          <SubMenu checked={checkedSub} onClick={getSecondSubItem} subData={subMenu.subItem} />
+          <SubMenu onClick={closeSubMenu} className='second-menu' subData={secondSubMenu.subItem} />
         </div>
-        <SubMenu checked={checkedSub} onClick={getSecondSubItem} subData={subMenu.subItem} />
-        <SubMenu onClick={closeSubMenu} className='second-menu' subData={secondSubMenu.subItem} />
       </div>
     </div>
   );

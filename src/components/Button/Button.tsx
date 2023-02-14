@@ -5,9 +5,9 @@ import type { IButton } from './types';
 import './Button.scss';
 
 const buttonClass = {
-  [ButtonVariant.Outline]: 'outline',
+  [ButtonVariant.Text]: 'text',
   [ButtonVariant.Contained]: 'contained',
-  [ButtonVariant.Default]: '',
+  [ButtonVariant.Default]: 'outline',
 };
 
 const buttonSize = {
@@ -17,7 +17,7 @@ const buttonSize = {
 
 const Button = ({
   children,
-  variant = ButtonVariant.Outline,
+  variant = ButtonVariant.Default,
   type = 'button',
   size = ButtonSize.Medium,
   className,
