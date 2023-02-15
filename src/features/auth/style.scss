@@ -111,6 +111,14 @@
       width: 178px;
     }
   }
+
+  &-mobile {
+    margin-top: 16px;
+
+    &-link {
+      color: $white;
+    }
+  }
 }
 
 .check-email {

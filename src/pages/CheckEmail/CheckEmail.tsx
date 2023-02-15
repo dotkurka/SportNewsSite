@@ -1,10 +1,14 @@
 import { ReactComponent as EmailIcon } from 'assets/images/check-email-icon.svg';
+import { TextLink } from 'components';
+import useMobileWidth from 'hooks/useWindowsWidth';
 
 interface IEmail {
   email?: string;
 }
 
 const CheckEmail = ({ email }: IEmail) => {
+  const isMobile = useMobileWidth(1023);
+
   return (
     <div className='check-email'>
       <EmailIcon className='check-email-icon' />
@@ -15,6 +19,14 @@ const CheckEmail = ({ email }: IEmail) => {
           instructions to reset your password.
         </div>
       </div>
+
+      {isMobile && (
+        <div className='form-mobile'>
+          <TextLink className='form-mobile-link' to='/singin'>
+            Don&#39;t have an account?
+          </TextLink>
+        </div>
+      )}
     </div>
   );
 };
