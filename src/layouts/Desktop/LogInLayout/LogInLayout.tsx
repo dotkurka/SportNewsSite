@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { Button, Logo } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import useMobileWidth from 'hooks/useWindowsWidth';
-import MobileLogInLayout from 'layouts/Mobile/MobileLogInLayout/MobileLogInLayout';
+import { MobileLogInLayout } from 'layouts';
 
 import './LogInLayout.scss';
 

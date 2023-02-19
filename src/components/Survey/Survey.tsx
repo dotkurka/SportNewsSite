@@ -1,21 +1,32 @@
-import SurveyForm from 'components/Survey/SurveyForm';
+import { useState } from 'react';
 
+import SurveyForm from 'components/Survey/SurveyForm';
+import SurveyResult from 'components/Survey/SurveyResult';
+
+import type { ISurvey } from 'components/Survey/types';
 import './Survey.scss';
 
-const inputValues = ['Yes', 'No', 'Meybe'];
+const Survey = ({ theme, question, values }: ISurvey) => {
+  const [showResult, setShowResult] = useState(false);
 
-const Survey = () => {
+  const handleShowResult = () => {
+    setShowResult(true);
+  };
+
   return (
     <div className='survey'>
       <div className='survey-head'>
-        <p className='survey-head-title'>Reader Pool</p>
+        <p className='survey-head-title'>{theme}</p>
         <div className='survey-head-date'> 12 mar - 10 apr</div>
       </div>
       <div className='survey-contain'>
-        <p className='survey-contain-ques'>
-          Sed the amet est, Ad Piscing eliam est valorem Nonumiam Est game?
-        </p>
-        <SurveyForm inputValues={inputValues} />
+        <p className='survey-contain-ques'>{question}</p>
+
+        {showResult ? (
+          <SurveyResult inputValues={values} />
+        ) : (
+          <SurveyForm showResult={handleShowResult} inputValues={values} />
+        )}
       </div>
     </div>
   );

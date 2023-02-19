@@ -3,29 +3,31 @@ import { Form, Formik } from 'formik';
 import Button from 'components/Button/Button';
 import { ButtonVariant } from 'components/Button/types';
 
-interface ISurveyForm {
-  inputValues: string[];
-}
+import type { ISurveyForm } from 'components/Survey/types';
+import './Survey.scss';
+
 const initialValues = {
   picked: '',
 };
 
-const SurveyForm = ({ inputValues }: ISurveyForm) => {
+const SurveyForm = ({ inputValues, showResult }: ISurveyForm) => {
   return (
+    // TODO
+    // eslint-disable-next-line no-console
     <Formik initialValues={initialValues} onSubmit={(values) => console.log(values.picked)}>
       {({ setFieldValue, isSubmitting }) => (
         <Form>
           <div className='survey-contain-radio'>
-            {inputValues.map((item, index) => (
-              <label key={index} htmlFor={item}>
+            {inputValues.map((item) => (
+              <label key={item.value} htmlFor={item.answer}>
                 <input
-                  onChange={() => setFieldValue('picked', item)}
-                  id={item}
+                  onChange={() => setFieldValue('picked', item.value)}
+                  id={item.answer}
                   type='radio'
                   name='picked'
                   disabled={isSubmitting}
                 />
-                {item}
+                {item.answer}
               </label>
             ))}
           </div>
@@ -38,7 +40,11 @@ const SurveyForm = ({ inputValues }: ISurveyForm) => {
             >
               Submit
             </Button>
-            <Button className='survey-contain-button-large' variant={ButtonVariant.Default}>
+            <Button
+              onClick={showResult}
+              className='survey-contain-button-large'
+              variant={ButtonVariant.Default}
+            >
               Vote to see result
             </Button>
           </div>
