@@ -1,0 +1,16 @@
+@import 'styles/Colors.scss';
+
+.mobile-page {
+  &-head {
+    display: flex;
+    height: 79px;
+    width: 100%;
+    background-color: $alizarinCrimson;
+
+    &-title {
+      font-size: 18px;
+      line-height: 28px;
+      color: $roseWhite;
+    }
+  }
+}

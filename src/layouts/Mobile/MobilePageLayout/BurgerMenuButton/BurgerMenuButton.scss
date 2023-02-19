@@ -1,0 +1,73 @@
+@import 'styles/Colors.scss';
+
+$lineColor: $roseWhite;
+
+@mixin icon($height, $width) {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: $height;
+  width: $width;
+  top: 8px;
+  background-color: $lineColor;
+}
+
+@mixin icon-before($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $lineColor;
+  content: '';
+  top: $top;
+  left: 0;
+}
+
+@mixin icon-after($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $lineColor;
+  content: '';
+  top: $top;
+  left: 0;
+}
+
+.burger-btn {
+  display: flex;
+  background: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  transition-duration: 0.5s;
+
+  .icon {
+    @include icon(3px, 20px);
+
+    &:before {
+      @include icon-before(3px, 20px, -7px);
+    }
+
+    &:after {
+      @include icon-after(3px, 20px, 7px);
+    }
+  }
+
+  &.open {
+    .icon {
+      transition-duration: 0.5s;
+      background: transparent;
+
+      &:before {
+        transform: rotateZ(45deg) scaleX(1.25) translate(4px, 5px);
+      }
+
+      &:after {
+        transform: rotateZ(-45deg) scaleX(1.25) translate(4px, -5px);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
