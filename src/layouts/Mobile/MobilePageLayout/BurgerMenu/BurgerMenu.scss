@@ -1,0 +1,36 @@
+@import 'styles/Colors.scss';
+
+.burger-menu {
+  width: 100%;
+  height: 100%;
+  background-color: $monza;
+
+  &-contain {
+    display: flex;
+    flex-direction: column;
+    padding: 13px 0 0 49px;
+  }
+
+  &-item {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+    color: $dawnPink;
+    text-decoration: none;
+    height: 45px;
+    width: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.sub-menu {
+      &::after {
+        content: url('/assets/images/arrow-flag-left.svg');
+      }
+    }
+  }
+}

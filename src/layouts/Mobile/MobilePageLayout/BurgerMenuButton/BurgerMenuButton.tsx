@@ -1,8 +1,13 @@
 import './BurgerMenuButton.scss';
 
-const BurgerMenuButton = () => {
+interface IBurgerBtn {
+  show: boolean;
+  onClick: () => void;
+}
+
+const BurgerMenuButton = ({ show, onClick }: IBurgerBtn) => {
   return (
-    <button className='burger-btn'>
+    <button onClick={onClick} className={`burger-btn ${show ? 'open' : ''}`}>
       <span className='icon' />
     </button>
   );

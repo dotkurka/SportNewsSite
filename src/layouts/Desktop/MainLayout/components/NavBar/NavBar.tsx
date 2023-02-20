@@ -11,7 +11,7 @@ import NavBarUser from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/
 import type { IUserData } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
 import './NavBar.scss';
 
-const users: IUserData = {
+export const users: IUserData = {
   image: 'https://content1.rozetka.com.ua/goods/images/big/176937355.png',
   name: 'Ivan',
   surName: 'Baloh',

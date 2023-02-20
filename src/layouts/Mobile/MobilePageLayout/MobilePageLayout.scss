@@ -2,10 +2,14 @@
 
 .mobile-page {
   &-head {
-    display: flex;
     height: 79px;
     width: 100%;
     background-color: $alizarinCrimson;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px 0 20px;
 
     &-title {
       font-size: 18px;

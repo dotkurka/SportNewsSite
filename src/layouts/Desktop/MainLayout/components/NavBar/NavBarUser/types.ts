@@ -1,5 +1,5 @@
 export interface IUserData {
-  image: string;
+  image?: string;
   name: string;
   surName: string | null;
   status: string;
