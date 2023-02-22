@@ -5,11 +5,16 @@ import './BurgerMenu.scss';
 
 interface IBurgerItem {
   item: ISidebarData;
+  onClick: () => void;
 }
 
-const BurgerMenuItem = ({ item }: IBurgerItem) => {
+const BurgerMenuItem = ({ item, onClick }: IBurgerItem) => {
   return (
-    <Link className={`burger-menu-item ${item.subItem ? 'sub-menu' : ''}`} to={item.path}>
+    <Link
+      onClick={onClick}
+      className={`burger-menu-item ${item.subItem ? 'sub-menu' : ''}`}
+      to={item.subItem ? '/#' : item.path}
+    >
       {item.title}
     </Link>
   );
