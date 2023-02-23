@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom';
 
-import type { ISidebarData } from 'config/SideBarData/types';
-import './BurgerMenu.scss';
+import type { IBurgerItem } from 'layouts/Mobile/components/BurgerMenu/types';
 
-interface IBurgerItem {
-  item: ISidebarData;
-  onClick: () => void;
-}
+import './BurgerMenu.scss';
 
 const BurgerMenuItem = ({ item, onClick }: IBurgerItem) => {
   return (
     <Link
       onClick={onClick}
-      className={`burger-menu-item ${item.subItem ? 'sub-menu' : ''}`}
+      className={`burger-menu-item ${item.subItem ? 'second-menu' : ''}`}
       to={item.subItem ? '/#' : item.path}
     >
       {item.title}

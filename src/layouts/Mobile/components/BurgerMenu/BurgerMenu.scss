@@ -1,41 +1,69 @@
 @import 'styles/Colors.scss';
 
+@mixin item($width, $fontHeight, $fontSize, $color) {
+  -webkit-user-drag: none;
+  user-select: none;
+  font-weight: $fontHeight;
+  font-size: $fontSize;
+  line-height: 19px;
+  color: $color;
+  text-decoration: none;
+  height: 45px;
+  width: $width;
+  display: flex;
+  align-items: center;
+}
+
 .burger-menu {
+  background-color: $alizarinCrimson;
   width: 100%;
   height: 100%;
-  background-color: $monza;
   display: flex;
+  position: relative;
+  transform: translate(9999px);
+  opacity: 0;
+
+  &.show {
+    transition: opacity 0.5s;
+    transform: translate(0);
+    opacity: 1;
+  }
 
   &-contain {
+    position: absolute;
     display: flex;
     flex-direction: column;
     padding: 13px 0 0 49px;
+    position: relative;
+    transition: 0.5s;
+    transform: translateX(-200px);
+    visibility: hidden;
+
+    &.show {
+      transition: 0.5s;
+      transform: translateX(0px);
+      visibility: visible;
+    }
   }
 
   &-item {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 19px;
-    color: $dawnPink;
-    text-decoration: none;
-    height: 45px;
-    width: 105px;
-    display: flex;
-    align-items: center;
+    @include item(105px, 700, 18px, $dawnPink);
+
+    text-transform: uppercase;
     justify-content: space-between;
 
     &:hover {
       color: $white;
     }
 
-    &.sub-menu {
+    &.second-menu {
       &::after {
         content: url('/assets/images/arrow-right-flag.svg');
       }
     }
   }
 
-  &.sub-menu {
+  &.second-menu {
     &::after {
       content: url('/assets/images/arrow-right-flag.svg');
     }
@@ -45,6 +73,18 @@
     display: flex;
     flex-direction: column;
     padding: 13px 0 0 49px;
+    position: absolute;
+    transition: 0.5s;
+    transform: translateX(200px);
+    visibility: hidden;
+    opacity: 0;
+
+    &.show {
+      transition: 0.5s;
+      transform: translateX(0px);
+      visibility: visible;
+      opacity: 1;
+    }
 
     &-btn {
       cursor: pointer;
@@ -76,15 +116,8 @@
     }
 
     &-item {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 19px;
-      color: $white;
-      text-decoration: none;
-      height: 45px;
-      width: 93px;
-      display: flex;
-      align-items: center;
+      @include item(93px, 400, 14px, $white);
+
       justify-content: space-between;
 
       &.close::after {
@@ -103,19 +136,24 @@
       display: flex;
       flex-direction: column;
       padding-left: 23px;
-      transition-duration: 0.2s;
+      transform: translateY(-30px);
+      opacity: 0;
+
+      &.show {
+        transform: translateY(0px);
+        transition: 0.2s;
+        opacity: 1;
+      }
 
       &-item {
-        transition-duration: 0.2s;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 19px;
-        color: $white;
-        height: 45px;
-        display: flex;
-        align-items: center;
+        @include item(100%, 400, 14px, $white);
       }
     }
+  }
+
+  &-lang {
+    position: fixed;
+    right: 21px;
+    bottom: 21px;
   }
 }

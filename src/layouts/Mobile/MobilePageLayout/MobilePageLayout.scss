@@ -1,6 +1,9 @@
 @import 'styles/Colors.scss';
 
 .mobile-page {
+  width: 100%;
+  position: relative;
+
   &-head {
     height: 79px;
     width: 100%;
@@ -16,5 +19,11 @@
       line-height: 28px;
       color: $roseWhite;
     }
+  }
+
+  &-menu {
+    position: absolute;
+    width: 100%;
+    height: 92vh;
   }
 }

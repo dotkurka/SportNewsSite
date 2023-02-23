@@ -1,11 +1,11 @@
-import MobilePageLayout from 'layouts/Mobile/MobilePageLayout/MobilePageLayout';
+import Routes from 'Routes';
 
 import './styles/App.scss';
 
 const App = () => {
   return (
     <div className='App'>
-      <MobilePageLayout />
+      <Routes />
     </div>
   );
 };

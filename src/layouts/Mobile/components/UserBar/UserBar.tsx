@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import userAvatar from 'assets/images/profile-avatar.svg';
 import useClickOutside from 'hooks/useClickOutside';
-import UserBarMenu from 'layouts/Mobile/MobilePageLayout/UserBar/UserBarMenu';
+import UserBarMenu from 'layouts/Mobile/components/UserBar/UserBarMenu';
 
 import './UserBar.scss';
 import type { IBarUser } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';

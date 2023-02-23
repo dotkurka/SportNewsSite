@@ -1,0 +1,26 @@
+@import 'styles/Colors.scss';
+
+.lang-bar {
+  display: flex;
+  background: none;
+
+  &-item {
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 17px;
+    color: $white;
+
+    &:hover,
+    &.selected {
+      background-color: $white;
+      color: $alizarinCrimson;
+    }
+  }
+}
