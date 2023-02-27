@@ -2,27 +2,7 @@
 
 $lineColor: $roseWhite;
 
-@mixin icon($height, $width) {
-  transition-duration: 0.5s;
-  position: absolute;
-  height: $height;
-  width: $width;
-  top: 8px;
-  background-color: $lineColor;
-}
-
-@mixin icon-before($height, $width, $top) {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: $width;
-  height: $height;
-  background-color: $lineColor;
-  content: '';
-  top: $top;
-  left: 0;
-}
-
-@mixin icon-after($height, $width, $top) {
+@mixin icon-around($height, $width, $top) {
   transition-duration: 0.5s;
   position: absolute;
   width: $width;
@@ -43,14 +23,19 @@ $lineColor: $roseWhite;
   transition-duration: 0.5s;
 
   .icon {
-    @include icon(3px, 20px);
+    transition-duration: 0.5s;
+    position: absolute;
+    height: 3px;
+    width: 20px;
+    top: 8px;
+    background-color: $lineColor;
 
     &:before {
-      @include icon-before(3px, 20px, -7px);
+      @include icon-around(3px, 20px, -7px);
     }
 
     &:after {
-      @include icon-after(3px, 20px, 7px);
+      @include icon-around(3px, 20px, 7px);
     }
   }
 
