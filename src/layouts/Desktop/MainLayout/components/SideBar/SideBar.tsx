@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import useClickOutside from 'hooks/useClickOutside';
-import SideBarFollow from 'layouts/MainLayout/components/SideBar/SideBarFollow/SideBarFollow';
-import SideBarItem from 'layouts/MainLayout/components/SideBar/SideBarItem/SideBarItem';
-import SubMenu from 'layouts/MainLayout/components/SideBar/SubMenu/SubMenu';
+import SideBarFollow from 'layouts/Desktop/MainLayout/components/SideBar/SideBarFollow/SideBarFollow';
+import SideBarItem from 'layouts/Desktop/MainLayout/components/SideBar/SideBarItem/SideBarItem';
+import SubMenu from 'layouts/Desktop/MainLayout/components/SideBar/SubMenu/SubMenu';
 
 import './SideBar.scss';
 import type { ISideBar } from './types';
@@ -44,12 +44,12 @@ const SideBar = ({ data }: ISideBar) => {
     }
   };
 
-  const domNode = useClickOutside(() => closeSubMenu());
+  const outsideClickRef = useClickOutside(() => closeSubMenu());
 
   return (
     <div className='sidebar'>
       <div className={`sidebar-bg ${subMenu.subItem ? 'active' : ''}`}>
-        <div ref={domNode} className='sidebar-contain'>
+        <div ref={outsideClickRef} className='sidebar-contain'>
           <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
             {data.map((item) => (
               <SideBarItem

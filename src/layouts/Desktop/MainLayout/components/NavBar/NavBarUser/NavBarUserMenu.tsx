@@ -4,7 +4,7 @@ import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 
 import './NavBarUser.scss';
-import type { IBarUser } from 'layouts/MainLayout/components/NavBar/NavBarUser/types';
+import type { IBarUser } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
 
 const NavBarUserMenu = ({ user }: IBarUser) => {
   return (

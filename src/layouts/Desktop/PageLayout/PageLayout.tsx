@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 
 import { SidebarData } from 'config/SideBarData/SidebarData';
-import NavBar from 'layouts/MainLayout/components/NavBar/NavBar';
-import SideBar from 'layouts/MainLayout/components/SideBar/SideBar';
+import NavBar from 'layouts/Desktop/MainLayout/components/NavBar/NavBar';
+import SideBar from 'layouts/Desktop/MainLayout/components/SideBar/SideBar';
 
 import './PageLayout.scss';
 

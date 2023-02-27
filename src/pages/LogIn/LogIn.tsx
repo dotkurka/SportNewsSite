@@ -4,6 +4,7 @@ import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
 import validationSchema from 'features/auth/validationSchema';
+import useMobileWidth from 'hooks/useWindowsWidth';
 
 import type { IFormValues } from 'features/auth/types';
 
@@ -17,6 +18,8 @@ const initialValues: IFormValues = {
 const submit = () => {}; // TODO
 
 const LogIn = () => {
+  const isMobile = useMobileWidth(1023);
+
   return (
     <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
@@ -56,7 +59,11 @@ const LogIn = () => {
               onBlur={handleBlur}
               value={values.password}
               description={
-                <TextLink to='forgot-password' variant={TextLinkVariant.Body2}>
+                <TextLink
+                  className='form-input-description'
+                  to='forgot-password'
+                  variant={TextLinkVariant.Body2}
+                >
                   Forgot password?
                 </TextLink>
               }
@@ -69,6 +76,14 @@ const LogIn = () => {
             >
               Log In
             </Button>
+
+            {isMobile && (
+              <div className='form-mobile'>
+                <TextLink className='form-mobile-link' to='/singin'>
+                  Don&#39;t have an account?
+                </TextLink>
+              </div>
+            )}
           </div>
         </Form>
       )}

@@ -1,10 +1,12 @@
-import React from 'react';
-
 import './Logo.scss';
 
-const Logo = () => {
+interface ILogo {
+  className?: string;
+}
+
+const Logo = ({ className }: ILogo) => {
   return (
-    <div className='logo'>
+    <div className={`logo ${className}`}>
       <span className='logo-text'>Sport News</span>
     </div>
   );

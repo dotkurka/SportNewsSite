@@ -1,4 +1,4 @@
-import type { ISidebarData } from '../../../../../config/SideBarData/types';
+import type { ISidebarData } from 'config/SideBarData/types';
 
 export interface ISubMenu {
   subData: ISidebarData;
