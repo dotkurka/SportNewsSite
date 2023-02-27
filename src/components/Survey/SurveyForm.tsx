@@ -12,7 +12,7 @@ const initialValues = {
 
 const SurveyForm = ({ inputValues, showResult }: ISurveyForm) => {
   return (
-    // TODO
+    // TODO add form submission
     // eslint-disable-next-line no-console
     <Formik initialValues={initialValues} onSubmit={(values) => console.log(values.picked)}>
       {({ setFieldValue, isSubmitting }) => (

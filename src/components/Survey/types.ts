@@ -1,7 +1,7 @@
 interface ISurveyValue {
   answer: string;
   value: number;
-  procent?: number;
+  interest?: number;
 }
 
 export interface ISurveyForm {
@@ -12,5 +12,9 @@ export interface ISurveyForm {
 export interface ISurvey {
   theme: string;
   question: string;
+  date: {
+    start: string;
+    end: string;
+  };
   values: ISurveyValue[];
 }

@@ -10,4 +10,4 @@ export { default as ShareButton } from './ShareButton/ShareButton';
 
 export { default as Select } from './Select/Select';
 
-export { default as Survay } from './Survey/Survey';
+export { default as Survey } from './Survey/Survey';
