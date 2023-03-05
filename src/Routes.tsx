@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes as RouterRoutes } from 'react-router-dom';
 
-import { LogInLayout, PageLayout, SingInLayout } from 'layouts';
-import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SingIn } from 'pages';
+import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
+import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pages';
 
 const Routes = () => {
   return (
@@ -17,8 +17,8 @@ const Routes = () => {
         <Route path='new-password' element={<NewPassword />} />
       </Route>
 
-      <Route path='/singin' element={<SingInLayout />}>
-        <Route index element={<SingIn />} />
+      <Route path='/signin' element={<SignInLayout />}>
+        <Route index element={<SignIn />} />
       </Route>
 
       <Route path='*' element={<Navigate to='/' replace />} />

@@ -1,27 +1,42 @@
 import { Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 
+import { useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
-import validationSchema from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
+import { setCredentials } from 'redux/authSlice';
 
-import type { IFormValues } from 'features/auth/types';
+import type { ILoginRequest } from 'features/auth/types';
 
 import 'features/auth/style.scss';
 
-const initialValues: IFormValues = {
+const initialValues: ILoginRequest = {
   email: '',
   password: '',
 };
 
-const submit = () => {}; // TODO
-
 const LogIn = () => {
+  const [logIn] = useLogInMutation();
+
+  const dispatch = useDispatch();
+
+  const submit = async (values: ILoginRequest) => {
+    try {
+      const result = await logIn(values);
+      if ('data' in result) {
+        dispatch(setCredentials(result.data));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const isMobile = useMobileWidth(1023);
 
   return (
-    <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
+    <Formik onSubmit={submit} initialValues={initialValues}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Log in to Sport News</div>
@@ -79,7 +94,7 @@ const LogIn = () => {
 
             {isMobile && (
               <div className='form-mobile'>
-                <TextLink className='form-mobile-link' to='/singin'>
+                <TextLink className='form-mobile-link' to='/signin'>
                   Don&#39;t have an account?
                 </TextLink>
               </div>

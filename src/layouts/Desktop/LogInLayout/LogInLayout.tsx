@@ -24,7 +24,7 @@ const LogInLayout = () => {
       <div className='log-in-right'>
         <div className='log-in-right-header'>
           Don&#39;t have an account?
-          <Button onClick={() => navigate('/singin')} variant={ButtonVariant.Default}>
+          <Button onClick={() => navigate('/signin')} variant={ButtonVariant.Default}>
             Get Started
           </Button>
         </div>

@@ -3,9 +3,9 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { Button, Logo } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 
-import './SingInLayout.scss';
+import './SignInLayout.scss';
 
-const SingInLayout = () => {
+const SignInLayout = () => {
   const navigate = useNavigate();
 
   return (
@@ -26,4 +26,4 @@ const SingInLayout = () => {
   );
 };
 
-export default SingInLayout;
+export default SignInLayout;

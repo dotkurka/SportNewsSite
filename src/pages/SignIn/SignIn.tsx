@@ -1,22 +1,38 @@
 import { Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 
+import { useSignUpMutation } from 'api/authApi';
 import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg';
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
 import { Button, Input } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { setCredentials } from 'redux/authSlice';
 
-import type { IFormValues } from 'features/auth/types';
+import type { ISignUpRequest } from 'features/auth/types';
 
-const initialValues: IFormValues = {
-  fname: '',
-  lname: '',
+const initialValues: ISignUpRequest = {
+  firstName: '',
+  lastName: '',
   email: '',
   password: '',
 };
 
-const submit = () => {}; // TODO
+const SignIn = () => {
+  const dispatch = useDispatch();
 
-const SingIn = () => {
+  const [signUp] = useSignUpMutation();
+
+  const submit = async (values: ISignUpRequest) => {
+    try {
+      const result = await signUp(values);
+      if ('data' in result) {
+        dispatch(setCredentials(result.data));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Formik onSubmit={submit} initialValues={initialValues}>
       {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -28,7 +44,7 @@ const SingIn = () => {
             <GmailIcon className='form-social-icon' />
           </div>
 
-          <div className='form-description-sing'>Or use your email for registration:</div>
+          <div className='form-description-sign'>Or use your email for registration:</div>
 
           <div className='form-contain'>
             <div className='form-dual'>
@@ -37,20 +53,20 @@ const SingIn = () => {
                 placeholder='Jonh'
                 label='First name'
                 type='text'
-                name='fname'
+                name='firstName'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.fname}
+                value={values.firstName}
               />
               <Input
                 className='form-dual-input'
                 placeholder='Doe'
                 label='Last name'
                 type='text'
-                name='lname'
+                name='lastName'
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.lname}
+                value={values.lastName}
               />
             </div>
 
@@ -81,7 +97,7 @@ const SingIn = () => {
               size={ButtonSize.Large}
               type='submit'
             >
-              Sing Up
+              Sign Up
             </Button>
           </div>
         </Form>
@@ -90,4 +106,4 @@ const SingIn = () => {
   );
 };
 
-export default SingIn;
+export default SignIn;

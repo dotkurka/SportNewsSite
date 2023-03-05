@@ -50,7 +50,7 @@ const ForgotPassword = () => {
 
             {isMobile && (
               <div className='form-mobile'>
-                <TextLink className='form-mobile-link' to='/singin'>
+                <TextLink className='form-mobile-link' to='/signin'>
                   Don&#39;t have an account?
                 </TextLink>
               </div>

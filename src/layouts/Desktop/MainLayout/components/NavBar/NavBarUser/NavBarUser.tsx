@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import arrowFlag from 'assets/images/arrow-down-flag.svg';
+import userAvatar from 'assets/images/profile-avatar.svg';
 import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import useClickOutside from 'hooks/useClickOutside';
@@ -22,7 +23,11 @@ const NavBarUser = ({ user }: IBarUser) => {
     return (
       <div ref={userRef} className='navbar-user'>
         <div className='navbar-user-head'>
-          <img className='navbar-user-avatar' src={user.image} alt='avatar' />
+          <img
+            className='navbar-user-avatar'
+            src={user?.image ? user?.image : userAvatar}
+            alt='avatar'
+          />
           <div className='navbar-user-title'>
             <p className='navbar-user-title-name'>
               {user.name} {user.surName}
@@ -40,8 +45,8 @@ const NavBarUser = ({ user }: IBarUser) => {
   }
 
   return (
-    <div className='navbar-user-singup'>
-      <Button variant={ButtonVariant.Text}>Sing up</Button>
+    <div className='navbar-user-signup'>
+      <Button variant={ButtonVariant.Text}>Sign up</Button>
       <Button>Log in</Button>
     </div>
   );
