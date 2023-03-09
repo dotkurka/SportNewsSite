@@ -10,6 +10,7 @@ const initial: IUserResponse = {
   user: {
     firstName: '',
     lastName: '',
+    email: '',
   },
   token: '',
 };
@@ -26,12 +27,20 @@ const authSlice = createSlice({
       state.token = token;
       saveInLocal({ name: 'token', value: token });
     },
+    setToken: (state, { payload: { token } }: PayloadAction<{ token: string }>) => {
+      state.token = token;
+    },
+    logOut: (state) => {
+      state.token = '';
+      state.user = initial.user;
+      localStorage.removeItem('token');
+    },
   },
 });
 
-export const { setCredentials } = authSlice.actions;
-
 export default authSlice.reducer;
+
+export const { setCredentials, setToken, logOut } = authSlice.actions;
 
 export const selectCurrentUser = (state: RootState) => state.auth.user;
 

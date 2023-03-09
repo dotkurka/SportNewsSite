@@ -10,12 +10,11 @@ export const authApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const { token } = (getState() as RootState).auth;
       if (token) {
-        headers.set('Authentication', `Bearer ${token}`);
+        headers.set('Authorization', `Bearer ${token}`);
       }
       return headers;
     },
   }),
-
   endpoints: (build) => ({
     logIn: build.mutation<IUserResponse, ILoginRequest>({
       query: (body) => ({

@@ -1,18 +1,27 @@
-import useAuthLocal from 'hooks/useAuthLocal';
-import { LogIn, SignIn } from 'pages';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { selectCurrentToken, setToken } from 'redux/authSlice';
+import Routes from 'Routes';
 import './styles/App.scss';
 
 const App = () => {
-  const isAuth = useAuthLocal();
-  console.log(isAuth);
+  const token = useSelector(selectCurrentToken);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!token) {
+      const localToken = localStorage.getItem('token');
+      if (localToken) {
+        dispatch(setToken({ token: localToken }));
+      }
+    }
+  }, []);
 
   return (
     <div className='App'>
-      <LogIn />
-      <SignIn />
-
-      {isAuth && <div>dfdfsfsdf</div>}
+      <Routes />
     </div>
   );
 };

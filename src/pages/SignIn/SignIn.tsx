@@ -19,7 +19,6 @@ const initialValues: ISignUpRequest = {
 
 const SignIn = () => {
   const dispatch = useDispatch();
-
   const [signUp] = useSignUpMutation();
 
   const submit = async (values: ISignUpRequest) => {

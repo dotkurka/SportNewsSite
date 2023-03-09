@@ -9,12 +9,12 @@ const SignInLayout = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='sing-up'>
-      <div className='sing-up-left'>
+    <div className='sign-up'>
+      <div className='sign-up-left'>
         <Logo />
       </div>
-      <div className='sing-up-right'>
-        <div className='sing-up-right-header'>
+      <div className='sign-up-right'>
+        <div className='sign-up-right-header'>
           Already have an account?
           <Button onClick={() => navigate('/login')} variant={ButtonVariant.Default}>
             Log in

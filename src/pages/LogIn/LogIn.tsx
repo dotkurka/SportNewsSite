@@ -1,5 +1,6 @@
 import { Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
@@ -22,13 +23,18 @@ const LogIn = () => {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const submit = async (values: ILoginRequest) => {
     try {
       const result = await logIn(values);
       if ('data' in result) {
         dispatch(setCredentials(result.data));
+        navigate('/');
       }
     } catch (err) {
+      // TODO add error message
+      // eslint-disable-next-line no-console
       console.log(err);
     }
   };

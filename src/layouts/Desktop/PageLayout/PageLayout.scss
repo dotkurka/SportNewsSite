@@ -2,6 +2,7 @@
 
 .page-layout {
   max-width: 1440px;
+  position: relative;
   margin: auto;
 
   &-bg {
@@ -37,6 +38,7 @@
 
   &-contain {
     display: flex;
+    margin-left: 253px;
   }
 }
 
