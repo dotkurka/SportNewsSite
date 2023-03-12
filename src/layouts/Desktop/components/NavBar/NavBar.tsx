@@ -5,10 +5,10 @@ import { Logo } from 'components';
 import LangSelector from 'components/LangSelector/LangSelector';
 import { Langue } from 'components/LangSelector/types';
 import { SidebarData } from 'config/SideBarData/SidebarData';
-import NavBarSearch from 'layouts/Desktop/MainLayout/components/NavBar/NavBarSearch/NavBarSearch';
-import NavBarUser from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/NavBarUser';
+import NavBarSearch from 'layouts/Desktop/components/NavBar/NavBarSearch/NavBarSearch';
+import NavBarUser from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUser';
 
-import type { IUserData } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
+import type { IUserData } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 import './NavBar.scss';
 
 export const users: IUserData = {

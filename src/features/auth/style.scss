@@ -165,6 +165,10 @@
         color: $periwinkleGrey;
         width: 100%;
       }
+
+      &-sign {
+        color: $white;
+      }
     }
 
     &-input {
@@ -184,6 +188,18 @@
       &-content {
         color: $white;
       }
+    }
+
+    &-dual-input {
+      width: 153px;
+
+      label {
+        color: $white;
+      }
+    }
+
+    &-social-icon {
+      fill: $white;
     }
   }
 

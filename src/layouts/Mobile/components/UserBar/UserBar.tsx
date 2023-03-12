@@ -5,7 +5,7 @@ import useClickOutside from 'hooks/useClickOutside';
 import UserBarMenu from 'layouts/Mobile/components/UserBar/UserBarMenu';
 
 import './UserBar.scss';
-import type { IBarUser } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
+import type { IBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 
 const UserBar = ({ user }: IBarUser) => {
   const [showMenu, setShowMenu] = useState(false);

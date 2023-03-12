@@ -2,9 +2,8 @@ import { Outlet } from 'react-router-dom';
 
 import { SidebarData } from 'config/SideBarData/SidebarData';
 import useMobileWidth from 'hooks/useWindowsWidth';
-import NavBar from 'layouts/Desktop/MainLayout/components/NavBar/NavBar';
-import SideBar from 'layouts/Desktop/MainLayout/components/SideBar/SideBar';
-import MobilePageLayout from 'layouts/Mobile/MobilePageLayout/MobilePageLayout';
+import { MobilePageLayout } from 'layouts';
+import { NavBar, SideBar } from 'layouts/Desktop/components';
 
 import './PageLayout.scss';
 

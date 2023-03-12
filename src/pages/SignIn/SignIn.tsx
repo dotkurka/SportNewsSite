@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux';
 import { useSignUpMutation } from 'api/authApi';
 import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg';
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
-import { Button, Input } from 'components';
+import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import useMobileWidth from 'hooks/useWindowsWidth';
 import { setCredentials } from 'redux/authSlice';
 
 import type { ISignUpRequest } from 'features/auth/types';
@@ -19,7 +20,9 @@ const initialValues: ISignUpRequest = {
 
 const SignIn = () => {
   const dispatch = useDispatch();
+
   const [signUp] = useSignUpMutation();
+  const isMobile = useMobileWidth(1023);
 
   const submit = async (values: ISignUpRequest) => {
     try {
@@ -98,6 +101,14 @@ const SignIn = () => {
             >
               Sign Up
             </Button>
+
+            {isMobile && (
+              <div className='form-mobile'>
+                <TextLink className='form-mobile-link' to='/login'>
+                  Already have an account?
+                </TextLink>
+              </div>
+            )}
           </div>
         </Form>
       )}

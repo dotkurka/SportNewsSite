@@ -19,11 +19,11 @@ const initialValues: ILoginRequest = {
 };
 
 const LogIn = () => {
-  const [logIn] = useLogInMutation();
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+
+  const [logIn] = useLogInMutation();
+  const isMobile = useMobileWidth(1023);
 
   const submit = async (values: ILoginRequest) => {
     try {
@@ -38,8 +38,6 @@ const LogIn = () => {
       console.log(err);
     }
   };
-
-  const isMobile = useMobileWidth(1023);
 
   return (
     <Formik onSubmit={submit} initialValues={initialValues}>

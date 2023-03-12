@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { SidebarData } from 'config/SideBarData/SidebarData';
-import { users } from 'layouts/Desktop/MainLayout/components/NavBar/NavBar';
-import BurgerMenu from 'layouts/Mobile/components/BurgerMenu/BurgerMenu';
-import BurgerMenuButton from 'layouts/Mobile/components/BurgerMenuButton/BurgerMenuButton';
-import UserBar from 'layouts/Mobile/components/UserBar/UserBar';
+import { users } from 'layouts/Desktop/components/NavBar/NavBar';
+import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
+
 import './MobilePageLayout.scss';
 
 // TODO

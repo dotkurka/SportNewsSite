@@ -5,10 +5,11 @@ import userAvatar from 'assets/images/profile-avatar.svg';
 import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import useClickOutside from 'hooks/useClickOutside';
-import NavBarUserMenu from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/NavBarUserMenu';
+import NavBarUserMenu from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUserMenu';
+
+import type { IBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 
 import './NavBarUser.scss';
-import type { IBarUser } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
 
 const NavBarUser = ({ user }: IBarUser) => {
   const [showMenu, setShowMenu] = useState(false);

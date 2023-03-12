@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { saveInLocal } from 'utils/saveTokenInLocal';
+import { removeInLocal, saveInLocal } from 'utils/saveTokenInLocal';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserResponse, IUser } from 'features/auth/types';
@@ -33,7 +33,7 @@ const authSlice = createSlice({
     logOut: (state) => {
       state.token = '';
       state.user = initial.user;
-      localStorage.removeItem('token');
+      removeInLocal('token');
     },
   },
 });

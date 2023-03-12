@@ -5,11 +5,15 @@ import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import { logOut } from 'redux/authSlice';
 
+import type { IBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 import './NavBarUser.scss';
-import type { IBarUser } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
 
 const NavBarUserMenu = ({ user }: IBarUser) => {
   const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
 
   return (
     <div className='navbar-user-menu'>
@@ -32,7 +36,7 @@ const NavBarUserMenu = ({ user }: IBarUser) => {
         <Link className='navbar-user-menu-list-item' to='.'>
           My surveys
         </Link>
-        <button onClick={() => dispatch(logOut())} className='navbar-user-menu-list-item logout'>
+        <button onClick={handleLogOut} className='navbar-user-menu-list-item logout'>
           Log out
         </button>
       </div>
