@@ -1,4 +1,5 @@
 import { Form, Formik } from 'formik';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useSignUpMutation } from 'api/authApi';
@@ -6,10 +7,11 @@ import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import validationSchema from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setCredentials } from 'redux/authSlice';
 
-import type { ISignUpRequest } from 'features/auth/types';
+import type { IRequestError, ISignUpRequest } from 'features/auth/types';
 
 const initialValues: ISignUpRequest = {
   firstName: '',
@@ -20,33 +22,46 @@ const initialValues: ISignUpRequest = {
 
 const SignIn = () => {
   const dispatch = useDispatch();
-
-  const [signUp] = useSignUpMutation();
   const isMobile = useMobileWidth(1023);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [signUp, { error: singInError, isError }] = useSignUpMutation();
+
+  useEffect(() => {
+    if (isError) {
+      const error = (singInError as IRequestError).data.errors.DuplicateEmail;
+      setErrorMessage(error);
+    }
+  }, [isError]);
 
   const submit = async (values: ISignUpRequest) => {
-    try {
-      const result = await signUp(values);
-      if ('data' in result) {
-        dispatch(setCredentials(result.data));
-      }
-    } catch (err) {
-      console.log(err);
+    const result = await signUp(values);
+    if ('data' in result) {
+      dispatch(setCredentials(result.data));
     }
   };
 
   return (
-    <Formik onSubmit={submit} initialValues={initialValues}>
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
+    <Formik
+      validationSchema={validationSchema}
+      validateOnMount={false}
+      onSubmit={submit}
+      initialValues={initialValues}
+    >
+      {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Create Account</div>
-
           <div className='form-social'>
             <FbIcon className='form-social-icon' />
             <GmailIcon className='form-social-icon' />
           </div>
-
           <div className='form-description-sign'>Or use your email for registration:</div>
+
+          {errorMessage && <div className='form-error'>{errorMessage}</div>}
+
+          {errors.password || errors.email ? (
+            <div className='form-error'>Incorrect user ID or password. Try again</div>
+          ) : null}
 
           <div className='form-contain'>
             <div className='form-dual'>
@@ -56,6 +71,8 @@ const SignIn = () => {
                 label='First name'
                 type='text'
                 name='firstName'
+                errors={errors.firstName}
+                touched={touched.firstName}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.firstName}
@@ -66,32 +83,36 @@ const SignIn = () => {
                 label='Last name'
                 type='text'
                 name='lastName'
+                errors={errors.lastName}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.lastName}
+                touched={touched.lastName}
               />
             </div>
-
             <Input
               className='form-input'
               placeholder='jonhdoe@gmail.com'
               label='Email'
               type='email'
               name='email'
+              errors={errors.email || errorMessage}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
+              touched={touched.email}
             />
-
             <Input
               className='form-input'
-              placeholder='4 + characters'
+              placeholder='9 + characters'
               label='Password'
               type='password'
               name='password'
+              errors={errors.password}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
+              touched={touched.password}
             />
             <Button
               className='form-button'

@@ -28,13 +28,12 @@ const LogIn = () => {
   const submit = async (values: ILoginRequest) => {
     try {
       const result = await logIn(values);
+
       if ('data' in result) {
         dispatch(setCredentials(result.data));
         navigate('/');
       }
     } catch (err) {
-      // TODO add error message
-      // eslint-disable-next-line no-console
       console.log(err);
     }
   };
@@ -44,7 +43,6 @@ const LogIn = () => {
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Log in to Sport News</div>
-
           {errors.password || errors.email ? (
             <>
               <div className='form-description'>Sign in with your organizational account</div>

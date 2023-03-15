@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { removeInLocal, saveInLocal } from 'utils/saveTokenInLocal';
+import { removeInLocal, saveInLocal } from 'utils/localStorage';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserResponse, IUser } from 'features/auth/types';

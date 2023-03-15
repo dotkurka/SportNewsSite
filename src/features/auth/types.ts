@@ -32,3 +32,13 @@ export interface ISignUpRequest {
   password: string;
   email: string;
 }
+
+export interface IRequestError {
+  data: {
+    message: string;
+    errors: {
+      DuplicateEmail: string;
+      DuplicateUserName: string;
+    };
+  };
+}
