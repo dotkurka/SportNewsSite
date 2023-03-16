@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
-import validationSchema from 'features/auth/validationSchema';
+import { forgotPasswordValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 
 import type { IFormValues } from 'features/auth/types';
@@ -20,8 +20,12 @@ const ForgotPassword = () => {
   const isMobile = useMobileWidth(1023);
 
   return (
-    <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
-      {({ values, handleChange, handleBlur, handleSubmit }) => (
+    <Formik
+      onSubmit={submit}
+      initialValues={initialValues}
+      validationSchema={forgotPasswordValidation}
+    >
+      {({ values, handleChange, touched, errors, handleBlur, handleSubmit }) => (
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title-forgot'>Forgot your password?</div>
           <div className='form-description-forgot'>
@@ -34,6 +38,8 @@ const ForgotPassword = () => {
               label='Email address'
               type='email'
               name='email'
+              errors={errors.email}
+              touched={touched.email}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}

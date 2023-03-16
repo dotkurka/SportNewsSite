@@ -7,7 +7,7 @@ import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
-import validationSchema from 'features/auth/validationSchema';
+import { signInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setCredentials } from 'redux/authSlice';
 
@@ -42,12 +42,7 @@ const SignIn = () => {
   };
 
   return (
-    <Formik
-      validationSchema={validationSchema}
-      validateOnMount={false}
-      onSubmit={submit}
-      initialValues={initialValues}
-    >
+    <Formik validationSchema={signInValidation} onSubmit={submit} initialValues={initialValues}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Create Account</div>
@@ -57,11 +52,11 @@ const SignIn = () => {
           </div>
           <div className='form-description-sign'>Or use your email for registration:</div>
 
-          {errorMessage && <div className='form-error'>{errorMessage}</div>}
-
           {errors.password || errors.email ? (
             <div className='form-error'>Incorrect user ID or password. Try again</div>
-          ) : null}
+          ) : (
+            <div className='form-error'>{errorMessage}</div>
+          )}
 
           <div className='form-contain'>
             <div className='form-dual'>
@@ -96,7 +91,7 @@ const SignIn = () => {
               label='Email'
               type='email'
               name='email'
-              errors={errors.email || errorMessage}
+              errors={errors.email}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}

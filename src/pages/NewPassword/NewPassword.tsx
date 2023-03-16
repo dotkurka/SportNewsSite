@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
-import validationSchema from 'features/auth/validationSchema';
+import { newPasswordValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 
 import type { IFormValues } from 'features/auth/types';
@@ -19,7 +19,11 @@ const NewPassword = () => {
   const isMobile = useMobileWidth(1023);
 
   return (
-    <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
+    <Formik
+      onSubmit={submit}
+      initialValues={initialValues}
+      validationSchema={newPasswordValidation}
+    >
       {({ values, handleChange, errors, touched, handleBlur, handleSubmit }) => (
         // TODO add green string 'Your password has been updated.'
         <Form className='form' onSubmit={handleSubmit}>
