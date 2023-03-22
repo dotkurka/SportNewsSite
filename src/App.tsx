@@ -6,9 +6,8 @@ import Routes from 'Routes';
 import './styles/App.scss';
 
 const App = () => {
-  const token = useSelector(selectCurrentToken);
-
   const dispatch = useDispatch();
+  const token = useSelector(selectCurrentToken);
 
   useEffect(() => {
     if (!token) {

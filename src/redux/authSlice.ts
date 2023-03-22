@@ -6,7 +6,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IUserResponse, IUser } from 'features/auth/types';
 import type { RootState } from 'redux/store';
 
-const initial: IUserResponse = {
+const initialVlues: IUserResponse = {
   user: {
     firstName: '',
     lastName: '',
@@ -17,22 +17,18 @@ const initial: IUserResponse = {
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: initial,
+  initialState: initialVlues,
   reducers: {
-    setCredentials: (
-      state,
-      { payload: { user, token } }: PayloadAction<{ user: IUser; token: string }>,
-    ) => {
-      state.user = user;
-      state.token = token;
-      saveInLocal({ name: 'token', value: token });
+    setUser: (state, { payload }: PayloadAction<IUser>) => {
+      state.user = payload;
     },
     setToken: (state, { payload: { token } }: PayloadAction<{ token: string }>) => {
       state.token = token;
+      saveInLocal({ name: 'token', value: token });
     },
     logOut: (state) => {
       state.token = '';
-      state.user = initial.user;
+      state.user = initialVlues.user;
       removeInLocal('token');
     },
   },
@@ -40,7 +36,7 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 
-export const { setCredentials, setToken, logOut } = authSlice.actions;
+export const { setUser, setToken, logOut } = authSlice.actions;
 
 export const selectCurrentUser = (state: RootState) => state.auth.user;
 

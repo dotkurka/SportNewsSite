@@ -9,7 +9,7 @@ import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { signInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
-import { setCredentials } from 'redux/authSlice';
+import { setToken } from 'redux/authSlice';
 
 import type { IRequestError, ISignUpRequest } from 'features/auth/types';
 
@@ -37,7 +37,7 @@ const SignIn = () => {
   const submit = async (values: ISignUpRequest) => {
     const result = await signUp(values);
     if ('data' in result) {
-      dispatch(setCredentials(result.data));
+      dispatch(setToken(result.data));
     }
   };
 

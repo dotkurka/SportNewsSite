@@ -6,11 +6,9 @@ import { TextLinkVariant } from 'components/TextLink/types';
 import { forgotPasswordValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 
-import type { IFormValues } from 'features/auth/types';
-
 import 'features/auth/style.scss';
 
-const initialValues: IFormValues = {
+const initialValues = {
   email: '',
 };
 

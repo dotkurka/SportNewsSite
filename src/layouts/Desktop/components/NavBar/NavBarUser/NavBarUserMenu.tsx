@@ -19,7 +19,7 @@ const NavBarUserMenu = ({ user }: IBarUser) => {
     <div className='navbar-user-menu'>
       <div className='navbar-user-menu-head'>
         <p className='navbar-user-menu-head-name'>
-          {user?.name} {user?.surName}
+          {user?.firstName} {user?.lastName}
         </p>
         <p className='navbar-user-menu-head-email'>{user?.email}</p>
         <Button className='navbar-user-menu-head-button' variant={ButtonVariant.Contained}>

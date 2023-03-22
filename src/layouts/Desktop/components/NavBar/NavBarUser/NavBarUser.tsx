@@ -31,7 +31,7 @@ const NavBarUser = ({ user }: IBarUser) => {
           />
           <div className='navbar-user-title'>
             <p className='navbar-user-title-name'>
-              {user.name} {user.surName}
+              {user.firstName} {user.lastName}
             </p>
             <p className='navbar-user-title-status'>{user.status}</p>
           </div>

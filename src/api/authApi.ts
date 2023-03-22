@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { ILoginRequest, ISignUpRequest, IUserResponse } from 'features/auth/types';
+import type { ILoginRequest, ISignUpRequest, IUser, IUserResponse } from 'features/auth/types';
 import type { RootState } from 'redux/store';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
+  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_FETCH_URL}/auth`,
     prepareHeaders: (headers, { getState }) => {
@@ -16,12 +17,17 @@ export const authApi = createApi({
     },
   }),
   endpoints: (build) => ({
+    getUser: build.query<IUser, void>({
+      query: () => 'me',
+      providesTags: ['User'],
+    }),
     logIn: build.mutation<IUserResponse, ILoginRequest>({
       query: (body) => ({
         url: 'sign-in',
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['User'],
     }),
     signUp: build.mutation<IUserResponse, ISignUpRequest>({
       query: (body) => ({
@@ -33,4 +39,5 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLogInMutation, useSignUpMutation } = authApi;
+export const { useLazyGetUserQuery, useGetUserQuery, useLogInMutation, useSignUpMutation } =
+  authApi;

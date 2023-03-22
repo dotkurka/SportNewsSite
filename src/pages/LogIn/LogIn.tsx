@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { useLogInMutation } from 'api/authApi';
+import { useLazyGetUserQuery, useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
 import { logInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
-import { setCredentials } from 'redux/authSlice';
+import { setToken } from 'redux/authSlice';
 
 import type { ILoginRequest } from 'features/auth/types';
 
@@ -30,9 +30,11 @@ const LogIn = () => {
   const isMobile = useMobileWidth(1023);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState('');
 
+  const [errorMessage, setErrorMessage] = useState('');
   const [logIn, { error: logInError, isError }] = useLogInMutation();
+
+  const [getUser, { data: user }] = useLazyGetUserQuery();
 
   useEffect(() => {
     if (isError) {
@@ -44,8 +46,10 @@ const LogIn = () => {
   const submit = async (values: ILoginRequest) => {
     const result = await logIn(values);
     if ('data' in result) {
-      dispatch(setCredentials(result.data));
+      dispatch(setToken(result.data));
       navigate('/');
+      getUser();
+      console.log(user);
     }
   };
 

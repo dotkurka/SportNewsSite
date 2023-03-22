@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 import { ReactComponent as FacebookIcon } from 'assets/images/facebook-follow-icon.svg';
 import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.svg';
 import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
@@ -7,18 +9,13 @@ import { Langue } from 'components/LangSelector/types';
 import { SidebarData } from 'config/SideBarData/SidebarData';
 import NavBarSearch from 'layouts/Desktop/components/NavBar/NavBarSearch/NavBarSearch';
 import NavBarUser from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUser';
+import { selectCurrentUser } from 'redux/authSlice';
 
-import type { IUserData } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 import './NavBar.scss';
 
-export const users: IUserData = {
-  name: 'Ivan',
-  surName: 'Baloh',
-  status: 'Administrator',
-  email: 'barak@gmail.com',
-};
-
 const NavBar = () => {
+  const user = useSelector(selectCurrentUser);
+
   return (
     <nav className='navbar'>
       <div className='navbar-logo'>
@@ -43,7 +40,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className='navbar-contain-user'>
-          <NavBarUser user={users} />
+          <NavBarUser user={user} />
           <LangSelector
             langueages={[Langue.de, Langue.en, Langue.fr, Langue.ua]}
             initialLang={Langue.en}

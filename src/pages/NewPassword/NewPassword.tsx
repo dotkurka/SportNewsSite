@@ -6,9 +6,7 @@ import { TextLinkVariant } from 'components/TextLink/types';
 import { newPasswordValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 
-import type { IFormValues } from 'features/auth/types';
-
-const initialValues: IFormValues = {
+const initialValues = {
   password: '',
   confirmPassword: '',
 };

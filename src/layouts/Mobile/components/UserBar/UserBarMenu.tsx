@@ -18,7 +18,7 @@ const UserBarMenu = ({ user }: IBarUser) => {
     <div className='user-bar-menu'>
       <div className='user-bar-menu-head'>
         <p className='user-bar-menu-head-name'>
-          {user?.name} {user?.surName}
+          {user?.firstName} {user?.lastName}
         </p>
         <p className='user-bar-menu-head-email'>{user?.email}</p>
       </div>

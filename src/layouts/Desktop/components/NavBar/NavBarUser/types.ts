@@ -1,11 +1,12 @@
+import type { IUser } from 'features/auth/types';
+
 export interface IUserData {
   image?: string;
-  name: string;
-  surName: string | null;
-  status: string;
-  email: string;
+  status?: string;
 }
 
+export type TUser = IUser & IUserData;
+
 export interface IBarUser {
-  user?: IUserData | undefined;
+  user?: TUser | undefined;
 }
