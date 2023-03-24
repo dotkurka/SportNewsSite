@@ -10,6 +10,7 @@ export const authApi = createApi({
     baseUrl: `${process.env.REACT_APP_FETCH_URL}/auth`,
     prepareHeaders: (headers, { getState }) => {
       const { token } = (getState() as RootState).auth;
+
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }
@@ -19,7 +20,6 @@ export const authApi = createApi({
   endpoints: (build) => ({
     getUser: build.query<IUser, void>({
       query: () => 'me',
-      providesTags: ['User'],
     }),
     logIn: build.mutation<IUserResponse, ILoginRequest>({
       query: (body) => ({
@@ -27,7 +27,6 @@ export const authApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['User'],
     }),
     signUp: build.mutation<IUserResponse, ISignUpRequest>({
       query: (body) => ({

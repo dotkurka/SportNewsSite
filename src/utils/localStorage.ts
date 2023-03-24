@@ -4,7 +4,7 @@ interface ILocal {
 }
 
 export const saveInLocal = ({ name, value }: ILocal) => {
-  localStorage.setItem(name, JSON.stringify(value));
+  localStorage.setItem(name, value);
 };
 
 export const removeInLocal = (name: string) => {
