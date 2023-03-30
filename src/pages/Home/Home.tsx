@@ -1,5 +1,11 @@
+import MainArticle from 'components/MainArticle/MainArticle';
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <MainArticle />
+    </div>
+  );
 };
 
 export default Home;
