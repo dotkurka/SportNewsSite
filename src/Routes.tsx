@@ -7,7 +7,8 @@ import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pa
 import { selectCurrentToken } from 'redux/authSlice';
 
 const Routes = () => {
-  const isAuth = useSelector(selectCurrentToken);
+  const isAuth1 = useSelector(selectCurrentToken);
+  const isAuth = true;
 
   return (
     <RouterRoutes>
