@@ -2,19 +2,8 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as ArrowButton } from 'assets/images/sub-article-arrow.svg';
 
+import type { ISubArticle } from 'components/SubArticle/types';
 import './SubArticle.scss';
-
-interface ISubArticleData {
-  img: string;
-  alt: string;
-  title: string;
-  description: string;
-  path: string;
-}
-
-interface ISubArticle {
-  subArticleData: ISubArticleData;
-}
 
 const SubArticle = ({ subArticleData }: ISubArticle) => {
   return (

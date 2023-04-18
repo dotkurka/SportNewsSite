@@ -17,3 +17,5 @@ export { default as ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
 export { default as MainArticleCarousel } from './MainArticleCarousel/MainArticleCarousel';
 
 export { default as SubArticle } from './SubArticle/SubArticle';
+
+export { default as ArticleCollection } from './ArticleCollection/ArticleCollection';

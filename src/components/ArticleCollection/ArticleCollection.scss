@@ -1,0 +1,60 @@
+@import 'styles/Colors.scss';
+
+.article-collection {
+  border: 1px solid $softPeach;
+  border-collapse: collapse;
+
+  &-img {
+    display: flex;
+    width: 151px;
+    height: 97px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-text {
+    width: 240px;
+    position: relative;
+    border: 1px solid $softPeach;
+    padding-left: 18px;
+
+    h3 {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      color: $gunmetal;
+    }
+
+    p {
+      width: 160px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: $friarGrey;
+    }
+  }
+
+  &-button {
+    transition: 0.2s;
+    opacity: 0;
+    position: absolute;
+    height: 13px;
+    width: 16px;
+    bottom: 14px;
+    right: 12px;
+  }
+
+  &-contain:hover {
+    transition: 0.2s;
+    background-color: $white;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.110932);
+
+    .article-collection-button {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}
