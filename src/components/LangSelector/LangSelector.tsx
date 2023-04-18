@@ -4,16 +4,16 @@ import arrowFlag from 'assets/images/arrow-down-flag.svg';
 import useClickOutside from 'hooks/useClickOutside';
 
 import './LangSelector.scss';
-import type { ILangSelector } from 'components/LangSelector/types';
+import type { ILangSelector, Langue } from 'components/LangSelector/types';
 
 const LangSelector = ({ langueages, initialLang }: ILangSelector) => {
-  const [langue, setLangue] = useState<string>(initialLang);
+  const [langue, setLangue] = useState<Langue>(initialLang);
+  const [selected, setSelected] = useState<Langue | null>(null);
   const [langShow, setLangShow] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
 
   const langRef = useClickOutside(() => setLangShow(false));
-  // TODO
-  const changeLang = (item: string) => {
+  // TODO add an operation that will change the language of the entire site
+  const changeLang = (item: Langue) => {
     setLangue(item);
     setLangShow(false);
   };

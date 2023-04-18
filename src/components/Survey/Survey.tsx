@@ -6,7 +6,7 @@ import SurveyResult from 'components/Survey/SurveyResult';
 import type { ISurvey } from 'components/Survey/types';
 import './Survey.scss';
 
-const Survey = ({ theme, question, values }: ISurvey) => {
+const Survey = ({ theme, question, values, date }: ISurvey) => {
   const [showResult, setShowResult] = useState(false);
 
   const handleShowResult = () => {
@@ -17,7 +17,9 @@ const Survey = ({ theme, question, values }: ISurvey) => {
     <div className='survey'>
       <div className='survey-head'>
         <p className='survey-head-title'>{theme}</p>
-        <div className='survey-head-date'> 12 mar - 10 apr</div>
+        <div className='survey-head-date'>
+          {date.start} &#45; {date.end}
+        </div>
       </div>
       <div className='survey-contain'>
         <p className='survey-contain-ques'>{question}</p>

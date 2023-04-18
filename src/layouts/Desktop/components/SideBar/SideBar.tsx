@@ -45,12 +45,12 @@ const SideBar = ({ data }: ISideBar) => {
     }
   };
 
-  const domNode = useClickOutside(() => closeSubMenu());
+  const outsideClickRef = useClickOutside(() => closeSubMenu());
 
   return (
     <div className='sidebar'>
       <div className={`sidebar-bg ${subMenu.subItem ? 'active' : ''}`}>
-        <div ref={domNode} className='sidebar-contain'>
+        <div ref={outsideClickRef} className='sidebar-contain'>
           <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
             {data.map((item) => (
               <SideBarItem

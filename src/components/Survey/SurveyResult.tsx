@@ -12,10 +12,10 @@ const SurveyResult = ({ inputValues }: ISurveyForm) => {
           <div key={item.value} className='survey-contain-result-item'>
             <div className='survey-contain-result-title'>
               <span>{item.answer}</span>
-              <span>{item.procent}%</span>
+              <span>{item.interest}%</span>
             </div>
             <div className='survey-contain-result-line'>
-              <span style={{ width: `${item.procent}%` }} />
+              <span style={{ width: `${item.interest}%` }} />
             </div>
           </div>
         ))}
