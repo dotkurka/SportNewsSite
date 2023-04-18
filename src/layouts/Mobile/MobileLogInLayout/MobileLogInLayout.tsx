@@ -8,7 +8,6 @@ const MobileLogInLayout = () => {
   return (
     <div className='login-layout'>
       <Logo className='login-layout-logo' />
-
       <div className='login-layout-contain'>
         <div className='login-layout-form'>
           <Outlet />
