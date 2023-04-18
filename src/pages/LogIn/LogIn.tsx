@@ -9,6 +9,7 @@ import { TextLinkVariant } from 'components/TextLink/types';
 import { logInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
+import { signIn } from 'utils/routesPath';
 
 import type { ILoginRequest } from 'features/auth/types';
 
@@ -27,7 +28,7 @@ interface IError {
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  const isMobile = useMobileWidth(1023);
+  const isMobile = useMobileWidth(1024);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [logIn, { error: logInError, isError }] = useLogInMutation();
@@ -107,7 +108,7 @@ const LogIn = () => {
 
             {isMobile && (
               <div className='form-mobile'>
-                <TextLink className='form-mobile-link' to='/signin'>
+                <TextLink className='form-mobile-link' to={signIn}>
                   Don&#39;t have an account?
                 </TextLink>
               </div>

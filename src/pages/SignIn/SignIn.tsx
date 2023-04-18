@@ -10,6 +10,7 @@ import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { signInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
+import { logIn } from 'utils/routesPath';
 
 import type { IRequestError, ISignUpRequest } from 'features/auth/types';
 
@@ -22,7 +23,7 @@ const initialValues: ISignUpRequest = {
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const isMobile = useMobileWidth(1023);
+  const isMobile = useMobileWidth(1024);
   const [errorMessage, setErrorMessage] = useState('');
 
   const [signUp, { error: singInError, isError }] = useSignUpMutation();
@@ -120,7 +121,7 @@ const SignIn = () => {
 
             {isMobile && (
               <div className='form-mobile'>
-                <TextLink className='form-mobile-link' to='/login'>
+                <TextLink className='form-mobile-link' to={logIn}>
                   Already have an account?
                 </TextLink>
               </div>

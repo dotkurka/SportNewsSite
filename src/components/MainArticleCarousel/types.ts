@@ -1,5 +1,6 @@
 interface ISliderData {
   img: string;
+  alt: string;
   title: {
     published: string;
     head: string;

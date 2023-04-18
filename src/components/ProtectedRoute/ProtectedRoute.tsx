@@ -1,11 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-interface Ihuy {
-  isAuth: boolean;
-  to: string;
-}
+import type { IProtectedRoute } from 'components/ProtectedRoute/types';
 
-const ProtectedRoute = ({ isAuth, to }: Ihuy) => {
+const ProtectedRoute = ({ isAuth, to }: IProtectedRoute) => {
   if (isAuth) {
     return <Outlet />;
   }

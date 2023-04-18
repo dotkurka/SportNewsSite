@@ -12,7 +12,11 @@ const MainArticleCarousel = ({ sliderData }: IMainCarousel) => {
   return (
     <div className='main-article'>
       <div className='main-article-img'>
-        <img className='main-article-img-contain' src={sliderData[currentIndex].img} alt='' />
+        <img
+          className='main-article-img-contain'
+          src={sliderData[currentIndex].img}
+          alt={sliderData[currentIndex].alt}
+        />
       </div>
       <MainArticleTitle
         sliderData={sliderData}

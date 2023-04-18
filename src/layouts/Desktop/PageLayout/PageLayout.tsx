@@ -8,7 +8,7 @@ import { NavBar, SideBar } from 'layouts/Desktop/components';
 import './PageLayout.scss';
 
 const PageLayout = () => {
-  const isMobile = useMobileWidth(1023);
+  const isMobile = useMobileWidth(1024);
 
   if (isMobile) {
     return <MobilePageLayout />;

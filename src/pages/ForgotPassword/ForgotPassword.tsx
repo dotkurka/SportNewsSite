@@ -5,6 +5,7 @@ import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
 import { forgotPasswordValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
+import { logIn, signIn } from 'utils/routesPath';
 
 import 'features/auth/style.scss';
 
@@ -15,7 +16,7 @@ const initialValues = {
 const submit = () => {}; // TODO
 
 const ForgotPassword = () => {
-  const isMobile = useMobileWidth(1023);
+  const isMobile = useMobileWidth(1024);
 
   return (
     <Formik
@@ -54,7 +55,7 @@ const ForgotPassword = () => {
 
             {isMobile && (
               <div className='form-mobile'>
-                <TextLink className='form-mobile-link' to='/signin'>
+                <TextLink className='form-mobile-link' to={signIn}>
                   Don&#39;t have an account?
                 </TextLink>
               </div>
@@ -62,7 +63,7 @@ const ForgotPassword = () => {
 
             <div className='form-text-link'>
               <TextLink
-                to='/login'
+                to={logIn}
                 className='form-text-link-content'
                 variant={TextLinkVariant.Default}
               >
