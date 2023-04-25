@@ -1,0 +1,87 @@
+@import 'styles/Colors.scss';
+
+.photo-of-the-day {
+  width: 100%;
+  position: relative;
+
+  &-mark {
+    display: flex;
+    position: absolute;
+    left: -11px;
+    top: -19px;
+    width: 169px;
+    height: 123px;
+
+    &-triagle {
+      position: relative;
+    }
+
+    &-text {
+      position: absolute;
+      top: 30px;
+      left: 15px;
+      color: $white;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      line-height: 22px;
+
+      span {
+        font-weight: 400;
+      }
+
+      .bold {
+        font-weight: 700;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &-text {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    height: 188px;
+    width: 100%;
+    padding: 0 0 25px 25px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    h2 {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 30px;
+      color: $white;
+      margin-bottom: 12px;
+    }
+
+    &-description {
+      max-width: 535px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: $white;
+    }
+
+    &-author {
+      font-style: italic;
+      font-weight: 900;
+      font-size: 14px;
+      line-height: 19px;
+      color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .photo-of-the-day-mark {
+    display: none;
+  }
+}
