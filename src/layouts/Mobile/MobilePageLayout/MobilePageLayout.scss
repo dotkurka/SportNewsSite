@@ -5,6 +5,8 @@
   position: relative;
 
   &-head {
+    position: relative;
+    z-index: 2000;
     height: 79px;
     width: 100%;
     background-color: $alizarinCrimson;

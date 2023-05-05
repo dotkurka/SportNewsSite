@@ -23,7 +23,9 @@ const PageLayout = () => {
       <NavBar />
       <div className='page-layout-contain'>
         <SideBar data={SidebarData} />
-        <Outlet />
+        <div className='page-layout-contain-children'>
+          <Outlet />
+        </div>
       </div>
     </div>
   );

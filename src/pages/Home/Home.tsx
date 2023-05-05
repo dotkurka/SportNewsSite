@@ -1,18 +1,43 @@
-import PhotoOfTheDay from 'components/PhotoOfTheDay/PhotoOfTheDay';
+import Photo from 'assets/images/main-photo-article.png';
+import { MainArticleCarousel } from 'components';
 
-const data = {
-  img: 'https://familytimes.com.ua/sites/default/files/styles/article_detail/public/2019-12/sport.jpg?itok=LhFQ6CEF',
-  alt: '',
-  title: 'Defending The Throne',
-  description:
-    'Los Angeles Lakes guard Derek Fisher, right, is pressured by the Denver Nuggets Nene during th efirst quarter of NBA exhibition action on Oct 16',
-  author: 'Photo bu MTDD',
-};
+const data = [
+  {
+    img: Photo,
+    alt: '',
+    title: {
+      published: 'Published / 20.09.2020',
+      head: 'London Games return in 2019',
+      description:
+        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
+    },
+  },
+  {
+    img: 'https://digitalhub.fifa.com/transform/2d264787-f3b5-4533-9142-cb0df6ca0142/Brazil-v-Serbia-Group-G-FIFA-World-Cup-Qatar-2022?io=transform:fill,height:868,width:1536&quality=100',
+    alt: '',
+    title: {
+      published: 'Published / 26.07.2099',
+      head: 'American Games come back in 2019',
+      description:
+        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
+    },
+  },
+  {
+    img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
+    alt: '',
+    title: {
+      published: 'Published / 10.08.2029',
+      head: 'Monya its patsyuk',
+      description:
+        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
+    },
+  },
+];
 
 const Home = () => {
   return (
-    <div style={{ maxWidth: '813px', width: '100%' }}>
-      <PhotoOfTheDay photoDayData={data} />
+    <div>
+      <MainArticleCarousel sliderData={data} />
     </div>
   );
 };

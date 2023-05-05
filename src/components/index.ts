@@ -23,3 +23,5 @@ export { default as ArticleCollection } from './ArticleCollection/ArticleCollect
 export { default as Article } from './Article/Article';
 
 export { default as ArticleTitle } from './ArticleTitle/ArticleTitle';
+
+export { default as PhotoOfTheDay } from './PhotoOfTheDay/PhotoOfTheDay';

@@ -52,6 +52,12 @@ const MainArticleTitle = ({ sliderData, currentIndex, setCurrentIndex }: IMainTi
           <ArrowCircle />
         </button>
       </div>
+      <div className='main-article-mobile-btn'>
+        <button className='left' onClick={goToPrevious}>
+          {'<'}
+        </button>
+        <button onClick={goToNext}>{'>'}</button>
+      </div>
     </div>
   );
 };
