@@ -1,43 +1,35 @@
-import Photo from 'assets/images/main-photo-article.png';
-import { MainArticleCarousel } from 'components';
+import {
+  Article,
+  ArticleCollection,
+  ArticleTitle,
+  MainArticleCarousel,
+  SubArticle,
+} from 'components';
+import {
+  articleColectionData,
+  articleData,
+  dataMainArticle,
+  dataSub,
+} from 'config/ArticleData/articleData';
 
-const data = [
-  {
-    img: Photo,
-    alt: '',
-    title: {
-      published: 'Published / 20.09.2020',
-      head: 'London Games return in 2019',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
-  },
-  {
-    img: 'https://digitalhub.fifa.com/transform/2d264787-f3b5-4533-9142-cb0df6ca0142/Brazil-v-Serbia-Group-G-FIFA-World-Cup-Qatar-2022?io=transform:fill,height:868,width:1536&quality=100',
-    alt: '',
-    title: {
-      published: 'Published / 26.07.2099',
-      head: 'American Games come back in 2019',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
-  },
-  {
-    img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
-    alt: '',
-    title: {
-      published: 'Published / 10.08.2029',
-      head: 'Monya its patsyuk',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
-  },
-];
+import './Home.scss';
 
 const Home = () => {
   return (
     <div>
-      <MainArticleCarousel sliderData={data} />
+      <MainArticleCarousel sliderData={dataMainArticle} />
+      <div className='home-sub-article'>
+        {dataSub.map((item) => (
+          <SubArticle key={item.img} className='home-sub-article-item' subArticleData={item} />
+        ))}
+      </div>
+      <div className='home-breakdown'>
+        <ArticleTitle className='home-breakdown-title'>Breakdown</ArticleTitle>
+        <div className='home-breakdown-contain'>
+          <Article articleData={articleData} />
+          <ArticleCollection collection={articleColectionData} />
+        </div>
+      </div>
     </div>
   );
 };

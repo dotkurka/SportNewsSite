@@ -8,4 +8,5 @@ export interface ISubArticleData {
 
 export interface ISubArticle {
   subArticleData: ISubArticleData;
+  className?: string;
 }

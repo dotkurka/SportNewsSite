@@ -3,7 +3,7 @@
 .sub-article {
   transition: 0.2s;
   height: 294px;
-  width: 202px;
+  max-width: 202px;
   background: none;
   display: flex;
   box-sizing: border-box;
@@ -12,8 +12,8 @@
   position: relative;
 
   &-img {
+    object-fit: cover;
     height: 128px;
-    width: 177px;
   }
 
   h3 {

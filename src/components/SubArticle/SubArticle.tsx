@@ -5,9 +5,9 @@ import { ReactComponent as ArrowButton } from 'assets/images/sub-article-arrow.s
 import type { ISubArticle } from 'components/SubArticle/types';
 import './SubArticle.scss';
 
-const SubArticle = ({ subArticleData }: ISubArticle) => {
+const SubArticle = ({ subArticleData, className }: ISubArticle) => {
   return (
-    <div className='sub-article'>
+    <div className={`sub-article ${className}`}>
       <img className='sub-article-img' src={subArticleData.img} alt={subArticleData.alt} />
       <h3>{subArticleData.title}</h3>
       <p>{subArticleData.description}</p>
