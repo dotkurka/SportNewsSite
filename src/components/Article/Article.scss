@@ -3,7 +3,7 @@
 .article {
   position: relative;
   border: 1px solid $softPeach;
-  max-width: 390px;
+  max-width: 392px;
   width: 100%;
   height: 295px;
 
@@ -30,12 +30,16 @@
     width: 100%;
   }
 
-  h2 {
-    margin: 12px 15px;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 30px;
-    color: $gunmetal;
+  &-text {
+    height: 100px;
+
+    h2 {
+      margin: 12px 15px;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 30px;
+      color: $gunmetal;
+    }
   }
 
   &-button {
@@ -59,3 +63,8 @@
     }
   }
 }
+
+// @media screen and (max-width: 1024px) {
+//   .article {
+//   }
+// }

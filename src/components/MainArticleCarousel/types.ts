@@ -16,4 +16,5 @@ export interface IMainTitle {
 
 export interface IMainCarousel {
   sliderData: ISliderData[];
+  className?: string;
 }

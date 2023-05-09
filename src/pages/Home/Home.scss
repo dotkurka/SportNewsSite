@@ -2,12 +2,10 @@
   &-sub-article {
     box-sizing: border-box;
     position: relative;
-    left: -18px;
-    padding-right: 204px;
-    margin-top: 32px;
+    margin-top: 44px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-flow: row wrap;
   }
 
@@ -16,6 +14,10 @@
     flex-direction: column;
     align-items: center;
 
+    &-title {
+      margin: 50px 0 40px 0;
+    }
+
     &-contain {
       display: flex;
       flex-flow: row wrap;
@@ -23,23 +25,16 @@
       max-width: 813px;
       width: 100%;
     }
-
-    &-title {
-      box-sizing: border-box;
-      padding-right: 240px;
-      margin: 50px 0 40px 0;
-    }
   }
 }
 
 @media screen and (max-width: 1024px) {
   .home {
     &-sub-article {
-      left: 0;
-      padding-right: 0;
+      justify-content: space-around;
 
       &-item {
-        max-width: 220px;
+        margin: 0 13px;
       }
     }
 

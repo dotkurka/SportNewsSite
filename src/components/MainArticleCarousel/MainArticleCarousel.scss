@@ -1,33 +1,22 @@
 @import 'styles/Colors.scss';
 
-@mixin title-box {
-  box-sizing: border-box;
-  max-width: 420px;
-  width: 100%;
-  padding: 50px 33px 83px;
-  position: absolute;
-  right: 12px;
-  background-color: $porcelain;
-}
-
 .main-article {
   display: flex;
   position: relative;
   align-items: center;
+  max-width: 813px;
+  width: 100%;
 
   &-post {
     height: 100%;
   }
 
   &-img {
-    display: flex;
-    max-width: 1117px;
-    width: 100%;
     box-sizing: border-box;
-    padding-right: 240px;
+    display: flex;
+    width: 100%;
 
     &-contain {
-      max-width: 813px;
       width: 100%;
     }
   }
@@ -46,7 +35,7 @@
       font-size: 16px;
       line-height: 22px;
       width: 30px;
-      letter-spacing: 0.623377px;
+      letter-spacing: 0.6px;
 
       &.active {
         color: $persianRed;
@@ -84,12 +73,21 @@
   }
 
   &-title {
-    @include title-box;
+    background-color: $porcelain;
+    box-sizing: border-box;
+    max-width: 420px;
+    width: 100%;
+    padding: 50px 33px 83px;
+    position: absolute;
+    right: -228px;
 
     &-shadow {
-      @include title-box;
-      z-index: -9999;
+      width: 300px;
+      height: 20px;
+      position: absolute;
+      right: 8px;
       bottom: 0;
+      z-index: -9999;
       box-shadow: -25px 17px 28px -4px rgba(0, 0, 0, 0.21);
     }
 
@@ -162,34 +160,26 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1310px) {
   .main-article {
     flex-direction: column;
-
-    &-mobile-btn {
-      display: flex;
-    }
-
-    &-img {
-      padding-right: 0;
-
-      &-contain {
-        max-width: 1024px;
-      }
-    }
+    align-items: flex-start;
+    margin-bottom: 80px;
 
     &-button {
-      display: none;
+      right: auto;
+      bottom: -55px;
     }
 
     &-title {
-      max-width: 1024px;
-      padding: 26px 16px 32px;
-      position: relative;
-      background: none;
       display: flex;
       flex-direction: column;
       align-items: center;
+      background: none;
+      position: relative;
+      right: 0;
+      max-width: 813px;
+      padding: 26px 16px 32px;
       box-shadow: 0px 61px 72px -92px rgba(0, 0, 0, 0.75);
 
       &-shadow {
@@ -206,6 +196,34 @@
           line-height: 21px;
         }
       }
+
+      &-btn {
+        margin-top: 30px;
+        position: relative;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-article {
+    max-width: 1024px;
+    margin-bottom: 0;
+
+    &-mobile-btn {
+      display: flex;
+    }
+
+    &-img-contain {
+      max-width: 1024px;
+    }
+
+    &-button {
+      display: none;
+    }
+
+    &-title {
+      max-width: 1024px;
 
       &-btn {
         margin-top: 30px;

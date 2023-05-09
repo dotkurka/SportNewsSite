@@ -8,6 +8,7 @@ import './SubArticle.scss';
 const SubArticle = ({ subArticleData, className }: ISubArticle) => {
   return (
     <div className={`sub-article ${className}`}>
+      <div className='sub-article-border' />
       <img className='sub-article-img' src={subArticleData.img} alt={subArticleData.alt} />
       <h3>{subArticleData.title}</h3>
       <p>{subArticleData.description}</p>

@@ -16,8 +16,8 @@ import './Home.scss';
 
 const Home = () => {
   return (
-    <div>
-      <MainArticleCarousel sliderData={dataMainArticle} />
+    <div className='home'>
+      <MainArticleCarousel className='home-main-article' sliderData={dataMainArticle} />
       <div className='home-sub-article'>
         {dataSub.map((item) => (
           <SubArticle key={item.img} className='home-sub-article-item' subArticleData={item} />

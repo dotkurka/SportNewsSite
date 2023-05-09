@@ -1,14 +1,26 @@
 @import 'styles/Colors.scss';
 
 .sub-article {
+  &-border {
+    background-color: $white;
+    position: absolute;
+    opacity: 0;
+    width: 203px;
+    left: -13px;
+    top: -11px;
+    height: 294px;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.110932);
+    z-index: -3;
+    transition: 0.2s;
+  }
+
   transition: 0.2s;
   height: 294px;
-  max-width: 202px;
+  max-width: 177px;
   background: none;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  padding: 11px 13px;
   position: relative;
 
   &-img {
@@ -39,14 +51,14 @@
     position: absolute;
     height: 13px;
     width: 16px;
-    bottom: 14px;
-    right: 12px;
+    bottom: 28px;
+    right: 1px;
   }
 
   &:hover {
-    display: flex;
-    background-color: $white;
-    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.110932);
+    .sub-article-border {
+      opacity: 1;
+    }
 
     .sub-article-button {
       opacity: 1;
