@@ -23,8 +23,8 @@ const Home = () => {
           <SubArticle key={item.img} className='home-sub-article-item' subArticleData={item} />
         ))}
       </div>
+      <ArticleTitle className='home-breakdown-title'>Breakdown</ArticleTitle>
       <div className='home-breakdown'>
-        <ArticleTitle className='home-breakdown-title'>Breakdown</ArticleTitle>
         <div className='home-breakdown-contain'>
           <Article articleData={articleData} />
           <ArticleCollection collection={articleColectionData} />

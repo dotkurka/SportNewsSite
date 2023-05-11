@@ -1,6 +1,8 @@
 @import 'styles/Colors.scss';
 
 .article-collection {
+  max-width: 389px;
+  width: 100%;
   border: 1px solid $softPeach;
   border-collapse: collapse;
 
@@ -17,7 +19,8 @@
   }
 
   &-text {
-    width: 240px;
+    max-width: 240px;
+    width: 100%;
     position: relative;
     border: 1px solid $softPeach;
     padding-left: 18px;
