@@ -99,3 +99,12 @@ export const articleColectionData = [
     path: '',
   },
 ];
+
+export const photoOfTheDayData = {
+  img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
+  alt: '',
+  title: 'Defending The Throne',
+  description:
+    'Los Angeles Lakes guard Derek Fisher, right, is pressured by the Denver Nuggets Nene during th efirst quarter of NBA exhibition action on Oct 16',
+  author: 'Bla Bla Chepilini',
+};

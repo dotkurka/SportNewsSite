@@ -4,7 +4,7 @@
   box-sizing: border-box;
   position: relative;
   border: 1px solid $softPeach;
-  max-width: 389px;
+  max-width: 390px;
   width: 100%;
   height: 295px;
 
@@ -32,8 +32,6 @@
   }
 
   &-text {
-    height: 100%;
-
     h2 {
       margin: 12px 15px;
       font-weight: 700;

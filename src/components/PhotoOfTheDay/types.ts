@@ -8,4 +8,5 @@ interface IPhotoDayData {
 
 export interface IPhotoDay {
   photoDayData: IPhotoDayData;
+  className?: string;
 }

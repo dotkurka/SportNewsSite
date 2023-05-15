@@ -4,9 +4,9 @@ import type { IPhotoDay } from 'components/PhotoOfTheDay/types';
 
 import './PhotoOfTheDay.scss';
 
-const PhotoOfTheDay = ({ photoDayData }: IPhotoDay) => {
+const PhotoOfTheDay = ({ photoDayData, className }: IPhotoDay) => {
   return (
-    <div className='photo-of-the-day'>
+    <div className={`photo-of-the-day ${className}`}>
       <div className='photo-of-the-day-mark'>
         <div className='photo-of-the-day-mark-text'>
           <span className='bold'>Photo</span>
