@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import 'styles/Colors.scss';
 
 .page-layout {
   max-width: 1440px;
@@ -42,6 +43,158 @@
 
     &-children {
       padding-top: 82px;
+    }
+  }
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin-top: 100px;
+
+  &-nav {
+    display: flex;
+    border-top: 1px solid $quillGrey;
+    margin-left: 253px;
+    padding: 50px 0;
+
+    &-list {
+      width: 284px;
+      display: flex;
+      flex-direction: column;
+
+      h4 {
+        font-weight: 700;
+        line-height: 19px;
+        color: $black;
+        margin-bottom: 23px;
+      }
+
+      a {
+        margin: 6px 0;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 19px;
+        text-decoration: none;
+        color: $friarGrey;
+
+        &:hover {
+          color: $persianRed;
+        }
+      }
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+      width: 284px;
+
+      h4 {
+        font-weight: 700;
+        line-height: 19px;
+        color: $black;
+        margin-bottom: 18px;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        color: $friarGrey;
+      }
+
+      form {
+        display: flex;
+        width: 100%;
+        height: 32px;
+        margin: 24px 0;
+
+        input {
+          box-sizing: border-box;
+          display: flex;
+          width: 65%;
+          border: 1px solid $quillGrey;
+          border-right: 0;
+          font-size: 12px;
+          line-height: 17px;
+          padding-left: 12px;
+          outline: none;
+
+          &:focus {
+            border-color: $alizarinCrimson;
+          }
+        }
+
+        button {
+          width: 35%;
+          height: 100%;
+          font-size: 12px;
+          line-height: 17px;
+          border: none;
+          background: $alizarinCrimson;
+          color: $white;
+
+          &:hover:enabled {
+            background-color: $roseMadder;
+          }
+
+          &:active:enabled {
+            background-color: $monza;
+          }
+        }
+      }
+
+      &-sign {
+        width: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: $greyCloud;
+
+        &-icon {
+          height: 32px;
+          width: 80px;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  &-sub {
+    user-select: none;
+    box-sizing: border-box;
+    padding: 0 60px;
+    width: 100%;
+    height: 80px;
+    background: $alizarinCrimson;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+      font-size: 22px;
+      line-height: 28px;
+    }
+
+    &-text {
+      text-align: end;
+      font-size: 12px;
+      line-height: 16px;
+
+      a {
+        color: $white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

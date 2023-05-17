@@ -18,7 +18,8 @@
       width: 100%;
       height: max-content;
       backdrop-filter: blur(11.5px);
-      transition: backdrop-filter 0.2s;
+      background: rgba(0, 0, 0, 0.3);
+      transition: 0.2s;
     }
   }
 
