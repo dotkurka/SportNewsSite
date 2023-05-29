@@ -71,11 +71,14 @@
       }
     }
 
-    &-breakdown-article {
-      box-sizing: border-box;
+    &-breakdown {
       padding: 0 15px;
-      flex-flow: row wrap;
-      justify-content: space-around;
+
+      &-article {
+        box-sizing: border-box;
+        flex-flow: row wrap;
+        justify-content: space-around;
+      }
     }
 
     &-potd {
