@@ -2,13 +2,18 @@
 
 .main-article {
   display: flex;
-  position: relative;
-  align-items: center;
-  max-width: 813px;
-  width: 100%;
+  flex-direction: column;
 
-  &-post {
-    height: 100%;
+  &-contain {
+    display: flex;
+    position: relative;
+    align-items: center;
+    max-width: 813px;
+    width: 100%;
+
+    &.adaptive {
+      margin-bottom: 0;
+    }
   }
 
   &-img {
@@ -18,6 +23,30 @@
 
     &-contain {
       width: 100%;
+    }
+  }
+
+  &-text {
+    margin-top: 40px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: $black;
+
+    a {
+      color: $alizarinCrimson;
+      text-decoration: none;
+
+      &:hover {
+        color: $persianRed;
+        text-decoration: underline;
+      }
+    }
+
+    br {
+      content: '';
+      display: block;
+      margin-bottom: 20px;
     }
   }
 
@@ -50,8 +79,8 @@
       display: flex;
       background: none;
       border: none;
-      width: 27px;
       cursor: pointer;
+      width: 27px;
 
       &.right {
         margin-left: 20px;
@@ -75,16 +104,16 @@
   &-title {
     background-color: $porcelain;
     box-sizing: border-box;
+    position: absolute;
     max-width: 420px;
     width: 100%;
     padding: 50px 33px 83px;
-    position: absolute;
     right: -228px;
 
     &-shadow {
+      position: absolute;
       width: 300px;
       height: 20px;
-      position: absolute;
       right: 8px;
       bottom: 0;
       z-index: -9999;
@@ -162,9 +191,18 @@
 
 @media screen and (max-width: 1310px) {
   .main-article {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 80px;
+    &-contain {
+      flex-direction: column;
+      align-items: flex-start;
+
+      &.adaptive {
+        margin-bottom: 80px;
+      }
+    }
+
+    &-text {
+      margin-top: 0;
+    }
 
     &-button {
       right: auto;
@@ -207,8 +245,17 @@
 
 @media screen and (max-width: 1024px) {
   .main-article {
-    max-width: 1024px;
-    margin-bottom: 0;
+    &-contain {
+      max-width: 1024px;
+
+      &.adaptive {
+        margin-bottom: 0;
+      }
+    }
+
+    &-text {
+      margin: 0 16px;
+    }
 
     &-mobile-btn {
       display: flex;

@@ -2,11 +2,12 @@ import {
   Article,
   ArticleCollection,
   ArticleTitle,
-  MainArticleCarousel,
+  MainArticle,
   PhotoOfTheDay,
   SubArticle,
 } from 'components';
 import { ArticleTitleVariant } from 'components/ArticleTitle/types';
+import { MainArticleVariant } from 'components/MainArticle/types';
 import {
   articleColectionData,
   articleData,
@@ -20,7 +21,11 @@ import './Home.scss';
 const Home = () => {
   return (
     <div className='home'>
-      <MainArticleCarousel className='home-main-article' sliderData={dataMainArticle} />
+      <MainArticle
+        variant={MainArticleVariant.Article}
+        className='home-main-article'
+        sliderData={dataMainArticle}
+      />
       <div className='home-sub-article'>
         {dataSub.map((item) => (
           <SubArticle key={item.img} className='home-sub-article-item' subArticleData={item} />

@@ -14,7 +14,7 @@ export { default as Survey } from './Survey/Survey';
 
 export { default as ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
 
-export { default as MainArticleCarousel } from './MainArticleCarousel/MainArticleCarousel';
+export { default as MainArticle } from './MainArticle/MainArticle';
 
 export { default as SubArticle } from './SubArticle/SubArticle';
 
