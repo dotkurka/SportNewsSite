@@ -1,0 +1,22 @@
+.share-button {
+  width: 177px;
+  height: 42px;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-contain {
+    width: 63px;
+    height: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  img {
+    width: 13px;
+    height: 13.32px;
+  }
+}

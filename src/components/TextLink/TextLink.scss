@@ -1,0 +1,46 @@
+@import 'styles/Colors.scss';
+
+.text-link {
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+
+  &-body1 {
+    font-size: 12px;
+    line-height: 17px;
+    color: $alizarinCrimson;
+
+    &:hover {
+      text-decoration-line: underline;
+      color: $roseMadder;
+    }
+
+    &:active {
+      text-decoration-line: underline;
+      color: $monza;
+    }
+
+    &[disabled] {
+      color: $azalea;
+    }
+  }
+
+  &-body2 {
+    font-size: 10px;
+    line-height: 14px;
+    color: $havelockBlue;
+
+    &:hover {
+      color: $crystalBlue;
+      text-decoration-line: underline;
+    }
+
+    &:active {
+      color: $windowsBlue;
+    }
+
+    &[disabled] {
+      color: $periwinkleGrey;
+    }
+  }
+}

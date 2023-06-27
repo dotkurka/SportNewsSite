@@ -1,0 +1,77 @@
+@import 'styles/Colors.scss';
+
+$textColor: rgb(255, 255, 255);
+
+.button {
+  cursor: pointer;
+
+  &-outline {
+    border: 1px solid $alizarinCrimson;
+    background: none;
+    color: $alizarinCrimson;
+
+    &:hover:enabled {
+      background-color: $alizarinCrimson;
+      color: $textColor;
+    }
+
+    &:active:enabled {
+      border: none;
+      background-color: $monza;
+      color: $textColor;
+    }
+
+    &[disabled] {
+      border: 1px solid $azalea;
+      color: $azalea;
+    }
+  }
+
+  &-contained {
+    border: none;
+    background-color: $alizarinCrimson;
+    color: $textColor;
+
+    &:hover:enabled {
+      background-color: $roseMadder;
+    }
+
+    &:active:enabled {
+      background-color: $monza;
+    }
+
+    &[disabled] {
+      background-color: $azalea;
+    }
+  }
+
+  &-text {
+    width: 43px;
+    height: 17px;
+    border: none;
+    background: none;
+    color: $alizarinCrimson;
+
+    &:hover {
+      color: $roseMadder;
+    }
+
+    &:active {
+      color: $monza;
+    }
+  }
+}
+
+.large {
+  width: 130px;
+  height: 42px;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.medium {
+  width: 137px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 17px;
+}

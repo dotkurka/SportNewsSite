@@ -1,0 +1,207 @@
+@import 'styles/Colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+
+  &-contain {
+    margin-top: 15px;
+  }
+
+  &-title {
+    font-size: 24px;
+    line-height: 33px;
+    margin-bottom: 15px;
+    color: #000000;
+
+    &-forgot {
+      font-size: 24px;
+      line-height: 33px;
+      color: #000000;
+    }
+  }
+
+  &-description {
+    margin-bottom: 15px;
+    width: 265px;
+    font-size: 14px;
+    line-height: 19px;
+    color: $shuttleGrey;
+
+    &-forgot {
+      margin: 8px 0 9px;
+      width: 265px;
+      font-size: 14px;
+      line-height: 19px;
+      color: $shuttleGrey;
+    }
+
+    &-sing {
+      margin: 15px 0 5px;
+      width: 265px;
+      font-size: 14px;
+      line-height: 19px;
+      color: $shuttleGrey;
+    }
+  }
+
+  &-button {
+    width: 100%;
+    margin-top: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  &-input {
+    width: 100%;
+  }
+
+  &-error {
+    font-size: 10px;
+    line-height: 14px;
+    color: $alizarinCrimson;
+  }
+
+  &-description {
+    font-size: 14px;
+    line-height: 19px;
+    color: $shuttleGrey;
+  }
+
+  &-text-link {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+
+    &-content {
+      color: $black;
+      line-height: 16px;
+    }
+  }
+
+  &-social {
+    width: 76.8px;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0 5px;
+
+    &-icon {
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+
+      &:hover * {
+        fill: $alizarinCrimson;
+      }
+    }
+  }
+
+  &-dual {
+    display: flex;
+    justify-content: space-between;
+
+    &-input {
+      width: 178px;
+    }
+  }
+
+  &-mobile {
+    margin-top: 16px;
+
+    &-link {
+      color: $white;
+    }
+  }
+}
+
+.check-email {
+  width: 498px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &-icon {
+    height: 64px;
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 33px;
+    color: $black;
+  }
+
+  &-description {
+    margin-top: 8px;
+    width: 431px;
+    font-size: 14px;
+    line-height: 19px;
+    color: $shuttleGrey;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .form {
+    width: 344px;
+
+    &-title,
+    &-title-forgot {
+      color: $white;
+      text-align: center;
+    }
+
+    &-description {
+      color: $white;
+
+      &-forgot {
+        color: $periwinkleGrey;
+        width: 100%;
+      }
+    }
+
+    &-input {
+      label {
+        color: $white;
+      }
+
+      &-description {
+        color: $white;
+      }
+    }
+
+    &-text-link {
+      justify-content: flex-start;
+      margin-top: 16px;
+
+      &-content {
+        color: $white;
+      }
+    }
+  }
+
+  .check-email {
+    width: 344px;
+
+    h1 {
+      color: $white;
+    }
+
+    &-icon * {
+      fill: $white;
+    }
+
+    &-description {
+      width: 100%;
+      color: $periwinkleGrey;
+      margin-bottom: 20px;
+    }
+  }
+}

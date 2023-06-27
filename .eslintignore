@@ -1,0 +1,6 @@
+build
+node_modules
+.github
+README.md
+*.config.js
+custom.d.ts

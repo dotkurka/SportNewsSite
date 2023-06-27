@@ -1,0 +1,73 @@
+@import 'styles/Colors.scss';
+
+.navbar {
+  max-width: 1440px;
+  height: 83px;
+  background-color: $white;
+  display: flex;
+
+  &-logo {
+    width: 253px;
+  }
+
+  &-social {
+    width: 180px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 14px;
+    color: $greyCloud;
+    line-height: 18px;
+
+    &-item {
+      height: 18px;
+
+      &:hover * {
+        fill: $alizarinCrimson;
+      }
+    }
+  }
+
+  &-contain {
+    width: 100%;
+    height: 82px;
+    border-bottom: 1px solid $softPeach;
+    display: flex;
+
+    &-search {
+      display: flex;
+      align-items: center;
+      max-width: 456px;
+      min-width: 280px;
+      margin-right: auto;
+    }
+
+    &-social {
+      height: 100%;
+      width: 317px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid $softPeach;
+      border-right: 1px solid $softPeach;
+    }
+
+    &-user {
+      flex-shrink: 2;
+      width: 100%;
+      max-width: 412px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-sizing: border-box;
+      padding-left: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .navbar-contain-user {
+    padding-left: 0;
+  }
+}

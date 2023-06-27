@@ -1,0 +1,29 @@
+@import 'styles/Colors.scss';
+
+.mobile-page {
+  width: 100%;
+  position: relative;
+
+  &-head {
+    height: 79px;
+    width: 100%;
+    background-color: $alizarinCrimson;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px 0 20px;
+
+    &-title {
+      font-size: 18px;
+      line-height: 28px;
+      color: $roseWhite;
+    }
+  }
+
+  &-menu {
+    position: absolute;
+    width: 100%;
+    height: 92vh;
+  }
+}
