@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
+import { LangBar } from 'layouts/Mobile/components';
 import BurgerMenuItem from 'layouts/Mobile/components/BurgerMenu/BurgerMenuItem';
 import SecondMenu from 'layouts/Mobile/components/BurgerMenu/SecondMenu';
-import LangBar from 'layouts/Mobile/components/LangBar/LangBar';
 import { Langue } from 'layouts/Mobile/components/LangBar/types';
 
 import type { ISidebarData } from 'config/SideBarData/types';

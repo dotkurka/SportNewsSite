@@ -1,18 +1,21 @@
 @import 'styles/Colors.scss';
 
 .sidebar {
+  max-width: 1440px;
+  width: 100%;
   font-weight: 700;
   font-size: 14px;
   line-height: 19px;
   box-sizing: border-box;
-  position: relative;
-  width: 253px;
+  position: absolute;
+  left: 0;
+  z-index: 9999;
 
   &-bg {
     position: absolute;
 
     &.active {
-      width: 1440px;
+      width: 100%;
       height: max-content;
       backdrop-filter: blur(11.5px);
       transition: backdrop-filter 0.2s;

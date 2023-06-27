@@ -10,4 +10,8 @@ export { default as ShareButton } from './ShareButton/ShareButton';
 
 export { default as Select } from './Select/Select';
 
-export { default as Survey } from './Survey/Survey';
+export { default as Survay } from './Survey/Survey';
+
+export { default as ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
+
+export { default as MainArticleCarousel } from './MainArticleCarousel/MainArticleCarousel';

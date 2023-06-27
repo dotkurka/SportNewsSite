@@ -4,11 +4,11 @@ import { Button, Logo } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { MobileLogInLayout } from 'layouts';
-import { signIn } from 'utils/routesPath';
+import { logIn } from 'utils/routesPath';
 
-import './LogInLayout.scss';
+import './SignInLayout.scss';
 
-const LogInLayout = () => {
+const SignInLayout = () => {
   const navigate = useNavigate();
 
   const isMobile = useMobileWidth(1024);
@@ -18,15 +18,15 @@ const LogInLayout = () => {
   }
 
   return (
-    <div className='log-in'>
-      <div className='log-in-left'>
+    <div className='sign-up'>
+      <div className='sign-up-left'>
         <Logo />
       </div>
-      <div className='log-in-right'>
-        <div className='log-in-right-header'>
-          Don&#39;t have an account?
-          <Button onClick={() => navigate(signIn)} variant={ButtonVariant.Default}>
-            Get Started
+      <div className='sign-up-right'>
+        <div className='sign-up-right-header'>
+          Already have an account?
+          <Button onClick={() => navigate(logIn)} variant={ButtonVariant.Default}>
+            Log in
           </Button>
         </div>
         <Outlet />
@@ -35,4 +35,4 @@ const LogInLayout = () => {
   );
 };
 
-export default LogInLayout;
+export default SignInLayout;

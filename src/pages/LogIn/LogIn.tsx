@@ -1,47 +1,76 @@
 import { Form, Formik } from 'formik';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
-import validationSchema from 'features/auth/validationSchema';
+import { logInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
+import { setToken } from 'redux/authSlice';
+import { signIn } from 'utils/routesPath';
 
-import type { IFormValues } from 'features/auth/types';
+import type { ILoginRequest } from 'features/auth/types';
 
 import 'features/auth/style.scss';
 
-const initialValues: IFormValues = {
+const initialValues: ILoginRequest = {
   email: '',
   password: '',
 };
 
-const submit = () => {}; // TODO
+interface IError {
+  data: {
+    title: string;
+  };
+}
 
 const LogIn = () => {
-  const isMobile = useMobileWidth(1023);
+  const dispatch = useDispatch();
+  const isMobile = useMobileWidth(1024);
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [logIn, { error: logInError, isError }] = useLogInMutation();
+
+  useEffect(() => {
+    if (isError) {
+      const error = (logInError as IError).data.title;
+      setErrorMessage(error);
+    }
+  }, [isError]);
+
+  const submit = async (values: ILoginRequest) => {
+    const result = await logIn(values);
+    if ('data' in result) {
+      dispatch(setToken(result.data));
+    }
+  };
 
   return (
-    <Formik onSubmit={submit} initialValues={initialValues} validationSchema={validationSchema}>
+    <Formik onSubmit={submit} initialValues={initialValues} validationSchema={logInValidation}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
         <Form className='form' onSubmit={handleSubmit}>
           <div className='form-title'>Log in to Sport News</div>
+          {errorMessage && (
+            <div className='form-description'>Sign in with your organizational account</div>
+          )}
 
           {errors.password || errors.email ? (
-            <>
-              <div className='form-description'>Sign in with your organizational account</div>
-              <div className='form-error'>Incorrect user ID or password. Try again</div>
-            </>
-          ) : null}
+            <div className='form-error'>Incorrect user ID or password. Try again</div>
+          ) : (
+            <div className='form-error'>{errorMessage}</div>
+          )}
 
           <div className='form-contain'>
             <Input
               className='form-input'
               placeholder='Email@gmail.com'
               label='Email address'
-              errors={errors.email}
-              touched={touched.email}
               type='email'
               name='email'
+              touched={touched.email}
+              errors={errors.email}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
@@ -51,10 +80,10 @@ const LogIn = () => {
               className='form-input'
               placeholder='Enter your password'
               label='Password'
-              errors={errors.password}
-              touched={touched.password}
               type='password'
               name='password'
+              errors={errors.password}
+              touched={touched.password}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
@@ -79,7 +108,7 @@ const LogIn = () => {
 
             {isMobile && (
               <div className='form-mobile'>
-                <TextLink className='form-mobile-link' to='/singin'>
+                <TextLink className='form-mobile-link' to={signIn}>
                   Don&#39;t have an account?
                 </TextLink>
               </div>

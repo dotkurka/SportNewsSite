@@ -4,3 +4,9 @@ declare module '*.svg' {
   const src: any;
   export default src;
 }
+
+declare module '*.png' {
+  import React = require('react');
+  const src: any;
+  export default src;
+}

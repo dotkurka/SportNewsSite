@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 import useClickOutside from 'hooks/useClickOutside';
-import SideBarFollow from 'layouts/Desktop/MainLayout/components/SideBar/SideBarFollow/SideBarFollow';
-import SideBarItem from 'layouts/Desktop/MainLayout/components/SideBar/SideBarItem/SideBarItem';
-import SubMenu from 'layouts/Desktop/MainLayout/components/SideBar/SubMenu/SubMenu';
+import SideBarFollow from 'layouts/Desktop/components/SideBar/SideBarFollow/SideBarFollow';
+import SideBarItem from 'layouts/Desktop/components/SideBar/SideBarItem/SideBarItem';
+import SubMenu from 'layouts/Desktop/components/SideBar/SubMenu/SubMenu';
 
-import './SideBar.scss';
 import type { ISideBar } from './types';
 import type { ISidebarData } from 'config/SideBarData/types';
+
+import './SideBar.scss';
 
 const SideBar = ({ data }: ISideBar) => {
   const [subMenu, setSubMenu] = useState<ISidebarData>({ title: '', path: '' });

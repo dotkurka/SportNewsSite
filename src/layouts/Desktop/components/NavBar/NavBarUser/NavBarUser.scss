@@ -50,6 +50,7 @@ $sizeImg: 34px;
     width: 178px;
     background-color: $white;
     position: absolute;
+    z-index: 9999;
     top: 58px;
     left: -24px;
     box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.09);
@@ -123,7 +124,7 @@ $sizeImg: 34px;
     }
   }
 
-  &-singup {
+  &-signup {
     button {
       width: 107px;
     }

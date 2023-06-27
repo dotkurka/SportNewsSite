@@ -1,0 +1,134 @@
+@import 'styles/Colors.scss';
+
+@mixin title-box {
+  box-sizing: border-box;
+  max-width: 420px;
+  width: 100%;
+  padding: 50px 33px 83px;
+  position: absolute;
+  right: 0px;
+  background-color: $porcelain;
+}
+
+.main-article {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  &-post {
+    height: 100%;
+  }
+
+  &-img {
+    max-width: 1117px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 228px;
+
+    &-contain {
+      max-width: 813px;
+      width: 100%;
+    }
+  }
+
+  &-button {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: -57px;
+
+    &-number {
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: $greyCloud;
+      font-size: 16px;
+      line-height: 22px;
+      width: 30px;
+      letter-spacing: 0.623377px;
+
+      &.active {
+        color: $persianRed;
+      }
+
+      &:hover {
+        color: $persianRed;
+      }
+    }
+
+    &-circle {
+      display: flex;
+      background: none;
+      border: none;
+      width: 27px;
+      cursor: pointer;
+
+      &.right {
+        margin-left: 20px;
+        transform: rotate(-180deg);
+      }
+
+      &.left {
+        margin-right: 20px;
+      }
+
+      &:hover .arrow {
+        stroke: $persianRed;
+      }
+
+      &:hover * {
+        fill: $persianRed;
+      }
+    }
+  }
+
+  &-title {
+    @include title-box;
+
+    &-shadow {
+      @include title-box;
+      z-index: -9999;
+      bottom: 0;
+      box-shadow: -25px 17px 28px -4px rgba(0, 0, 0, 0.21);
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      span {
+        color: $friarGrey;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+      }
+
+      h3 {
+        margin: 19px 0;
+        font-size: 16px;
+        line-height: 22px;
+        color: $persianRed;
+      }
+
+      h2 {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 30px;
+        color: $gunmetal;
+      }
+    }
+
+    &-btn {
+      width: 192px;
+      height: 42px;
+      font-size: 16px;
+      line-height: 22px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}

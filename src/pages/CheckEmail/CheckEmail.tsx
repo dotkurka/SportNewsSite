@@ -1,13 +1,14 @@
 import { ReactComponent as EmailIcon } from 'assets/images/check-email-icon.svg';
 import { TextLink } from 'components';
 import useMobileWidth from 'hooks/useWindowsWidth';
+import { signIn } from 'utils/routesPath';
 
 interface IEmail {
   email?: string;
 }
 
 const CheckEmail = ({ email }: IEmail) => {
-  const isMobile = useMobileWidth(1023);
+  const isMobile = useMobileWidth(1024);
 
   return (
     <div className='check-email'>
@@ -22,7 +23,7 @@ const CheckEmail = ({ email }: IEmail) => {
 
       {isMobile && (
         <div className='form-mobile'>
-          <TextLink className='form-mobile-link' to='/singin'>
+          <TextLink className='form-mobile-link' to={signIn}>
             Don&#39;t have an account?
           </TextLink>
         </div>
