@@ -38,7 +38,7 @@
       color: $shuttleGrey;
     }
 
-    &-sing {
+    &-sign {
       margin: 15px 0 5px;
       width: 265px;
       font-size: 14px;
@@ -148,7 +148,7 @@
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
   .form {
     width: 344px;
 
@@ -164,6 +164,10 @@
       &-forgot {
         color: $periwinkleGrey;
         width: 100%;
+      }
+
+      &-sign {
+        color: $white;
       }
     }
 
@@ -184,6 +188,18 @@
       &-content {
         color: $white;
       }
+    }
+
+    &-dual-input {
+      width: 153px;
+
+      label {
+        color: $white;
+      }
+    }
+
+    &-social-icon {
+      fill: $white;
     }
   }
 

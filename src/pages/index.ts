@@ -6,6 +6,6 @@ export { default as LogIn } from './LogIn/LogIn';
 
 export { default as NewPassword } from './NewPassword/NewPassword';
 
-export { default as SingIn } from './SingIn/SingIn';
+export { default as SignIn } from './SignIn/SignIn';
 
 export { default as Home } from './Home/Home';

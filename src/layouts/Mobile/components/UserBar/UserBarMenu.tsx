@@ -1,14 +1,24 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { logOut } from 'redux/authSlice';
+
+import type { IBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
+
 import './UserBar.scss';
-import type { IBarUser } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarUser/types';
 
 const UserBarMenu = ({ user }: IBarUser) => {
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
+
   return (
     <div className='user-bar-menu'>
       <div className='user-bar-menu-head'>
         <p className='user-bar-menu-head-name'>
-          {user?.name} {user?.surName}
+          {user?.firstName} {user?.lastName}
         </p>
         <p className='user-bar-menu-head-email'>{user?.email}</p>
       </div>
@@ -25,7 +35,9 @@ const UserBarMenu = ({ user }: IBarUser) => {
       <Link className='user-bar-menu-list-item' to='.'>
         Team hub
       </Link>
-      <button className='user-bar-menu-list-item logout'>Log out</button>
+      <button onClick={handleLogOut} className='user-bar-menu-list-item logout'>
+        Log out
+      </button>
     </div>
   );
 };

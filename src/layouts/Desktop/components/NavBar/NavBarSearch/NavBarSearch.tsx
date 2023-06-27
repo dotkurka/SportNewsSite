@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import searchIcon from 'assets/images/search-icon.svg';
 
-import type { INavSearch } from 'layouts/Desktop/MainLayout/components/NavBar/NavBarSearch/types';
+import type { INavSearch } from 'layouts/Desktop/components/NavBar/NavBarSearch/types';
 import './NavBarSearch.scss';
 
 const NavBarSearch = ({ data }: INavSearch) => {
