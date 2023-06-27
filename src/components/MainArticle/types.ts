@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
+// import type { ReactNode } from 'react';
 
-interface ISliderData {
+export interface ISliderData {
   img: string;
   alt: string;
   title: {
@@ -8,7 +8,7 @@ interface ISliderData {
     head: string;
     description: string;
   };
-  article?: ReactNode;
+  article?: string;
 }
 
 export interface IMainTitle {

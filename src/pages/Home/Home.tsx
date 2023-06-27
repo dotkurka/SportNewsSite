@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div className='home'>
       <MainArticle
-        variant={MainArticleVariant.Article}
+        variant={MainArticleVariant.Carousel}
         className='home-main-article'
         sliderData={dataMainArticle}
       />
