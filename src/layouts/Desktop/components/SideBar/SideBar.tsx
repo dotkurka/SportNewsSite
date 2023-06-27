@@ -4,6 +4,7 @@ import useClickOutside from 'hooks/useClickOutside';
 import SideBarFollow from 'layouts/Desktop/components/SideBar/SideBarFollow/SideBarFollow';
 import SideBarItem from 'layouts/Desktop/components/SideBar/SideBarItem/SideBarItem';
 import SubMenu from 'layouts/Desktop/components/SideBar/SubMenu/SubMenu';
+import { changeBackOverflow, changeOverflow } from 'utils/changeOverflow';
 
 import type { ISideBar } from './types';
 import type { ISidebarData } from 'config/SideBarData/types';
@@ -20,6 +21,7 @@ const SideBar = ({ data }: ISideBar) => {
     setSubMenu({ title: '', path: '' });
     setSecondSubMenu({ title: '', path: '' });
     setCheckedSub(null);
+    changeBackOverflow();
   };
 
   const getSecondSubItem = (item: ISidebarData) => {
@@ -42,6 +44,7 @@ const SideBar = ({ data }: ISideBar) => {
       setSecondSubMenu({ title: '', path: '' });
       setSubMenu(item);
       setChecked(item.title);
+      changeOverflow();
     }
   };
 

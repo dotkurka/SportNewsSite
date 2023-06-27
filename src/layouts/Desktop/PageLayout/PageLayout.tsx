@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { SidebarData } from 'config/SideBarData/SidebarData';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { MobilePageLayout } from 'layouts';
-import { NavBar, SideBar } from 'layouts/Desktop/components';
+import { Footer, NavBar, SideBar } from 'layouts/Desktop/components';
 
 import './PageLayout.scss';
 
@@ -23,8 +23,11 @@ const PageLayout = () => {
       <NavBar />
       <div className='page-layout-contain'>
         <SideBar data={SidebarData} />
-        <Outlet />
+        <div className='page-layout-contain-children'>
+          <Outlet />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
