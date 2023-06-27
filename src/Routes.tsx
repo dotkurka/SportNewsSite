@@ -4,6 +4,7 @@ import { Navigate, Route, Routes as RouterRoutes } from 'react-router-dom';
 import { ProtectedRoute } from 'components';
 import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
 import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pages';
+import TestPage from 'pages/TetsPage/TestPage';
 import { selectCurrentToken } from 'redux/authSlice';
 import { checkEmail, forgotPassword, logIn, newPassword, signIn } from 'utils/routesPath';
 
@@ -16,6 +17,7 @@ const Routes = () => {
       <Route element={<ProtectedRoute to={logIn} isAuth={!!isAuth} />}>
         <Route path='/' element={<PageLayout />}>
           <Route index element={<Home />} />
+          <Route path='test' element={<TestPage />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>

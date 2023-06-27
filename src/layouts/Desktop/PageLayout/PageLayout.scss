@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import 'styles/Colors.scss';
 
 .page-layout {
   max-width: 1440px;
@@ -39,6 +40,10 @@
   &-contain {
     display: flex;
     margin-left: 253px;
+
+    &-children {
+      padding-top: 82px;
+    }
   }
 }
 

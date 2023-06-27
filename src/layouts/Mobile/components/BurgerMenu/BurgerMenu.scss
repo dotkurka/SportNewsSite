@@ -15,10 +15,11 @@
 }
 
 .burger-menu {
+  z-index: 200;
   overflow: hidden;
   background-color: $alizarinCrimson;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 79px);
   display: flex;
   position: relative;
   opacity: 0;
