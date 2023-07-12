@@ -16,8 +16,8 @@ const Routes = () => {
     <RouterRoutes>
       <Route element={<ProtectedRoute to={logIn} isAuth={!!isAuth} />}>
         <Route path='/' element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route path='test' element={<TestPage />} />
+          <Route path='home' element={<Home />} />
+          <Route index element={<TestPage />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>

@@ -1,14 +1,16 @@
 // import type { ReactNode } from 'react';
 
+import type { ReactNode } from 'react';
+
 export interface ISliderData {
-  img: string;
-  alt: string;
+  img: string | undefined;
+  alt: string | undefined;
   title: {
-    published: string;
-    head: string;
-    description: string;
+    published: string | undefined;
+    head: string | undefined;
+    description: string | undefined;
   };
-  article?: string;
+  article?: ReactNode | undefined;
 }
 
 export interface IMainTitle {

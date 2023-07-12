@@ -27,7 +27,7 @@ const MainArticleTitle = ({ sliderData, currentIndex, setCurrentIndex, variant }
   return (
     <div className='main-article-title'>
       <div className='main-article-title-text'>
-        <span>{sliderData[currentIndex].title.published}</span>
+        <span>Published / {sliderData[currentIndex].title.published}</span>
         <h3>{sliderData[currentIndex].title.head}</h3>
         <h2>{sliderData[currentIndex].title.description}</h2>
       </div>

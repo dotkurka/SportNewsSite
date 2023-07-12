@@ -1,0 +1,20 @@
+.test-page {
+  display: flex;
+  flex-direction: column;
+
+  &-form {
+    margin-top: 30px;
+    width: 200px;
+
+    textarea {
+      padding: 5px;
+      resize: none;
+      width: 700px;
+      height: 500px;
+    }
+  }
+
+  &-mark {
+    visibility: visible;
+  }
+}
