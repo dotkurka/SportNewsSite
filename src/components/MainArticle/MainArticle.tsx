@@ -41,7 +41,7 @@ const MainArticle = ({
       </div>
 
       {mainArticleVariant[variant] === mainArticleVariant.article && (
-        <p className='main-article-text'>{sliderData[0].article}</p>
+        <div className='main-article-text'>{sliderData[0].article}</div>
       )}
     </div>
   );

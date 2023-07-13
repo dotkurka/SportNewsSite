@@ -27,7 +27,7 @@
   }
 
   &-text {
-    margin-top: 40px;
+    margin-top: 20px;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
@@ -43,10 +43,8 @@
       }
     }
 
-    br {
-      content: '';
-      display: block;
-      margin-bottom: 20px;
+    p {
+      margin-top: 20px;
     }
   }
 

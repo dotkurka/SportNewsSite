@@ -15,6 +15,14 @@
   }
 
   &-mark {
-    visibility: visible;
+    position: absolute;
+    left: -30000px;
+    opacity: 0;
+    font-size: 2px;
+    width: 150px;
+
+    img {
+      width: 100px;
+    }
   }
 }

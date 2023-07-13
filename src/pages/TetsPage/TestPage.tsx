@@ -8,25 +8,11 @@ import { MainArticleVariant } from 'components/MainArticle/types';
 import { currentDate } from 'utils/currentDate';
 
 import type { ISliderData } from 'components/MainArticle/types';
-import type { ReactNode } from 'react';
+import type { ICreateArticleData, IInitValueForm } from 'pages/TetsPage/types';
 
 import './TestPage.scss';
 
-interface IInitValue {
-  article: string;
-}
-
-interface ICreateArticle {
-  img: string | undefined;
-  alt: string | undefined;
-  title: {
-    head: string | undefined;
-    description: string | undefined;
-  };
-  article: ReactNode | undefined;
-}
-
-const intialArticleData: IInitValue = {
+const intialArticleData: IInitValueForm = {
   article: '',
 };
 
@@ -45,7 +31,7 @@ const TestPage = () => {
   const [articleMarkDown, setArticleMarkDown] = useState('');
   const [articleData, setArticleData] = useState<ISliderData>(initialValuesData);
 
-  const createArticleData = (article: ICreateArticle) => {
+  const createArticleData = (article: ICreateArticleData) => {
     const post: ISliderData = {
       img: article.img,
       alt: article.alt,
@@ -60,14 +46,12 @@ const TestPage = () => {
     setArticleData(post);
   };
 
-  console.log(articleData);
-
-  const getArticleTag = () => {
-    const currentDiv = document.getElementById('post-test');
+  const getArticleTag = async () => {
+    const currentDiv = await document.getElementById('post-test');
     const hElements = currentDiv?.getElementsByTagName('h1')[0]?.innerText;
-    const imgElement = currentDiv?.getElementsByTagName('img')[0]?.currentSrc;
-    const imgAltElement = currentDiv?.getElementsByTagName('img')[0]?.alt;
     const hTwoElements = currentDiv?.getElementsByTagName('h2')[0]?.innerText;
+    const imgElement = currentDiv?.getElementsByTagName('img')[0]?.src;
+    const imgAltElement = currentDiv?.getElementsByTagName('img')[0]?.alt;
     const pElement = currentDiv?.getElementsByTagName('p');
     const allPElement =
       pElement &&
@@ -92,9 +76,9 @@ const TestPage = () => {
     createArticleData(article);
   };
 
-  const handleSubmit = (values: IInitValue) => {
-    getArticleTag();
+  const handleSubmit = (values: IInitValueForm) => {
     setArticleMarkDown(values.article);
+    getArticleTag();
   };
 
   return (
@@ -102,7 +86,6 @@ const TestPage = () => {
       {articleData.img && (
         <MainArticle sliderData={[articleData]} variant={MainArticleVariant.Article} />
       )}
-
       <div className='test-page-form'>
         <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
           {({ values, handleChange }) => (
@@ -112,8 +95,8 @@ const TestPage = () => {
             </Form>
           )}
         </Formik>
-        <div id='post-test'>
-          <ReactMarkdown className='test-page-mark'>{articleMarkDown}</ReactMarkdown>
+        <div id='post-test' className='test-page-mark'>
+          <ReactMarkdown>{articleMarkDown}</ReactMarkdown>
         </div>
       </div>
     </div>
