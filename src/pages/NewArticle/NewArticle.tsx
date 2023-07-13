@@ -3,18 +3,14 @@ import parse from 'html-react-parser';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { MainArticle } from 'components';
+import { Button, MainArticle, Select } from 'components';
 import { MainArticleVariant } from 'components/MainArticle/types';
 import { currentDate } from 'utils/currentDate';
 
 import type { ISliderData } from 'components/MainArticle/types';
-import type { ICreateArticleData, IInitValueForm } from 'pages/TetsPage/types';
+import type { IInitValueForm } from 'pages/NewArticle/types';
 
-import './TestPage.scss';
-
-const intialArticleData: IInitValueForm = {
-  article: '',
-};
+import './NewArticle.scss';
 
 const initialValuesData = {
   img: '',
@@ -27,23 +23,13 @@ const initialValuesData = {
   article: '',
 };
 
-const TestPage = () => {
+const NewArticle = () => {
+  const [showPreview, setShowPreview] = useState(false);
   const [articleMarkDown, setArticleMarkDown] = useState('');
   const [articleData, setArticleData] = useState<ISliderData>(initialValuesData);
 
-  const createArticleData = (article: ICreateArticleData) => {
-    const post: ISliderData = {
-      img: article.img,
-      alt: article.alt,
-      title: {
-        published: currentDate,
-        head: article.title.head,
-        description: article.title.description,
-      },
-      article: article.article,
-    };
-
-    setArticleData(post);
+  const intialArticleData: IInitValueForm = {
+    article: articleMarkDown,
   };
 
   const getArticleTag = async () => {
@@ -63,44 +49,61 @@ const TestPage = () => {
 
     const allPElementToJSX = parse(allPElement || '');
 
-    const article = {
-      img: imgElement,
-      alt: imgAltElement,
+    return { hElements, hTwoElements, imgElement, imgAltElement, allPElementToJSX };
+  };
+
+  const createArticleData = async () => {
+    const data = await getArticleTag();
+
+    const post: ISliderData = {
+      img: data.imgElement,
+      alt: data.imgAltElement,
       title: {
-        head: hTwoElements,
-        description: hElements,
+        published: currentDate,
+        head: data.hTwoElements,
+        description: data.hTwoElements,
       },
-      article: allPElementToJSX,
+      article: data.allPElementToJSX,
     };
 
-    createArticleData(article);
+    setArticleData(post);
+  };
+
+  const handleClosePreview = () => {
+    setShowPreview(false);
   };
 
   const handleSubmit = (values: IInitValueForm) => {
     setArticleMarkDown(values.article);
     getArticleTag();
+    createArticleData();
+    setShowPreview(true);
   };
 
   return (
     <div className='test-page'>
-      {articleData.img && (
+      <Select selectItem={['blabla', 'bebebe', 'kwawa', 'lklklk']} />
+      {showPreview && (
         <MainArticle sliderData={[articleData]} variant={MainArticleVariant.Article} />
       )}
-      <div className='test-page-form'>
-        <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
-          {({ values, handleChange }) => (
-            <Form style={{ display: 'flex', flexDirection: 'column' }}>
-              <textarea onChange={handleChange} name='article' value={values.article} />
-              <button type='submit'>Submit</button>
-            </Form>
-          )}
-        </Formik>
-        <div id='post-test' className='test-page-mark'>
-          <ReactMarkdown>{articleMarkDown}</ReactMarkdown>
+      {!showPreview && (
+        <div className='test-page-form'>
+          <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
+            {({ values, handleChange }) => (
+              <Form>
+                <textarea onChange={handleChange} name='article' value={values.article} />
+                <Button type='submit'>Preview</Button>
+              </Form>
+            )}
+          </Formik>
         </div>
+      )}
+      {showPreview && <Button onClick={handleClosePreview}>Back</Button>}
+      <div id='post-test' className='test-page-mark'>
+        <ReactMarkdown>{articleMarkDown}</ReactMarkdown>
       </div>
     </div>
   );
 };
 
-export default TestPage;
+export default NewArticle;

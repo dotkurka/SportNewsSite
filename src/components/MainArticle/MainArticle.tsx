@@ -21,10 +21,10 @@ const MainArticle = ({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   return (
-    <div className={`main-article ${className}`}>
+    <div className={`main-article ${className || ''}`}>
       <div
         className={`main-article-contain ${
-          mainArticleVariant[variant] === mainArticleVariant.article ? null : 'adaptive'
+          mainArticleVariant[variant] === mainArticleVariant.article ? '' : 'adaptive'
         }`}
       >
         <img

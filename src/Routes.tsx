@@ -4,7 +4,7 @@ import { Navigate, Route, Routes as RouterRoutes } from 'react-router-dom';
 import { ProtectedRoute } from 'components';
 import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
 import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pages';
-import TestPage from 'pages/TetsPage/TestPage';
+import TestPage from 'pages/NewArticle/NewArticle';
 import { selectCurrentToken } from 'redux/authSlice';
 import { checkEmail, forgotPassword, logIn, newPassword, signIn } from 'utils/routesPath';
 
