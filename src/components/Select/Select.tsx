@@ -1,15 +1,14 @@
 import { useState } from 'react';
 
 import arrowFlag from 'assets/images/arrow-down-flag.svg';
+import { Input } from 'components';
 import useClickOutside from 'hooks/useClickOutside';
+
+import type { ISelect } from 'components/Select/types';
 
 import './Select.scss';
 
-interface ISelect {
-  selectItem: string[];
-}
-
-const Select = ({ selectItem }: ISelect) => {
+const Select = ({ options, placeholder, label }: ISelect) => {
   const [currentSelect, setCurrentSelect] = useState('');
   const [selected, setSelected] = useState<string | null>(null);
   const [selectShow, setSelectShow] = useState(false);
@@ -27,18 +26,23 @@ const Select = ({ selectItem }: ISelect) => {
   };
   return (
     <div ref={selectRef} className='select'>
-      <input
-        onClick={() => handleShowMenu()}
-        placeholder='Not Selected'
-        value={currentSelect}
-        className='select-item'
-      />
+      <div className='select-input-contain'>
+        <Input
+          onClick={() => handleShowMenu()}
+          value={currentSelect}
+          placeholder={placeholder}
+          label={label}
+          type='text'
+          readOnly
+          className='select-input'
+        />
 
-      <img src={arrowFlag} alt='' />
+        <img className={label ? 'label' : ''} src={arrowFlag} alt='' />
+      </div>
 
       {selectShow && (
         <div className='select-list'>
-          {selectItem.map((item) => (
+          {options.map((item) => (
             <button
               key={item}
               disabled={selected === item}

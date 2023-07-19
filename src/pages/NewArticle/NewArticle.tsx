@@ -82,7 +82,7 @@ const NewArticle = () => {
 
   return (
     <div className='test-page'>
-      <Select selectItem={['blabla', 'bebebe', 'kwawa', 'lklklk']} />
+      <Select options={['blabla', 'bebebe', 'kwawa', 'lklklk']} />
       {showPreview && (
         <MainArticle sliderData={[articleData]} variant={MainArticleVariant.Article} />
       )}

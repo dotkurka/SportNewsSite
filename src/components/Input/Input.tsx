@@ -37,20 +37,24 @@ const Input = ({
 
   return (
     <div className={`input-contain ${className || ''}`}>
-      <label className='input-label' htmlFor='input'>
-        {label}
-      </label>
+      {label && (
+        <label className='input-label' htmlFor='input'>
+          {label}
+        </label>
+      )}
 
       {description && <div className='res-password'>{description}</div>}
 
-      <input
-        {...props}
-        type={type}
-        placeholder={placeholder}
-        className={`input input-${inputClass[isValid]}`}
-      />
+      <div className='input-contain-inner'>
+        <input
+          {...props}
+          type={type}
+          placeholder={placeholder}
+          className={`input input-${inputClass[isValid]}`}
+        />
 
-      {imgVariant && <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />}
+        {imgVariant && <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />}
+      </div>
     </div>
   );
 };
