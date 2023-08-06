@@ -30,7 +30,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (isError) {
-      const error = (singInError as IRequestError).data.errors.DuplicateEmail;
+      const error = (singInError as IRequestError).data.message;
       setErrorMessage(error);
     }
   }, [isError]);

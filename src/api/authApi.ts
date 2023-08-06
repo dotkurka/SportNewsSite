@@ -19,18 +19,18 @@ export const authApi = createApi({
   }),
   endpoints: (build) => ({
     getUser: build.query<IUser, void>({
-      query: () => 'me',
+      query: () => 'user',
     }),
     logIn: build.mutation<IUserResponse, ILoginRequest>({
       query: (body) => ({
-        url: 'sign-in',
+        url: 'login',
         method: 'POST',
         body,
       }),
     }),
     signUp: build.mutation<IUserResponse, ISignUpRequest>({
       query: (body) => ({
-        url: 'sign-up',
+        url: 'registration',
         method: 'POST',
         body,
       }),

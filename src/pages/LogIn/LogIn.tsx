@@ -11,7 +11,7 @@ import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
 import { signIn } from 'utils/routesPath';
 
-import type { ILoginRequest } from 'features/auth/types';
+import type { ILoginRequest, IRequestError } from 'features/auth/types';
 
 import 'features/auth/style.scss';
 
@@ -19,12 +19,6 @@ const initialValues: ILoginRequest = {
   email: '',
   password: '',
 };
-
-interface IError {
-  data: {
-    title: string;
-  };
-}
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -35,7 +29,7 @@ const LogIn = () => {
 
   useEffect(() => {
     if (isError) {
-      const error = (logInError as IError).data.title;
+      const error = (logInError as IRequestError).data.message;
       setErrorMessage(error);
     }
   }, [isError]);

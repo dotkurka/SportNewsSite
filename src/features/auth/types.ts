@@ -28,9 +28,5 @@ export interface ISignUpRequest {
 export interface IRequestError {
   data: {
     message: string;
-    errors: {
-      DuplicateEmail: string;
-      DuplicateUserName: string;
-    };
   };
 }
