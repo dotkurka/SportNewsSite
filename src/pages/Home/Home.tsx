@@ -9,7 +9,6 @@ import {
 import { ArticleTitleVariant } from 'components/ArticleTitle/types';
 import { MainArticleVariant } from 'components/MainArticle/types';
 import {
-  articleColectionData,
   articleData,
   dataMainArticle,
   dataSub,
@@ -27,19 +26,19 @@ const Home = () => {
         sliderData={dataMainArticle}
       />
       <div className='home-sub-article'>
-        {dataSub.map((item) => (
-          <SubArticle key={item.img} className='home-sub-article-item' subArticleData={item} />
+        {dataSub.map((item, index) => (
+          <SubArticle key={index} className='home-sub-article-item' subArticleData={item} />
         ))}
       </div>
       <ArticleTitle className='home-title'>Breakdown</ArticleTitle>
       <div className='home-breakdown'>
         <div className='home-breakdown-article'>
           <Article articleData={articleData} />
-          <ArticleCollection collection={articleColectionData} />
+          <ArticleCollection collection={dataMainArticle} />
         </div>
         <div className='home-breakdown-article'>
           <Article articleData={articleData} />
-          <ArticleCollection collection={articleColectionData} />
+          <ArticleCollection collection={dataMainArticle} />
         </div>
       </div>
       <ArticleTitle className='home-title'>Photo of the day</ArticleTitle>
@@ -50,13 +49,13 @@ const Home = () => {
             <ArticleTitle variant={ArticleTitleVariant.small} className='home-potd-article-title'>
               Most popular
             </ArticleTitle>
-            <ArticleCollection collection={articleColectionData} />
+            <ArticleCollection collection={dataMainArticle} />
           </div>
           <div className='home-potd-article'>
             <ArticleTitle variant={ArticleTitleVariant.small} className='home-potd-article-title'>
               Most coments
             </ArticleTitle>
-            <ArticleCollection collection={articleColectionData} />
+            <ArticleCollection collection={dataMainArticle} />
           </div>
         </div>
       </div>

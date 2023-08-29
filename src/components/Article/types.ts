@@ -1,8 +1,15 @@
-interface IArticleData {
+import type { ReactNode } from 'react';
+
+export interface IArticleData {
   img: string;
   alt: string;
-  category: string;
-  description: string;
+  title: {
+    published: string;
+    head: string;
+    description: string;
+  };
+  category?: string;
+  article?: ReactNode;
   path: string;
 }
 

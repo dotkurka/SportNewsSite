@@ -12,7 +12,7 @@ interface ISubMenu {
 }
 
 const SubMenu = ({ subData, checked, className = '', onClick }: ISubMenu) => {
-  if (!subData) {
+  if (!subData?.length) {
     return null;
   }
   return (

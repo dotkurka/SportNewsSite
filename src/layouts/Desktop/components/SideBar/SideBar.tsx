@@ -28,7 +28,7 @@ const SideBar = ({ data }: ISideBar) => {
     if (item.title === secondSubMenu.title) {
       setSecondSubMenu({ title: '', path: '' });
       setCheckedSub(null);
-    } else if (!item.subItem) {
+    } else if (!item.subItem?.length) {
       closeSubMenu();
     } else {
       setSecondSubMenu(item);
@@ -52,10 +52,10 @@ const SideBar = ({ data }: ISideBar) => {
 
   return (
     <div className='sidebar'>
-      <div className={`sidebar-bg ${subMenu.subItem ? 'active' : ''}`}>
+      <div className={`sidebar-bg ${subMenu.subItem?.length ? 'active' : ''}`}>
         <div ref={outsideClickRef} className='sidebar-contain'>
-          <div className={`sidebar-list ${subMenu.subItem ? 'active' : ''}`}>
-            {data.map((item) => (
+          <div className={`sidebar-list ${subMenu.subItem?.length ? 'active' : ''}`}>
+            {data?.map((item) => (
               <SideBarItem
                 onClick={() => getSubItem(item)}
                 isActive={item.title === checked}

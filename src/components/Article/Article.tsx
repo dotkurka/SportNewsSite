@@ -11,7 +11,7 @@ const Article = ({ articleData }: IArticle) => {
       <span className='article-category'>{articleData.category}</span>
       <img src={articleData.img} alt={articleData.alt} />
       <div className='article-text'>
-        <h2>{articleData.description}</h2>
+        <h2>{articleData.title.description}</h2>
         <Link className='article-button' to={articleData.path}>
           <ArrowButton />
         </Link>

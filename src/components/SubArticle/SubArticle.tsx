@@ -10,8 +10,8 @@ const SubArticle = ({ subArticleData, className }: ISubArticle) => {
     <div className={`sub-article ${className}`}>
       <div className='sub-article-border' />
       <img className='sub-article-img' src={subArticleData.img} alt={subArticleData.alt} />
-      <h3>{subArticleData.title}</h3>
-      <p>{subArticleData.description}</p>
+      <h3>{subArticleData.title.head}</h3>
+      <p>{subArticleData.title.description}</p>
       <Link className='sub-article-button' to={subArticleData.path}>
         <ArrowButton />
       </Link>

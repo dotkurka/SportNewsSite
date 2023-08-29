@@ -7,7 +7,7 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_FETCH_URL}/auth`,
+    baseUrl: `${process.env.REACT_APP_FETCH_URL}/api/auth`,
     prepareHeaders: (headers, { getState }) => {
       const { token } = (getState() as RootState).auth;
 

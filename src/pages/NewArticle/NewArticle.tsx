@@ -7,7 +7,7 @@ import { Button, MainArticle, Select } from 'components';
 import { MainArticleVariant } from 'components/MainArticle/types';
 import { currentDate } from 'utils/currentDate';
 
-import type { ISliderData } from 'components/MainArticle/types';
+import type { IArticleData } from 'components/Article/types';
 import type { IInitValueForm } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
@@ -21,19 +21,21 @@ const initialValuesData = {
     description: '',
   },
   article: '',
+  category: '',
+  path: '',
 };
 
 const NewArticle = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [articleMarkDown, setArticleMarkDown] = useState('');
-  const [articleData, setArticleData] = useState<ISliderData>(initialValuesData);
+  const [articleData, setArticleData] = useState<IArticleData>(initialValuesData);
 
   const intialArticleData: IInitValueForm = {
     article: articleMarkDown,
   };
 
   const getArticleTag = async () => {
-    const currentDiv = await document.getElementById('post-test');
+    const currentDiv = (await document.getElementById('post-test')) as HTMLElement;
     const hElements = currentDiv?.getElementsByTagName('h1')[0]?.innerText;
     const hTwoElements = currentDiv?.getElementsByTagName('h2')[0]?.innerText;
     const imgElement = currentDiv?.getElementsByTagName('img')[0]?.src;
@@ -55,15 +57,17 @@ const NewArticle = () => {
   const createArticleData = async () => {
     const data = await getArticleTag();
 
-    const post: ISliderData = {
+    const post: IArticleData = {
       img: data.imgElement,
       alt: data.imgAltElement,
       title: {
         published: currentDate,
-        head: data.hTwoElements,
+        head: data.hElements,
         description: data.hTwoElements,
       },
       article: data.allPElementToJSX,
+      category: 'NBA',
+      path: data.hElements.replaceAll(' ', '_'),
     };
 
     setArticleData(post);
@@ -79,6 +83,7 @@ const NewArticle = () => {
     createArticleData();
     setShowPreview(true);
   };
+  console.log(articleData);
 
   return (
     <div className='test-page'>

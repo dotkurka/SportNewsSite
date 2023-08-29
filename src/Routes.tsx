@@ -9,14 +9,15 @@ import { selectCurrentToken } from 'redux/authSlice';
 import { checkEmail, forgotPassword, logIn, newPassword, signIn } from 'utils/routesPath';
 
 const Routes = () => {
-  const isAuth = useSelector(selectCurrentToken);
+  const isAuth1 = useSelector(selectCurrentToken);
+  const isAuth = true;
 
   return (
     <RouterRoutes>
       <Route element={<ProtectedRoute to={logIn} isAuth={!!isAuth} />}>
         <Route path='/' element={<PageLayout />}>
-          <Route path='home' element={<Home />} />
-          <Route index element={<NewArticle />} />
+          <Route index element={<Home />} />
+          <Route path='/home' element={<NewArticle />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>

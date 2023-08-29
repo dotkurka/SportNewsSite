@@ -1,12 +1,6 @@
-export interface ISubArticleData {
-  img: string;
-  alt: string;
-  title: string;
-  description: string;
-  path: string;
-}
+import type { IArticleData } from 'components/Article/types';
 
 export interface ISubArticle {
-  subArticleData: ISubArticleData;
+  subArticleData: IArticleData;
   className?: string;
 }

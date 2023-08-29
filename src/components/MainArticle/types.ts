@@ -1,27 +1,14 @@
-// import type { ReactNode } from 'react';
-
-import type { ReactNode } from 'react';
-
-export interface ISliderData {
-  img: string | undefined;
-  alt: string | undefined;
-  title: {
-    published: string | undefined;
-    head: string | undefined;
-    description: string | undefined;
-  };
-  article?: ReactNode | undefined;
-}
+import type { IArticleData } from 'components/Article/types';
 
 export interface IMainTitle {
-  sliderData: ISliderData[];
+  sliderData: IArticleData[];
   currentIndex: number;
   setCurrentIndex: (index: number) => void;
   variant: MainArticleVariant;
 }
 
 export interface IMainArticle {
-  sliderData: ISliderData[];
+  sliderData: IArticleData[];
   className?: string;
   variant?: MainArticleVariant;
 }
