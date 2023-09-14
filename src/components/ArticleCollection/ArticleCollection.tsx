@@ -17,7 +17,7 @@ const ArticleCollection = ({ collection }: IArticleCollection) => {
             </td>
             <td className='article-collection-text'>
               <h3>{post.title.head}</h3>
-              <p>{post.title.description.substring(0, 50)}</p>
+              <p>{`${post.title.description.substring(0, 50)}...`}</p>
               <Link className='article-collection-button' to={post.path}>
                 <ArrowButton />
               </Link>

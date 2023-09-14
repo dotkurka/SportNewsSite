@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { useGetAllPageQuery } from 'api/articleApi';
+import { useGetAllCategoryQuery } from 'api/categoryApi';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { MobilePageLayout } from 'layouts';
 import { Footer, NavBar, SideBar } from 'layouts/Desktop/components';
@@ -10,7 +10,7 @@ import './PageLayout.scss';
 const PageLayout = () => {
   const isMobile = useMobileWidth(1024);
 
-  const { data: SidebarData } = useGetAllPageQuery();
+  const { data: SidebarData } = useGetAllCategoryQuery();
 
   if (isMobile) {
     return <MobilePageLayout />;

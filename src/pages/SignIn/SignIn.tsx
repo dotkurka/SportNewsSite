@@ -26,7 +26,7 @@ const SignIn = () => {
   const isMobile = useMobileWidth(1024);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [signUp, { error: singInError, isError }] = useSignUpMutation();
+  const [signIn, { error: singInError, isError }] = useSignUpMutation();
 
   useEffect(() => {
     if (isError) {
@@ -36,7 +36,7 @@ const SignIn = () => {
   }, [isError]);
 
   const submit = async (values: ISignUpRequest) => {
-    const result = await signUp(values);
+    const result = await signIn(values);
     if ('data' in result) {
       dispatch(setToken(result.data));
     }

@@ -11,29 +11,29 @@ export const SidebarData: ISidebarData[] = [
     subItem: [
       {
         title: 'NBA 1',
-        path: '/hgjghjjgfhj',
+        path: '/NBA_1',
         subItem: [
           {
             title: 'NBA 11',
-            path: '/hgjg232423',
+            path: '/NBA_1_1',
           },
           {
             title: 'NBA 12',
-            path: '/hgjgh343568733333',
+            path: '/NBA_1_2',
           },
         ],
       },
       {
         title: 'NBA 2',
-        path: '/hg3333',
+        path: '/NBA_2',
         subItem: [
           {
             title: 'NBA 21',
-            path: '/hgjghj8889kjkjgfhj',
+            path: '/NBA_2_1',
           },
           {
             title: 'NBA 22',
-            path: '/hgjgh67lll3333',
+            path: '/NBA_2_2',
           },
         ],
       },
@@ -45,39 +45,41 @@ export const SidebarData: ISidebarData[] = [
     subItem: [
       {
         title: 'NFL 1',
-        path: '/hjkh55hgfh',
+        path: '/NFL_1',
         subItem: [
           {
             title: 'NFL 11',
-            path: '/hgjg232489823',
+            path: '/NFL_1_1',
           },
           {
             title: 'NFL 12',
-            path: '/jkjkj7878',
-          },
-          {
-            title: 'NFL 13',
-            path: '/8797jjjj',
-          },
-          {
-            title: 'NFL 14',
-            path: '/hgjgh343k879568733333',
+            path: '/NFL_1_2',
           },
         ],
       },
       {
         title: 'NFL 2',
-        path: '/hjkh55hg3434fh',
+        path: '/NFL_2',
         subItem: [
           {
             title: 'NFL 21',
-            path: '/hgjg232423',
+            path: '/NFL_2_1',
           },
           {
             title: 'NFL 22',
-            path: '/hgjghg453434543333',
+            path: '/NFL_2_2',
           },
         ],
+      },
+    ],
+  },
+  {
+    title: 'MLB',
+    path: '/MLB',
+    subItem: [
+      {
+        title: 'MLB 1',
+        path: '/MLB_1',
       },
     ],
   },
@@ -86,8 +88,28 @@ export const SidebarData: ISidebarData[] = [
     path: '/NHL',
     subItem: [
       {
-        title: 'NHL fddsfsdf',
-        path: '/htghfgb56h5h',
+        title: 'NHL 1',
+        path: '/NHL_1',
+      },
+    ],
+  },
+  {
+    title: 'CBB',
+    path: '/CBB',
+    subItem: [
+      {
+        title: 'CBB 1',
+        path: '/CBB_1',
+      },
+    ],
+  },
+  {
+    title: 'CFB',
+    path: '/CFB',
+    subItem: [
+      {
+        title: 'CFB 1',
+        path: '/CFB_1',
       },
     ],
   },
@@ -96,8 +118,8 @@ export const SidebarData: ISidebarData[] = [
     path: '/NASCAR',
     subItem: [
       {
-        title: 'Nascar sdfsdf',
-        path: '/gh5h5ghb57',
+        title: 'Nascar 1',
+        path: '/NASCAR_1',
       },
     ],
   },

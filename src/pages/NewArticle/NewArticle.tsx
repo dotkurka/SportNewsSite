@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Button, MainArticle, Select } from 'components';
 import { MainArticleVariant } from 'components/MainArticle/types';
+import MarkdownForm from 'components/MarkdowanForm/MarkdowanForm';
 import { currentDate } from 'utils/currentDate';
 
 import type { IArticleData } from 'components/Article/types';
@@ -83,7 +84,6 @@ const NewArticle = () => {
     createArticleData();
     setShowPreview(true);
   };
-  console.log(articleData);
 
   return (
     <div className='test-page'>
@@ -92,11 +92,11 @@ const NewArticle = () => {
         <MainArticle sliderData={[articleData]} variant={MainArticleVariant.Article} />
       )}
       {!showPreview && (
-        <div className='test-page-form'>
+        <div>
           <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
             {({ values, handleChange }) => (
               <Form>
-                <textarea onChange={handleChange} name='article' value={values.article} />
+                <MarkdownForm value={values.article} onChange={handleChange} name='article' />
                 <Button type='submit'>Preview</Button>
               </Form>
             )}

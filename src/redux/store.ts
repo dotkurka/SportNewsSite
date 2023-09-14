@@ -1,17 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { articleApi } from 'api/articleApi';
 import { authApi } from 'api/authApi';
+import { categoryApi } from 'api/categoryApi';
+import { fileUploadApi } from 'api/fileUploadApi';
 import auth from 'redux/authSlice';
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
-    [articleApi.reducerPath]: articleApi.reducer,
+    [categoryApi.reducerPath]: categoryApi.reducer,
+    [fileUploadApi.reducerPath]: fileUploadApi.reducer,
     auth,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware).concat(articleApi.middleware),
+    getDefaultMiddleware()
+      .concat(authApi.middleware)
+      .concat(categoryApi.middleware)
+      .concat(fileUploadApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
