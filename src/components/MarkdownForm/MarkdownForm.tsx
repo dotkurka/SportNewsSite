@@ -3,16 +3,16 @@ import { useFormikContext } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 
 import { useFileUploadMutation } from 'api/fileUploadApi';
-import { bold, italic, title1, title2, underline } from 'components/MarkdowanForm/toolbarComands';
+import { bold, italic, title1, title2, underline } from 'components/MarkdownForm/toolbarComands';
 
 import type { ICommand } from '@uiw/react-md-editor';
-import type { IMarkdownForm } from 'components/MarkdowanForm/types';
+import type { IMarkdownForm } from 'components/MarkdownForm/types';
 import type { IRequestError } from 'features/auth/types';
 import type { IFileRequest, IFileResponse } from 'features/fileUpload/types';
 
 import './MarkdowanForm.scss';
 
-const MarkdownForm = ({ value, onChange, ...textareaProps }: IMarkdownForm) => {
+const MarkdownForm = ({ value, ...textareaProps }: IMarkdownForm) => {
   const [imageData, setImageData] = useState<IFileResponse>();
   const [errorMessage, setErrorMessage] = useState('');
   const [uploadFile, { error: uploadError, isError }] = useFileUploadMutation();
@@ -38,7 +38,7 @@ const MarkdownForm = ({ value, onChange, ...textareaProps }: IMarkdownForm) => {
     if (imageData) {
       const insertValue = `${value}![${imageData.originalName}](${imageData.path}) \n`;
 
-      onChange(insertValue);
+      setFieldValue(textareaProps.name, insertValue);
     }
   };
 
@@ -84,7 +84,7 @@ const MarkdownForm = ({ value, onChange, ...textareaProps }: IMarkdownForm) => {
           id='MDarea'
           prefixCls='markdown-form'
           value={value}
-          onChange={(val = '') => setFieldValue(textareaProps.name, val)}
+          onChange={(val) => setFieldValue(textareaProps.name, val)}
           commands={[
             title1,
             title2,

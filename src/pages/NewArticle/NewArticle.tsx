@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Button, MainArticle, Select } from 'components';
 import { MainArticleVariant } from 'components/MainArticle/types';
-import MarkdownForm from 'components/MarkdowanForm/MarkdowanForm';
+import MarkdownForm from 'components/MarkdownForm/MarkdownForm';
 import { currentDate } from 'utils/currentDate';
 
 import type { IArticleData } from 'components/Article/types';
@@ -94,9 +94,9 @@ const NewArticle = () => {
       {!showPreview && (
         <div>
           <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
-            {({ values, handleChange }) => (
+            {({ values }) => (
               <Form>
-                <MarkdownForm value={values.article} onChange={handleChange} name='article' />
+                <MarkdownForm value={values.article} name='article' />
                 <Button type='submit'>Preview</Button>
               </Form>
             )}
