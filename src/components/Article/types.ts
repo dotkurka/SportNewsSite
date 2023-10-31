@@ -1,15 +1,11 @@
-import type { ReactNode } from 'react';
-
 export interface IArticleData {
   img: string;
   alt: string;
-  title: {
-    published: string;
-    head: string;
-    description: string;
-  };
-  category?: string;
-  article?: ReactNode;
+  title: string;
+  description: string;
+  category: string;
+  article: string;
+  published: string;
   path: string;
 }
 

@@ -14,16 +14,19 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
 .markdown-form-bar svg {
   display: block;
   margin: 0 auto;
   height: 2;
   color: $silver;
 }
+
 .markdown-form-area {
   overflow: auto;
   border-radius: 5px;
 }
+
 .markdown-form-text {
   min-height: 100%;
   position: relative;
@@ -39,6 +42,7 @@
   -webkit-font-variant-ligatures: common-ligatures;
   font-variant-ligatures: common-ligatures;
 }
+
 .markdown-form-text-pre,
 .markdown-form-text-input,
 .markdown-form-text > .markdown-form-text-pre {
@@ -64,18 +68,22 @@
   word-break: normal;
   padding: 0;
 }
+
 .markdown-form-text-pre {
+  display: none;
   position: relative;
   margin: 0px !important;
   pointer-events: none;
   background-color: transparent !important;
 }
+
 .markdown-form-text-pre > code {
   padding: 0 !important;
   font-family: var(--md-editor-font-family) !important;
   font-size: 14px !important;
   line-height: 18px !important;
 }
+
 .markdown-form-text-input {
   position: absolute;
   top: 0px;
@@ -87,27 +95,20 @@
   overflow: hidden;
   outline: 0;
   padding: inherit;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-fill-color: transparent;
 }
+
 .markdown-form-text-input:empty {
   -webkit-text-fill-color: inherit !important;
 }
+
 .markdown-form-text-pre,
 .markdown-form-text-input {
   word-wrap: pre;
   word-break: break-word;
   white-space: pre-wrap;
 }
-/**
- * Hack to apply on some CSS on IE10 and IE11
- */
+
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  /**
-    * IE doesn't support '-webkit-text-fill-color'
-    * So we use 'color: transparent' to make the text transparent on IE
-    * Unlike other browsers, it doesn't affect caret color in IE
-    */
   .markdown-form-text-input {
     color: transparent !important;
   }
@@ -116,34 +117,43 @@
     color: transparent !important;
   }
 }
+
 .markdown-form-text-pre .punctuation {
   color: var(--color-prettylights-syntax-comment, #8b949e) !important;
 }
+
 .markdown-form-text-pre .token.url,
 .markdown-form-text-pre .token.content {
   color: var(--color-prettylights-syntax-constant, #0550ae) !important;
 }
+
 .markdown-form-text-pre .token.title.important {
   color: var(--color-prettylights-syntax-markup-bold, #24292f);
 }
+
 .markdown-form-text-pre .token.code-block .function {
   color: var(--color-prettylights-syntax-entity, #8250df);
 }
+
 .markdown-form-text-pre .token.bold {
   font-weight: unset !important;
 }
+
 .markdown-form-text-pre .token.title {
   line-height: unset !important;
   font-size: unset !important;
   font-weight: unset !important;
 }
+
 .markdown-form-text-pre .token.code.keyword {
   color: var(--color-prettylights-syntax-constant, #0550ae) !important;
 }
+
 .markdown-form-text-pre .token.strike,
 .markdown-form-text-pre .token.strike .content {
   color: var(--color-prettylights-syntax-markup-deleted-text, #82071e) !important;
 }
+
 .markdown-form-toolbar-child {
   position: absolute;
   border-radius: 3px;
@@ -153,17 +163,21 @@
   z-index: 1;
   display: none;
 }
+
 .markdown-form-toolbar-child.active {
   display: block;
 }
+
 .markdown-form-toolbar-child .markdown-form-toolbar {
   border-bottom: 0;
   padding: 3px;
   border-radius: 3px;
 }
+
 .markdown-form-toolbar-child .markdown-form-toolbar ul > li {
   display: block;
 }
+
 .markdown-form-toolbar-child .markdown-form-toolbar ul > li button {
   width: -webkit-fill-available;
   height: initial;
@@ -171,6 +185,7 @@
   padding: 3px 4px 2px 4px;
   margin: 0;
 }
+
 .markdown-form-toolbar {
   height: 47px;
   border-bottom: 1px solid $softPeach;
@@ -184,27 +199,32 @@
   user-select: none;
   flex-wrap: wrap;
 }
+
 .markdown-form-toolbar.bottom {
   border-bottom: 0px;
   border-top: 1px solid var(--md-editor-box-shadow-color);
   border-radius: 0 0 3px 3px;
 }
+
 .markdown-form-toolbar ul,
 .markdown-form-toolbar li {
   margin: 0;
   padding: 0;
-  list-style: none;
-  line-height: initial;
+  display: flex;
+  align-items: center;
 }
+
 .markdown-form-toolbar li {
   display: inline-block;
   font-size: 14px;
 }
+
 .markdown-form-toolbar li + li {
   margin: 0;
 }
+
 .markdown-form-toolbar li > button {
-  font-size: 15px;
+  font-size: 16px;
   border: none;
   height: 20px;
   line-height: 14px;
@@ -221,27 +241,33 @@
   white-space: nowrap;
   color: $silver;
 }
+
 .markdown-form-toolbar li > button:hover,
 .markdown-form-toolbar li > button:focus {
   color: $alizarinCrimson;
   transition: 0.3s;
 }
+
 .markdown-form-toolbar li > button:active {
   background-color: var(--color-neutral-muted);
   color: var(--color-danger-fg);
 }
+
 .markdown-form-toolbar li > button:disabled {
   color: var(--md-editor-box-shadow-color);
   cursor: not-allowed;
 }
+
 .markdown-form-toolbar li > button:disabled:hover {
   background-color: transparent;
   color: var(--md-editor-box-shadow-color);
 }
+
 .markdown-form-toolbar li.active > button {
   color: var(--color-accent-fg);
   background-color: var(--color-neutral-muted);
 }
+
 .markdown-form-toolbar-divider {
   height: 29px;
   width: 1px;
@@ -249,6 +275,7 @@
   vertical-align: middle;
   background-color: $softPeach;
 }
+
 .markdown-form {
   text-align: left;
   padding-bottom: 1px;
@@ -275,6 +302,7 @@
   text-align: right !important;
   box-shadow: inset -1px 0 0 0 var(--md-editor-box-shadow-color);
 }
+
 .markdown-form-rtl .markdown-form-text {
   text-align: right !important;
 }
@@ -285,17 +313,21 @@
   position: relative;
   border-radius: 0 0 3px 0;
 }
+
 .markdown-form .copied {
   display: none !important;
 }
+
 .markdown-form-input {
   width: 50%;
   height: 100%;
 }
+
 .markdown-form-text-pre > code {
   word-break: break-word !important;
   white-space: pre-wrap !important;
 }
+
 .markdown-form-preview {
   width: 50%;
   box-sizing: border-box;
@@ -310,28 +342,35 @@
   display: flex;
   flex-direction: column;
 }
+
 .markdown-form-preview .anchor {
   display: none;
 }
+
 .markdown-form-preview .contains-task-list li.task-list-item {
   list-style: none;
 }
+
 .markdown-form-show-preview .markdown-form-input {
   width: 0%;
   overflow: hidden;
   background-color: var(--md-editor-background-color);
 }
+
 .markdown-form-show-preview .markdown-form-preview {
   width: 100%;
   box-shadow: inset 0 0 0 0;
 }
+
 .markdown-form-show-edit .markdown-form-input {
   width: 100%;
 }
+
 .markdown-form-show-edit .markdown-form-preview {
   width: 0%;
   padding: 0;
 }
+
 .markdown-form-fullscreen {
   overflow: hidden;
   position: fixed;
@@ -342,6 +381,19 @@
   bottom: 0;
   height: 100% !important;
 }
+
 .markdown-form-fullscreen .markdown-form-content {
   height: 100%;
+}
+
+.markdown-form-toolbar-italic {
+  font-style: italic;
+}
+
+.markdown-form-toolbar-bold {
+  font-style: bold;
+}
+
+.markdown-form-toolbar-underline {
+  text-decoration: underline;
 }

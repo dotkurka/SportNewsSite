@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type React from 'react';
 
-interface IInput {
+export interface IInput extends React.HTMLProps<HTMLInputElement> {
   errors?: string | undefined;
   touched?: boolean;
   type: string;
@@ -17,5 +17,3 @@ export enum InputVariant {
   Error = 'error',
   Default = 'default',
 }
-
-export type TInput = IInput & React.HTMLProps<HTMLInputElement>;

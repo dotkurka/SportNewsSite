@@ -1,101 +1,83 @@
 import { Form, Formik } from 'formik';
-import parse from 'html-react-parser';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { Button, MainArticle, Select } from 'components';
-import { MainArticleVariant } from 'components/MainArticle/types';
+import { Button, Input, Select } from 'components';
+// import { MainArticleVariant } from 'components/MainArticle/types';
 import MarkdownForm from 'components/MarkdownForm/MarkdownForm';
-import { currentDate } from 'utils/currentDate';
+
+// import { currentDate } from 'utils/currentDate';
 
 import type { IArticleData } from 'components/Article/types';
-import type { IInitValueForm } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
-
-const initialValuesData = {
-  img: '',
-  alt: '',
-  title: {
-    published: '',
-    head: '',
-    description: '',
-  },
-  article: '',
-  category: '',
-  path: '',
-};
 
 const NewArticle = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [articleMarkDown, setArticleMarkDown] = useState('');
-  const [articleData, setArticleData] = useState<IArticleData>(initialValuesData);
 
-  const intialArticleData: IInitValueForm = {
+  const intialArticleData: IArticleData = {
     article: articleMarkDown,
-  };
-
-  const getArticleTag = async () => {
-    const currentDiv = (await document.getElementById('post-test')) as HTMLElement;
-    const hElements = currentDiv?.getElementsByTagName('h1')[0]?.innerText;
-    const hTwoElements = currentDiv?.getElementsByTagName('h2')[0]?.innerText;
-    const imgElement = currentDiv?.getElementsByTagName('img')[0]?.src;
-    const imgAltElement = currentDiv?.getElementsByTagName('img')[0]?.alt;
-    const pElement = currentDiv?.getElementsByTagName('p');
-    const allPElement =
-      pElement &&
-      [...pElement]
-        .map((item) =>
-          item.outerHTML.replace(/(<\/?img[^>]*>)(?=<p.+>)|(<\/?img[^>]*>)(?<=<p.+>)/g, ''),
-        )
-        .join(' ');
-
-    const allPElementToJSX = parse(allPElement || '');
-
-    return { hElements, hTwoElements, imgElement, imgAltElement, allPElementToJSX };
-  };
-
-  const createArticleData = async () => {
-    const data = await getArticleTag();
-
-    const post: IArticleData = {
-      img: data.imgElement,
-      alt: data.imgAltElement,
-      title: {
-        published: currentDate,
-        head: data.hElements,
-        description: data.hTwoElements,
-      },
-      article: data.allPElementToJSX,
-      category: 'NBA',
-      path: data.hElements.replaceAll(' ', '_'),
-    };
-
-    setArticleData(post);
+    img: '',
+    alt: '',
+    title: '',
+    description: '',
+    category: '',
+    published: '',
+    path: '',
   };
 
   const handleClosePreview = () => {
     setShowPreview(false);
   };
 
-  const handleSubmit = (values: IInitValueForm) => {
+  const handleSubmit = (values: IArticleData) => {
     setArticleMarkDown(values.article);
-    getArticleTag();
-    createArticleData();
-    setShowPreview(true);
   };
 
   return (
     <div className='test-page'>
-      <Select options={['blabla', 'bebebe', 'kwawa', 'lklklk']} />
-      {showPreview && (
+      {/* {showPreview && (
         <MainArticle sliderData={[articleData]} variant={MainArticleVariant.Article} />
-      )}
+      )} */}
       {!showPreview && (
         <div>
           <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
-            {({ values }) => (
+            {({ values, handleChange }) => (
               <Form>
+                <Input
+                  value={values.img}
+                  type='text'
+                  name='img'
+                  label='img'
+                  onChange={handleChange}
+                />
+                <Input
+                  value={values.alt}
+                  type='text'
+                  name='alt'
+                  label='alt'
+                  onChange={handleChange}
+                />
+                <Input
+                  value={values.title}
+                  type='text'
+                  name='title'
+                  label='title'
+                  onChange={handleChange}
+                />
+                <Input
+                  value={values.description}
+                  type='text'
+                  name='description'
+                  label='description'
+                  onChange={handleChange}
+                />
+                <Select
+                  options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
+                  name='category'
+                  onChange={handleChange}
+                />
                 <MarkdownForm value={values.article} name='article' />
                 <Button type='submit'>Preview</Button>
               </Form>

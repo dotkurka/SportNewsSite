@@ -1,3 +1,4 @@
+import { useField } from 'formik';
 import { useState } from 'react';
 
 import arrowFlag from 'assets/images/arrow-down-flag.svg';
@@ -8,35 +9,38 @@ import type { ISelect } from 'components/Select/types';
 
 import './Select.scss';
 
-const Select = ({ options, placeholder, label }: ISelect) => {
+const Select = ({ options, placeholder, label, ...props }: ISelect) => {
   const [currentSelect, setCurrentSelect] = useState('');
   const [selected, setSelected] = useState<string | null>(null);
   const [selectShow, setSelectShow] = useState(false);
+  const [field, , helpers] = useField(props.name || '');
 
   const selectRef = useClickOutside(() => setSelectShow(false));
-  // TODO add an operation that will change the language of the entire site
+
   const changeSelect = (item: string) => {
     setCurrentSelect(item);
     setSelectShow(false);
+    helpers.setValue(item);
   };
 
   const handleShowMenu = () => {
     setSelectShow((land) => !land);
     setSelected(currentSelect);
   };
+
   return (
     <div ref={selectRef} className='select'>
       <div className='select-input-contain'>
         <Input
+          {...props}
+          value={currentSelect || field.value}
           onClick={() => handleShowMenu()}
-          value={currentSelect}
           placeholder={placeholder}
           label={label}
           type='text'
           readOnly
           className='select-input'
         />
-
         <img className={label ? 'label' : ''} src={arrowFlag} alt='' />
       </div>
 

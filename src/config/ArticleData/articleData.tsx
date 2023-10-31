@@ -6,36 +6,35 @@ export const dataMainArticle: IArticleData[] = [
   {
     img: photo,
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'London Games return in 2019',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
+    title: 'London Games return in 2019',
+    published: 'sddsd',
+    description:
+      'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
     article: 'sfdf',
     path: 'sdsafdasff',
+    category: 'NBA',
   },
   {
     img: 'https://digitalhub.fifa.com/transform/2d264787-f3b5-4533-9142-cb0df6ca0142/Brazil-v-Serbia-Group-G-FIFA-World-Cup-Qatar-2022?io=transform:fill,height:868,width:1536&quality=100',
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'American Games come back in 2019',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
+    title: 'American Games come back in 2019',
+    published: 'sddsd',
+    description:
+      'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
     path: 'sdsafdasff',
+    article: 'sfdf',
+    category: 'NBA',
   },
   {
     img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'Monya its patsyuk',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
+    title: 'Monya its patsyuk',
+    published: 'sddsd',
+    description:
+      'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
+    article: 'sfdf',
     path: 'sdsafdasff',
+    category: 'NBA',
   },
 ];
 
@@ -43,43 +42,41 @@ export const dataSub: IArticleData[] = [
   {
     img: photo,
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'London Games return in 2019',
-      description: 'Register to four NFL London Games in 2019!',
-    },
+    title: 'London Games return in 2019',
+    published: 'sddsd',
+    description: 'Register to four NFL London Games in 2019!',
     article: 'sfdf',
     path: 'sdsafdasff',
+    category: 'NBA',
   },
   {
     img: 'https://digitalhub.fifa.com/transform/2d264787-f3b5-4533-9142-cb0df6ca0142/Brazil-v-Serbia-Group-G-FIFA-World-Cup-Qatar-2022?io=transform:fill,height:868,width:1536&quality=100',
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'American Games come back in 2019',
-      description: 'Register to receive NFL London Games in 2019!',
-    },
+    title: 'American Games come back in 2019',
+    published: 'sddsd',
+    description: 'Register to receive NFL London Games in 2019!',
+    article: 'sfdf',
     path: 'sdsafdasff',
+    category: 'NBA',
   },
   {
     img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'Monya its patsyuk',
-      description: 'Register four NFL London Games in 2019!',
-    },
+    title: 'Monya its patsyuk',
+    published: 'sddsd',
+    description: 'Register four NFL London Games in 2019!',
+    article: 'sfdf',
     path: 'sdsafdasff',
+    category: 'NBA',
   },
   {
     img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
     alt: '',
-    title: {
-      published: 'sddsd',
-      head: 'Monya its patsyuk',
-      description:
-        'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
-    },
+    title: 'Monya its patsyuk',
+    published: 'sddsd',
+    description:
+      'Register to receive the latest news on ticket sales for the four NFL London Games in 2019!',
+    article: 'sfdf',
     category: 'NBA',
     path: 'sdsafdasff',
   },
@@ -88,13 +85,12 @@ export const dataSub: IArticleData[] = [
 export const articleData: IArticleData = {
   img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
   alt: '',
-  title: {
-    published: 'sddsd',
-    head: 'Monya its patsyuk',
-    description: 'Regist for the four NFL London Games in 2019!',
-  },
+  title: 'Monya its patsyuk',
+  published: 'sddsd',
+  description: 'Regist for the four NFL London Games in 2019!',
   category: 'NBA',
   path: 'sdsafdasff',
+  article: 'sddsdsd',
 };
 
 export const photoOfTheDayData = {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import MainArticleTitle from 'components/MainArticle/MainArticleTitle';
 import { MainArticleVariant } from 'components/MainArticle/types';
@@ -41,7 +42,9 @@ const MainArticle = ({
       </div>
 
       {mainArticleVariant[variant] === mainArticleVariant.article && (
-        <div className='main-article-text'>{sliderData[0].article}</div>
+        <div className='main-article-text'>
+          <ReactMarkdown>{sliderData[0].article}</ReactMarkdown>
+        </div>
       )}
     </div>
   );

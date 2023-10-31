@@ -10,7 +10,7 @@ import './PageLayout.scss';
 const PageLayout = () => {
   const isMobile = useMobileWidth(1024);
 
-  const { data: SidebarData } = useGetAllCategoryQuery();
+  const { data: sidebarData } = useGetAllCategoryQuery();
 
   if (isMobile) {
     return <MobilePageLayout />;
@@ -24,7 +24,7 @@ const PageLayout = () => {
       </div>
       <NavBar />
       <div className='page-layout-contain'>
-        <SideBar data={SidebarData} />
+        <SideBar data={sidebarData} />
         <div className='page-layout-contain-children'>
           <Outlet />
         </div>

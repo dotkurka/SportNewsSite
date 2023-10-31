@@ -3,7 +3,7 @@ import crossMark from 'assets/images/cross-mark.svg';
 
 import { InputVariant } from './types';
 
-import type { TInput } from './types';
+import type { IInput } from './types';
 
 import './Input.scss';
 
@@ -30,7 +30,7 @@ const Input = ({
   touched,
   errors,
   ...props
-}: TInput) => {
+}: IInput) => {
   const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
 
   const isValid = touched ? errorValid : InputVariant.Default;
