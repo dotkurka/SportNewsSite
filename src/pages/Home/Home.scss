@@ -1,7 +1,4 @@
 .home {
-  max-width: 813px;
-  margin-right: 20px;
-
   &-title {
     margin-top: 50px;
   }
@@ -60,9 +57,6 @@
 
 @media screen and (max-width: 1024px) {
   .home {
-    margin-right: 0;
-    max-width: 100%;
-
     &-sub-article {
       justify-content: space-around;
 

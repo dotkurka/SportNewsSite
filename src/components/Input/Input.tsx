@@ -29,6 +29,7 @@ const Input = ({
   className,
   touched,
   errors,
+  name,
   ...props
 }: IInput) => {
   const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
@@ -38,7 +39,7 @@ const Input = ({
   return (
     <div className={`input-contain ${className || ''}`}>
       {label && (
-        <label className='input-label' htmlFor='input'>
+        <label className='input-label' htmlFor={name}>
           {label}
         </label>
       )}
@@ -48,6 +49,8 @@ const Input = ({
       <div className='input-contain-inner'>
         <input
           {...props}
+          id={name}
+          name={name}
           type={type}
           placeholder={placeholder}
           className={`input input-${inputClass[isValid]}`}

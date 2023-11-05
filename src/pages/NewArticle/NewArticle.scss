@@ -1,28 +1,29 @@
-.test-page {
+.create-article {
   max-width: 813px;
-  margin-right: 20px;
 
   &-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    width: 100%;
-    max-width: 813px;
+    &-select {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
 
-    textarea {
-      padding: 5px;
-      resize: none;
+      &-item {
+        margin-bottom: 20px;
+      }
+    }
+
+    &-input {
       width: 100%;
-      height: 500px;
     }
   }
+}
 
-  &-mark {
-    width: 400px;
+@media screen and (max-width: 800px) {
+  .create-article-form-select {
+    flex-direction: column;
 
-    img {
-      width: 100px;
-      max-width: 813px;
+    &-item {
+      width: 100%;
     }
   }
 }

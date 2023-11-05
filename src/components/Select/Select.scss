@@ -7,7 +7,6 @@ $width: 250px;
   line-height: 17px;
   width: $width;
   position: relative;
-  z-index: 200;
 
   &-input {
     width: 100%;
@@ -46,6 +45,8 @@ $width: 250px;
   }
 
   &-item {
+    position: relative;
+    z-index: 1000;
     border: none;
     background: $white;
     width: 100%;

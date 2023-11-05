@@ -9,7 +9,7 @@ import type { ISelect } from 'components/Select/types';
 
 import './Select.scss';
 
-const Select = ({ options, placeholder, label, ...props }: ISelect) => {
+const Select = ({ options, placeholder, label, className = '', ...props }: ISelect) => {
   const [currentSelect, setCurrentSelect] = useState('');
   const [selected, setSelected] = useState<string | null>(null);
   const [selectShow, setSelectShow] = useState(false);
@@ -29,7 +29,7 @@ const Select = ({ options, placeholder, label, ...props }: ISelect) => {
   };
 
   return (
-    <div ref={selectRef} className='select'>
+    <div ref={selectRef} className={`select ${className}`}>
       <div className='select-input-contain'>
         <Input
           {...props}

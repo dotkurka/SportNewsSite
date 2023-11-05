@@ -38,11 +38,12 @@
   }
 
   &-contain {
-    display: flex;
     margin-left: 253px;
 
     &-children {
       padding-top: 82px;
+      margin-right: 20px;
+      max-width: 813px;
     }
   }
 }

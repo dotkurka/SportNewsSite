@@ -7,13 +7,15 @@ import type { IMarkdownForm } from 'components/MarkdownForm/types';
 
 import './MarkdownForm.scss';
 
-const MarkdownForm = ({ value, className, ...textareaProps }: IMarkdownForm) => {
+const MarkdownForm = ({ value, className, label, ...textareaProps }: IMarkdownForm) => {
   const { setFieldValue } = useFormikContext();
 
   return (
-    <div style={{ width: '600px' }} className={className}>
+    <div style={{ width: '100%' }} className={className}>
       <div data-color-mode='light'>
+        {label && <span className='markdown-form-label'>{label}</span>}
         <MDEditor
+          height={380}
           textareaProps={textareaProps}
           id='MDarea'
           prefixCls='markdown-form'

@@ -1,5 +1,19 @@
 @import 'styles/Colors.scss';
 
+.markdown-form-label {
+  display: flex;
+  margin-bottom: 8px;
+  height: 11px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  color: $riverBed;
+}
+
 .markdown-form-bar {
   position: absolute;
   cursor: s-resize;
@@ -188,7 +202,7 @@
 
 .markdown-form-toolbar {
   height: 47px;
-  border-bottom: 1px solid $softPeach;
+  border-bottom: 1px solid $lightGrey;
   background-color: var(--md-editor-background-color);
   padding: 5px 5px;
   display: flex;
@@ -273,18 +287,18 @@
   width: 1px;
   margin: -3px 3px 0 3px !important;
   vertical-align: middle;
-  background-color: $softPeach;
+  background-color: $lightGrey;
 }
 
 .markdown-form {
   text-align: left;
   padding-bottom: 1px;
   position: relative;
-  border: 1px solid $softPeach;
+  border: 1px solid $lightGrey;
   color: $black;
   --md-editor-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --md-editor-background-color: var(--color-canvas-default, #ffffff);
-  --md-editor-box-shadow-color: var(--color-border-default, $softPeach);
+  --md-editor-box-shadow-color: var(--color-border-default, $lightGrey);
   background-color: $white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   display: flex;
@@ -312,6 +326,10 @@
   overflow: auto;
   position: relative;
   border-radius: 0 0 3px 0;
+}
+
+.markdown-form {
+  height: 380px;
 }
 
 .markdown-form .copied {

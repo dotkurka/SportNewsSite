@@ -10,6 +10,7 @@ export interface IInput extends React.HTMLProps<HTMLInputElement> {
   variant?: InputVariant;
   description?: ReactNode;
   className?: string;
+  name?: string;
 }
 
 export enum InputVariant {
