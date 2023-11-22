@@ -1,13 +1,4 @@
-export interface IArticleData {
-  img: string;
-  alt: string;
-  title: string;
-  description: string;
-  category: string;
-  article: string;
-  published: string;
-  path: string;
-}
+import type { IArticleData } from 'features/newArticle/types';
 
 export interface IArticle {
   articleData: IArticleData;

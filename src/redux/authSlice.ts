@@ -8,6 +8,7 @@ import type { RootState } from 'redux/store';
 
 const initialVlues: IUserResponse = {
   user: {
+    id: '',
     firstName: '',
     lastName: '',
     email: '',

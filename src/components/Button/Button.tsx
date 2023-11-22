@@ -20,7 +20,7 @@ const Button = ({
   variant = ButtonVariant.Default,
   type = 'button',
   size = ButtonSize.Medium,
-  className,
+  className = '',
   onClick,
   ...props
 }: IButton) => {
@@ -28,7 +28,7 @@ const Button = ({
     <button
       onClick={onClick}
       {...props}
-      className={`button button-${buttonClass[variant]} ${buttonSize[size]} ${className || ''}`}
+      className={`button button-${buttonClass[variant]} ${buttonSize[size]} ${className}`}
       type={type}
     >
       {children}

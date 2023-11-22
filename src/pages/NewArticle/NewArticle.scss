@@ -2,6 +2,14 @@
   max-width: 813px;
 
   &-form {
+    position: relative;
+
+    &-preview-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 25px;
+    }
+
     &-select {
       margin-top: 22px;
       display: flex;

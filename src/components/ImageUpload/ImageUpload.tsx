@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 
+import { ReactComponent as RemoveIcon } from 'assets/images/dump-icon.svg';
 import { ReactComponent as ImageIcon } from 'assets/images/image-upload-icon.svg';
-import { Button } from 'components';
 
 import type { IImageUpload } from 'components/ImageUpload/types';
 
@@ -45,7 +45,7 @@ const ImageUpload = ({ onChange, onDrop, href, isLoading, className = '' }: IIma
 
   if (isLoading) {
     return (
-      <div className='image'>
+      <div className={`image ${className}`}>
         <div className='image-upload'>
           <TailSpin width='65' color='#D72130' />
         </div>
@@ -56,9 +56,11 @@ const ImageUpload = ({ onChange, onDrop, href, isLoading, className = '' }: IIma
     <div className={`image ${className}`}>
       {imageHref ? (
         <>
-          <Button className='image-uploaded-btn' onClick={() => setImageHref(null)}>
-            Remove
-          </Button>
+          <div className='image-uploaded'>
+            <button className='image-uploaded-btn' onClick={() => setImageHref(null)}>
+              <RemoveIcon className='image-uploaded-btn-icon' />
+            </button>
+          </div>
           <img alt='' className='image-uploaded-img' src={imageHref} />
         </>
       ) : (
@@ -70,7 +72,7 @@ const ImageUpload = ({ onChange, onDrop, href, isLoading, className = '' }: IIma
           className={`image-upload ${drag ? 'drop-shadow' : ''}`}
         >
           <button className='image-upload-btn' onClick={() => inputRef.current?.click()}>
-            <ImageIcon className='image-upload-icon' />
+            <ImageIcon className='image-upload-btn-icon' />
           </button>
           <input ref={inputRef} type='file' onChange={inputChangeHandler} hidden />
           <p className='image-upload-text'>

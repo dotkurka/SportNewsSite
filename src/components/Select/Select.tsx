@@ -10,10 +10,10 @@ import type { ISelect } from 'components/Select/types';
 import './Select.scss';
 
 const Select = ({ options, placeholder, label, className = '', ...props }: ISelect) => {
+  const [field, , helpers] = useField(props.name || '');
   const [currentSelect, setCurrentSelect] = useState('');
   const [selected, setSelected] = useState<string | null>(null);
   const [selectShow, setSelectShow] = useState(false);
-  const [field, , helpers] = useField(props.name || '');
 
   const selectRef = useClickOutside(() => setSelectShow(false));
 
@@ -33,7 +33,7 @@ const Select = ({ options, placeholder, label, className = '', ...props }: ISele
       <div className='select-input-contain'>
         <Input
           {...props}
-          value={currentSelect || field.value}
+          value={currentSelect || field.value || ''}
           onClick={() => handleShowMenu()}
           placeholder={placeholder}
           label={label}

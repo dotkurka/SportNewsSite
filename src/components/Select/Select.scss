@@ -42,11 +42,11 @@ $width: 250px;
     flex-direction: column;
     box-shadow: 0px 0px 37px rgba(0, 0, 0, 0.09);
     background-color: $white;
+    z-index: 1000;
   }
 
   &-item {
     position: relative;
-    z-index: 1000;
     border: none;
     background: $white;
     width: 100%;
@@ -55,6 +55,7 @@ $width: 250px;
     align-items: center;
     cursor: pointer;
     padding-left: 16px;
+    z-index: 1000;
 
     &:hover {
       color: $alizarinCrimson;
@@ -63,12 +64,12 @@ $width: 250px;
     &.list {
       &.selected {
         color: $alizarinCrimson;
-        background: $fireEngineRed;
+        background-color: $fireEngineRed;
       }
 
       &:hover {
         color: $alizarinCrimson;
-        background: $fireEngineRed;
+        background-color: $fireEngineRed;
       }
     }
   }

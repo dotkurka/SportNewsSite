@@ -1,18 +1,14 @@
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import MainArticleTitle from 'components/MainArticle/MainArticleTitle';
+import mainArticleVariant from 'components/MainArticle/mainArticleVariant';
 import { MainArticleVariant } from 'components/MainArticle/types';
+
+import MainArticleTitle from './MainArticleTitle';
 
 import type { IMainArticle } from 'components/MainArticle/types';
 
 import './MainArticle.scss';
-
-export const mainArticleVariant = {
-  [MainArticleVariant.Article]: 'article',
-  [MainArticleVariant.Carousel]: 'carousel',
-  [MainArticleVariant.Share]: 'share',
-};
 
 const MainArticle = ({
   sliderData,
@@ -43,7 +39,7 @@ const MainArticle = ({
 
       {mainArticleVariant[variant] === mainArticleVariant.article && (
         <div className='main-article-text'>
-          <ReactMarkdown>{sliderData[0].article}</ReactMarkdown>
+          <ReactMarkdown>{sliderData[0].content}</ReactMarkdown>
         </div>
       )}
     </div>

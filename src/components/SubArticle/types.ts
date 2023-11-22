@@ -1,4 +1,4 @@
-import type { IArticleData } from 'components/Article/types';
+import type { IArticleData } from 'features/newArticle/types';
 
 export interface ISubArticle {
   subArticleData: IArticleData;

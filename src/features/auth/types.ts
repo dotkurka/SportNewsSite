@@ -3,9 +3,14 @@ export interface IForm {
 }
 
 export interface IUser {
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
+  avatar?: string;
+  articles?: [];
+  surveys?: [];
+  teamHub?: [];
 }
 
 export interface IUserResponse {

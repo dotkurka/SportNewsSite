@@ -1,6 +1,6 @@
-export interface IPreviewButton {
+import type { ButtonHTMLAttributes } from 'react';
+
+export interface IPreviewButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
-  className?: string;
-  disabled?: boolean;
   onClick?: () => void;
 }
