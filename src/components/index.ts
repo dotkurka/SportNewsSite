@@ -31,3 +31,5 @@ export { default as MarkdownForm } from './MarkdownForm/MarkdownForm';
 export { default as ImageUpload } from './ImageUpload/ImageUpload';
 
 export { default as PreviewButton } from './PreviewButton/PreviewButton';
+
+export { default as ArticleComments } from './ArticleComments/ArticleComments';

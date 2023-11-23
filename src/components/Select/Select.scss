@@ -1,6 +1,6 @@
 @import 'styles/Colors.scss';
 
-$width: 250px;
+$width: 170px;
 
 .select {
   font-size: 12px;
@@ -8,30 +8,83 @@ $width: 250px;
   width: $width;
   position: relative;
 
-  &-input {
-    width: 100%;
-    height: unset;
+  &-text {
+    &-contain {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      position: relative;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      color: $alizarinCrimson;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 17px;
+      transition-duration: 0.2s;
 
+      &:hover,
+      &:focus {
+        background-color: $porcelain;
+      }
+    }
+
+    &-label {
+      user-select: none;
+      margin-right: 5px;
+    }
+
+    &-input {
+      margin-right: 10px;
+    }
+
+    &-arrow {
+      position: absolute;
+      right: 10px;
+      margin-top: 2px;
+      transform: rotateZ(180deg);
+      transition-duration: 0.2s;
+
+      &.open {
+        transform: unset;
+      }
+    }
+  }
+
+  &-outline {
     &-contain {
       position: relative;
       display: flex;
       align-items: center;
+    }
 
-      img {
-        &.label {
-          margin-top: 20px;
-        }
+    &-input {
+      width: 100%;
+      height: unset;
 
-        position: absolute;
-        right: 15px;
-        width: 9px;
+      input {
+        cursor: pointer;
+        background: $white;
+        height: 36px;
       }
     }
 
-    input {
-      cursor: pointer;
-      background: $white;
-      height: 36px;
+    &-arrow {
+      position: absolute;
+      right: 15px;
+      width: 9px;
+      transition-duration: 0.2s;
+
+      &.label {
+        margin-top: 20px;
+      }
+
+      &.open {
+        transform: rotateZ(-180deg);
+      }
     }
   }
 
@@ -62,11 +115,7 @@ $width: 250px;
     }
 
     &.list {
-      &.selected {
-        color: $alizarinCrimson;
-        background-color: $fireEngineRed;
-      }
-
+      &.selected,
       &:hover {
         color: $alizarinCrimson;
         background-color: $fireEngineRed;

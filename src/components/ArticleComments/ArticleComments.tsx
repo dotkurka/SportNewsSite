@@ -1,6 +1,6 @@
 const ArticleComments = () => {
   return (
-    <div>
+    <div className='article-comments'>
       <span>Comments</span>
       <div>
         <img alt='' />

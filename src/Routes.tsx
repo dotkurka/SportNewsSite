@@ -5,6 +5,7 @@ import { ProtectedRoute } from 'components';
 import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
 import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pages';
 import NewArticle from 'pages/NewArticle/NewArticle';
+import Test from 'pages/Tets/Test';
 import { selectCurrentToken } from 'redux/authSlice';
 import { checkEmail, forgotPassword, logIn, newPassword, signIn } from 'utils/routesPath';
 
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route path='/' element={<PageLayout />}>
           <Route index element={<Home />} />
           <Route path='/home' element={<NewArticle />} />
+          <Route path='/test' element={<Test />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>

@@ -71,6 +71,8 @@ const NewArticle = () => {
     }
   };
 
+  const fuse = false;
+
   return (
     <div className='create-article'>
       <div className='create-article-form'>
@@ -81,12 +83,11 @@ const NewArticle = () => {
         >
           Preview
         </PreviewButton>
-
-        {newArticleData ? (
+        {fuse && newArticleData ? (
           <MainArticle variant={MainArticleVariant.Article} sliderData={[newArticleData]} />
         ) : (
           <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
-            {({ values, handleChange }) => (
+            {({ values, handleChange, setFieldValue }) => (
               <Form>
                 <ImageUpload
                   onChange={handleChangeImage}
@@ -100,24 +101,24 @@ const NewArticle = () => {
                     label='Conference'
                     options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
                     name='conference'
-                    onChange={handleChange}
                     className='create-article-form-select-item'
+                    formikSetValue={setFieldValue}
                   />
                   <Select
                     placeholder='Not Selected'
                     label='Team'
                     options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
                     name='team'
-                    onChange={handleChange}
                     className='create-article-form-select-item'
+                    formikSetValue={setFieldValue}
                   />
                   <Select
                     placeholder='Not Selected'
                     label='Location'
                     options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
                     name='location'
-                    onChange={handleChange}
                     className='create-article-form-select-item'
+                    formikSetValue={setFieldValue}
                   />
                 </div>
                 <Input
@@ -139,13 +140,14 @@ const NewArticle = () => {
                   placeholder='Name'
                 />
                 <MarkdownForm label='Content' value={values.content} name='article' />
-                <button ref={submitRef} type='submit' hidden>
+                <button ref={submitRef} type='submit'>
                   submit
                 </button>
               </Form>
             )}
           </Formik>
         )}
+        S
       </div>
     </div>
   );
