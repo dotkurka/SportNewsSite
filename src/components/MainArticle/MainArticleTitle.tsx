@@ -2,7 +2,7 @@ import { ReactComponent as ArrowCircle } from 'assets/images/arrow-circle-2.svg'
 import { Button, ShareButton } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import mainArticleVariant from 'components/MainArticle/mainArticleVariant';
-import { removeMarkdown, truncateText } from 'utils';
+import { convertDateISO, removeMarkdown, truncateText } from 'utils';
 
 import type { IMainTitle } from 'components/MainArticle/types';
 
@@ -35,10 +35,12 @@ const MainArticleTitle = ({ sliderData, currentIndex, setCurrentIndex, variant }
       ? truncateText(removeMarkdown(sliderData[currentIndex].content), 120)
       : sliderData[currentIndex].title;
 
+  const datePublished = convertDateISO(sliderData[currentIndex].published);
+
   return (
     <div className='main-article-title'>
       <div className='main-article-title-text'>
-        <span>Published / {sliderData[currentIndex].published}</span>
+        <span>Published / {datePublished}</span>
         <h3>{titleVariant}</h3>
         <h2>{contentVariant}</h2>
       </div>

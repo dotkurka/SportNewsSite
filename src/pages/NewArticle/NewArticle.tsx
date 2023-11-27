@@ -53,6 +53,7 @@ const NewArticle = () => {
         lastName: '',
         email: '',
       },
+      comments: [],
     };
     console.log(values);
 

@@ -19,11 +19,13 @@ const Select = ({
   onChange,
   variant = SelectVariant.Outline,
   placeholder,
+  disabled,
   formikSetValue,
+  defaultValue = '',
   name = 'select',
   className = '',
 }: ISelect) => {
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState(defaultValue);
   const [selectShow, setSelectShow] = useState(false);
 
   const selectRef = useClickOutside(() => setSelectShow(false));
@@ -49,20 +51,25 @@ const Select = ({
             onClick={() => handleShowMenu()}
             placeholder={placeholder}
             label={label}
+            disabled={disabled}
             readOnly
             type='text'
             className='select-outline-input'
           />
           <ArrowContained
-            className={`select-outline-arrow ${selectShow && 'open'} ${label && 'label'}`}
+            className={`select-outline-arrow ${selectShow ? 'open' : ''} ${label ? 'label' : ''}`}
           />
         </div>
       )}
       {selectVariant[variant] === selectVariant.text && (
-        <button className='select-text-contain' onClick={() => handleShowMenu()}>
+        <button
+          disabled={disabled}
+          className='select-text-contain'
+          onClick={() => handleShowMenu()}
+        >
           {label && <span className='select-text-label'>{label}</span>}
           <span className='select-text-input'>{selected} </span>
-          <ArrowText className={`select-text-arrow ${selectShow && 'open'}`} />
+          <ArrowText className={`select-text-arrow ${selectShow ? 'open' : ''}`} />
         </button>
       )}
       {selectShow && (

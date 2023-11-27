@@ -30,6 +30,15 @@ $width: 170px;
       &:focus {
         background-color: $porcelain;
       }
+
+      &[disabled] {
+        color: $azalea;
+        cursor: default;
+
+        .select-text-arrow * {
+          fill: $azalea;
+        }
+      }
     }
 
     &-label {
@@ -47,6 +56,10 @@ $width: 170px;
       margin-top: 2px;
       transform: rotateZ(180deg);
       transition-duration: 0.2s;
+
+      * {
+        fill: $alizarinCrimson;
+      }
 
       &.open {
         transform: unset;

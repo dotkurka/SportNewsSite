@@ -33,3 +33,5 @@ export { default as ImageUpload } from './ImageUpload/ImageUpload';
 export { default as PreviewButton } from './PreviewButton/PreviewButton';
 
 export { default as ArticleComments } from './ArticleComments/ArticleComments';
+
+export { default as SwitchButton } from './SwitchButton/SwitchButton';

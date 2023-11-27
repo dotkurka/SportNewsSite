@@ -1,7 +1,9 @@
 export interface ISelect {
   options: string[];
-  variant?: SelectVariant;
   className?: string;
+  defaultValue?: string;
+  variant?: SelectVariant;
+  disabled?: boolean;
   name?: string;
   placeholder?: string;
   label?: string;
