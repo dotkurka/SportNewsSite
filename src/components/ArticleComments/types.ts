@@ -1,21 +1,23 @@
 import type { IUser } from 'features/auth/types';
-import type { IComment, ICommentRequest } from 'features/newArticle/types';
+import type { ICommentResponse, ICommentRequest } from 'features/newArticle/types';
 
 export interface IArticleComments {
-  comments: IComment[];
-  user: IUser;
-  handleSubmit: (value: ICommentRequest) => void;
-  handleChangeSort: (value: string) => void;
+  comments: ICommentResponse[];
+  user?: IUser;
   selectData: {
     defaultValue: string;
     options: string[];
   };
+  handleSubmit?: (value: ICommentRequest) => void;
+  handleChangeSort?: (value: string) => void;
   className?: string;
   disabledForm?: boolean;
+  handleShowMore?: () => void;
 }
 
 export interface IArticleCommentsForm {
-  handleSubmit: (value: ICommentRequest) => void;
+  user: IUser;
+  handleSubmit?: (value: ICommentRequest) => void;
   initialValues: ICommentRequest;
   disabled?: boolean;
 }

@@ -7,8 +7,18 @@ import type { IMarkdownForm } from 'components/MarkdownForm/types';
 
 import './MarkdownForm.scss';
 
-const MarkdownForm = ({ value, className, label, ...textareaProps }: IMarkdownForm) => {
+const MarkdownForm = ({
+  value,
+  className,
+  touched,
+  errors,
+  label,
+  ...textareaProps
+}: IMarkdownForm) => {
   const { setFieldValue } = useFormikContext();
+
+  const errorValid = errors ? '#e1464e' : '';
+  const isValid = touched ? errorValid : '';
 
   return (
     <div style={{ width: '100%' }} className={className}>
@@ -18,6 +28,7 @@ const MarkdownForm = ({ value, className, label, ...textareaProps }: IMarkdownFo
           height={380}
           textareaProps={textareaProps}
           id='MDarea'
+          style={{ borderColor: isValid }}
           prefixCls='markdown-form'
           value={value}
           onChange={(val) => setFieldValue(textareaProps.name, val)}

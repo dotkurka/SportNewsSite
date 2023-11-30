@@ -1,9 +1,10 @@
 import photo from 'assets/images/main-photo-article.png';
 
-import type { IArticleData } from 'features/newArticle/types';
+import type { IArticleResponse, ICommentResponse } from 'features/newArticle/types';
 
-export const dataMainArticle: IArticleData[] = [
+export const dataMainArticle: IArticleResponse[] = [
   {
+    id: '324235564565234634526',
     img: photo,
     content:
       'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
@@ -24,6 +25,7 @@ export const dataMainArticle: IArticleData[] = [
     comments: [],
   },
   {
+    id: '324236523455645634526',
     img: 'https://digitalhub.fifa.com/transform/2d264787-f3b5-4533-9142-cb0df6ca0142/Brazil-v-Serbia-Group-G-FIFA-World-Cup-Qatar-2022?io=transform:fill,height:868,width:1536&quality=100',
     content:
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
@@ -44,6 +46,7 @@ export const dataMainArticle: IArticleData[] = [
     comments: [],
   },
   {
+    id: '324564565234634523526',
     img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
     content:
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
@@ -65,8 +68,9 @@ export const dataMainArticle: IArticleData[] = [
   },
 ];
 
-export const dataSub: IArticleData[] = [
+export const dataSub: IArticleResponse[] = [
   {
+    id: '324564565234634523526',
     img: photo,
     content:
       'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
@@ -87,6 +91,7 @@ export const dataSub: IArticleData[] = [
     comments: [],
   },
   {
+    id: '324563452354565234626',
     img: 'https://digitalhub.fifa.com/transform/2d264787-f3b5-4533-9142-cb0df6ca0142/Brazil-v-Serbia-Group-G-FIFA-World-Cup-Qatar-2022?io=transform:fill,height:868,width:1536&quality=100',
     content:
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
@@ -107,6 +112,7 @@ export const dataSub: IArticleData[] = [
     comments: [],
   },
   {
+    id: '324652346345645523526',
     img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
     content:
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
@@ -127,6 +133,7 @@ export const dataSub: IArticleData[] = [
     comments: [],
   },
   {
+    id: '324563463452456523526',
     img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
     content:
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
@@ -148,12 +155,54 @@ export const dataSub: IArticleData[] = [
   },
 ];
 
-export const articleData: IArticleData = {
+export const articleCommentsData: ICommentResponse[] = [
+  {
+    id: '213782713721837',
+    user: {
+      firstName: 'Vasyl',
+      lastName: 'Clopik',
+      id: '8983984347374837478',
+      email: 'examplevasul@gmail.com',
+    },
+    createAt: '2023-08-18T14:42:53.612+00:00',
+    comment: `Interesting article. Personally I am trying to slowly move away from Whatsapp as I am doing with Facebook.
+    Most of the Whatsapp group I belong to are permanently on mute otherwise my phone would constantly be beeping each new message on a group typically triggers a flood of comments the majority of which does not add `,
+  },
+  {
+    id: '213754645645837',
+    user: {
+      firstName: 'Maurizio',
+      lastName: 'Spadari',
+      id: '8983932423423423478',
+      email: 'examplemeur@gmail.com',
+    },
+    createAt: '2023-10-08T14:42:53.612+00:00',
+    comment: `Interesting article. Personally I am trying to slowly move away from Whatsapp as I am doing with Facebook.
+    Most of the Whatsapp group I belong to are permanently on mute otherwise my phone would constantly be beeping each new message on a group typically triggers a flood of comments the majority of which does not add `,
+  },
+  {
+    id: '213773218283717',
+    user: {
+      firstName: 'Tom',
+      lastName: 'Chanter',
+      id: '8983789843748374473',
+      email: 'exampletom@gmail.com',
+    },
+    createAt: '2023-11-28T14:42:53.612+00:00',
+    comment: `Message services are also looking to get into payments, much like WeChat. Big tech is coming for the banks.`,
+  },
+];
+
+export const articleData: IArticleResponse = {
+  id: '456746576745896756',
   img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
-  content:
-    'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
+  content: `TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.
+
+  That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.
+  
+  “Oh, you mean we weren’t pitching on the same mound the Japanese teams use during their season?” Leake said Sunday. “It felt like the same mound that we pitch on in the States. The only thing I would say is that maybe they put a little too much water at first, so some of the clay stuck to my spikes in the first inning, but that happens at home, too. After that, it was perfect.”`,
   alt: 'football',
-  title: 'American Games come back in 2019',
+  title: 'As M.L.B.’s Season Opens in Japan, at Least the Dirt Is Familiar',
   category: 'NBA',
   published: '2023-08-05T14:42:53.612+00:00',
   path: '/NBA/American-Games-come-back-in-2019',
@@ -167,43 +216,7 @@ export const articleData: IArticleData = {
     id: 'sdsd8983374837479843478',
     email: 'examplepete@gmail.com',
   },
-  comments: [
-    {
-      id: '213782713721837',
-      user: {
-        firstName: 'Vasyl',
-        lastName: 'Clopik',
-        id: '8983984347374837478',
-        email: 'examplevasul@gmail.com',
-      },
-      createAt: '2023-08-18T14:42:53.612+00:00',
-      comment: `Interesting article. Personally I am trying to slowly move away from Whatsapp as I am doing with Facebook.
-      Most of the Whatsapp group I belong to are permanently on mute otherwise my phone would constantly be beeping each new message on a group typically triggers a flood of comments the majority of which does not add `,
-    },
-    {
-      id: '213754645645837',
-      user: {
-        firstName: 'Maurizio',
-        lastName: 'Spadari',
-        id: '8983932423423423478',
-        email: 'examplemeur@gmail.com',
-      },
-      createAt: '2023-10-08T14:42:53.612+00:00',
-      comment: `Interesting article. Personally I am trying to slowly move away from Whatsapp as I am doing with Facebook.
-      Most of the Whatsapp group I belong to are permanently on mute otherwise my phone would constantly be beeping each new message on a group typically triggers a flood of comments the majority of which does not add `,
-    },
-    {
-      id: '213773218283717',
-      user: {
-        firstName: 'Tom',
-        lastName: 'Chanter',
-        id: '8983789843748374473',
-        email: 'exampletom@gmail.com',
-      },
-      createAt: '2023-11-28T14:42:53.612+00:00',
-      comment: `Message services are also looking to get into payments, much like WeChat. Big tech is coming for the banks.`,
-    },
-  ],
+  comments: articleCommentsData,
 };
 
 export const photoOfTheDayData = {

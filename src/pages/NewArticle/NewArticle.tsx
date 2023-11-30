@@ -1,155 +1,105 @@
-import { Form, Formik } from 'formik';
 import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useFileUploadMutation } from 'api/fileUploadApi';
-import { ImageUpload, Input, MainArticle, MarkdownForm, PreviewButton, Select } from 'components';
-import { MainArticleVariant } from 'components/MainArticle/types';
+import { Article, PreviewButton, SwitchButton } from 'components';
+import { articleCommentsData } from 'config/ArticleData/articleData';
+import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
-import { currentDate } from 'utils';
 
-import type { IFileRequest, IFileResponse } from 'features/fileUpload/types';
-import type { IArticleData, IRequestArticle } from 'features/newArticle/types';
+import type { IArticleResponse, IArticleCreate } from 'features/newArticle/types';
 
 import './NewArticle.scss';
 
-const NewArticle = () => {
-  const [newArticleData, setNewArticleData] = useState<IArticleData>();
-  const [imageData, setImageData] = useState<IFileResponse>();
-  const submitRef = useRef<HTMLButtonElement>(null);
+const intialArticleData: IArticleCreate = {
+  img: '',
+  content: '',
+  alt: '',
+  title: '',
+  conference: '',
+  team: '',
+  location: '',
+};
 
+const selectData = {
+  defaultValue: 'Most popular',
+  options: ['Most popular', 'Oldest', 'New'],
+};
+
+const previewArticle = {
+  id: '483757345734875',
+  category: 'NBA',
+  published: new Date(Date.now()).toISOString(),
+  path: '/example',
+  comments: articleCommentsData,
+  user: {
+    firstName: 'Ostap',
+    id: '932492384972357',
+    lastName: 'Kurka',
+    email: 'example@example.com',
+  },
+};
+
+const NewArticle = () => {
+  const [preview, setPreview] = useState<IArticleResponse | null>();
+  const [formValue, setFromValue] = useState<IArticleCreate>(intialArticleData);
+  const [submitAction, setSubmitAction] = useState<'submit' | 'preview'>();
+  const [showComments, setShowComments] = useState(true);
+
+  const reviewRef = useRef<HTMLButtonElement>(null);
   const user = useSelector(selectCurrentUser);
 
-  const [uploadFile, { isLoading }] = useFileUploadMutation();
-
-  const intialArticleData: IRequestArticle = {
-    content: '',
-    img: '',
-    alt: '',
-    title: '',
-    category: '',
-    published: '',
-    path: '',
-    conference: '',
-    team: '',
-    location: '',
+  const handleReview = (values: IArticleCreate) => {
+    setFromValue(values);
+    setPreview({ ...values, ...previewArticle, showComments });
   };
 
-  const handleSubmit = (values: IRequestArticle) => {
-    const newArticle: IArticleData = {
-      content: values.content,
-      img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
-      alt: values.alt,
-      title: values.title,
-      category: 'NBA',
-      published: currentDate,
-      path: '/title/blalsdklskd',
-      conference: '',
-      team: '',
-      location: '',
-      user: {
-        firstName: '',
-        id: '',
-        lastName: '',
-        email: '',
-      },
-      comments: [],
-    };
-    console.log(values);
+  const handlePreview = () => {
+    if (preview) setPreview(null);
 
-    setNewArticleData(newArticle);
+    reviewRef.current?.click();
   };
 
-  const handleChangeImage = async (file: File) => {
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      const imageHref = await uploadFile(formData as unknown as IFileRequest);
+  const handleSubmit = (value: IArticleCreate) => {
+    console.log(value);
+  };
 
-      if ('data' in imageHref) {
-        setImageData(imageHref.data);
-      }
+  const formikSubmit = (value: IArticleCreate) => {
+    if (submitAction === 'submit') {
+      handleSubmit(value);
+    } else if (submitAction === 'preview') {
+      handleReview(value);
     }
   };
 
-  const fuse = false;
-
   return (
     <div className='create-article'>
-      <div className='create-article-form'>
-        <PreviewButton
-          type='button'
-          onClick={() => submitRef.current?.click()}
-          className='create-article-form-preview-btn'
-        >
-          Preview
-        </PreviewButton>
-        {fuse && newArticleData ? (
-          <MainArticle variant={MainArticleVariant.Article} sliderData={[newArticleData]} />
-        ) : (
-          <Formik onSubmit={handleSubmit} initialValues={intialArticleData}>
-            {({ values, handleChange, setFieldValue }) => (
-              <Form>
-                <ImageUpload
-                  onChange={handleChangeImage}
-                  onDrop={handleChangeImage}
-                  href={imageData?.path}
-                  isLoading={isLoading}
-                />
-                <div className='create-article-form-select'>
-                  <Select
-                    placeholder='Not Selected'
-                    label='Conference'
-                    options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
-                    name='conference'
-                    className='create-article-form-select-item'
-                    formikSetValue={setFieldValue}
-                  />
-                  <Select
-                    placeholder='Not Selected'
-                    label='Team'
-                    options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
-                    name='team'
-                    className='create-article-form-select-item'
-                    formikSetValue={setFieldValue}
-                  />
-                  <Select
-                    placeholder='Not Selected'
-                    label='Location'
-                    options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
-                    name='location'
-                    className='create-article-form-select-item'
-                    formikSetValue={setFieldValue}
-                  />
-                </div>
-                <Input
-                  value={values.alt}
-                  type='text'
-                  name='alt'
-                  label='alt'
-                  onChange={handleChange}
-                  placeholder='Alternative text for picture'
-                  className='create-article-form-input'
-                />
-                <Input
-                  value={values.title}
-                  type='text'
-                  name='title'
-                  label='Article Headline'
-                  onChange={handleChange}
-                  className='create-article-form-input'
-                  placeholder='Name'
-                />
-                <MarkdownForm label='Content' value={values.content} name='article' />
-                <button ref={submitRef} type='submit'>
-                  submit
-                </button>
-              </Form>
-            )}
-          </Formik>
-        )}
-        S
-      </div>
+      <PreviewButton
+        type='button'
+        onClick={() => handlePreview()}
+        className='create-article-preview-btn'
+      >
+        {preview ? 'Back' : 'Preview'}
+      </PreviewButton>
+
+      {preview ? (
+        <Article disabledForm data={preview} user={user} selectData={selectData} />
+      ) : (
+        <div className='create-article-form'>
+          <NewArticleForm
+            onSubmit={formikSubmit}
+            initialValues={formValue}
+            submitAction={setSubmitAction}
+            reviewRef={reviewRef}
+          />
+          <div className='create-article-comments-show'>
+            <p>Show or hide comments section:</p>{' '}
+            <span className='create-article-comments-show-label'>
+              {showComments ? 'Show' : 'Hidden'}
+            </span>
+            <SwitchButton checked={showComments} onChange={(e) => setShowComments(e)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

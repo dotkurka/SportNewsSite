@@ -8,9 +8,9 @@ const convertDateISO = (inputDate: string, format?: 'mmm-d' | 'd.m.yyyy') => {
     return `${month} ${day}`;
   }
 
-  const day = date.getUTCDate();
-  const month = date.getUTCMonth() + 1;
-  const year = date.getUTCFullYear();
+  const day = date.getDate();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
 
   return `${day}.${month}.${year}`;
 };

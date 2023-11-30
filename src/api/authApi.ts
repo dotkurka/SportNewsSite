@@ -27,6 +27,9 @@ export const authApi = createApi({
         method: 'POST',
         body,
       }),
+      transformResponse: (result: IUserResponse) => {
+        return result;
+      },
     }),
     signUp: build.mutation<IUserResponse, ISignUpRequest>({
       query: (body) => ({
@@ -34,6 +37,9 @@ export const authApi = createApi({
         method: 'POST',
         body,
       }),
+      transformResponse: (result: IUserResponse) => {
+        return result;
+      },
     }),
   }),
 });

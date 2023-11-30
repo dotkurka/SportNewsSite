@@ -17,10 +17,10 @@ const ArticleComments = ({
   handleChangeSort,
   selectData,
   disabledForm,
+  handleShowMore,
   className = '',
 }: IArticleComments) => {
   const initialValues: ICommentRequest = {
-    user,
     comment: '',
   };
 
@@ -38,6 +38,7 @@ const ArticleComments = ({
       </div>
       {user && (
         <ArticleCommentsForm
+          user={user}
           disabled={disabledForm}
           handleSubmit={handleSubmit}
           initialValues={initialValues}
@@ -68,7 +69,11 @@ const ArticleComments = ({
       </div>
       {comments.length > 4 && (
         <div className='article-comments-contain-show-more'>
-          <Button className='article-comments-contain-show-more-btn' variant={ButtonVariant.Text}>
+          <Button
+            onClick={handleShowMore}
+            className='article-comments-contain-show-more-btn'
+            variant={ButtonVariant.Text}
+          >
             Show more
           </Button>
         </div>

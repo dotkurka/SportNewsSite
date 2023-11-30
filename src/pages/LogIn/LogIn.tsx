@@ -35,9 +35,9 @@ const LogIn = () => {
   }, [isError]);
 
   const submit = async (values: ILoginRequest) => {
-    const result = await logIn(values);
-    if ('data' in result) {
-      dispatch(setToken(result.data));
+    const result = await logIn(values).unwrap();
+    if (result) {
+      dispatch(setToken(result));
     }
   };
 

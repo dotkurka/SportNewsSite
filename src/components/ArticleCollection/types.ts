@@ -1,5 +1,5 @@
-import type { IArticleData } from 'features/newArticle/types';
+import type { IArticleResponse } from 'features/newArticle/types';
 
 export interface IArticleCollection {
-  collection: IArticleData[];
+  collection: IArticleResponse[];
 }

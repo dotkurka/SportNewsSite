@@ -8,10 +8,21 @@ import type { IImageUpload } from 'components/ImageUpload/types';
 
 import './ImageUpload.scss';
 
-const ImageUpload = ({ onChange, onDrop, href, isLoading, className = '' }: IImageUpload) => {
+const ImageUpload = ({
+  onChange,
+  onDrop,
+  href,
+  isLoading,
+  touched,
+  errors,
+  className = '',
+}: IImageUpload) => {
   const [drag, setDrag] = useState(false);
   const [imageHref, setImageHref] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const errorValid = errors ? 'error-img' : '';
+  const isValid = touched ? errorValid : '';
 
   useEffect(() => {
     if (href) {
@@ -46,7 +57,7 @@ const ImageUpload = ({ onChange, onDrop, href, isLoading, className = '' }: IIma
   if (isLoading) {
     return (
       <div className={`image ${className}`}>
-        <div className='image-upload'>
+        <div className={`image-upload ${isValid}`}>
           <TailSpin width='65' color='#D72130' />
         </div>
       </div>
@@ -69,9 +80,13 @@ const ImageUpload = ({ onChange, onDrop, href, isLoading, className = '' }: IIma
           onDragLeave={dragLeaveHandler}
           onDragOver={dragStartHandler}
           onDrop={dropHandler}
-          className={`image-upload ${drag ? 'drop-shadow' : ''}`}
+          className={`image-upload ${isValid} ${drag ? 'drop-shadow' : ''}`}
         >
-          <button className='image-upload-btn' onClick={() => inputRef.current?.click()}>
+          <button
+            type='button'
+            className='image-upload-btn'
+            onClick={() => inputRef.current?.click()}
+          >
             <ImageIcon className='image-upload-btn-icon' />
           </button>
           <input ref={inputRef} type='file' onChange={inputChangeHandler} hidden />

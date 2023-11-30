@@ -23,6 +23,8 @@
 
     &-contain {
       width: 100%;
+      max-height: 650px;
+      object-fit: cover;
     }
   }
 
@@ -64,10 +66,7 @@
       width: 30px;
       letter-spacing: 0.6px;
 
-      &.active {
-        color: $persianRed;
-      }
-
+      &.active,
       &:hover {
         color: $persianRed;
       }
@@ -122,6 +121,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      margin-right: auto;
 
       span {
         color: $friarGrey;
@@ -204,18 +204,17 @@
 
     &-button {
       right: auto;
-      bottom: -55px;
     }
 
     &-title {
       display: flex;
       flex-direction: column;
-      align-items: center;
       background: none;
+      align-items: center;
       position: relative;
       right: 0;
       max-width: 813px;
-      padding: 26px 16px 32px;
+      padding: 26px 0 32px;
       box-shadow: 0px 61px 72px -92px rgba(0, 0, 0, 0.75);
 
       &-shadow {
@@ -269,6 +268,7 @@
 
     &-title {
       max-width: 1024px;
+      padding: 26px 16px 32px;
 
       &-btn {
         margin-top: 30px;

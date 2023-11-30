@@ -2,9 +2,10 @@ import type { ReactNode } from 'react';
 import type React from 'react';
 
 export interface IInput extends React.HTMLProps<HTMLInputElement> {
-  errors?: string | undefined;
-  touched?: boolean;
   type: string;
+  errors?: string;
+  touched?: boolean;
+  disabledIcon?: boolean;
   label?: string;
   placeholder?: string;
   variant?: InputVariant;

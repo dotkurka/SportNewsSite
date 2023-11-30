@@ -1,6 +1,6 @@
-import type { IArticleData } from 'features/newArticle/types';
+import type { IArticleResponse } from 'features/newArticle/types';
 
 export interface ISubArticle {
-  subArticleData: IArticleData;
+  subArticleData: IArticleResponse;
   className?: string;
 }

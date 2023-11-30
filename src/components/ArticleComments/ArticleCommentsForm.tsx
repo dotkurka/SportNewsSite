@@ -9,7 +9,12 @@ import type { IArticleCommentsForm } from 'components/ArticleComments/types';
 
 import './ArticleComments.scss';
 
-const ArticleCommentsForm = ({ handleSubmit, initialValues, disabled }: IArticleCommentsForm) => {
+const ArticleCommentsForm = ({
+  handleSubmit,
+  initialValues,
+  disabled,
+  user,
+}: IArticleCommentsForm) => {
   const textAreaRef = useAutosizeTextArea();
 
   return (
@@ -18,14 +23,14 @@ const ArticleCommentsForm = ({ handleSubmit, initialValues, disabled }: IArticle
       initialValues={initialValues}
       validationSchema={commentSchema}
       onSubmit={(value, action) => {
-        handleSubmit(value);
+        handleSubmit?.(value);
         action.resetForm();
       }}
     >
       {({ values, handleChange, isValid, dirty, handleBlur }) => (
         <Form>
           <div className='article-comments-form'>
-            <img src={initialValues.user?.avatar || userAvatar} alt='avatar' />
+            <img src={user?.avatar || userAvatar} alt='avatar' />
             <textarea
               disabled={disabled}
               onBlur={handleBlur}

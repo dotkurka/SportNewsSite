@@ -14,8 +14,6 @@ const inputClass = {
 };
 
 const imgVariant = {
-  // TODO touched
-
   [InputVariant.Succes]: checkMark,
   [InputVariant.Error]: crossMark,
   [InputVariant.Default]: null,
@@ -25,6 +23,7 @@ const Input = ({
   type,
   label,
   placeholder,
+  disabledIcon,
   description,
   className,
   touched,
@@ -56,7 +55,9 @@ const Input = ({
           className={`input input-${inputClass[isValid]}`}
         />
 
-        {imgVariant && <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />}
+        {imgVariant && !disabledIcon ? (
+          <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />
+        ) : null}
       </div>
     </div>
   );

@@ -36,9 +36,9 @@ const SignIn = () => {
   }, [isError]);
 
   const submit = async (values: ISignUpRequest) => {
-    const result = await signIn(values);
-    if ('data' in result) {
-      dispatch(setToken(result.data));
+    const result = await signIn(values).unwrap();
+    if (result) {
+      dispatch(setToken(result));
     }
   };
 

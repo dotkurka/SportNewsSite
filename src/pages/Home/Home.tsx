@@ -1,5 +1,5 @@
 import {
-  Article,
+  ArticleBanner,
   ArticleCollection,
   ArticleTitle,
   MainArticle,
@@ -33,11 +33,11 @@ const Home = () => {
       <ArticleTitle className='home-title'>Breakdown</ArticleTitle>
       <div className='home-breakdown'>
         <div className='home-breakdown-article'>
-          <Article articleData={articleData} />
+          <ArticleBanner articleData={articleData} />
           <ArticleCollection collection={dataMainArticle} />
         </div>
         <div className='home-breakdown-article'>
-          <Article articleData={articleData} />
+          <ArticleBanner articleData={articleData} />
           <ArticleCollection collection={dataMainArticle} />
         </div>
       </div>

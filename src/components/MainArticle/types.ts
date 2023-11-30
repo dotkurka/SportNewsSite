@@ -1,14 +1,14 @@
-import type { IArticleData } from 'features/newArticle/types';
+import type { IArticleResponse } from 'features/newArticle/types';
 
 export interface IMainTitle {
-  sliderData: IArticleData[];
+  sliderData: IArticleResponse[];
   currentIndex: number;
   setCurrentIndex: (index: number) => void;
   variant: MainArticleVariant;
 }
 
 export interface IMainArticle {
-  sliderData: IArticleData[];
+  sliderData: IArticleResponse[];
   className?: string;
   variant?: MainArticleVariant;
 }

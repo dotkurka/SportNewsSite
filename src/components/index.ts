@@ -20,7 +20,7 @@ export { default as SubArticle } from './SubArticle/SubArticle';
 
 export { default as ArticleCollection } from './ArticleCollection/ArticleCollection';
 
-export { default as Article } from './Article/Article';
+export { default as ArticleBanner } from './ArticleBanner/ArticleBanner';
 
 export { default as ArticleTitle } from './ArticleTitle/ArticleTitle';
 
@@ -35,3 +35,5 @@ export { default as PreviewButton } from './PreviewButton/PreviewButton';
 export { default as ArticleComments } from './ArticleComments/ArticleComments';
 
 export { default as SwitchButton } from './SwitchButton/SwitchButton';
+
+export { default as Article } from './Article/Article';

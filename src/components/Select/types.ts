@@ -1,4 +1,7 @@
 export interface ISelect {
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  touched?: boolean;
+  errors?: string;
   options: string[];
   className?: string;
   defaultValue?: string;

@@ -1,14 +1,16 @@
+@import 'styles/Colors.scss';
+
 .create-article {
-  max-width: 813px;
+  box-sizing: border-box;
+
+  &-preview-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+  }
 
   &-form {
     position: relative;
-
-    &-preview-btn {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 25px;
-    }
 
     &-select {
       margin-top: 22px;
@@ -25,6 +27,24 @@
       width: 100%;
     }
   }
+
+  &-comments-show {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: normal;
+    margin-top: 20px;
+
+    p {
+      color: $riverBed;
+    }
+
+    &-label {
+      text-align: center;
+      color: $gunmetal;
+      width: 53px;
+    }
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -34,5 +54,11 @@
     &-item {
       width: 100%;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .create-article {
+    padding: 0 20px;
   }
 }

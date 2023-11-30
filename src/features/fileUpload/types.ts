@@ -1,8 +1,8 @@
 export interface IFileRequest {
   fieldName: string;
-  originalFilename: string;
   path: string;
   headers: object;
+  originalFilename: string;
   size: number;
   name: string;
   type: string;

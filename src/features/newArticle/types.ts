@@ -1,6 +1,6 @@
 import type { IUser } from 'features/auth/types';
 
-export interface IComment {
+export interface ICommentResponse {
   id: string;
   user: IUser;
   comment: string;
@@ -8,23 +8,31 @@ export interface IComment {
 }
 
 export interface ICommentRequest {
-  user: IUser;
   comment: string;
 }
 
-export interface IArticleData {
-  img: string | undefined;
+export interface IArticleCreate {
+  img: string;
   alt: string;
   title: string;
   content: string;
-  category: string;
   conference: string;
   team: string;
   location: string;
+}
+
+export interface IArticleResponse extends IArticleCreate {
+  id: string;
+  category: string;
   published: string;
   path: string;
   user: IUser;
-  comments: IComment[];
+  showComments?: boolean;
+  comments: ICommentResponse[];
 }
 
-export type IRequestArticle = Omit<IArticleData, 'user' | 'comments'>;
+export interface IArticleRequest extends IArticleCreate {
+  category: string;
+  path: string;
+  showComments?: boolean;
+}

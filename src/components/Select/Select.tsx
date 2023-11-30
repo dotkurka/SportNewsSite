@@ -14,6 +14,9 @@ const selectVariant = {
 };
 
 const Select = ({
+  onBlur,
+  touched,
+  errors,
   options,
   label,
   onChange,
@@ -46,6 +49,10 @@ const Select = ({
       {selectVariant[variant] === selectVariant.outline && (
         <div className='select-outline-contain'>
           <Input
+            disabledIcon
+            onBlur={onBlur}
+            touched={touched}
+            errors={errors}
             name={name}
             value={selected}
             onClick={() => handleShowMenu()}
