@@ -56,6 +56,7 @@ const NewArticleForm = ({
               defaultValue={values.conference}
               touched={touched.conference}
               errors={errors.conference}
+              disabled
               placeholder='Not Selected'
               label='Conference'
               options={['blabla', 'bebebe', 'kwawa', 'lklklk']}

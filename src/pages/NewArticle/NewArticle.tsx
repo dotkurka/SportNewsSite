@@ -1,12 +1,14 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import { useCreateArticleMutation } from 'api/articlesApi';
 import { Article, PreviewButton, SwitchButton } from 'components';
 import { articleCommentsData } from 'config/ArticleData/articleData';
 import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
 
-import type { IArticleResponse, IArticleCreate } from 'features/newArticle/types';
+import type { IRequestError } from 'features/auth/types';
+import type { IArticleResponse, IArticleCreate, IArticleRequest } from 'features/newArticle/types';
 
 import './NewArticle.scss';
 
@@ -44,9 +46,18 @@ const NewArticle = () => {
   const [formValue, setFromValue] = useState<IArticleCreate>(intialArticleData);
   const [submitAction, setSubmitAction] = useState<'submit' | 'preview'>();
   const [showComments, setShowComments] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const reviewRef = useRef<HTMLButtonElement>(null);
   const user = useSelector(selectCurrentUser);
+  const [createArticle, { error: articleError, isError }] = useCreateArticleMutation();
+
+  useEffect(() => {
+    if (isError) {
+      const error = (articleError as IRequestError).data.message;
+      setErrorMessage(error);
+    }
+  }, [isError]);
 
   const handleReview = (values: IArticleCreate) => {
     setFromValue(values);
@@ -59,8 +70,14 @@ const NewArticle = () => {
     reviewRef.current?.click();
   };
 
-  const handleSubmit = (value: IArticleCreate) => {
-    console.log(value);
+  const handleSubmit = async (value: IArticleCreate) => {
+    const newArticle: IArticleRequest = {
+      ...value,
+      category: '',
+      path: '',
+    };
+
+    await createArticle(newArticle);
   };
 
   const formikSubmit = (value: IArticleCreate) => {

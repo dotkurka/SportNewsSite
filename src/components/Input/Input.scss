@@ -26,8 +26,16 @@ $crossSize: 20px;
   padding: 0 14px;
   outline: none;
 
-  &:hover {
-    border-color: $greyChateau;
+  &[disabled] {
+    cursor: not-allowed;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+
+    &:hover {
+      border-color: $lightGrey;
+    }
   }
 
   &:focus {

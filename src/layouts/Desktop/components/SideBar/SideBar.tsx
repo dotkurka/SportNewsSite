@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import useClickOutside from 'hooks/useClickOutside';
 import SideBarFollow from 'layouts/Desktop/components/SideBar/SideBarFollow/SideBarFollow';
 import SideBarItem from 'layouts/Desktop/components/SideBar/SideBarItem/SideBarItem';
 import SubMenu from 'layouts/Desktop/components/SideBar/SubMenu/SubMenu';
-import { changeBackOverflow, changeOverflow } from 'utils/changeOverflow';
+import { unsetOverflow, setOverflowHidden } from 'utils/changeOverflow';
 
 import type { ISideBar } from './types';
 import type { ISidebarData } from 'config/SideBarData/types';
@@ -17,12 +17,14 @@ const SideBar = ({ data }: ISideBar) => {
   const [checked, setChecked] = useState<string | null>(null);
   const [checkedSub, setCheckedSub] = useState<string | null>(null);
 
-  const closeSubMenu = () => {
-    setSubMenu({ title: '', path: '' });
-    setSecondSubMenu({ title: '', path: '' });
-    setCheckedSub(null);
-    changeBackOverflow();
-  };
+  const closeSubMenu = useCallback(() => {
+    if (subMenu.title !== '') {
+      setSubMenu({ title: '', path: '' });
+      setSecondSubMenu({ title: '', path: '' });
+      setCheckedSub(null);
+      unsetOverflow();
+    }
+  }, [subMenu, secondSubMenu]);
 
   const getSecondSubItem = (item: ISidebarData) => {
     if (item.title === secondSubMenu.title) {
@@ -44,11 +46,11 @@ const SideBar = ({ data }: ISideBar) => {
       setSecondSubMenu({ title: '', path: '' });
       setSubMenu(item);
       setChecked(item.title);
-      changeOverflow();
+      setOverflowHidden();
     }
   };
 
-  const outsideClickRef = useClickOutside(() => closeSubMenu());
+  const outsideClickRef = useClickOutside(closeSubMenu);
 
   return (
     <div className='sidebar'>

@@ -44,6 +44,8 @@ const Select = ({
     setSelectShow((show) => !show);
   };
 
+  const disabledWhenEmpty = options.length === 0 ? true : disabled;
+
   return (
     <div ref={selectRef} className={`select ${className}`}>
       {selectVariant[variant] === selectVariant.outline && (
@@ -58,7 +60,7 @@ const Select = ({
             onClick={() => handleShowMenu()}
             placeholder={placeholder}
             label={label}
-            disabled={disabled}
+            disabled={disabledWhenEmpty}
             readOnly
             type='text'
             className='select-outline-input'

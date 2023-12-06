@@ -28,3 +28,10 @@
   - create layout for the article manager
 
 - it would be nice to add a survay
+
+Saturday
+
+- Make modal window component whit other variant such as error delete cancel
+- Create handler for the sort select
+- create comment Api
+- if SwitchButton is disabled then make the circle gray

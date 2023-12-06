@@ -6,7 +6,7 @@ import { SidebarData } from 'config/SideBarData/SidebarData';
 import { Footer } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
 import { selectCurrentUser } from 'redux/authSlice';
-import { changeBackOverflow, changeOverflow } from 'utils/changeOverflow';
+import { setOverflowHidden, unsetOverflow } from 'utils/changeOverflow';
 
 import './MobilePageLayout.scss';
 
@@ -19,9 +19,9 @@ const MobilePageLayout = () => {
 
   const burgerOverflow = () => {
     if (!showBurgerMenu) {
-      changeOverflow();
+      setOverflowHidden();
     } else {
-      changeBackOverflow();
+      unsetOverflow();
     }
   };
 
