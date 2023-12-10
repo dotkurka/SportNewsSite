@@ -40,11 +40,7 @@ const SurveyForm = ({ inputValues, showResult }: ISurveyForm) => {
             >
               Submit
             </Button>
-            <Button
-              onClick={showResult}
-              className='survey-contain-button-large'
-              variant={ButtonVariant.Default}
-            >
+            <Button onClick={showResult} className='survey-contain-button-large'>
               Vote to see result
             </Button>
           </div>

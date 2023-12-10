@@ -20,7 +20,6 @@ const ImageFormik = ({ formikSetValue, touched, errors, value, name }: IImageFor
       if (imageHref) formikSetValue(name, imageHref.path);
     }
   };
-
   return (
     <ImageUpload
       touched={touched}
@@ -38,10 +37,15 @@ const NewArticleForm = ({
   initialValues,
   submitAction,
   submitRef,
-  reviewRef,
+  previewRef,
 }: INewArticleForm) => {
   return (
-    <Formik validationSchema={articleSchema} onSubmit={onSubmit} initialValues={initialValues}>
+    <Formik
+      id='newarticle'
+      validationSchema={articleSchema}
+      onSubmit={onSubmit}
+      initialValues={initialValues}
+    >
       {({ values, errors, touched, handleChange, setFieldValue, handleSubmit }) => (
         <Form>
           <ImageFormik
@@ -56,7 +60,6 @@ const NewArticleForm = ({
               defaultValue={values.conference}
               touched={touched.conference}
               errors={errors.conference}
-              disabled
               placeholder='Not Selected'
               label='Conference'
               options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
@@ -118,6 +121,7 @@ const NewArticleForm = ({
           />
           <button
             type='submit'
+            hidden
             ref={submitRef}
             onClick={() => {
               submitAction('submit');
@@ -129,7 +133,7 @@ const NewArticleForm = ({
           <button
             hidden
             type='submit'
-            ref={reviewRef}
+            ref={previewRef}
             onClick={() => {
               submitAction('preview');
               handleSubmit();

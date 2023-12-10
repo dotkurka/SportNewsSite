@@ -1,10 +1,9 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Button, Logo } from 'components';
-import { ButtonVariant } from 'components/Button/types';
+import { logIn } from 'constants/routesPath';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { MobileLogInLayout } from 'layouts';
-import { logIn } from 'utils/routesPath';
 
 import './SignInLayout.scss';
 
@@ -25,9 +24,7 @@ const SignInLayout = () => {
       <div className='sign-up-right'>
         <div className='sign-up-right-header'>
           Already have an account?
-          <Button onClick={() => navigate(logIn)} variant={ButtonVariant.Default}>
-            Log in
-          </Button>
+          <Button onClick={() => navigate(logIn)}>Log in</Button>
         </div>
         <Outlet />
       </div>

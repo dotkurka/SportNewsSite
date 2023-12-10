@@ -1,14 +1,15 @@
 import { ReactComponent as FacebookIcon } from 'assets/images/facebook-follow-icon.svg';
 import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.svg';
 import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
-import { Logo } from 'components';
-import LangSelector from 'components/LangSelector/LangSelector';
+import { LangSelector, Logo } from 'components';
 import { Langue } from 'components/LangSelector/types';
-import { SidebarData } from 'config/SideBarData/SidebarData';
+import { sidebarData } from 'config/SideBarData/SidebarData';
 import NavBarSearch from 'layouts/Desktop/components/NavBar/NavBarSearch/NavBarSearch';
 import NavBarUser from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUser';
 
 import './NavBar.scss';
+
+// Change search data
 
 const NavBar = () => {
   return (
@@ -18,7 +19,7 @@ const NavBar = () => {
       </div>
       <div className='navbar-contain'>
         <div className='navbar-contain-search'>
-          <NavBarSearch data={SidebarData} />
+          <NavBarSearch data={sidebarData} />
         </div>
         <div className='navbar-contain-social'>
           <div className='navbar-social'>

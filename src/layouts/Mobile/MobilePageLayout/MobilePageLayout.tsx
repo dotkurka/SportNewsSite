@@ -1,20 +1,24 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
-import { SidebarData } from 'config/SideBarData/SidebarData';
-import { Footer } from 'layouts/Desktop/components';
+import { sidebarData } from 'config/SideBarData/SidebarData';
+import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
+import { Footer, NavBarManager } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
 import { selectCurrentUser } from 'redux/authSlice';
 import { setOverflowHidden, unsetOverflow } from 'utils/changeOverflow';
 
 import './MobilePageLayout.scss';
 
-// TODO
+// TODO provide feach data instead of mock data
 
 const MobilePageLayout = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
+  const submitRef = useRef<HTMLButtonElement>(null);
+
+  // const { data: sidebarData } = useGetAllCategoryQuery();
   const user = useSelector(selectCurrentUser);
 
   const burgerOverflow = () => {
@@ -37,10 +41,13 @@ const MobilePageLayout = () => {
         <span className='mobile-page-head-title'>Sport News</span>
         <UserBar user={user} />
       </div>
+      <NavBarManager submitArticleRef={submitRef} />
       <div className='mobile-page-menu'>
-        <BurgerMenu show={showBurgerMenu} data={SidebarData} />
+        <BurgerMenu show={showBurgerMenu} data={sidebarData} />
       </div>
-      <Outlet />
+      <ArticleSubmitContext.Provider value={submitRef}>
+        <Outlet />
+      </ArticleSubmitContext.Provider>
       <Footer />
     </div>
   );

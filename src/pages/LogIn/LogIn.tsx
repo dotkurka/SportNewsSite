@@ -6,10 +6,10 @@ import { useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
+import { signIn } from 'constants/routesPath';
 import { logInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
-import { signIn } from 'utils/routesPath';
 
 import type { ILoginRequest, IRequestError } from 'features/auth/types';
 

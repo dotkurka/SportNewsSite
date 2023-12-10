@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useCreateArticleMutation } from 'api/articlesApi';
-import { Article, PreviewButton, SwitchButton } from 'components';
+import { Article, Modal, PreviewButton, SwitchButton } from 'components';
+import { ModalVariant } from 'components/Modal/types';
 import { articleCommentsData } from 'config/ArticleData/articleData';
+import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
 import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
 
@@ -47,8 +49,11 @@ const NewArticle = () => {
   const [submitAction, setSubmitAction] = useState<'submit' | 'preview'>();
   const [showComments, setShowComments] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
-  const reviewRef = useRef<HTMLButtonElement>(null);
+  const submitRef = useContext(ArticleSubmitContext);
+  const previewRef = useRef<HTMLButtonElement>(null);
+
   const user = useSelector(selectCurrentUser);
   const [createArticle, { error: articleError, isError }] = useCreateArticleMutation();
 
@@ -56,18 +61,18 @@ const NewArticle = () => {
     if (isError) {
       const error = (articleError as IRequestError).data.message;
       setErrorMessage(error);
+      setShowModal(true);
     }
   }, [isError]);
 
-  const handleReview = (values: IArticleCreate) => {
+  const handlePreview = (values: IArticleCreate) => {
     setFromValue(values);
     setPreview({ ...values, ...previewArticle, showComments });
   };
 
-  const handlePreview = () => {
+  const handleShowPreview = () => {
     if (preview) setPreview(null);
-
-    reviewRef.current?.click();
+    previewRef.current?.click();
   };
 
   const handleSubmit = async (value: IArticleCreate) => {
@@ -84,7 +89,7 @@ const NewArticle = () => {
     if (submitAction === 'submit') {
       handleSubmit(value);
     } else if (submitAction === 'preview') {
-      handleReview(value);
+      handlePreview(value);
     }
   };
 
@@ -92,7 +97,7 @@ const NewArticle = () => {
     <div className='create-article'>
       <PreviewButton
         type='button'
-        onClick={() => handlePreview()}
+        onClick={() => handleShowPreview()}
         className='create-article-preview-btn'
       >
         {preview ? 'Back' : 'Preview'}
@@ -102,11 +107,18 @@ const NewArticle = () => {
         <Article disabledForm data={preview} user={user} selectData={selectData} />
       ) : (
         <div className='create-article-form'>
+          <Modal
+            show={showModal}
+            handleShow={setShowModal}
+            variant={ModalVariant.Custom}
+            customText={{ title: 'ERROR', message: errorMessage }}
+          />
           <NewArticleForm
             onSubmit={formikSubmit}
             initialValues={formValue}
             submitAction={setSubmitAction}
-            reviewRef={reviewRef}
+            submitRef={submitRef}
+            previewRef={previewRef}
           />
           <div className='create-article-comments-show'>
             <p>Show or hide comments section:</p>{' '}

@@ -1,6 +1,6 @@
 import type { ISidebarData } from 'config/SideBarData/types';
 
-export interface ISubMenu {
+export interface ISubMenuItem {
   subData: ISidebarData;
   onClick?: () => void;
   isActive?: boolean;

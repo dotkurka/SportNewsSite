@@ -4,4 +4,7 @@ const forgotPassword = 'forgot-password';
 const checkEmail = 'check-email';
 const newPassword = 'new-password';
 
-export { signIn, logIn, forgotPassword, checkEmail, newPassword };
+const home = '/';
+const newArticle = 'new';
+
+export { signIn, logIn, forgotPassword, checkEmail, newPassword, home, newArticle };

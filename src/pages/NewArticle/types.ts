@@ -8,8 +8,8 @@ export interface INewArticleForm {
   onSubmit: (value: IArticleCreate) => void;
   initialValues: IArticleCreate;
   submitAction: (action: 'submit' | 'preview') => void;
-  submitRef?: React.RefObject<HTMLButtonElement>;
-  reviewRef?: React.RefObject<HTMLButtonElement>;
+  submitRef?: React.RefObject<HTMLButtonElement> | null;
+  previewRef?: React.RefObject<HTMLButtonElement>;
 }
 
 export interface IImageFormik {

@@ -11,6 +11,22 @@ export interface ICommentRequest {
   comment: string;
 }
 
+export interface ICommentsQueryParams {
+  id: string;
+  page: number;
+  limit: number;
+  sort: string;
+}
+
+export interface IArticleQueryParams {
+  page: number;
+  limit: number;
+  category: string;
+  team: string;
+  sort: string;
+  conference: string;
+}
+
 export interface IArticleCreate {
   img: string;
   alt: string;

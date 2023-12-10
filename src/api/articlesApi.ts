@@ -1,6 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { IArticleRequest, IArticleResponse } from 'features/newArticle/types';
+import type {
+  IArticleQueryParams,
+  IArticleRequest,
+  IArticleResponse,
+  ICommentRequest,
+  ICommentResponse,
+  ICommentsQueryParams,
+} from 'features/newArticle/types';
 import type { RootState } from 'redux/store';
 
 export const articlesApi = createApi({
@@ -18,11 +25,15 @@ export const articlesApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getArticles: build.query<IArticleResponse[], void>({
-      query: () => '',
+    getArticles: build.query<IArticleResponse[], IArticleQueryParams>({
+      query: (query) => ({
+        url: '',
+        params: query,
+      }),
     }),
     getArticle: build.query<IArticleResponse, void>({
       query: (title) => ({ url: `/${title}` }),
+      transformResponse: (result: IArticleResponse) => result,
     }),
     createArticle: build.mutation<IArticleResponse, IArticleRequest>({
       query: (body) => ({
@@ -43,9 +54,31 @@ export const articlesApi = createApi({
       }),
       transformResponse: (result: IArticleResponse) => result,
     }),
-    deleteArticle: build.mutation<{ id: string }, string>({
+    deleteArticle: build.mutation<{ status: string }, string>({
       query: (id) => ({
         url: `/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+    getArticleComments: build.query<ICommentResponse[], ICommentsQueryParams>({
+      query: ({ id, ...query }) => ({
+        url: `/${id}/comments`,
+        params: query,
+      }),
+    }),
+    addArticleComment: build.mutation<
+      ICommentResponse,
+      Partial<ICommentRequest> & Pick<ICommentResponse, 'id'>
+    >({
+      query: ({ id, ...body }) => ({
+        url: `/${id}/comments`,
+        method: 'POST',
+        body,
+      }),
+    }),
+    deleteArticleComment: build.mutation<{ status: string }, { id: string; commentId: string }>({
+      query: ({ id, commentId }) => ({
+        url: `/${id}/comments/${commentId}`,
         method: 'DELETE',
       }),
     }),
@@ -55,7 +88,10 @@ export const articlesApi = createApi({
 export const {
   useGetArticlesQuery,
   useGetArticleQuery,
+  useGetArticleCommentsQuery,
   useCreateArticleMutation,
   useUpdateArticleMutation,
   useDeleteArticleMutation,
+  useAddArticleCommentMutation,
+  useDeleteArticleCommentMutation,
 } = articlesApi;

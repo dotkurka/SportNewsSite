@@ -7,10 +7,10 @@ import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { logIn } from 'constants/routesPath';
 import { signInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
-import { logIn } from 'utils/routesPath';
 
 import type { IRequestError, ISignUpRequest } from 'features/auth/types';
 

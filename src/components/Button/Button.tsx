@@ -7,7 +7,7 @@ import './Button.scss';
 const buttonClass = {
   [ButtonVariant.Text]: 'text',
   [ButtonVariant.Contained]: 'contained',
-  [ButtonVariant.Default]: 'outline',
+  [ButtonVariant.Outline]: 'outline',
 };
 
 const buttonSize = {
@@ -17,7 +17,7 @@ const buttonSize = {
 
 const Button = ({
   children,
-  variant = ButtonVariant.Default,
+  variant = ButtonVariant.Outline,
   type = 'button',
   size = ButtonSize.Medium,
   className = '',

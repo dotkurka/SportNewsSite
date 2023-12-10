@@ -1,7 +1,7 @@
 import type { ISidebarData } from 'config/SideBarData/types';
 
 export interface IBurger {
-  data: ISidebarData[];
+  data: ISidebarData[] | undefined;
   show: boolean;
 }
 

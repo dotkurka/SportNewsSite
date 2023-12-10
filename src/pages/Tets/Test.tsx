@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import { Modal } from 'components';
 
@@ -18,6 +19,8 @@ const handleSubmit = () => {
 
 const Test = () => {
   const [show, setShow] = useState(false);
+  const param = useParams();
+  console.log(param);
 
   return (
     <div>
@@ -29,6 +32,7 @@ const Test = () => {
         show={show}
         handleShow={setShow}
       />
+      <Link to='new'>Kink</Link>
     </div>
   );
 };

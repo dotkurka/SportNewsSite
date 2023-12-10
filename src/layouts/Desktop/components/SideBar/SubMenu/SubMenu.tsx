@@ -1,15 +1,8 @@
 import SubMenuItem from 'layouts/Desktop/components/SideBar/SubMenuItem/SubMenuItem';
 
-import type { ISidebarData } from 'config/SideBarData/types';
+import type { ISubMenu } from 'layouts/Desktop/components/SideBar/SubMenu/types';
 
 import './SubMenu.scss';
-
-interface ISubMenu {
-  subData: ISidebarData[] | undefined;
-  onClick: (item: ISidebarData) => void;
-  checked?: string | null;
-  className?: string;
-}
 
 const SubMenu = ({ subData, checked, className = '', onClick }: ISubMenu) => {
   if (!subData?.length) {

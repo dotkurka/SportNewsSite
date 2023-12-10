@@ -11,7 +11,7 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 export enum ButtonVariant {
   Text = 'text',
   Contained = 'contained',
-  Default = 'default',
+  Outline = 'outline',
 }
 
 export enum ButtonSize {

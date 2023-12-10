@@ -39,3 +39,5 @@ export { default as SwitchButton } from './SwitchButton/SwitchButton';
 export { default as Article } from './Article/Article';
 
 export { default as Modal } from './Modal/Modal';
+
+export { default as LangSelector } from './LangSelector/LangSelector';

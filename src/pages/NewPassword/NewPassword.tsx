@@ -3,9 +3,9 @@ import { Form, Formik } from 'formik';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
 import { TextLinkVariant } from 'components/TextLink/types';
+import { signIn } from 'constants/routesPath';
 import { newPasswordValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
-import { signIn } from 'utils/routesPath';
 
 const initialValues = {
   password: '',

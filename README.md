@@ -1,12 +1,14 @@
 # Todo
 
-- "It is necessary to extract the business logic from the NavBar.
+- It is necessary to extract the business logic from the NavBar.
 
 - Add onChange for button (Share add More) in MainArticleTitle.jsx
 
 - Change user default avatar in Mobile NavBar
 
-- add new variant ( . . . ) for the Select
+- Search
+
+- Fix mobile arrows carousel buttons in MainArticle
 
 # To begin with you need to do
 
@@ -22,6 +24,7 @@
   - displaying article for individual categories
   - delete and edit
   - it would be good to add skeleton
+  - create handler for the sort comments
 
 - Layouts
 
@@ -29,9 +32,4 @@
 
 - it would be nice to add a survay
 
-Saturday
-
-- Make modal window component whit other variant such as error delete cancel
-- Create handler for the sort select
-- create comment Api
-- if SwitchButton is disabled then make the circle gray
+Add CSStaransition for the mobile navbar menu
