@@ -1,23 +1,25 @@
 import { useState } from 'react';
-import { Link, useNavigate, useParams, useMatch } from 'react-router-dom';
+import { Link, useNavigate, useParams, useMatch, useLocation } from 'react-router-dom';
 
 import { Button, Modal, Select } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import { ModalVariant } from 'components/Modal/types';
 import { SelectVariant } from 'components/Select/types';
-import { sidebarData } from 'config/SideBarData/SidebarData';
 import { newArticle } from 'constants/routesPath';
 
 import './NavBarManager.scss';
+import type { ICaregoryData } from 'features/category/types';
 
 interface INavBarManager {
   submitArticleRef: React.RefObject<HTMLButtonElement>;
+  data?: ICaregoryData[];
 }
 
-const NavBarManager = ({ submitArticleRef }: INavBarManager) => {
+const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
   const [showModal, setShowModal] = useState(false);
   const { category } = useParams();
-  const location = useMatch(`${category}/${newArticle}`);
+  const matchPath = useMatch(`${category}/${newArticle}`);
+  const location = useLocation();
   const navigate = useNavigate();
 
   const newArticleNavigate = () => {
@@ -50,7 +52,7 @@ const NavBarManager = ({ submitArticleRef }: INavBarManager) => {
             options={['Edit', 'Delete']}
           />
         </div>
-        {location ? (
+        {matchPath ? (
           <div className='navbar-manager-head-btn'>
             <Button onClick={() => setShowModal(true)} variant={ButtonVariant.Text} type='button'>
               Cancle
@@ -76,11 +78,16 @@ const NavBarManager = ({ submitArticleRef }: INavBarManager) => {
         )}
       </div>
       <div className='navbar-manager-menu'>
-        {sidebarData.map((item) => (
-          <Link key={item.id} to={item.path} className='navbar-manager-menu-item'>
-            {item.title}
-          </Link>
-        ))}
+        {data?.map((item) => {
+          const checkPath =
+            item.path.replace('/', '') === category || item.path === location.pathname;
+          const slected = checkPath ? 'selected' : '';
+          return (
+            <Link key={item.id} to={item.path} className={`navbar-manager-menu-item ${slected}`}>
+              {item.title}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

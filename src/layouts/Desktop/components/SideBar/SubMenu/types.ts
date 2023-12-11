@@ -1,8 +1,6 @@
-import type { ISidebarData } from 'config/SideBarData/types';
-
-export interface ISubMenu {
-  subData?: ISidebarData[];
-  onClick: (item: ISidebarData) => void;
+export interface ISubMenu<T> {
+  subData: T[] | null;
+  onClick: (item: T) => void;
   checked?: string | null;
   className?: string;
 }

@@ -4,7 +4,7 @@ import '../SideBar.scss';
 import type { ISideBarItem } from './types';
 
 const SideBarItem = ({ item, isActive, onClick }: ISideBarItem) => {
-  if (item.subItem) {
+  if (item.conference) {
     return (
       <button
         onClick={onClick}

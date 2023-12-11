@@ -1,10 +1,16 @@
 import SubMenuItem from 'layouts/Desktop/components/SideBar/SubMenuItem/SubMenuItem';
 
+import type { IConferenceData, ITeamData } from 'features/category/types';
 import type { ISubMenu } from 'layouts/Desktop/components/SideBar/SubMenu/types';
 
 import './SubMenu.scss';
 
-const SubMenu = ({ subData, checked, className = '', onClick }: ISubMenu) => {
+const SubMenu = <T extends IConferenceData | ITeamData>({
+  subData,
+  checked,
+  className = '',
+  onClick,
+}: ISubMenu<T>) => {
   if (!subData?.length) {
     return null;
   }

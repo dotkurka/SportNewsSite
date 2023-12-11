@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import useClickOutside from 'hooks/useClickOutside';
 import SideBarFollow from 'layouts/Desktop/components/SideBar/SideBarFollow/SideBarFollow';
@@ -8,19 +8,18 @@ import SubMenu from 'layouts/Desktop/components/SideBar/SubMenu/SubMenu';
 import { unsetOverflow, setOverflowHidden } from 'utils/changeOverflow';
 
 import type { ISideBar } from './types';
-import type { ISidebarData } from 'config/SideBarData/types';
+import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
 
 import './SideBar.scss';
 
 const SideBar = ({ data }: ISideBar) => {
-  const [subMenu, setSubMenu] = useState<ISidebarData | null>(null);
-  const [secondSubMenu, setSecondSubMenu] = useState<ISidebarData | null>(null);
+  const [subMenu, setSubMenu] = useState<IConferenceData[] | null>(null);
+  const [secondSubMenu, setSecondSubMenu] = useState<ITeamData[] | null>(null);
   const [checked, setChecked] = useState<string | null>(null);
   const [checkedSub, setCheckedSub] = useState<string | null>(null);
 
+  const { category: categoryParams } = useParams();
   const location = useLocation();
-
-  // console.log(location);
 
   const closeSubMenu = useCallback(() => {
     if (subMenu) {
@@ -32,33 +31,33 @@ const SideBar = ({ data }: ISideBar) => {
     }
   }, [subMenu, secondSubMenu]);
 
-  const getSecondSubItem = (item: ISidebarData) => {
-    if (item.title === secondSubMenu?.title) {
+  const getSecondSubItem = (item: IConferenceData) => {
+    if (item.title === checkedSub) {
       setSecondSubMenu(null);
       setCheckedSub(null);
-    } else if (!item.subItem?.length) {
+    } else if (!item.team?.length) {
       closeSubMenu();
     } else {
-      setSecondSubMenu(item);
+      setSecondSubMenu(item.team);
       setCheckedSub(item.title);
     }
   };
 
-  const setOverflow = (item: ISidebarData) => {
-    if (item.subItem) {
+  const setOverflow = (item: ICaregoryData) => {
+    if (item.conference) {
       setOverflowHidden();
     } else {
       unsetOverflow();
     }
   };
 
-  const getSubItem = (item: ISidebarData) => {
-    if (item.title === subMenu?.title) {
+  const getSubItem = (item: ICaregoryData) => {
+    if (item.title === checked) {
       closeSubMenu();
       setChecked(null);
     } else {
       setSecondSubMenu(null);
-      setSubMenu(item);
+      setSubMenu(item?.conference || null);
       setChecked(item.title);
       setOverflow(item);
     }
@@ -66,27 +65,29 @@ const SideBar = ({ data }: ISideBar) => {
 
   const outsideClickRef = useClickOutside(closeSubMenu);
 
+  const styleActive = subMenu?.length ? 'active' : '';
+
   return (
     <div className='sidebar'>
-      <div className={`sidebar-bg ${subMenu?.subItem?.length ? 'active' : ''}`}>
+      <div className={`sidebar-bg ${styleActive}`}>
         <div ref={outsideClickRef} className='sidebar-contain'>
-          <div className={`sidebar-list ${subMenu?.subItem?.length ? 'active' : ''}`}>
-            {data?.map((item) => (
-              <SideBarItem
-                onClick={() => getSubItem(item)}
-                isActive={item.title === checked || item.path === location.pathname}
-                item={item}
-                key={item.path}
-              />
-            ))}
+          <div className={`sidebar-list ${styleActive}`}>
+            {data?.map((item) => {
+              const checkPath =
+                item.path.replace('/', '') === categoryParams || item.path === location.pathname;
+              return (
+                <SideBarItem
+                  onClick={() => getSubItem(item)}
+                  isActive={item.title === checked || checkPath}
+                  item={item}
+                  key={item.path}
+                />
+              );
+            })}
             <SideBarFollow />
           </div>
-          <SubMenu checked={checkedSub} onClick={getSecondSubItem} subData={subMenu?.subItem} />
-          <SubMenu
-            onClick={closeSubMenu}
-            className='second-menu'
-            subData={secondSubMenu?.subItem}
-          />
+          <SubMenu checked={checkedSub} onClick={getSecondSubItem} subData={subMenu} />
+          <SubMenu onClick={closeSubMenu} className='second-menu' subData={secondSubMenu} />
         </div>
       </div>
     </div>

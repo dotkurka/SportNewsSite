@@ -1,26 +1,28 @@
-import type { ISidebarData } from 'config/SideBarData/types';
+import type { ICaregoryData, IConferenceData } from 'features/category/types';
 
 export interface IBurger {
-  data: ISidebarData[] | undefined;
-  show: boolean;
+  data?: ICaregoryData[];
+  handleShow: (item: boolean) => void;
 }
 
 export interface IBurgerItem {
-  item: ISidebarData;
+  item: ICaregoryData;
   onClick: () => void;
 }
 
 export interface ISecondMenu {
-  secondData: ISidebarData[] | undefined;
+  secondData: IConferenceData[] | null;
   title: string | null;
   check: string | null;
-  showDrop: (item: string) => void;
+  onClick: (item: string) => void;
   close: () => void;
   className?: string;
 }
 
 export interface ISecondItem {
-  secondData: ISidebarData;
+  secondData: IConferenceData;
   showDrop: (item: string) => void;
   check: string | null;
 }
+
+export type BurgerContextType = () => void;

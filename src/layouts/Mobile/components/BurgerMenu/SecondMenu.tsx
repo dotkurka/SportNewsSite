@@ -4,7 +4,7 @@ import type { ISecondMenu } from 'layouts/Mobile/components/BurgerMenu/types';
 
 import './BurgerMenu.scss';
 
-const SecondMenu = ({ secondData, title, showDrop, check, close, className }: ISecondMenu) => {
+const SecondMenu = ({ secondData, title, onClick, check, close, className }: ISecondMenu) => {
   return (
     <div className={`burger-menu-second ${className}`}>
       <button onClick={() => close()} className='burger-menu-second-btn'>
@@ -13,7 +13,7 @@ const SecondMenu = ({ secondData, title, showDrop, check, close, className }: IS
       <span className='burger-menu-second-title'>{title}</span>
       <div className='burger-menu-second-contain'>
         {secondData?.map((item) => (
-          <SecondMenuItem key={item.path} secondData={item} showDrop={showDrop} check={check} />
+          <SecondMenuItem key={item.id} secondData={item} showDrop={onClick} check={check} />
         ))}
       </div>
     </div>

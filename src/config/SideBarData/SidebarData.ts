@@ -1,6 +1,6 @@
-import type { ISidebarData } from './types';
+import type { ICaregoryData } from 'features/category/types';
 
-export const sidebarData: ISidebarData[] = [
+export const sidebarData: ICaregoryData[] = [
   {
     id: '9348023849283498',
     title: 'Home',
@@ -10,12 +10,12 @@ export const sidebarData: ISidebarData[] = [
     id: '9348283402384998',
     title: 'NBA',
     path: '/NBA',
-    subItem: [
+    conference: [
       {
         id: '9348492834802398',
         title: 'NBA 1',
         path: '/NBA_1',
-        subItem: [
+        team: [
           {
             id: '9922384834348098',
             title: 'NBA 11',
@@ -32,7 +32,7 @@ export const sidebarData: ISidebarData[] = [
         id: '9343024288984389',
         title: 'NBA 2',
         path: '/NBA_2',
-        subItem: [
+        team: [
           {
             id: '9343489849238028',
             title: 'NBA 21',
@@ -51,12 +51,12 @@ export const sidebarData: ISidebarData[] = [
     id: '9398494338024288',
     title: 'NFL',
     path: '/NFL',
-    subItem: [
+    conference: [
       {
         id: '2834299849433808',
         title: 'NFL 1',
         path: '/NFL_1',
-        subItem: [
+        team: [
           {
             id: '8024989928343348',
             title: 'NFL 11',
@@ -73,7 +73,7 @@ export const sidebarData: ISidebarData[] = [
         id: '9024983928433848',
         title: 'NFL 2',
         path: '/NFL_2',
-        subItem: [
+        team: [
           {
             id: '8024934984933288',
             title: 'NFL 21',
@@ -92,11 +92,40 @@ export const sidebarData: ISidebarData[] = [
     id: '2498493809243388',
     title: 'MLB',
     path: '/MLB',
-    subItem: [
+    conference: [
       {
-        id: '8098932443349288',
+        id: '9349283880234498',
         title: 'MLB 1',
-        path: '/MLB_1',
+        path: '/MLB',
+        team: [
+          {
+            id: '9922343834848098',
+            title: 'MLB 11',
+            path: '/MLB_1_1',
+          },
+          {
+            id: '9384943380249288',
+            title: 'NBA 12',
+            path: '/NBA_1_2',
+          },
+        ],
+      },
+      {
+        id: '9343088984382429',
+        title: 'MLB 2',
+        path: '/MLB_2',
+        team: [
+          {
+            id: '9343492348988028',
+            title: 'MLB 21',
+            path: '/MLB_2_1',
+          },
+          {
+            id: '9438430298439288',
+            title: 'MLB 22',
+            path: '/MLB_2_2',
+          },
+        ],
       },
     ],
   },
@@ -104,23 +133,81 @@ export const sidebarData: ISidebarData[] = [
     id: '9249843433809288',
     title: 'NHL',
     path: '/NHL',
-    subItem: [
+    conference: [
       {
-        id: '9802849434339288',
+        id: '9928388023434498',
         title: 'NHL 1',
         path: '/NHL_1',
+        team: [
+          {
+            id: '9938348223448098',
+            title: 'NHL 11',
+            path: '/NHL_1_1',
+          },
+          {
+            id: '0384949338249288',
+            title: 'NHL 12',
+            path: '/NHL_1_2',
+          },
+        ],
+      },
+      {
+        id: '9382424984330889',
+        title: 'NHL 2',
+        path: '/NHL_2',
+        team: [
+          {
+            id: '9344834923988028',
+            title: 'NHL 21',
+            path: '/NHL_2_1',
+          },
+          {
+            id: '9498238434390288',
+            title: 'NHL 22',
+            path: '/NHL_2_2',
+          },
+        ],
       },
     ],
   },
   {
-    id: '8024989492834338',
+    id: '8249892830944338',
     title: 'CBB',
     path: '/CBB',
-    subItem: [
+    conference: [
       {
-        id: '8029849234334988',
+        id: '9928803234834498',
         title: 'CBB 1',
         path: '/CBB_1',
+        team: [
+          {
+            id: '9922334488348098',
+            title: 'CBB 11',
+            path: '/CBB_1_1',
+          },
+          {
+            id: '3984309484322988',
+            title: 'CBB 12',
+            path: '/CBB_1_2',
+          },
+        ],
+      },
+      {
+        id: '9389244382430889',
+        title: 'CBB 2',
+        path: '/CBB_2',
+        team: [
+          {
+            id: '9392833984448028',
+            title: 'CBB 21',
+            path: '/CBB_2_1',
+          },
+          {
+            id: '9434389422389088',
+            title: 'CBB 22',
+            path: '/CBB_2_2',
+          },
+        ],
       },
     ],
   },
@@ -128,11 +215,40 @@ export const sidebarData: ISidebarData[] = [
     id: '9394338024849288',
     title: 'CFB',
     path: '/CFB',
-    subItem: [
+    conference: [
       {
-        id: '9024934928833884',
+        id: '9923432844938808',
         title: 'CFB 1',
         path: '/CFB_1',
+        team: [
+          {
+            id: '9922338348094488',
+            title: 'CFB 11',
+            path: '/CFB_1_1',
+          },
+          {
+            id: '8403492988249338',
+            title: 'CFB 12',
+            path: '/CFB_1_2',
+          },
+        ],
+      },
+      {
+        id: '9343382424980889',
+        title: 'CFB 2',
+        path: '/CFB_2',
+        team: [
+          {
+            id: '9349244339880828',
+            title: 'CFB 21',
+            path: '/CFB_2_1',
+          },
+          {
+            id: '9428433439029888',
+            title: 'CFB 22',
+            path: '/CFB_2_2',
+          },
+        ],
       },
     ],
   },
@@ -140,11 +256,40 @@ export const sidebarData: ISidebarData[] = [
     id: '9024928983433848',
     title: 'NASCAR',
     path: '/NASCAR',
-    subItem: [
+    conference: [
       {
-        id: '8024992889343348',
-        title: 'Nascar 1',
-        path: '/NASCAR_1',
+        id: '9928388023434498',
+        title: 'NHL 1',
+        path: '/NHL_1',
+        team: [
+          {
+            id: '9938348223448098',
+            title: 'NHL 11',
+            path: '/NHL_1_1',
+          },
+          {
+            id: '0384949338249288',
+            title: 'NHL 12',
+            path: '/NHL_1_2',
+          },
+        ],
+      },
+      {
+        id: '9382424984330889',
+        title: 'NHL 2',
+        path: '/NHL_2',
+        team: [
+          {
+            id: '9344834923988028',
+            title: 'NHL 21',
+            path: '/NHL_2_1',
+          },
+          {
+            id: '9498238434390288',
+            title: 'NHL 22',
+            path: '/NHL_2_2',
+          },
+        ],
       },
     ],
   },

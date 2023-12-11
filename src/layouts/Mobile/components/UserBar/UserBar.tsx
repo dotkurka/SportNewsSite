@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import userAvatar from 'assets/images/profile-avatar.svg';
+import userAvatar from 'assets/images/profile-avatar-white.svg';
 import useClickOutside from 'hooks/useClickOutside';
 import UserBarMenu from 'layouts/Mobile/components/UserBar/UserBarMenu';
 
@@ -19,11 +19,7 @@ const UserBar = ({ user }: IBarUser) => {
   return (
     <div ref={userRef} className='user-bar'>
       <button onClick={() => handleShowMenu()} className='user-bar-btn'>
-        <img
-          className='user-bar-avatar'
-          src={user?.image ? user?.image : userAvatar}
-          alt='avatar'
-        />
+        <img className='user-bar-avatar' src={user?.image ? user.image : userAvatar} alt='avatar' />
       </button>
 
       {showMenu && <UserBarMenu user={user} />}

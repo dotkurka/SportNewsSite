@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
 import { sidebarData } from 'config/SideBarData/SidebarData';
 import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
@@ -12,8 +12,11 @@ import './PageLayout.scss';
 const PageLayout = () => {
   const isMobile = useMobileWidth(1024);
   const submitRef = useRef<HTMLButtonElement>(null);
+  const { category } = useParams();
 
   // const { data: sidebarData } = useGetAllCategoryQuery();
+
+  const managerMode = true;
 
   if (isMobile) {
     return <MobilePageLayout />;
@@ -21,21 +24,23 @@ const PageLayout = () => {
 
   return (
     <div className='page-layout'>
-      <div className='page-layout-bg'>
-        <span className='page-layout-bg-first'>All</span>
-        <span className='page-layout-bg-last'>News</span>
-      </div>
+      {!managerMode && (
+        <div className='page-layout-bg'>
+          <span className='page-layout-bg-first'>{category || 'All'}</span>
+          <span className='page-layout-bg-last'>News</span>
+        </div>
+      )}
       <NavBar />
-      <NavBarManager submitArticleRef={submitRef} />
-      <div className='page-layout-contain'>
-        <SideBar data={sidebarData} />
+      {managerMode && <NavBarManager data={sidebarData} submitArticleRef={submitRef} />}
+      <div className={`page-layout-contain ${managerMode ? 'center' : ''}`}>
+        {!managerMode && <SideBar data={sidebarData} />}
         <div className='page-layout-contain-children'>
           <ArticleSubmitContext.Provider value={submitRef}>
             <Outlet />
           </ArticleSubmitContext.Provider>
         </div>
       </div>
-      <Footer />
+      {!managerMode && <Footer />}
     </div>
   );
 };

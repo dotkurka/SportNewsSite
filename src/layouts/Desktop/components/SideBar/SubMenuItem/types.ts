@@ -1,7 +1,5 @@
-import type { ISidebarData } from 'config/SideBarData/types';
-
-export interface ISubMenuItem {
-  subData: ISidebarData;
+export interface ISubMenuItem<T> {
+  subData: T;
   onClick?: () => void;
   isActive?: boolean;
   className?: string;
