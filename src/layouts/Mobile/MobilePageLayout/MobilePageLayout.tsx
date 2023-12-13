@@ -7,6 +7,7 @@ import { sidebarData } from 'config/SideBarData/SidebarData';
 import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
 import { Footer, NavBarManager } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
+import SearchBar from 'layouts/Mobile/components/SearchBar/SearchBar';
 import { selectCurrentUser } from 'redux/authSlice';
 import { setOverflowHidden, unsetOverflow } from 'utils/changeOverflow';
 
@@ -38,6 +39,7 @@ const MobilePageLayout = () => {
         <span className='mobile-page-head-title'>Sport News</span>
         <UserBar user={user} />
       </div>
+      <SearchBar />
 
       {!managerMode ? (
         <CSSTransition
