@@ -1,12 +1,9 @@
 import type { IUser } from 'features/auth/types';
 
-export interface IUserData {
-  image?: string;
-  status?: string;
+export interface INavBarUser {
+  user?: IUser;
 }
 
-export type TUser = IUser & IUserData;
-
-export interface IBarUser {
-  user?: TUser | undefined;
+export interface INavBarUserMenu extends INavBarUser {
+  className?: string;
 }

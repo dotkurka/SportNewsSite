@@ -1,4 +1,5 @@
 import photo from 'assets/images/main-photo-article.png';
+import { UserRole } from 'features/auth/enums';
 
 import type { IArticleResponse, ICommentResponse } from 'features/newArticle/types';
 
@@ -17,6 +18,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'New York',
     user: {
+      role: UserRole.User,
       firstName: 'Vasyl',
       lastName: 'Clopik',
       id: 'sdsd8983984347374837478',
@@ -38,6 +40,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'Italy',
     user: {
+      role: UserRole.User,
       firstName: 'Bogdan',
       lastName: 'Kisa',
       id: 'sdsd89834343347374837478',
@@ -59,6 +62,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'Italy',
     user: {
+      role: UserRole.User,
       firstName: 'Bogdan',
       lastName: 'Kisa',
       id: 'sdsd89834343347374837478',
@@ -83,6 +87,7 @@ export const dataSub: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'New York',
     user: {
+      role: UserRole.User,
       firstName: 'Vasyl',
       lastName: 'Clopik',
       id: 'sdsd8983984347374837478',
@@ -104,6 +109,7 @@ export const dataSub: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'Italy',
     user: {
+      role: UserRole.User,
       firstName: 'Bogdan',
       lastName: 'Kisa',
       id: 'sdsd89834343347374837478',
@@ -125,6 +131,7 @@ export const dataSub: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'Italy',
     user: {
+      role: UserRole.User,
       firstName: 'Bogdan',
       lastName: 'Kisa',
       id: 'sdsd89834343347374837478',
@@ -146,6 +153,7 @@ export const dataSub: IArticleResponse[] = [
     team: 'AFC Sout',
     location: 'Italy',
     user: {
+      role: UserRole.User,
       firstName: 'Bogdan',
       lastName: 'Kisa',
       id: 'sdsd89834343347374837478',
@@ -159,6 +167,7 @@ export const articleCommentsData: ICommentResponse[] = [
   {
     id: '213782713721837',
     user: {
+      role: UserRole.User,
       firstName: 'Vasyl',
       lastName: 'Clopik',
       id: '8983984347374837478',
@@ -171,6 +180,7 @@ export const articleCommentsData: ICommentResponse[] = [
   {
     id: '213754645645837',
     user: {
+      role: UserRole.User,
       firstName: 'Maurizio',
       lastName: 'Spadari',
       id: '8983932423423423478',
@@ -183,6 +193,7 @@ export const articleCommentsData: ICommentResponse[] = [
   {
     id: '213773218283717',
     user: {
+      role: UserRole.User,
       firstName: 'Tom',
       lastName: 'Chanter',
       id: '8983789843748374473',
@@ -210,6 +221,7 @@ export const articleData: IArticleResponse = {
   team: 'AFC Sout',
   location: 'New York',
   user: {
+    role: UserRole.User,
     avatar: 'https://www.thesun.co.uk/wp-content/uploads/2019/04/NINTCHDBPICT000642434471.jpg',
     firstName: 'Pete',
     lastName: 'Davidson',

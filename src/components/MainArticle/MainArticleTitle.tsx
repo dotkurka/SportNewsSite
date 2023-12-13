@@ -8,22 +8,8 @@ import type { IMainTitle } from 'components/MainArticle/types';
 
 import './MainArticle.scss';
 
-const MainArticleTitle = ({ sliderData, currentIndex, setCurrentIndex, variant }: IMainTitle) => {
-  const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0;
-    const index = isFirstSlide ? sliderData.length - 1 : currentIndex - 1;
-    setCurrentIndex(index);
-  };
-
-  const goToNext = () => {
-    const isLastSlide = currentIndex === sliderData.length - 1;
-    const index = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(index);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+const MainArticleTitle = ({ sliderData, currentIndex, controls, variant }: IMainTitle) => {
+  const { goToNext, goToPrevious, goToSlide } = controls;
 
   const titleVariant =
     mainArticleVariant[variant] === mainArticleVariant.carousel
@@ -60,7 +46,7 @@ const MainArticleTitle = ({ sliderData, currentIndex, setCurrentIndex, variant }
             <button className='main-article-button-circle left' onClick={goToPrevious}>
               <ArrowCircle />
             </button>
-            {sliderData.map((slide, index) => (
+            {sliderData.map((_slide, index) => (
               <button
                 key={index}
                 className={`main-article-button-number ${index === currentIndex ? 'active' : ''}`}
@@ -72,12 +58,6 @@ const MainArticleTitle = ({ sliderData, currentIndex, setCurrentIndex, variant }
             <button className='main-article-button-circle right' onClick={goToNext}>
               <ArrowCircle />
             </button>
-          </div>
-          <div className='main-article-mobile-btn'>
-            <button className='left' onClick={goToPrevious}>
-              {}
-            </button>
-            <button onClick={goToNext}>{}</button>
           </div>
         </>
       )}

@@ -5,6 +5,7 @@ import { useCreateArticleMutation } from 'api/articlesApi';
 import { Article, Modal, PreviewButton, SwitchButton } from 'components';
 import { ModalVariant } from 'components/Modal/types';
 import { articleCommentsData } from 'config/ArticleData/articleData';
+import { UserRole } from 'features/auth/enums';
 import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
 import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
@@ -36,6 +37,7 @@ const previewArticle = {
   path: '/example',
   comments: articleCommentsData,
   user: {
+    role: UserRole.User,
     firstName: 'Ostap',
     id: '932492384972357',
     lastName: 'Kurka',

@@ -1,21 +1,18 @@
 # Todo
 
-- It is necessary to extract the business logic from the NavBar.
-
 - Add onChange for button (Share add More) in MainArticleTitle.jsx
 
-- Change user default avatar in Mobile NavBar
+- separate enum from types.ts to individual file such as enam.js
 
-- Search
-
-- Fix mobile arrows carousel buttons in MainArticle
+- MANAGER MODE
 
 # To begin with you need to do
 
 - User personal menu
 
+  - user prifile
   - change passowrd, full name and email
-  - add and change avatar
+  - add change avatar
 
 - Article:
 
@@ -26,10 +23,7 @@
   - it would be good to add skeleton
   - create handler for the sort comments
 
-- Layouts
-
-  - create layout for the article manager
+  - Pages
+    - About page
 
 - it would be nice to add a survay
-
-Add CSStaransition for the mobile navbar menu

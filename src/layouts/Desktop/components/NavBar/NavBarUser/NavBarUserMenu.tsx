@@ -3,20 +3,26 @@ import { Link } from 'react-router-dom';
 
 import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
+import { UserRole } from 'features/auth/enums';
 import { logOut } from 'redux/authSlice';
 
-import type { IBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
+import type { INavBarUserMenu } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
+
 import './NavBarUser.scss';
 
-const NavBarUserMenu = ({ user }: IBarUser) => {
+const NavBarUserMenu = ({ user, className = '' }: INavBarUserMenu) => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
     dispatch(logOut());
   };
 
+  const checkUserRole = user?.role === UserRole.Admin;
+
+  // TODO make handler for the manager mod
+
   return (
-    <div className='navbar-user-menu'>
+    <div className={`navbar-user-menu ${className}`}>
       <div className='navbar-user-menu-head'>
         <p className='navbar-user-menu-head-name'>
           {user?.firstName} {user?.lastName}
@@ -27,6 +33,11 @@ const NavBarUserMenu = ({ user }: IBarUser) => {
         </Button>
       </div>
       <div className='navbar-user-menu-list'>
+        {checkUserRole && (
+          <Link className='navbar-user-menu-list-item' to='.'>
+            Manager mode
+          </Link>
+        )}
         <Link className='navbar-user-menu-list-item' to='.'>
           Personal
         </Link>

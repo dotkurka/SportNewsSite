@@ -87,6 +87,7 @@ export const articlesApi = createApi({
 
 export const {
   useGetArticlesQuery,
+  useLazyGetArticlesQuery,
   useGetArticleQuery,
   useGetArticleCommentsQuery,
   useCreateArticleMutation,

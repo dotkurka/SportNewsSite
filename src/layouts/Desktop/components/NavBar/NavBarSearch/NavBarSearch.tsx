@@ -2,34 +2,38 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import searchIcon from 'assets/images/search-icon.svg';
+import useClickOutside from 'hooks/useClickOutside';
 
-import type { INavSearch } from 'layouts/Desktop/components/NavBar/NavBarSearch/types';
 import './NavBarSearch.scss';
 
-const NavBarSearch = ({ data }: INavSearch) => {
-  const [search, setSearch] = useState<string>('');
+import type { INavSearch } from 'layouts/Desktop/components/NavBar/NavBarSearch/types';
+
+const NavBarSearch = ({ onChange, isError, result }: INavSearch) => {
+  const [focus, setFocus] = useState(false);
+  const searchRef = useClickOutside(() => setFocus(false));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    onChange(e.target.value);
   };
 
-  const filteredResult = data?.filter((result) => {
-    return result.title.toLowerCase().includes(search.toLowerCase());
-  });
-
   return (
-    <div className='navbar-search'>
+    <div ref={searchRef} className='navbar-search'>
       <div className='navbar-search-input'>
         <img src={searchIcon} alt='' />
-        <input placeholder='Search by' onChange={handleChange} />
+        <input onFocus={() => setFocus(true)} placeholder='Search by' onChange={handleChange} />
       </div>
-      {search && (
+      {focus && result && (
         <div className='navbar-search-result'>
-          {filteredResult?.map((item, index) => (
-            <Link className='navbar-search-result-item' to={item.path} key={index}>
+          {result?.map((item) => (
+            <Link className='navbar-search-result-item' to={item.path} key={item.id}>
               {item.title}
             </Link>
           ))}
+        </div>
+      )}
+      {focus && isError && !result?.length && (
+        <div className='navbar-search-result'>
+          <span className='navbar-search-result-item'>Not Found</span>
         </div>
       )}
     </div>

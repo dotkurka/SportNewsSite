@@ -1,14 +1,21 @@
 import type { IArticleResponse } from 'features/newArticle/types';
 
+interface IControls {
+  goToNext: () => void;
+  goToPrevious: () => void;
+  goToSlide: (index: number) => void;
+}
+
 export interface IMainTitle {
   sliderData: IArticleResponse[];
   currentIndex: number;
-  setCurrentIndex: (index: number) => void;
+  controls: IControls;
   variant: MainArticleVariant;
 }
 
 export interface IMainArticle {
   sliderData: IArticleResponse[];
+
   className?: string;
   variant?: MainArticleVariant;
 }

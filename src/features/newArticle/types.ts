@@ -19,12 +19,13 @@ export interface ICommentsQueryParams {
 }
 
 export interface IArticleQueryParams {
-  page: number;
-  limit: number;
-  category: string;
-  team: string;
-  sort: string;
-  conference: string;
+  page?: number;
+  limit?: number;
+  category?: string;
+  team?: string;
+  sort?: string;
+  conference?: string;
+  search?: string;
 }
 
 export interface IArticleCreate {
