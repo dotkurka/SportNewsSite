@@ -23,6 +23,7 @@ const Routes = () => {
           <Route path='/test' element={<Test />} />
           <Route path='/:category' element={<Test />} />
           <Route path='/:category/new' element={<NewArticle />} />
+          <Route path='/:category/:article' element={<NewArticle />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>

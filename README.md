@@ -27,3 +27,7 @@
     - About page
 
 - it would be nice to add a survay
+
+- change Article ftom table to grow or dlex
+
+- fix Burger menu overflow

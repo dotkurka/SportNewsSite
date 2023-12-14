@@ -1,12 +1,22 @@
 @import 'styles/Colors.scss';
 
+@mixin searchTitle() {
+  text-transform: uppercase;
+  color: $black;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.24px;
+}
+
 .search-bar {
   width: 100%;
   box-sizing: border-box;
   height: 77px;
+  position: relative;
   display: flex;
   align-items: center;
-  padding: 0 18px;
+  padding: 0 21px;
   justify-content: space-between;
   background: $white;
 
@@ -25,18 +35,27 @@
       }
     }
 
-    &-text {
-      color: $black;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 22px;
-      letter-spacing: -0.24px;
+    &-title {
+      cursor: default;
+      @include searchTitle;
+
+      &-btn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        background: none;
+        @include searchTitle;
+      }
     }
   }
 
   &-input {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+    width: 100%;
+    margin-left: 20px;
 
     input {
       outline: none;
@@ -48,7 +67,7 @@
       font-weight: 400;
 
       &:focus {
-        width: 200px;
+        width: 100%;
         border-bottom: 1px solid $quillGrey;
       }
     }
@@ -56,9 +75,44 @@
     &-label {
       cursor: pointer;
 
+      &:hover * {
+        stroke: $alizarinCrimson;
+      }
+
       &-icon {
         width: 20px;
         height: 20px;
+      }
+    }
+  }
+
+  &-list {
+    box-sizing: border-box;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 800;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      box-sizing: border-box;
+      padding-left: 106px;
+      padding-right: 30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 40px;
+      text-decoration: none;
+      color: $black;
+      font-size: 16px;
+      font-weight: 400;
+
+      &:hover {
+        color: $alizarinCrimson;
+        background: $fireEngineRed;
       }
     }
   }

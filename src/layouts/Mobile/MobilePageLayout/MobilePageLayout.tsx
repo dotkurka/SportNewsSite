@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import { sidebarData } from 'config/SideBarData/SidebarData';
 import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
+import useSearchArticle from 'hooks/useSeachArticle';
 import { Footer, NavBarManager } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
 import SearchBar from 'layouts/Mobile/components/SearchBar/SearchBar';
@@ -17,6 +18,8 @@ import './MobilePageLayout.scss';
 
 const MobilePageLayout = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [search, { isLoading }] = useSearchArticle(searchValue);
 
   const submitRef = useRef<HTMLButtonElement>(null);
   const transitionBurgerRef = useRef(null);
@@ -25,6 +28,10 @@ const MobilePageLayout = () => {
   const user = useSelector(selectCurrentUser);
 
   const managerMode = false;
+
+  const handleSearch = (value: string) => {
+    setSearchValue(value);
+  };
 
   const handleShowBurgerMenu = () => {
     setShowBurgerMenu((show) => !show);
@@ -39,22 +46,24 @@ const MobilePageLayout = () => {
         <span className='mobile-page-head-title'>Sport News</span>
         <UserBar user={user} />
       </div>
-      <SearchBar />
 
       {!managerMode ? (
-        <CSSTransition
-          unmountOnExit
-          timeout={200}
-          in={showBurgerMenu}
-          nodeRef={transitionBurgerRef}
-          classNames='mobile-page-menu-transition'
-          onEnter={() => setOverflowHidden()}
-          onExited={() => unsetOverflow()}
-        >
-          <div ref={transitionBurgerRef} className='mobile-page-menu'>
-            <BurgerMenu handleShow={setShowBurgerMenu} data={sidebarData} />
-          </div>
-        </CSSTransition>
+        <>
+          <CSSTransition
+            unmountOnExit
+            timeout={200}
+            in={showBurgerMenu}
+            nodeRef={transitionBurgerRef}
+            classNames='mobile-page-menu-transition'
+            onEnter={() => setOverflowHidden()}
+            onExited={() => unsetOverflow()}
+          >
+            <div ref={transitionBurgerRef} className='mobile-page-menu'>
+              <BurgerMenu handleShow={setShowBurgerMenu} data={sidebarData} />
+            </div>
+          </CSSTransition>
+          <SearchBar isLoading={isLoading} result={search} onChange={handleSearch} />
+        </>
       ) : (
         <NavBarManager data={sidebarData} submitArticleRef={submitRef} />
       )}

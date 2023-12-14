@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useLazyGetArticlesQuery } from 'api/articlesApi';
 import { ReactComponent as FacebookIcon } from 'assets/images/facebook-follow-icon.svg';
 import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.svg';
 import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
 import { LangSelector, Logo } from 'components';
 import { Langue } from 'components/LangSelector/types';
 import { facebookPath, googlePath, twitterPath } from 'constants/socialContactPath';
-import useDebounce from 'hooks/useDebounce';
+import useSearchArticle from 'hooks/useSeachArticle';
 import NavBarSearch from 'layouts/Desktop/components/NavBar/NavBarSearch/NavBarSearch';
 import NavBarUser from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUser';
 import { selectCurrentUser } from 'redux/authSlice';
@@ -17,20 +16,9 @@ import './NavBar.scss';
 
 const NavBar = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [search, { isLoading }] = useSearchArticle(searchValue);
 
   const user = useSelector(selectCurrentUser);
-
-  const debounceValue = useDebounce(searchValue, 1000);
-  const [getArticles, { data: searchResult, isError }] = useLazyGetArticlesQuery();
-
-  useEffect(() => {
-    if (debounceValue.length >= 2) {
-      getArticles({
-        search: debounceValue,
-        limit: 10,
-      });
-    }
-  }, [debounceValue]);
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
@@ -43,7 +31,7 @@ const NavBar = () => {
       </div>
       <div className='navbar-contain'>
         <div className='navbar-contain-search'>
-          <NavBarSearch result={searchResult} isError={isError} onChange={handleSearch} />
+          <NavBarSearch isLoading={isLoading} result={search} onChange={handleSearch} />
         </div>
         <div className='navbar-contain-social'>
           <div className='navbar-social'>
