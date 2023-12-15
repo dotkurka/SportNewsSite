@@ -5,7 +5,7 @@ import { ReactComponent as DumpIcon } from 'assets/images/dump-icon.svg';
 import { ReactComponent as QuestionIcon } from 'assets/images/question-icon.svg';
 import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
-import { ModalVariant } from 'components/Modal/types';
+import { ModalVariant } from 'components/Modal/enums';
 import useClickOutside from 'hooks/useClickOutside';
 import { setOverflowHidden, unsetOverflow } from 'utils/changeOverflow';
 

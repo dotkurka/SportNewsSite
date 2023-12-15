@@ -34,7 +34,7 @@ const PageLayout = () => {
       {managerMode && <NavBarManager data={sidebarData} submitArticleRef={submitRef} />}
       <div className={`page-layout-contain ${managerMode ? 'center' : ''}`}>
         {!managerMode && <SideBar data={sidebarData} />}
-        <div className='page-layout-contain-children'>
+        <div className={`page-layout-contain-children ${managerMode ? 'manager' : ''} `}>
           <ArticleSubmitContext.Provider value={submitRef}>
             <Outlet />
           </ArticleSubmitContext.Provider>

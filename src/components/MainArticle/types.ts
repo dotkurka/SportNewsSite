@@ -1,3 +1,4 @@
+import type { MainArticleVariant } from 'components/MainArticle/enums';
 import type { IArticleResponse } from 'features/newArticle/types';
 
 interface IControls {
@@ -18,10 +19,4 @@ export interface IMainArticle {
 
   className?: string;
   variant?: MainArticleVariant;
-}
-
-export enum MainArticleVariant {
-  Article = 'article',
-  Carousel = 'carousel',
-  Share = 'share',
 }

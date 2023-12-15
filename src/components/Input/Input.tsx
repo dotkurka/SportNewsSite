@@ -1,7 +1,7 @@
 import checkMark from 'assets/images/check-mark.svg';
 import crossMark from 'assets/images/cross-mark.svg';
 
-import { InputVariant } from './types';
+import { InputVariant } from './enums';
 
 import type { IInput } from './types';
 

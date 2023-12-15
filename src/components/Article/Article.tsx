@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Arrow } from 'assets/images/select-text-arrow.svg';
 import { ArticleComments, MainArticle } from 'components';
-import { MainArticleVariant } from 'components/MainArticle/types';
+import { MainArticleVariant } from 'components/MainArticle/enums';
 
 import './Article.scss';
 import type { IArticle } from 'components/Article/types';

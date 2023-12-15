@@ -29,11 +29,12 @@ const SearchBar = ({ onChange, result, isLoading }: INavSearch) => {
     navigate(-1);
   };
 
-  const checkLocation = location.pathname.split('/')[1] || 'Home';
-  const checkPath = category || checkLocation;
+  const checkingLocation = location.pathname.split('/')[1] || 'Home';
+  const checkingPath = category || checkingLocation;
+  const checkingUnCorrectness = value && focus && !isLoading && !result?.length;
 
   return (
-    <div ref={searchRef} className='search-bar'>
+    <div className='search-bar'>
       <div className='search-bar-category'>
         {category && article ? (
           <button onClick={goToPreviousPage} className='search-bar-category-title-btn'>
@@ -41,10 +42,10 @@ const SearchBar = ({ onChange, result, isLoading }: INavSearch) => {
             Back
           </button>
         ) : (
-          <span className='search-bar-category-title'>{checkPath}</span>
+          <span className='search-bar-category-title'>{checkingPath}</span>
         )}
       </div>
-      <div className='search-bar-input'>
+      <div ref={searchRef} className='search-bar-input'>
         <input
           id={inputId}
           value={value}
@@ -69,7 +70,7 @@ const SearchBar = ({ onChange, result, isLoading }: INavSearch) => {
           })}
         </div>
       )}
-      {value && focus && !isLoading && !result?.length && (
+      {checkingUnCorrectness && (
         <div className='search-bar-list'>
           <span className='search-bar-list-item'>Not Found</span>
         </div>

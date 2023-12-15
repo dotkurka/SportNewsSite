@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
 import { ButtonSize, ButtonVariant } from 'components/Button/types';
-import { TextLinkVariant } from 'components/TextLink/types';
+import { TextLinkVariant } from 'components/TextLink/enums';
 import { signIn } from 'constants/routesPath';
 import { logInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';

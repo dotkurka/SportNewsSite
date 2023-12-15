@@ -1,3 +1,5 @@
+import type { ModalVariant } from 'components/Modal/enums';
+
 export interface IModal {
   show: boolean;
   handleShow: (value: boolean) => void;
@@ -6,12 +8,6 @@ export interface IModal {
   onClick?: () => void;
   buttonConfirmText?: string;
   className?: string;
-}
-
-export enum ModalVariant {
-  Delete = 'delete',
-  Exit = 'exit',
-  Custom = 'custom',
 }
 
 interface IFilling {

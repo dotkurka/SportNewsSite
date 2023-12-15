@@ -19,6 +19,7 @@
   padding: 0 21px;
   justify-content: space-between;
   background: $white;
+  box-shadow: 0px 12px 35px -22px rgba(0, 0, 0, 0.4);
 
   &-category {
     display: flex;
@@ -98,8 +99,9 @@
     flex-direction: column;
 
     &-item {
+      cursor: pointer;
       box-sizing: border-box;
-      padding-left: 106px;
+      padding-left: 104px;
       padding-right: 30px;
       width: 100%;
       display: flex;
@@ -109,6 +111,7 @@
       color: $black;
       font-size: 16px;
       font-weight: 400;
+      transition: 0.3s;
 
       &:hover {
         color: $alizarinCrimson;

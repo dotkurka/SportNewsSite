@@ -1,4 +1,4 @@
-import { MainArticleVariant } from 'components/MainArticle/types';
+import { MainArticleVariant } from 'components/MainArticle/enums';
 
 const mainArticleVariant = {
   [MainArticleVariant.Article]: 'article',

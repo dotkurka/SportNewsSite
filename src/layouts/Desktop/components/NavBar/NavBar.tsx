@@ -5,8 +5,8 @@ import { ReactComponent as FacebookIcon } from 'assets/images/facebook-follow-ic
 import { ReactComponent as GoogleIcon } from 'assets/images/google-follow-icon.svg';
 import { ReactComponent as TwitterIcon } from 'assets/images/twitter-follow-icon.svg';
 import { LangSelector, Logo } from 'components';
-import { Langue } from 'components/LangSelector/types';
-import { facebookPath, googlePath, twitterPath } from 'constants/socialContactPath';
+import { Langue } from 'components/LangSelector/enums';
+import { facebookPath, googlePath, twitterPath } from 'constants/socialPath';
 import useSearchArticle from 'hooks/useSeachArticle';
 import NavBarSearch from 'layouts/Desktop/components/NavBar/NavBarSearch/NavBarSearch';
 import NavBarUser from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUser';

@@ -3,8 +3,8 @@ import { Link, useNavigate, useParams, useMatch, useLocation } from 'react-route
 
 import { Button, Modal, Select } from 'components';
 import { ButtonVariant } from 'components/Button/types';
-import { ModalVariant } from 'components/Modal/types';
-import { SelectVariant } from 'components/Select/types';
+import { ModalVariant } from 'components/Modal/enums';
+import { SelectVariant } from 'components/Select/enums';
 import { newArticle } from 'constants/routesPath';
 
 import './NavBarManager.scss';

@@ -1,9 +1,9 @@
 import { createContext, useCallback, useState } from 'react';
 
+import { Langue } from 'components/LangSelector/enums';
 import { LangBar } from 'layouts/Mobile/components';
 import BurgerMenuItem from 'layouts/Mobile/components/BurgerMenu/BurgerMenuItem';
 import SecondMenu from 'layouts/Mobile/components/BurgerMenu/SecondMenu';
-import { Langue } from 'layouts/Mobile/components/LangBar/types';
 
 import type { ICaregoryData, IConferenceData } from 'features/category/types';
 import type { BurgerContextType, IBurger } from 'layouts/Mobile/components/BurgerMenu/types';

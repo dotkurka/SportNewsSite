@@ -27,7 +27,7 @@ const MobilePageLayout = () => {
   // const { data: sidebarData } = useGetAllCategoryQuery();
   const user = useSelector(selectCurrentUser);
 
-  const managerMode = false;
+  const managerMode = true;
 
   const handleSearch = (value: string) => {
     setSearchValue(value);

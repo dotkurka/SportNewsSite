@@ -1,3 +1,4 @@
+import type { InputVariant } from 'components/Input/enums';
 import type { ReactNode } from 'react';
 import type React from 'react';
 
@@ -12,10 +13,4 @@ export interface IInput extends React.HTMLProps<HTMLInputElement> {
   description?: ReactNode;
   className?: string;
   name?: string;
-}
-
-export enum InputVariant {
-  Succes = 'succes',
-  Error = 'error',
-  Default = 'default',
 }

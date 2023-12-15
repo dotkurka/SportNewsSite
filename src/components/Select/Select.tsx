@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { ReactComponent as ArrowContained } from 'assets/images/arrow-down-flag.svg';
 import { ReactComponent as ArrowText } from 'assets/images/select-text-arrow.svg';
 import { Input } from 'components';
-import { SelectVariant, type ISelect } from 'components/Select/types';
+import { SelectVariant } from 'components/Select/enums';
 import useClickOutside from 'hooks/useClickOutside';
+
+import type { ISelect } from 'components/Select/types';
 
 import './Select.scss';
 

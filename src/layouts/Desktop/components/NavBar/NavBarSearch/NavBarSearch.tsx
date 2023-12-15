@@ -18,6 +18,8 @@ const NavBarSearch = ({ onChange, isLoading, result }: INavSearch) => {
     setValue(e.target.value);
   };
 
+  const checkingUnCorrectness = value && focus && isLoading && !result?.length;
+
   return (
     <div ref={searchRef} className='navbar-search'>
       <div className='navbar-search-input'>
@@ -41,7 +43,7 @@ const NavBarSearch = ({ onChange, isLoading, result }: INavSearch) => {
           })}
         </div>
       )}
-      {value && focus && isLoading && !result?.length && (
+      {checkingUnCorrectness && (
         <div className='navbar-search-result'>
           <span className='navbar-search-result-item'>Not Found</span>
         </div>

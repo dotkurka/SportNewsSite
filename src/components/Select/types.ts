@@ -1,3 +1,5 @@
+import type { SelectVariant } from 'components/Select/enums';
+
 export interface ISelect {
   options: string[];
   touched?: boolean;
@@ -12,10 +14,4 @@ export interface ISelect {
   onChange?: (e: string) => void;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   formikSetValue?: (field: string, value: string, shouldValidate?: boolean | undefined) => void;
-}
-
-export enum SelectVariant {
-  Outline = 'outline',
-  Text = 'text',
-  Dots = 'dots',
 }

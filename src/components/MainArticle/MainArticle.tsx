@@ -2,8 +2,8 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { ReactComponent as ArrowButton } from 'assets/images/select-text-arrow.svg';
+import { MainArticleVariant } from 'components/MainArticle/enums';
 import mainArticleVariant from 'components/MainArticle/mainArticleVariant';
-import { MainArticleVariant } from 'components/MainArticle/types';
 
 import MainArticleTitle from './MainArticleTitle';
 

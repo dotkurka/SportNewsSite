@@ -7,7 +7,7 @@ import {
   SubArticle,
 } from 'components';
 import { ArticleTitleVariant } from 'components/ArticleTitle/types';
-import { MainArticleVariant } from 'components/MainArticle/types';
+import { MainArticleVariant } from 'components/MainArticle/enums';
 import {
   articleData,
   dataMainArticle,
