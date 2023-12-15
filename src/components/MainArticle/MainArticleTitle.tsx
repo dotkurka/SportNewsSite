@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { ReactComponent as ArrowCircle } from 'assets/images/arrow-circle-2.svg';
 import { Button, ShareButton } from 'components';
 import { ButtonVariant } from 'components/Button/types';
@@ -9,19 +11,28 @@ import type { IMainTitle } from 'components/MainArticle/types';
 import './MainArticle.scss';
 
 const MainArticleTitle = ({ sliderData, currentIndex, controls, variant }: IMainTitle) => {
+  const currentArticle = sliderData[currentIndex];
+  const datePublished = convertDateISO(currentArticle.published);
+
   const { goToNext, goToPrevious, goToSlide } = controls;
+  const navigate = useNavigate();
+
+  const goToPage = () => {
+    const { category, team, path } = currentArticle;
+    const articlePath = `/${category}/${team}/${path}`;
+
+    navigate(articlePath);
+  };
 
   const titleVariant =
     mainArticleVariant[variant] === mainArticleVariant.carousel
-      ? sliderData[currentIndex].title
-      : `Article by ${sliderData[currentIndex].user.firstName} ${sliderData[currentIndex].user.lastName}`;
+      ? currentArticle.title
+      : `Article by ${currentArticle.user.firstName} ${currentArticle.user.lastName}`;
 
   const contentVariant =
     mainArticleVariant[variant] === mainArticleVariant.carousel
-      ? truncateText(removeMarkdown(sliderData[currentIndex].content), 120)
-      : sliderData[currentIndex].title;
-
-  const datePublished = convertDateISO(sliderData[currentIndex].published);
+      ? truncateText(removeMarkdown(currentArticle.content), 120)
+      : currentArticle.title;
 
   return (
     <div className='main-article-title'>
@@ -31,7 +42,7 @@ const MainArticleTitle = ({ sliderData, currentIndex, controls, variant }: IMain
         <h2>{contentVariant}</h2>
       </div>
       <div className='main-article-title-shadow' />
-      {/* TODO add path for the button  */}
+      {/* TODO add path for the ShareButton */}
 
       {mainArticleVariant[variant] === mainArticleVariant.share && (
         <ShareButton className='main-article-title-btn' />
@@ -39,7 +50,11 @@ const MainArticleTitle = ({ sliderData, currentIndex, controls, variant }: IMain
 
       {mainArticleVariant[variant] === mainArticleVariant.carousel && (
         <>
-          <Button variant={ButtonVariant.Contained} className='main-article-title-btn'>
+          <Button
+            onClick={goToPage}
+            variant={ButtonVariant.Contained}
+            className='main-article-title-btn'
+          >
             More
           </Button>
           <div className='main-article-button'>

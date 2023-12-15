@@ -35,6 +35,9 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
     setShowModal(false);
   };
 
+  const checkingLocation = location.pathname.split('/')[1] || 'Home';
+  const title = category || checkingLocation;
+
   return (
     <div>
       <div className='navbar-manager-head'>
@@ -45,7 +48,7 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
           handleShow={setShowModal}
         />
         <div className='navbar-manager-head-category'>
-          <span>NBA</span>
+          <span>{title}</span>
           <Select
             className='navbar-manager-head-category-select'
             variant={SelectVariant.Dots}

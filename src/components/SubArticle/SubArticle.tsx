@@ -7,18 +7,19 @@ import type { ISubArticle } from 'components/SubArticle/types';
 import './SubArticle.scss';
 
 const SubArticle = ({ subArticleData, className }: ISubArticle) => {
-  const content = truncateText(removeMarkdown(subArticleData.content), 45);
+  const { img, alt, title, category, team, path, content } = subArticleData;
+
+  const articleContent = truncateText(removeMarkdown(content), 45);
+  const articlePath = `/${category}/${team}/${path}`;
 
   return (
-    <div className={`sub-article ${className}`}>
+    <Link to={articlePath} className={`sub-article ${className}`}>
       <div className='sub-article-border' />
-      <img className='sub-article-img' src={subArticleData.img} alt={subArticleData.alt} />
-      <h3>{subArticleData.title}</h3>
-      <p>{content}</p>
-      <Link className='sub-article-button' to={subArticleData.path}>
-        <ArrowButton />
-      </Link>
-    </div>
+      <img className='sub-article-img' src={img} alt={alt} />
+      <h3>{title}</h3>
+      <p>{articleContent}</p>
+      <ArrowButton className='sub-article-arrow' />
+    </Link>
   );
 };
 

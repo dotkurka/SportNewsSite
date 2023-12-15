@@ -26,8 +26,8 @@ const Home = () => {
         sliderData={dataMainArticle}
       />
       <div className='home-sub-article'>
-        {dataSub.map((item, index) => (
-          <SubArticle key={index} className='home-sub-article-item' subArticleData={item} />
+        {dataSub.map((item) => (
+          <SubArticle key={item.id} className='home-sub-article-item' subArticleData={item} />
         ))}
       </div>
       <ArticleTitle className='home-title'>Breakdown</ArticleTitle>

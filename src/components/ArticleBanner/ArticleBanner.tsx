@@ -6,17 +6,18 @@ import type { IArticleBanner } from 'components/ArticleBanner/types';
 import './ArticleBanner.scss';
 
 const ArticleBanner = ({ articleData }: IArticleBanner) => {
+  const { img, alt, title, category, team, path } = articleData;
+  const articlePath = `/${category}/${team}/${path}`;
+
   return (
-    <div className='article-banner'>
-      <span className='article-banner-category'>{articleData.category}</span>
-      <img src={articleData.img} alt={articleData.alt} />
+    <Link to={articlePath} className='article-banner'>
+      <span className='article-banner-category'>{category}</span>
+      <img src={img} alt={alt} />
       <div className='article-banner-text'>
-        <h2>{articleData.title}</h2>
-        <Link className='article-banner-button' to={articleData.path}>
-          <ArrowButton />
-        </Link>
+        <h2>{title}</h2>
+        <ArrowButton className='article-banner-arrow' />
       </div>
-    </div>
+    </Link>
   );
 };
 

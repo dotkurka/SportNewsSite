@@ -9,27 +9,22 @@ import './ArticleCollection.scss';
 
 const ArticleCollection = ({ collection }: IArticleCollection) => {
   return (
-    <table className='article-collection'>
-      <tbody>
-        {collection.map((article, index) => {
-          const content = truncateText(removeMarkdown(article.content), 50);
-          return (
-            <tr key={index} className='article-collection-contain'>
-              <td className='article-collection-img'>
-                <img src={article.img} alt={article.alt} />
-              </td>
-              <td className='article-collection-text'>
-                <h3>{article.title}</h3>
-                <p>{content}</p>
-                <Link className='article-collection-button' to={article.path}>
-                  <ArrowButton />
-                </Link>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div className='article-collection'>
+      {collection.map((article) => {
+        const content = truncateText(removeMarkdown(article.content), 50);
+        const articlePath = `/${article.category}/${article.team}/${article.path}`;
+        return (
+          <Link to={articlePath} key={article.id} className='article-collection-item'>
+            <img className='article-collection-img' src={article.img} alt={article.alt} />
+            <div className='article-collection-text'>
+              <h3>{article.title}</h3>
+              <p>{content}</p>
+              <ArrowButton className='article-collection-arrow' />
+            </div>
+          </Link>
+        );
+      })}
+    </div>
   );
 };
 

@@ -10,8 +10,8 @@ import Test from 'pages/Tets/Test';
 import { selectCurrentToken } from 'redux/authSlice';
 
 const Routes = () => {
-  const isAuth1 = useSelector(selectCurrentToken);
-  const isAuth = true;
+  // dev mode is true
+  const isAuth = useSelector(selectCurrentToken) || true;
 
   return (
     <RouterRoutes>
@@ -23,7 +23,7 @@ const Routes = () => {
           <Route path='/test' element={<Test />} />
           <Route path='/:category' element={<Test />} />
           <Route path='/:category/new' element={<NewArticle />} />
-          <Route path='/:category/:article' element={<NewArticle />} />
+          <Route path='/:category/:team/:article' element={<NewArticle />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>
