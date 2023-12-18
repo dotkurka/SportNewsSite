@@ -5,7 +5,7 @@ import useClickOutside from 'hooks/useClickOutside';
 import SideBarFollow from 'layouts/Desktop/components/SideBar/SideBarFollow/SideBarFollow';
 import SideBarItem from 'layouts/Desktop/components/SideBar/SideBarItem/SideBarItem';
 import SubMenu from 'layouts/Desktop/components/SideBar/SubMenu/SubMenu';
-import { unsetOverflow, setOverflowHidden } from 'utils/changeOverflow';
+import { lockScrollbar, unlockScrollbar } from 'utils/lockScrollbar';
 
 import type { ISideBar } from './types';
 import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
@@ -26,7 +26,7 @@ const SideBar = ({ data }: ISideBar) => {
       setSubMenu(null);
       setSecondSubMenu(null);
       setCheckedSub(null);
-      unsetOverflow();
+      unlockScrollbar();
       setChecked(null);
     }
   }, [subMenu, secondSubMenu]);
@@ -43,11 +43,11 @@ const SideBar = ({ data }: ISideBar) => {
     }
   };
 
-  const setOverflow = (item: ICaregoryData) => {
+  const setScrollbar = (item: ICaregoryData) => {
     if (item.conference) {
-      setOverflowHidden();
+      lockScrollbar();
     } else {
-      unsetOverflow();
+      unlockScrollbar();
     }
   };
 
@@ -59,7 +59,7 @@ const SideBar = ({ data }: ISideBar) => {
       setSecondSubMenu(null);
       setSubMenu(item?.conference || null);
       setChecked(item.title);
-      setOverflow(item);
+      setScrollbar(item);
     }
   };
 

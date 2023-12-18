@@ -7,7 +7,7 @@ import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/types';
 import { ModalVariant } from 'components/Modal/enums';
 import useClickOutside from 'hooks/useClickOutside';
-import { setOverflowHidden, unsetOverflow } from 'utils/changeOverflow';
+import { lockScrollbar, unlockScrollbar } from 'utils/lockScrollbar';
 
 import type { ModalFillingType, IModal } from 'components/Modal/types';
 
@@ -66,8 +66,8 @@ const Modal = ({
       timeout={200}
       classNames='modal-transition'
       unmountOnExit
-      onEnter={() => setOverflowHidden()}
-      onExited={() => unsetOverflow()}
+      onEnter={() => lockScrollbar()}
+      onExited={() => unlockScrollbar()}
     >
       <div ref={transitionRef} className='modal'>
         <div ref={modalRef} className={`modal-contain ${className}`}>

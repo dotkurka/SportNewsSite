@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useLazyGetUserQuery } from 'api/authApi';
@@ -11,7 +11,7 @@ const App = () => {
   const token = useSelector(selectCurrentToken);
   const [getUser, { data: user, error }] = useLazyGetUserQuery();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!token) {
       const localToken = localStorage.getItem('token');
 
@@ -21,7 +21,7 @@ const App = () => {
     }
   }, [token]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getUser();
 
     if (user) {
@@ -29,7 +29,7 @@ const App = () => {
     }
   }, [token, user]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (error) {
       dispatch(logOut());
     }

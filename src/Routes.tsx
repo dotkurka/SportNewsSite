@@ -23,6 +23,7 @@ const Routes = () => {
           <Route path='/test' element={<Test />} />
           <Route path='/:category' element={<Test />} />
           <Route path='/:category/new' element={<NewArticle />} />
+          <Route path='/:category/:team' element={<NewArticle />} />
           <Route path='/:category/:team/:article' element={<NewArticle />} />
         </Route>
       </Route>

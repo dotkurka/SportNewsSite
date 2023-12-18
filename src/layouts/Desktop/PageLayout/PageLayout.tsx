@@ -16,7 +16,7 @@ const PageLayout = () => {
 
   // const { data: sidebarData } = useGetAllCategoryQuery();
 
-  const managerMode = true;
+  const managerMode = !true;
 
   if (isMobile) {
     return <MobilePageLayout />;

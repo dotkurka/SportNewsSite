@@ -10,7 +10,7 @@ import { Footer, NavBarManager } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
 import SearchBar from 'layouts/Mobile/components/SearchBar/SearchBar';
 import { selectCurrentUser } from 'redux/authSlice';
-import { setOverflowHidden, unsetOverflow } from 'utils/changeOverflow';
+import { lockScrollbar, unlockScrollbar } from 'utils/lockScrollbar';
 
 import './MobilePageLayout.scss';
 
@@ -27,7 +27,7 @@ const MobilePageLayout = () => {
   // const { data: sidebarData } = useGetAllCategoryQuery();
   const user = useSelector(selectCurrentUser);
 
-  const managerMode = true;
+  const managerMode = false;
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
@@ -38,7 +38,7 @@ const MobilePageLayout = () => {
   };
 
   return (
-    <div className='mobile-page manager-mode'>
+    <div className={`mobile-page  ${managerMode ? 'manager-mode' : ''}`}>
       <div className='mobile-page-head'>
         {!managerMode && (
           <BurgerMenuButton show={showBurgerMenu} onClick={() => handleShowBurgerMenu()} />
@@ -55,8 +55,8 @@ const MobilePageLayout = () => {
             in={showBurgerMenu}
             nodeRef={transitionBurgerRef}
             classNames='mobile-page-menu-transition'
-            onEnter={() => setOverflowHidden()}
-            onExited={() => unsetOverflow()}
+            onEnter={() => lockScrollbar()}
+            onExited={() => unlockScrollbar()}
           >
             <div ref={transitionBurgerRef} className='mobile-page-menu'>
               <BurgerMenu handleShow={setShowBurgerMenu} data={sidebarData} />

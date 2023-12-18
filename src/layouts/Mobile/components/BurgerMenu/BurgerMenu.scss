@@ -27,11 +27,10 @@
   position: relative;
 
   &-contain {
-    position: absolute;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding: 13px 0 0 49px;
-    position: relative;
+    padding: 13px 0 40px 49px;
     transition: 0.5s;
     transform: translateX(-200px);
     visibility: hidden;
