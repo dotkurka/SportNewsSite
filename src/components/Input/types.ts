@@ -1,8 +1,7 @@
 import type { InputVariant } from 'components/Input/enums';
-import type { ReactNode } from 'react';
-import type React from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
-export interface IInput extends React.HTMLProps<HTMLInputElement> {
+export interface IInput extends ComponentProps<'input'> {
   type: string;
   errors?: string;
   touched?: boolean;

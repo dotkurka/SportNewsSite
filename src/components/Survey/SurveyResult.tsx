@@ -1,5 +1,5 @@
 import Button from 'components/Button/Button';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 
 import type { ISurveyForm } from 'components/Survey/types';
 import './Survey.scss';

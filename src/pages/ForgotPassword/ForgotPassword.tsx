@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 
 import { Button, Input, TextLink } from 'components';
-import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { ButtonSize, ButtonVariant } from 'components/Button/enums';
 import { TextLinkVariant } from 'components/TextLink/enums';
 import { logIn, signIn } from 'constants/routesPath';
 import { forgotPasswordValidation } from 'features/auth/validationSchema';

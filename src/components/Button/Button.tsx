@@ -1,4 +1,4 @@
-import { ButtonSize, ButtonVariant } from './types';
+import { ButtonSize, ButtonVariant } from './enums';
 
 import type { IButton } from './types';
 

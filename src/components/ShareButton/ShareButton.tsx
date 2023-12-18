@@ -1,6 +1,6 @@
 import shareIcon from 'assets/images/share-icon.svg';
 import Button from 'components/Button/Button';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 
 import './ShareButton.scss';
 

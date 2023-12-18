@@ -67,38 +67,6 @@ $width: 170px;
     }
   }
 
-  &-dots {
-    &-contain {
-      padding-left: 13px;
-      width: 25px;
-      border: none;
-      box-sizing: border-box;
-      position: relative;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      background: none;
-      color: $greyCloud;
-      font-size: 28px;
-
-      span {
-        user-select: none;
-        cursor: pointer;
-        transition-duration: 0.2s;
-
-        &:hover,
-        &.selected {
-          color: $alizarinCrimson;
-        }
-      }
-
-      &[disabled] {
-        color: $azalea;
-        cursor: default;
-      }
-    }
-  }
-
   &-outline {
     &-contain {
       position: relative;

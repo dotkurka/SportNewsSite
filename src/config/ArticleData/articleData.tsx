@@ -216,7 +216,7 @@ export const articleData: IArticleResponse = {
   title: 'As M.L.B.’s Season Opens in Japan, at Least the Dirt Is Familiar',
   category: 'NBA',
   published: '2023-08-05T14:42:53.612+00:00',
-  path: 'American-Games-come-back-in-2019',
+  path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
   conference: 'Tenessee',
   team: 'AFC Sout',
   location: 'New York',

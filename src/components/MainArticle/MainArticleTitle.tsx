@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as ArrowCircle } from 'assets/images/arrow-circle-2.svg';
 import { Button, ShareButton } from 'components';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 import mainArticleVariant from 'components/MainArticle/mainArticleVariant';
 import { convertDateISO, removeMarkdown, truncateText } from 'utils';
 

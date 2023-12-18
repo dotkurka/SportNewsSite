@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Button } from 'components';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 import { UserRole } from 'features/auth/enums';
 import { logOut } from 'redux/authSlice';
 

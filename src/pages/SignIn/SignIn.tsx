@@ -6,7 +6,7 @@ import { useSignUpMutation } from 'api/authApi';
 import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg';
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
 import { Button, Input, TextLink } from 'components';
-import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { ButtonSize, ButtonVariant } from 'components/Button/enums';
 import { logIn } from 'constants/routesPath';
 import { signInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';

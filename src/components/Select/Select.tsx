@@ -13,7 +13,6 @@ import './Select.scss';
 const selectVariant = {
   [SelectVariant.Text]: 'text',
   [SelectVariant.Outline]: 'outline',
-  [SelectVariant.Dots]: 'dots',
 };
 
 const Select = ({
@@ -82,15 +81,6 @@ const Select = ({
           {label && <span className='select-text-label'>{label}</span>}
           <span className='select-text-input'>{selected}</span>
           <ArrowText className={`select-text-arrow ${selectShow ? 'open' : ''}`} />
-        </button>
-      )}
-      {selectVariant[variant] === selectVariant.dots && (
-        <button
-          disabled={disabled}
-          className='select-dots-contain'
-          onClick={() => handleShowMenu()}
-        >
-          <span className={`${selectShow ? 'selected' : ''}`}>&#183;&#183;&#183;</span>
         </button>
       )}
       {selectShow && (

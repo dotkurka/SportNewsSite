@@ -1,7 +1,7 @@
 import userAvatar from 'assets/images/profile-avatar.svg';
 import { Button, Select } from 'components';
 import ArticleCommentsForm from 'components/ArticleComments/ArticleCommentsForm';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 import { SelectVariant } from 'components/Select/enums';
 import { convertDateISO } from 'utils';
 

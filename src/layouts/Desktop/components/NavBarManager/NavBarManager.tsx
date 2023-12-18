@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams, useMatch, useLocation } from 'react-router-dom';
 
-import { Button, Modal, Select } from 'components';
-import { ButtonVariant } from 'components/Button/types';
+import { Button, Modal } from 'components';
+import { ButtonVariant } from 'components/Button/enums';
 import { ModalVariant } from 'components/Modal/enums';
-import { SelectVariant } from 'components/Select/enums';
 import { newArticle } from 'constants/routesPath';
 
 import './NavBarManager.scss';
@@ -49,11 +48,11 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
         />
         <div className='navbar-manager-head-category'>
           <span>{title}</span>
-          <Select
+          {/* <Select
             className='navbar-manager-head-category-select'
             variant={SelectVariant.Dots}
             options={['Edit', 'Delete']}
-          />
+          /> */}
         </div>
         {matchPath ? (
           <div className='navbar-manager-head-btn'>

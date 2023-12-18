@@ -3,9 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { Modal } from 'components';
+import { ShortArticle } from 'components';
+import { articleData } from 'config/ArticleData/articleData';
 
 const fillMidal = {
   title: 'EEROROOFJF',
@@ -24,15 +25,7 @@ const Test = () => {
 
   return (
     <div>
-      <button onClick={() => setShow(true)}>show</button>
-      <Modal
-        customText={fillMidal}
-        buttonConfirmText='Cool'
-        onClick={handleSubmit}
-        show={show}
-        handleShow={setShow}
-      />
-      <Link to='new'>Kink</Link>
+      <ShortArticle data={articleData} />
     </div>
   );
 };

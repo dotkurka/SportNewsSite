@@ -3,7 +3,7 @@ import { useState } from 'react';
 import arrowFlag from 'assets/images/arrow-down-flag.svg';
 import userAvatar from 'assets/images/profile-avatar.svg';
 import { Button } from 'components';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 import { UserRole } from 'features/auth/enums';
 import useClickOutside from 'hooks/useClickOutside';
 import NavBarUserMenu from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUserMenu';
