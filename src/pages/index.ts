@@ -9,3 +9,9 @@ export { default as NewPassword } from './NewPassword/NewPassword';
 export { default as SignIn } from './SignIn/SignIn';
 
 export { default as Home } from './Home/Home';
+
+export { default as Team } from './Team/Team';
+
+export { default as Category } from './Category/Category';
+
+export { default as ArticlePage } from './ArticlePage/ArticlePage';

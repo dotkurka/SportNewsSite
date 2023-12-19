@@ -4,7 +4,17 @@ import { Route, Routes as RouterRoutes } from 'react-router-dom';
 import { ProtectedRoute } from 'components';
 import { checkEmail, forgotPassword, home, logIn, newPassword, signIn } from 'constants/routesPath';
 import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
-import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pages';
+import {
+  ArticlePage,
+  Category,
+  CheckEmail,
+  ForgotPassword,
+  Home,
+  LogIn,
+  NewPassword,
+  SignIn,
+  Team,
+} from 'pages';
 import NewArticle from 'pages/NewArticle/NewArticle';
 import Test from 'pages/Tets/Test';
 import { selectCurrentToken } from 'redux/authSlice';
@@ -21,10 +31,10 @@ const Routes = () => {
           <Route path='/video' element={<NewArticle />} />
           <Route path='/home/test' element={<NewArticle />} />
           <Route path='/test' element={<Test />} />
-          <Route path='/:category' element={<Test />} />
+          <Route path='/:category' element={<Category />} />
           <Route path='/:category/new' element={<NewArticle />} />
-          <Route path='/:category/:team' element={<NewArticle />} />
-          <Route path='/:category/:team/:article' element={<NewArticle />} />
+          <Route path='/:category/:team' element={<Team />} />
+          <Route path='/:category/:team/:article' element={<ArticlePage />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>

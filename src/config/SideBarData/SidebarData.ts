@@ -13,35 +13,35 @@ export const sidebarData: ICaregoryData[] = [
     conference: [
       {
         id: '9348492834802398',
-        title: 'NBA 1',
-        path: '/NBA_1',
+        title: 'Eastern',
+        path: '/NBA/Eastern',
         team: [
           {
             id: '9922384834348098',
-            title: 'NBA 11',
-            path: '/NBA_1_1',
+            title: 'New York Knicks',
+            path: '/NBA/New+York+Knicks',
           },
           {
             id: '9343380249849288',
-            title: 'NBA 12',
-            path: '/NBA_1_2',
+            title: 'Boston Celtics',
+            path: '/NBA/Boston+Celtics',
           },
         ],
       },
       {
         id: '9343024288984389',
-        title: 'NBA 2',
-        path: '/NBA_2',
+        title: 'Western',
+        path: '/NBA/Western',
         team: [
           {
             id: '9343489849238028',
-            title: 'NBA 21',
-            path: '/NBA_2_1',
+            title: 'Detroit Pistons',
+            path: '/NBA/Detroit+Pistons',
           },
           {
             id: '9498433843029288',
-            title: 'NBA 22',
-            path: '/NBA_2_2',
+            title: 'Indiana Pacers',
+            path: '/NBA/Indiana+Pacers',
           },
         ],
       },
@@ -54,35 +54,35 @@ export const sidebarData: ICaregoryData[] = [
     conference: [
       {
         id: '2834299849433808',
-        title: 'NFL 1',
-        path: '/NFL_1',
+        title: 'AFC East',
+        path: '/NFL/AFC+East',
         team: [
           {
             id: '8024989928343348',
-            title: 'NFL 11',
-            path: '/NFL_1_1',
+            title: 'Buffalo Bills',
+            path: '/NFL/Buffalo+Bills',
           },
           {
             id: '9309842443389288',
-            title: 'NFL 12',
-            path: '/NFL_1_2',
+            title: 'Miami Dolphins',
+            path: '/NFL/Miami+Dolphins',
           },
         ],
       },
       {
         id: '9024983928433848',
-        title: 'NFL 2',
-        path: '/NFL_2',
+        title: 'AFC North',
+        path: '/NFL/AFC+North',
         team: [
           {
             id: '8024934984933288',
-            title: 'NFL 21',
-            path: '/NFL_2_1',
+            title: 'Baltimore Ravens',
+            path: '/NFL/Baltimore+Ravens',
           },
           {
             id: '4929302498433888',
-            title: 'NFL 22',
-            path: '/NFL_2_2',
+            title: 'Cincinnati Bengals',
+            path: '/NFL/Cincinnati+Bengals',
           },
         ],
       },
@@ -95,35 +95,35 @@ export const sidebarData: ICaregoryData[] = [
     conference: [
       {
         id: '9349283880234498',
-        title: 'MLB 1',
-        path: '/MLB',
+        title: 'East',
+        path: '/MLB/East',
         team: [
           {
             id: '9922343834848098',
-            title: 'MLB 11',
-            path: '/MLB_1_1',
+            title: 'Boston Red Sox',
+            path: '/MLB/Boston+Red+Sox',
           },
           {
             id: '9384943380249288',
-            title: 'NBA 12',
-            path: '/NBA_1_2',
+            title: 'New York Yankees',
+            path: '/NBA/New+York+Yankees',
           },
         ],
       },
       {
         id: '9343088984382429',
-        title: 'MLB 2',
-        path: '/MLB_2',
+        title: 'Central',
+        path: '/MLB/Central',
         team: [
           {
             id: '9343492348988028',
-            title: 'MLB 21',
-            path: '/MLB_2_1',
+            title: 'Chicago White Sox',
+            path: '/MLB/Chicago+White+Sox',
           },
           {
             id: '9438430298439288',
-            title: 'MLB 22',
-            path: '/MLB_2_2',
+            title: 'Detroit Tigers',
+            path: '/MLB/Detroit+Tigers',
           },
         ],
       },

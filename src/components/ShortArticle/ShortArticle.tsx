@@ -7,17 +7,12 @@ import { DropdownButton, Modal } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
 import { truncateText } from 'utils';
 
-import type { IRequestError, IUser } from 'features/auth/types';
-import type { IArticleResponse } from 'features/newArticle/types';
+import type { IShortArticle } from 'components/ShortArticle/types';
+import type { IRequestError } from 'features/auth/types';
 
 import './ShortArticle.scss';
 
-interface IShortArticle {
-  data: IArticleResponse;
-  user?: IUser;
-}
-
-const ShortArticle = ({ data, user }: IShortArticle) => {
+const ShortArticle = ({ data, user, className = '' }: IShortArticle) => {
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -28,7 +23,7 @@ const ShortArticle = ({ data, user }: IShortArticle) => {
 
   useEffect(() => {
     if (isError) {
-      const error = (articleError as IRequestError).data.message;
+      const error = (articleError as IRequestError).data?.message;
       setErrorMessage(error);
       setShowModal(true);
     }
@@ -61,7 +56,7 @@ const ShortArticle = ({ data, user }: IShortArticle) => {
   const showDropDown = chekingUserEdit || managerMod;
 
   return (
-    <div className='short-article'>
+    <div className={`short-article ${className}`}>
       <Modal
         customText={{ title: 'ERROR', message: errorMessage }}
         show={showModal}
