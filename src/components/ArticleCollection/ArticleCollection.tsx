@@ -12,9 +12,8 @@ const ArticleCollection = ({ collection }: IArticleCollection) => {
     <div className='article-collection'>
       {collection.map((article) => {
         const content = truncateText(removeMarkdown(article.content), 50);
-        const articlePath = `/${article.category}/${article.team}/${article.path}`;
         return (
-          <Link to={articlePath} key={article.id} className='article-collection-item'>
+          <Link to={article.path} key={article.id} className='article-collection-item'>
             <img className='article-collection-img' src={article.img} alt={article.alt} />
             <div className='article-collection-text'>
               <h3>{article.title}</h3>

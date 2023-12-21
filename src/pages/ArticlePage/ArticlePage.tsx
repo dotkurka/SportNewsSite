@@ -13,9 +13,10 @@ const articleResponse = articleData;
 const user = userMock;
 
 const ArticlePage = () => {
-  const [addComment, { isError, error: commentError }] = useAddArticleCommentMutation();
   const [errorMessage, setErrorMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
+
+  const [addComment, { isError, error: commentError }] = useAddArticleCommentMutation();
 
   const handleSubmitComment = (value: ICommentRequest) => {
     addComment({ id: articleResponse.id, body: value });
@@ -37,7 +38,6 @@ const ArticlePage = () => {
         variant={ModalVariant.Custom}
         customText={{ title: 'ERROR', message: errorMessage }}
       />
-
       <Article
         user={user}
         data={articleResponse}

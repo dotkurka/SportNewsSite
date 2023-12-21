@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useDeleteArticleMutation } from 'api/articlesApi';
 import { ReactComponent as ArrowIcon } from 'assets/images/sub-article-arrow.svg';
 import { DropdownButton, Modal } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
+import { managerMode as managerModeState } from 'redux/managerModeSlice';
 import { truncateText } from 'utils';
 
 import type { IShortArticle } from 'components/ShortArticle/types';
@@ -16,10 +18,12 @@ const ShortArticle = ({ data, user, className = '' }: IShortArticle) => {
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const shortContent = truncateText(data.content, 178);
   const navigate = useNavigate();
+  const managerMode = useSelector(managerModeState);
 
   const [removeArticle, { isError, error: articleError }] = useDeleteArticleMutation();
+
+  const shortContent = truncateText(data.content, 178);
 
   useEffect(() => {
     if (isError) {
@@ -51,9 +55,8 @@ const ShortArticle = ({ data, user, className = '' }: IShortArticle) => {
   ];
 
   const modalVariant = errorMessage ? ModalVariant.Custom : ModalVariant.Delete;
-  const managerMod = true;
   const chekingUserEdit = user?.id === data.user.id;
-  const showDropDown = chekingUserEdit || managerMod;
+  const showDropDown = chekingUserEdit || managerMode;
 
   return (
     <div className={`short-article ${className}`}>

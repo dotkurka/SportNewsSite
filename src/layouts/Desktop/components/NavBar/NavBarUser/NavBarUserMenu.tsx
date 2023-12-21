@@ -1,25 +1,36 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/enums';
 import { UserRole } from 'features/auth/enums';
 import { logOut } from 'redux/authSlice';
+import { managerDisabled, managerEnabled, managerMode } from 'redux/managerModeSlice';
 
 import type { INavBarUserMenu } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 
 import './NavBarUser.scss';
 
-const NavBarUserMenu = ({ user, className = '' }: INavBarUserMenu) => {
+const NavBarUserMenu = ({ user, handleCloseMenu, className = '' }: INavBarUserMenu) => {
+  const managerModState = useSelector(managerMode);
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
     dispatch(logOut());
+    handleCloseMenu();
   };
 
-  const checkUserRole = user?.role === UserRole.Admin;
+  const handleToggleManagerMod = () => {
+    if (!managerModState) {
+      dispatch(managerEnabled());
+    } else {
+      dispatch(managerDisabled());
+    }
+    handleCloseMenu();
+  };
 
-  // TODO make handler for the manager mod
+  const checkUserRole = user?.role !== UserRole.Admin;
+  const managerButtomText = managerModState ? 'Exit Manager Mode' : 'Manager Mode';
 
   return (
     <div className={`navbar-user-menu ${className}`}>
@@ -34,17 +45,17 @@ const NavBarUserMenu = ({ user, className = '' }: INavBarUserMenu) => {
       </div>
       <div className='navbar-user-menu-list'>
         {checkUserRole && (
-          <Link className='navbar-user-menu-list-item' to='.'>
-            Manager mode
-          </Link>
+          <button onClick={handleToggleManagerMod} className='navbar-user-menu-list-item'>
+            {managerButtomText}
+          </button>
         )}
-        <Link className='navbar-user-menu-list-item' to='.'>
+        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to='.'>
           Personal
         </Link>
-        <Link className='navbar-user-menu-list-item' to='.'>
+        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to='.'>
           Change password
         </Link>
-        <Link className='navbar-user-menu-list-item' to='.'>
+        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to='.'>
           My surveys
         </Link>
         <button onClick={handleLogOut} className='navbar-user-menu-list-item logout'>

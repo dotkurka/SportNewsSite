@@ -6,10 +6,11 @@ import { CSSTransition } from 'react-transition-group';
 import { sidebarData } from 'config/SideBarData/SidebarData';
 import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
 import useSearchArticle from 'hooks/useSeachArticle';
-import { Footer, NavBarManager } from 'layouts/Desktop/components';
+import { Footer, NavBarManager, SwitchTransition } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';
 import SearchBar from 'layouts/Mobile/components/SearchBar/SearchBar';
 import { selectCurrentUser } from 'redux/authSlice';
+import { managerMode as managerModState } from 'redux/managerModeSlice';
 import { lockScrollbar, unlockScrollbar } from 'utils/lockScrollbar';
 
 import './MobilePageLayout.scss';
@@ -24,10 +25,10 @@ const MobilePageLayout = () => {
   const submitRef = useRef<HTMLButtonElement>(null);
   const transitionBurgerRef = useRef(null);
 
-  // const { data: sidebarData } = useGetAllCategoryQuery();
+  const managerMode = useSelector(managerModState);
   const user = useSelector(selectCurrentUser);
 
-  const managerMode = false;
+  // const { data: sidebarData } = useGetAllCategoryQuery();
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
@@ -46,31 +47,32 @@ const MobilePageLayout = () => {
         <span className='mobile-page-head-title'>Sport News</span>
         <UserBar user={user} />
       </div>
-
-      {!managerMode ? (
-        <>
-          <CSSTransition
-            unmountOnExit
-            timeout={200}
-            in={showBurgerMenu}
-            nodeRef={transitionBurgerRef}
-            classNames='mobile-page-menu-transition'
-            onEnter={() => lockScrollbar()}
-            onExited={() => unlockScrollbar()}
-          >
-            <div ref={transitionBurgerRef} className='mobile-page-menu'>
-              <BurgerMenu handleShow={setShowBurgerMenu} data={sidebarData} />
-            </div>
-          </CSSTransition>
-          <SearchBar isLoading={isLoading} result={search} onChange={handleSearch} />
-        </>
-      ) : (
-        <NavBarManager data={sidebarData} submitArticleRef={submitRef} />
-      )}
-      <ArticleSubmitContext.Provider value={submitRef}>
-        <Outlet />
-      </ArticleSubmitContext.Provider>
-      {!managerMode && <Footer />}
+      <SwitchTransition trigger={managerMode}>
+        {!managerMode ? (
+          <>
+            <CSSTransition
+              unmountOnExit
+              timeout={200}
+              in={showBurgerMenu}
+              nodeRef={transitionBurgerRef}
+              classNames='mobile-page-menu-transition'
+              onEnter={() => lockScrollbar()}
+              onExited={() => unlockScrollbar()}
+            >
+              <div ref={transitionBurgerRef} className='mobile-page-menu'>
+                <BurgerMenu handleShow={setShowBurgerMenu} data={sidebarData} />
+              </div>
+            </CSSTransition>
+            <SearchBar isLoading={isLoading} result={search} onChange={handleSearch} />
+          </>
+        ) : (
+          <NavBarManager data={sidebarData} submitArticleRef={submitRef} />
+        )}
+        <ArticleSubmitContext.Provider value={submitRef}>
+          <Outlet />
+        </ArticleSubmitContext.Provider>
+        {!managerMode && <Footer />}{' '}
+      </SwitchTransition>
     </div>
   );
 };

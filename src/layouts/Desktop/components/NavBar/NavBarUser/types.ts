@@ -6,4 +6,5 @@ export interface INavBarUser {
 
 export interface INavBarUserMenu extends INavBarUser {
   className?: string;
+  handleCloseMenu: () => void;
 }

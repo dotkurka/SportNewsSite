@@ -12,12 +12,17 @@
     font-size: 12px;
     font-weight: 700;
     line-height: normal;
+    cursor: default;
+
+    & > :first-child {
+      color: $greyCloud;
+      text-transform: uppercase;
+    }
 
     a {
       all: unset;
       color: $greyCloud;
       cursor: pointer;
-      text-transform: uppercase;
       -webkit-user-drag: none;
 
       &:hover {
@@ -35,12 +40,18 @@
       }
     }
 
-    span {
+    & > :last-child {
       color: $alizarinCrimson;
     }
   }
 
   &-main {
     margin-bottom: 45px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .article-path {
+    display: none;
   }
 }

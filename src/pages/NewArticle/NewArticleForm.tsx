@@ -1,36 +1,14 @@
 import { Form, Formik } from 'formik';
+import { useParams } from 'react-router-dom';
 
-import { useFileUploadMutation } from 'api/fileUploadApi';
-import { ImageUpload, Input, MarkdownForm, Select } from 'components';
+import { Input, MarkdownForm, Select } from 'components';
+import { sidebarData } from 'config/SideBarData/SidebarData';
 import { articleSchema } from 'features/newArticle/validationSchema';
+import NewArticleImageForm from 'pages/NewArticle/NewArticleImageForm';
 
-import type { IImageFormik, INewArticleForm } from 'pages/NewArticle/types';
+import type { INewArticleForm } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
-
-const ImageFormik = ({ formikSetValue, touched, errors, value, name }: IImageFormik) => {
-  const [uploadFile, { isLoading }] = useFileUploadMutation();
-
-  const handleChangeImage = async (file: File) => {
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      const imageHref = await uploadFile(formData).unwrap();
-
-      if (imageHref) formikSetValue(name, imageHref.path);
-    }
-  };
-  return (
-    <ImageUpload
-      touched={touched}
-      errors={errors}
-      onChange={handleChangeImage}
-      onDrop={handleChangeImage}
-      href={value}
-      isLoading={isLoading}
-    />
-  );
-};
 
 const NewArticleForm = ({
   onSubmit,
@@ -39,6 +17,11 @@ const NewArticleForm = ({
   submitRef,
   previewRef,
 }: INewArticleForm) => {
+  const { category } = useParams();
+
+  const currentCategory = sidebarData.find((item) => item.title === category);
+  console.log(currentCategory);
+
   return (
     <Formik
       id='newarticle'
@@ -48,7 +31,7 @@ const NewArticleForm = ({
     >
       {({ values, errors, touched, handleChange, setFieldValue, handleSubmit }) => (
         <Form>
-          <ImageFormik
+          <NewArticleImageForm
             touched={touched.img}
             errors={errors.img}
             formikSetValue={setFieldValue}
@@ -91,6 +74,7 @@ const NewArticleForm = ({
             />
           </div>
           <Input
+            autoComplete='off'
             touched={touched.alt}
             errors={errors.alt}
             value={values.alt}
@@ -102,6 +86,7 @@ const NewArticleForm = ({
             className='create-article-form-input'
           />
           <Input
+            autoComplete='off'
             touched={touched.title}
             errors={errors.title}
             value={values.title}

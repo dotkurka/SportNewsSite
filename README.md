@@ -18,8 +18,7 @@
 
   - add article
   - make basic article home contructor
-  - displaying article for individual categories
-  - delete and edit
+  - edit
   - it would be good to add skeleton
   - create handler for the sort comments
 
@@ -28,4 +27,4 @@
 
 - it would be nice to add a survay
 
-- fix Burger menu overflow
+- make all selects for sort workable

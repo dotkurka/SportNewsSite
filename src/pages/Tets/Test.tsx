@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 import { ShortArticle } from 'components';
 import { articleData } from 'config/ArticleData/articleData';
@@ -20,8 +19,6 @@ const handleSubmit = () => {
 
 const Test = () => {
   const [show, setShow] = useState(false);
-  const param = useParams();
-  console.log(param);
 
   return (
     <div>

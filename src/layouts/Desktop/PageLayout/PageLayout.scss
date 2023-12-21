@@ -24,14 +24,14 @@
     &-first {
       writing-mode: vertical-lr;
       position: absolute;
-      top: 106px;
+      top: 23px;
       left: 130px;
     }
 
     &-last {
       writing-mode: vertical-lr;
       position: absolute;
-      top: 659px;
+      top: 554px;
       right: 154px;
     }
   }
@@ -58,6 +58,26 @@
       }
     }
   }
+}
+
+@keyframes example {
+  0% {
+    filter: opacity(100%);
+  }
+  50% {
+    filter: opacity(0%);
+  }
+  100% {
+    filter: opacity(100%);
+  }
+}
+
+.page-layout-transition {
+  animation-iteration-count: 1;
+  animation-name: example;
+  animation-duration: 1s;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 1440px) {

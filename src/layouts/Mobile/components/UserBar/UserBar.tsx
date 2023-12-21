@@ -22,7 +22,9 @@ const UserBar = ({ user }: INavBarUser) => {
         <img className='user-bar-avatar' src={user?.avatar || userAvatar} alt='avatar' />
       </button>
 
-      {showMenu && <NavBarUserMenu className='user-bar-menu' user={user} />}
+      {showMenu && (
+        <NavBarUserMenu handleCloseMenu={handleShowMenu} className='user-bar-menu' user={user} />
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { authApi } from 'api/authApi';
 import { categoryApi } from 'api/categoryApi';
 import { fileUploadApi } from 'api/fileUploadApi';
 import auth from 'redux/authSlice';
+import managerMode from 'redux/managerModeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [fileUploadApi.reducerPath]: fileUploadApi.reducer,
     [articlesApi.reducerPath]: articlesApi.reducer,
     auth,
+    managerMode,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

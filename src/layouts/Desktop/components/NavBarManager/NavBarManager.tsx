@@ -38,7 +38,7 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
   const title = category || checkingLocation;
 
   return (
-    <div>
+    <div className='navbar-manager'>
       <div className='navbar-manager-head'>
         <Modal
           variant={ModalVariant.Exit}

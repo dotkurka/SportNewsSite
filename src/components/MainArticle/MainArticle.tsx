@@ -41,14 +41,16 @@ const MainArticle = ({
       <div className={`main-article-contain ${variantArticle ? '' : 'adaptive'}`}>
         <div className='main-article-img-area'>
           <img src={sliderData[currentIndex].img} alt={sliderData[currentIndex].alt} />
-          <div className='main-article-img-area-mobile'>
-            <button type='button' onClick={goToPrevious}>
-              <ArrowButton className='main-article-img-area-mobile-arrow left' />
-            </button>
-            <button type='button' onClick={goToNext}>
-              <ArrowButton className='main-article-img-area-mobile-arrow right' />
-            </button>
-          </div>
+          {mainArticleVariant[variant] === mainArticleVariant.carousel && (
+            <div className='main-article-img-area-mobile'>
+              <button type='button' onClick={goToPrevious}>
+                <ArrowButton className='main-article-img-area-mobile-arrow left' />
+              </button>
+              <button type='button' onClick={goToNext}>
+                <ArrowButton className='main-article-img-area-mobile-arrow right' />
+              </button>
+            </div>
+          )}
         </div>
         <MainArticleTitle
           variant={variant}

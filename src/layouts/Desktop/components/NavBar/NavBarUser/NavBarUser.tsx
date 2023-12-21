@@ -41,7 +41,7 @@ const NavBarUser = ({ user }: INavBarUser) => {
           </button>
         </div>
 
-        {showMenu && <NavBarUserMenu user={user} />}
+        {showMenu && <NavBarUserMenu handleCloseMenu={handleShowMenu} user={user} />}
       </div>
     );
   }

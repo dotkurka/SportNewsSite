@@ -18,10 +18,7 @@ const MainArticleTitle = ({ sliderData, currentIndex, controls, variant }: IMain
   const navigate = useNavigate();
 
   const goToPage = () => {
-    const { category, team, path } = currentArticle;
-    const articlePath = `/${category}/${team}/${path}`;
-
-    navigate(articlePath);
+    navigate(currentArticle.path);
   };
 
   const titleVariant =

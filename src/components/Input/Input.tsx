@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 import checkMark from 'assets/images/check-mark.svg';
 import crossMark from 'assets/images/cross-mark.svg';
 
@@ -31,30 +33,28 @@ const Input = ({
   name,
   ...props
 }: IInput) => {
-  const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
+  const inputId = useId();
 
+  const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
   const isValid = touched ? errorValid : InputVariant.Default;
 
   return (
     <div className={`input-contain ${className || ''}`}>
       {label && (
-        <label className='input-label' htmlFor={name}>
+        <label className='input-label' htmlFor={inputId}>
           {label}
         </label>
       )}
-
       {description && <div className='res-password'>{description}</div>}
-
       <div className='input-contain-inner'>
         <input
           {...props}
-          id={name}
+          id={inputId}
           name={name}
           type={type}
           placeholder={placeholder}
           className={`input input-${inputClass[isValid]}`}
         />
-
         {imgVariant && !disabledIcon ? (
           <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />
         ) : null}
