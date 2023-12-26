@@ -1,7 +1,7 @@
 import type { SelectVariant } from 'components/Select/enums';
 
-export interface ISelect {
-  options: string[];
+export interface ISelect<T> {
+  options: IOptions<T>;
   touched?: boolean;
   errors?: string;
   className?: string;
@@ -11,7 +11,16 @@ export interface ISelect {
   name?: string;
   placeholder?: string;
   label?: string;
-  onChange?: (e: string) => void;
+  onChange?: (e: T) => void;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  formikSetValue?: (field: string, value: string, shouldValidate?: boolean | undefined) => void;
+  formikSetValue?: (
+    field: string,
+    value: T | undefined,
+    shouldValidate?: boolean | undefined,
+  ) => void;
+}
+
+export interface IOptions<T> {
+  primaryKey?: keyof T;
+  options?: T[];
 }

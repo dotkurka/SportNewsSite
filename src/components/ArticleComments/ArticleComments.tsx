@@ -33,7 +33,7 @@ const ArticleComments = ({
           label='Sort by:'
           variant={SelectVariant.Text}
           defaultValue={selectData.defaultValue}
-          options={selectData.options}
+          options={{ options: ['Old', 'New'] }}
         />
       </div>
       {user && (

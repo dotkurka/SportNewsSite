@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ReactComponent as ArrowContained } from 'assets/images/arrow-down-flag.svg';
 import { ReactComponent as ArrowText } from 'assets/images/select-text-arrow.svg';
@@ -15,7 +15,7 @@ const selectVariant = {
   [SelectVariant.Outline]: 'outline',
 };
 
-const Select = ({
+const Select = <DataType,>({
   onBlur,
   touched,
   errors,
@@ -29,14 +29,22 @@ const Select = ({
   defaultValue = '',
   name = 'select',
   className = '',
-}: ISelect) => {
+}: ISelect<DataType>) => {
   const [selected, setSelected] = useState(defaultValue);
   const [selectShow, setSelectShow] = useState(false);
 
+  const { primaryKey, options: optionsData } = options;
   const selectRef = useClickOutside(() => setSelectShow(false));
 
-  const changeSelect = (item: string) => {
-    setSelected(item);
+  useEffect(() => {
+    if (optionsData) {
+      setSelected('');
+    }
+  }, [optionsData]);
+
+  const changeSelect = (item: DataType) => {
+    const value = primaryKey ? item[primaryKey] : item;
+    setSelected(value as string);
     setSelectShow(false);
     formikSetValue?.(name, item);
     onChange?.(item);
@@ -46,7 +54,8 @@ const Select = ({
     setSelectShow((show) => !show);
   };
 
-  const disabledWhenEmpty = options.length === 0 ? true : disabled;
+  const disabledWhenEmpty = !options.options ? true : disabled;
+  const selectOpen = selectShow ? 'open' : '';
 
   return (
     <div ref={selectRef} className={`select ${className}`}>
@@ -54,21 +63,21 @@ const Select = ({
         <div className='select-outline-contain'>
           <Input
             disabledIcon
-            onBlur={onBlur}
-            touched={touched}
-            errors={errors}
-            name={name}
-            value={selected}
-            onClick={() => handleShowMenu()}
-            placeholder={placeholder}
-            label={label}
-            disabled={disabledWhenEmpty}
             readOnly
             type='text'
+            name={name}
+            label={label}
+            onBlur={onBlur}
+            errors={errors}
+            value={selected}
+            touched={touched}
+            placeholder={placeholder}
+            disabled={disabledWhenEmpty}
             className='select-outline-input'
+            onClick={() => handleShowMenu()}
           />
           <ArrowContained
-            className={`select-outline-arrow ${selectShow ? 'open' : ''} ${label ? 'label' : ''}`}
+            className={`select-outline-arrow ${selectOpen} ${label ? 'label' : ''}`}
           />
         </div>
       )}
@@ -80,21 +89,24 @@ const Select = ({
         >
           {label && <span className='select-text-label'>{label}</span>}
           <span className='select-text-input'>{selected}</span>
-          <ArrowText className={`select-text-arrow ${selectShow ? 'open' : ''}`} />
+          <ArrowText className={`select-text-arrow ${selectOpen}`} />
         </button>
       )}
       {selectShow && (
         <div className={`select-list ${className ? `${className}-list` : ''}`}>
-          {options.map((item) => (
-            <button
-              key={item}
-              disabled={selected === item}
-              className={`select-item list ${selected === item ? 'selected' : ''}`}
-              onClick={() => changeSelect(item)}
-            >
-              {item}
-            </button>
-          ))}
+          {optionsData?.map((item, index) => {
+            const value = primaryKey ? item[primaryKey] : item;
+            return (
+              <button
+                key={index}
+                disabled={selected === value}
+                className={`select-item list ${selected === value ? 'selected' : ''}`}
+                onClick={() => changeSelect(item)}
+              >
+                {value as string}
+              </button>
+            );
+          })}
         </div>
       )}
     </div>

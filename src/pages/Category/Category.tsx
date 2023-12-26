@@ -12,12 +12,12 @@ const Category = () => {
         <Select
           defaultValue='New'
           className='category-page-select-item'
-          options={['Most new', 'Older', 'A-Z']}
+          options={{ options: ['Most new', 'Older', 'A-Z'] }}
         />
         <Select
           defaultValue='New'
           className='category-page-select-item'
-          options={['Most new', 'Older', 'A-Z']}
+          options={{ options: ['Most new', 'Older', 'A-Z'] }}
         />
       </div>
       {articlesByTeam.map((item) => (

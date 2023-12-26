@@ -13,7 +13,7 @@ const Team = () => {
         label='Sort by'
         defaultValue='New'
         className='team-page-select'
-        options={['Most new', 'Older', 'A-Z']}
+        options={{ options: ['Most new', 'Older', 'A-Z'] }}
         variant={SelectVariant.Text}
       />
       {articlesByTeam.map((item) => (

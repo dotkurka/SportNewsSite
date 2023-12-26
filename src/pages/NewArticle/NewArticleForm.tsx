@@ -1,4 +1,5 @@
 import { Form, Formik } from 'formik';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Input, MarkdownForm, Select } from 'components';
@@ -6,6 +7,7 @@ import { sidebarData } from 'config/SideBarData/SidebarData';
 import { articleSchema } from 'features/newArticle/validationSchema';
 import NewArticleImageForm from 'pages/NewArticle/NewArticleImageForm';
 
+import type { IConferenceData, ITeamData } from 'features/category/types';
 import type { INewArticleForm } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
@@ -18,17 +20,16 @@ const NewArticleForm = ({
   previewRef,
 }: INewArticleForm) => {
   const { category } = useParams();
+  const [team, setTeam] = useState<ITeamData[]>();
 
   const currentCategory = sidebarData.find((item) => item.title === category);
-  console.log(currentCategory);
+
+  const setTeamData = (item: IConferenceData) => {
+    setTeam(item.team);
+  };
 
   return (
-    <Formik
-      id='newarticle'
-      validationSchema={articleSchema}
-      onSubmit={onSubmit}
-      initialValues={initialValues}
-    >
+    <Formik validationSchema={articleSchema} onSubmit={onSubmit} initialValues={initialValues}>
       {({ values, errors, touched, handleChange, setFieldValue, handleSubmit }) => (
         <Form>
           <NewArticleImageForm
@@ -45,7 +46,11 @@ const NewArticleForm = ({
               errors={errors.conference}
               placeholder='Not Selected'
               label='Conference'
-              options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
+              onChange={(item) => setTeamData(item)}
+              options={{
+                primaryKey: 'title',
+                options: currentCategory?.conference,
+              }}
               name='conference'
               className='create-article-form-select-item'
               formikSetValue={setFieldValue}
@@ -56,7 +61,10 @@ const NewArticleForm = ({
               errors={errors.team}
               placeholder='Not Selected'
               label='Team'
-              options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
+              options={{
+                primaryKey: 'title',
+                options: team,
+              }}
               name='team'
               className='create-article-form-select-item'
               formikSetValue={setFieldValue}
@@ -67,7 +75,10 @@ const NewArticleForm = ({
               errors={errors.location}
               placeholder='Not Selected'
               label='Location'
-              options={['blabla', 'bebebe', 'kwawa', 'lklklk']}
+              options={{
+                primaryKey: 'title',
+                options: [],
+              }}
               name='location'
               className='create-article-form-select-item'
               formikSetValue={setFieldValue}
