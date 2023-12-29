@@ -3,6 +3,7 @@ import { Button, Select } from 'components';
 import ArticleCommentsForm from 'components/ArticleComments/ArticleCommentsForm';
 import { ButtonVariant } from 'components/Button/enums';
 import { SelectVariant } from 'components/Select/enums';
+import { sortOptions } from 'features/article/constants';
 import { convertDateISO } from 'utils';
 
 import type { IArticleComments } from 'components/ArticleComments/types';
@@ -15,7 +16,6 @@ const ArticleComments = ({
   user,
   handleSubmit,
   handleChangeSort,
-  selectData,
   disabledForm,
   handleShowMore,
   className = '',
@@ -29,11 +29,11 @@ const ArticleComments = ({
       <div className='article-comments-head'>
         <span className='article-comments-head-text'>Comments ({comments.length})</span>
         <Select
-          onChange={handleChangeSort}
           label='Sort by:'
+          onChange={handleChangeSort}
           variant={SelectVariant.Text}
-          defaultValue={selectData.defaultValue}
-          options={{ options: ['Old', 'New'] }}
+          defaultValue={sortOptions[0].title}
+          options={{ primaryKey: 'title', options: sortOptions }}
         />
       </div>
       {user && (

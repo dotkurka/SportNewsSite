@@ -12,10 +12,10 @@ export interface ICommentRequest {
 }
 
 export interface ICommentsQueryParams {
-  id: string;
-  page: number;
-  limit: number;
-  sort: string;
+  id?: string;
+  page?: number;
+  limit?: number;
+  sort?: string;
 }
 
 export interface IArticleQueryParams {
@@ -46,4 +46,9 @@ export interface IArticleResponse extends IArticleRequest {
   path: string;
   user: IUser;
   comments: ICommentResponse[];
+}
+
+export interface ISortOption {
+  title: string;
+  value: string;
 }

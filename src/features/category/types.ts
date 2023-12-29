@@ -11,3 +11,8 @@ export interface ITeamData {
   title: string;
   path: string;
 }
+
+export interface ICategoryQueryParams {
+  category?: string;
+  select?: string;
+}

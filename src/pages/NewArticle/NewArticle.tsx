@@ -5,11 +5,7 @@ import { useCreateArticleMutation } from 'api/articlesApi';
 import { Article, Modal, PreviewButton, SwitchButton } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
 import ArticleSubmitContext from 'features/article/articleSubmitContext';
-import {
-  commentsFilterSelectData,
-  intialArticleFormData,
-  previewArticleData,
-} from 'features/article/constants';
+import { intialArticleFormData, previewArticleData } from 'features/article/constants';
 import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
 
@@ -98,9 +94,7 @@ const NewArticle = () => {
       >
         {preview ? 'Back' : 'Preview'}
       </PreviewButton>
-      {preview && (
-        <Article disabledForm data={preview} user={user} selectData={commentsFilterSelectData} />
-      )}
+      {preview && <Article disabledForm data={preview} user={user} />}
       <div hidden={!!preview} className='create-article-form'>
         <NewArticleForm
           onSubmit={formikSubmit}

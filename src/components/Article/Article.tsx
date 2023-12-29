@@ -15,7 +15,6 @@ const Article = ({
   handleChangeSort,
   handleShowMore,
   className = '',
-  selectData,
   user,
 }: IArticle) => {
   const teamPath = `/${data.category}/${data.team}`;
@@ -42,7 +41,6 @@ const Article = ({
           disabledForm={disabledForm}
           comments={data.comments}
           user={user}
-          selectData={selectData}
         />
       )}
     </div>

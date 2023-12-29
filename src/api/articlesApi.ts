@@ -66,9 +66,12 @@ export const articlesApi = createApi({
         params: query,
       }),
     }),
-    addArticleComment: build.mutation<ICommentResponse, { id: string; body: ICommentRequest }>({
-      query: ({ id, ...body }) => ({
-        url: `/${id}/comments`,
+    addArticleComment: build.mutation<
+      ICommentResponse,
+      { articleId: string; body: ICommentRequest }
+    >({
+      query: ({ articleId, ...body }) => ({
+        url: `/${articleId}/comments`,
         method: 'POST',
         body,
       }),

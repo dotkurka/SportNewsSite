@@ -1,12 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { ISidebarData } from 'config/SideBarData/types';
+import type {
+  ICaregoryData,
+  ICategoryQueryParams,
+  IConferenceData,
+  ITeamData,
+} from 'features/category/types';
 import type { RootState } from 'redux/store';
 
 export const categoryApi = createApi({
   reducerPath: 'categoryApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_FETCH_URL}/api/category`,
+    baseUrl: `${process.env.REACT_APP_FETCH_URL}/api/categories`,
     prepareHeaders: (headers, { getState }) => {
       const { token } = (getState() as RootState).auth;
 
@@ -17,10 +22,22 @@ export const categoryApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getAllCategory: build.query<ISidebarData[], void>({
+    getCategories: build.query<ICaregoryData[], ICategoryQueryParams>({
       query: () => '',
+    }),
+    getConferences: build.query<IConferenceData[], ICategoryQueryParams>({
+      query: (query) => ({
+        url: '/conferences',
+        params: query,
+      }),
+    }),
+    getTeams: build.query<ITeamData[], ICategoryQueryParams>({
+      query: (query) => ({
+        url: '/teams',
+        params: query,
+      }),
     }),
   }),
 });
 
-export const { useGetAllCategoryQuery } = categoryApi;
+export const { useGetCategoriesQuery, useGetConferencesQuery, useGetTeamsQuery } = categoryApi;
