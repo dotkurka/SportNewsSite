@@ -1,5 +1,5 @@
+import type { ICommentResponse, ICommentRequest } from 'features/article/types';
 import type { IUser } from 'features/auth/types';
-import type { ICommentResponse, ICommentRequest } from 'features/newArticle/types';
 
 export interface IArticleComments {
   comments: ICommentResponse[];

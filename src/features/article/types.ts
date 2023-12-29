@@ -28,7 +28,7 @@ export interface IArticleQueryParams {
   search?: string;
 }
 
-export interface IArticleCreate {
+export interface IArticleRequest {
   img: string;
   alt: string;
   title: string;
@@ -36,20 +36,14 @@ export interface IArticleCreate {
   conference: string;
   team: string;
   location: string;
+  category: string;
+  showComments?: boolean;
 }
 
-export interface IArticleResponse extends IArticleCreate {
+export interface IArticleResponse extends IArticleRequest {
   id: string;
-  category: string;
   published: string;
   path: string;
   user: IUser;
-  showComments?: boolean;
   comments: ICommentResponse[];
-}
-
-export interface IArticleRequest extends IArticleCreate {
-  category: string;
-  path: string;
-  showComments?: boolean;
 }

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Outlet, useParams } from 'react-router-dom';
 
 import { sidebarData } from 'config/SideBarData/SidebarData';
-import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
+import ArticleSubmitContext from 'features/article/articleSubmitContext';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { MobilePageLayout } from 'layouts';
 import {
@@ -13,7 +13,7 @@ import {
   SideBar,
   SwitchTransition,
 } from 'layouts/Desktop/components';
-import { managerMode as managerModState } from 'redux/managerModeSlice';
+import { managerMode as managerModeState } from 'redux/managerModeSlice';
 
 import './PageLayout.scss';
 
@@ -22,7 +22,7 @@ const PageLayout = () => {
   const submitRef = useRef<HTMLButtonElement>(null);
   const { category } = useParams();
 
-  const managerMode = useSelector(managerModState);
+  const managerMode = useSelector(managerModeState);
 
   // const { data: sidebarData } = useGetAllCategoryQuery();
 

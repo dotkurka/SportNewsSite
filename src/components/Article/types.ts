@@ -1,5 +1,5 @@
 import type { IArticleComments } from 'components/ArticleComments/types';
-import type { IArticleResponse } from 'features/newArticle/types';
+import type { IArticleResponse } from 'features/article/types';
 
 type TArticle = Omit<IArticleComments, 'comments'>;
 

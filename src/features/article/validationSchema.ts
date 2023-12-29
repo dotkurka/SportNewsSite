@@ -9,7 +9,15 @@ export const articleSchema = Yup.object().shape({
   alt: Yup.string().required('Required').min(3, 'Too Short!').max(40, 'Too Long!'),
   title: Yup.string().required('Required').min(15, 'Too Short!').max(100, 'Too Long!'),
   content: Yup.string().required('Required').min(40, 'Too Short!'),
-  conference: Yup.string().required('Required'),
-  team: Yup.string().required('Required'),
+  conference: Yup.object()
+    .shape({
+      title: Yup.string().required(),
+    })
+    .required('Required'),
+  team: Yup.object()
+    .shape({
+      title: Yup.string().required(),
+    })
+    .required('Required'),
   location: Yup.string().required('Required'),
 });

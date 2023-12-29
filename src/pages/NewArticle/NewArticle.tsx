@@ -4,50 +4,23 @@ import { useSelector } from 'react-redux';
 import { useCreateArticleMutation } from 'api/articlesApi';
 import { Article, Modal, PreviewButton, SwitchButton } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
-import { articleCommentsData } from 'config/ArticleData/articleData';
-import { UserRole } from 'features/auth/enums';
-import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
+import ArticleSubmitContext from 'features/article/articleSubmitContext';
+import {
+  commentsFilterSelectData,
+  intialArticleFormData,
+  previewArticleData,
+} from 'features/article/constants';
 import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
 
+import type { IArticleResponse, IArticleRequest } from 'features/article/types';
 import type { IRequestError } from 'features/auth/types';
-import type { IArticleResponse, IArticleCreate, IArticleRequest } from 'features/newArticle/types';
+import type { IArticleFormData } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
 
-const intialArticleData: IArticleCreate = {
-  img: '',
-  content: '',
-  alt: '',
-  title: '',
-  conference: '',
-  team: '',
-  location: '',
-};
-
-const selectData = {
-  defaultValue: 'Most popular',
-  options: ['Most popular', 'Oldest', 'New'],
-};
-
-const previewArticle = {
-  id: '483757345734875',
-  category: 'NBA',
-  published: new Date(Date.now()).toISOString(),
-  path: '/example',
-  comments: articleCommentsData,
-  user: {
-    role: UserRole.User,
-    firstName: 'Ostap',
-    id: '932492384972357',
-    lastName: 'Kurka',
-    email: 'example@example.com',
-  },
-};
-
 const NewArticle = () => {
   const [preview, setPreview] = useState<IArticleResponse | null>();
-  const [formValue, setFromValue] = useState<IArticleCreate>(intialArticleData);
   const [submitAction, setSubmitAction] = useState<'submit' | 'preview'>();
   const [showComments, setShowComments] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -56,8 +29,8 @@ const NewArticle = () => {
   const submitRef = useContext(ArticleSubmitContext);
   const previewRef = useRef<HTMLButtonElement>(null);
 
-  const user = useSelector(selectCurrentUser);
   const [createArticle, { error: articleError, isError }] = useCreateArticleMutation();
+  const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
     if (isError) {
@@ -67,27 +40,42 @@ const NewArticle = () => {
     }
   }, [isError]);
 
-  const handlePreview = (values: IArticleCreate) => {
-    setFromValue(values);
-    setPreview({ ...values, ...previewArticle, showComments });
-  };
-
   const handleShowPreview = () => {
-    if (preview) setPreview(null);
-    previewRef.current?.click();
+    if (preview) {
+      setPreview(null);
+    } else {
+      previewRef.current?.click();
+    }
   };
 
-  const handleSubmit = async (value: IArticleCreate) => {
+  const handlePreview = (values: IArticleFormData) => {
+    const { category, conference, team, ...value } = values;
+    const previewData: IArticleResponse = {
+      ...value,
+      ...previewArticleData,
+      category: category.title,
+      conference: conference.title,
+      team: team.title,
+      showComments,
+      user,
+    };
+    setPreview(previewData);
+  };
+
+  const handleSubmit = async (values: IArticleFormData) => {
+    const { category, conference, team, ...value } = values;
     const newArticle: IArticleRequest = {
       ...value,
-      category: '',
-      path: '',
+      category: category.id,
+      conference: conference.id,
+      team: team.id,
+      showComments,
     };
 
     await createArticle(newArticle);
   };
 
-  const formikSubmit = (value: IArticleCreate) => {
+  const formikSubmit = (value: IArticleFormData) => {
     if (submitAction === 'submit') {
       handleSubmit(value);
     } else if (submitAction === 'preview') {
@@ -97,6 +85,12 @@ const NewArticle = () => {
 
   return (
     <div className='create-article'>
+      <Modal
+        show={showModal}
+        handleShow={setShowModal}
+        variant={ModalVariant.Custom}
+        customText={{ title: 'ERROR', message: errorMessage }}
+      />
       <PreviewButton
         type='button'
         onClick={() => handleShowPreview()}
@@ -104,33 +98,25 @@ const NewArticle = () => {
       >
         {preview ? 'Back' : 'Preview'}
       </PreviewButton>
-
-      {preview ? (
-        <Article disabledForm data={preview} user={user} selectData={selectData} />
-      ) : (
-        <div className='create-article-form'>
-          <Modal
-            show={showModal}
-            handleShow={setShowModal}
-            variant={ModalVariant.Custom}
-            customText={{ title: 'ERROR', message: errorMessage }}
-          />
-          <NewArticleForm
-            onSubmit={formikSubmit}
-            initialValues={formValue}
-            submitAction={setSubmitAction}
-            submitRef={submitRef}
-            previewRef={previewRef}
-          />
-          <div className='create-article-comments-show'>
-            <p>Show or hide comments section:</p>{' '}
-            <span className='create-article-comments-show-label'>
-              {showComments ? 'Show' : 'Hidden'}
-            </span>
-            <SwitchButton checked={showComments} onChange={(e) => setShowComments(e)} />
-          </div>
-        </div>
+      {preview && (
+        <Article disabledForm data={preview} user={user} selectData={commentsFilterSelectData} />
       )}
+      <div hidden={!!preview} className='create-article-form'>
+        <NewArticleForm
+          onSubmit={formikSubmit}
+          initialValues={intialArticleFormData}
+          submitAction={setSubmitAction}
+          submitRef={submitRef}
+          previewRef={previewRef}
+        />
+        <div className='create-article-comments-show'>
+          <p>Show or hide comments section:</p>{' '}
+          <span className='create-article-comments-show-label'>
+            {showComments ? 'Show' : 'Hidden'}
+          </span>
+          <SwitchButton checked={showComments} onChange={(e) => setShowComments(e)} />
+        </div>
+      </div>
     </div>
   );
 };

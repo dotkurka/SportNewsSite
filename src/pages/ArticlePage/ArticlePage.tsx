@@ -6,8 +6,8 @@ import { ModalVariant } from 'components/Modal/enums';
 import { articleData } from 'config/ArticleData/articleData';
 import { userMock } from 'config/UserData';
 
+import type { ICommentRequest } from 'features/article/types';
 import type { IRequestError } from 'features/auth/types';
-import type { ICommentRequest } from 'features/newArticle/types';
 
 const articleResponse = articleData;
 const user = userMock;

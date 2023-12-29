@@ -88,6 +88,8 @@
 
     p {
       margin-top: 20px;
+      word-break: break-word;
+      white-space: normal;
     }
   }
 
@@ -242,6 +244,8 @@
         h2 {
           font-size: 16px;
           line-height: 21px;
+          word-break: break-word;
+          white-space: normal;
         }
       }
 

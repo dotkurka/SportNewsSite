@@ -2,7 +2,7 @@ import { Form, Formik } from 'formik';
 
 import userAvatar from 'assets/images/profile-avatar.svg';
 import { Button } from 'components';
-import { commentSchema } from 'features/newArticle/validationSchema';
+import { commentSchema } from 'features/article/validationSchema';
 import useAutosizeTextArea from 'hooks/useAutosizeTextArea';
 
 import type { IArticleCommentsForm } from 'components/ArticleComments/types';

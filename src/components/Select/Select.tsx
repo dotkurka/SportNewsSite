@@ -22,6 +22,7 @@ const Select = <DataType,>({
   options,
   label,
   onChange,
+  clearValue,
   variant = SelectVariant.Outline,
   placeholder,
   disabled,
@@ -37,10 +38,11 @@ const Select = <DataType,>({
   const selectRef = useClickOutside(() => setSelectShow(false));
 
   useEffect(() => {
-    if (optionsData) {
+    if (clearValue) {
+      formikSetValue?.(name, null);
       setSelected('');
     }
-  }, [optionsData]);
+  }, [clearValue]);
 
   const changeSelect = (item: DataType) => {
     const value = primaryKey ? item[primaryKey] : item;

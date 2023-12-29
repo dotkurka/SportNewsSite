@@ -7,7 +7,7 @@ import type {
   ICommentRequest,
   ICommentResponse,
   ICommentsQueryParams,
-} from 'features/newArticle/types';
+} from 'features/article/types';
 import type { RootState } from 'redux/store';
 
 export const articlesApi = createApi({

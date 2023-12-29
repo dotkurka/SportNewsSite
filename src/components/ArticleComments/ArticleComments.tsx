@@ -6,7 +6,7 @@ import { SelectVariant } from 'components/Select/enums';
 import { convertDateISO } from 'utils';
 
 import type { IArticleComments } from 'components/ArticleComments/types';
-import type { ICommentRequest } from 'features/newArticle/types';
+import type { ICommentRequest } from 'features/article/types';
 
 import './ArticleComments.scss';
 

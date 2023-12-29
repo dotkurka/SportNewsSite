@@ -15,6 +15,7 @@ const NewArticleImageForm = ({ formikSetValue, touched, errors, value, name }: I
       if (imageHref) formikSetValue(name, imageHref.path);
     }
   };
+
   return (
     <ImageUpload
       touched={touched}

@@ -3,7 +3,7 @@ import type { ComponentProps, ReactNode } from 'react';
 
 export interface IInput extends ComponentProps<'input'> {
   type: string;
-  errors?: string;
+  errors?: string | boolean;
   touched?: boolean;
   disabledIcon?: boolean;
   label?: string;

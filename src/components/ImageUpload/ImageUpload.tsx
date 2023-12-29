@@ -89,7 +89,13 @@ const ImageUpload = ({
           >
             <ImageIcon className='image-upload-btn-icon' />
           </button>
-          <input ref={inputRef} type='file' onChange={inputChangeHandler} hidden />
+          <input
+            ref={inputRef}
+            type='file'
+            accept='image/png, image/jpeg'
+            onChange={inputChangeHandler}
+            hidden
+          />
           <p className='image-upload-text'>
             <span>Add picture</span> or drop right here
           </p>

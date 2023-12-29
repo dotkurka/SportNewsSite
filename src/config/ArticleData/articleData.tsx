@@ -1,7 +1,7 @@
 import photo from 'assets/images/main-photo-article.png';
 import { UserRole } from 'features/auth/enums';
 
-import type { IArticleResponse, ICommentResponse } from 'features/newArticle/types';
+import type { IArticleResponse, ICommentResponse } from 'features/article/types';
 
 export const dataMainArticle: IArticleResponse[] = [
   {

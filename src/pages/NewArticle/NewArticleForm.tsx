@@ -1,14 +1,15 @@
-import { Form, Formik } from 'formik';
-import { useState } from 'react';
+import { Form, Formik, getIn } from 'formik';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Input, MarkdownForm, Select } from 'components';
 import { sidebarData } from 'config/SideBarData/SidebarData';
-import { articleSchema } from 'features/newArticle/validationSchema';
+import { articleSchema } from 'features/article/validationSchema';
 import NewArticleImageForm from 'pages/NewArticle/NewArticleImageForm';
 
 import type { IConferenceData, ITeamData } from 'features/category/types';
-import type { INewArticleForm } from 'pages/NewArticle/types';
+import type { FormikProps } from 'formik';
+import type { IArticleFormData, INewArticleForm } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
 
@@ -19,17 +20,35 @@ const NewArticleForm = ({
   submitRef,
   previewRef,
 }: INewArticleForm) => {
-  const { category } = useParams();
   const [team, setTeam] = useState<ITeamData[]>();
+  const [clearTeamValue, setClearTeamValue] = useState('');
 
-  const currentCategory = sidebarData.find((item) => item.title === category);
+  const { category: categoryParams } = useParams();
+  const formikRef = useRef<FormikProps<IArticleFormData>>(null);
+
+  // mock data for category
+  const category = sidebarData.find((item) => item.title === categoryParams);
+  // mock data for location
+  const location = ['USA', 'London', 'Mexico', 'Ukraine', 'Canada', 'France'];
+
+  useEffect(() => {
+    if (category && formikRef.current) {
+      formikRef.current.setFieldValue('category', category);
+    }
+  }, [category]);
 
   const setTeamData = (item: IConferenceData) => {
+    setClearTeamValue(item.title);
     setTeam(item.team);
   };
 
   return (
-    <Formik validationSchema={articleSchema} onSubmit={onSubmit} initialValues={initialValues}>
+    <Formik
+      innerRef={formikRef}
+      validationSchema={articleSchema}
+      onSubmit={onSubmit}
+      initialValues={initialValues}
+    >
       {({ values, errors, touched, handleChange, setFieldValue, handleSubmit }) => (
         <Form>
           <NewArticleImageForm
@@ -41,31 +60,32 @@ const NewArticleForm = ({
           />
           <div className='create-article-form-select'>
             <Select
-              defaultValue={values.conference}
-              touched={touched.conference}
-              errors={errors.conference}
-              placeholder='Not Selected'
+              defaultValue={values.conference?.title}
+              touched={getIn(touched, 'conference.title')}
+              errors={getIn(errors, 'conference.title')}
               label='Conference'
-              onChange={(item) => setTeamData(item)}
+              name='conference'
               options={{
                 primaryKey: 'title',
-                options: currentCategory?.conference,
+                options: category?.conference,
               }}
-              name='conference'
+              placeholder='Not Selected'
               className='create-article-form-select-item'
               formikSetValue={setFieldValue}
+              onChange={(item) => setTeamData(item)}
             />
             <Select
-              defaultValue={values.team}
-              touched={touched.team}
-              errors={errors.team}
-              placeholder='Not Selected'
+              clearValue={clearTeamValue}
+              defaultValue={values.team?.title}
+              touched={getIn(touched, 'team')}
+              errors={getIn(errors, 'team')}
+              name='team'
               label='Team'
               options={{
                 primaryKey: 'title',
                 options: team,
               }}
-              name='team'
+              placeholder='Not Selected'
               className='create-article-form-select-item'
               formikSetValue={setFieldValue}
             />
@@ -73,13 +93,12 @@ const NewArticleForm = ({
               defaultValue={values.location}
               touched={touched.location}
               errors={errors.location}
-              placeholder='Not Selected'
               label='Location'
-              options={{
-                primaryKey: 'title',
-                options: [],
-              }}
               name='location'
+              options={{
+                options: location,
+              }}
+              placeholder='Not Selected'
               className='create-article-form-select-item'
               formikSetValue={setFieldValue}
             />

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import { sidebarData } from 'config/SideBarData/SidebarData';
-import ArticleSubmitContext from 'features/newArticle/articleSubmitContext';
+import ArticleSubmitContext from 'features/article/articleSubmitContext';
 import useSearchArticle from 'hooks/useSeachArticle';
 import { Footer, NavBarManager, SwitchTransition } from 'layouts/Desktop/components';
 import { BurgerMenu, BurgerMenuButton, UserBar } from 'layouts/Mobile/components';

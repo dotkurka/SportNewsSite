@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useLazyGetArticlesQuery } from 'api/articlesApi';
 import useDebounce from 'hooks/useDebounce';
 
-import type { IArticleResponse } from 'features/newArticle/types';
+import type { IArticleResponse } from 'features/article/types';
 
 const useSearchArticle = (
   searchValue: string,

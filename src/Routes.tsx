@@ -18,10 +18,12 @@ import {
 import NewArticle from 'pages/NewArticle/NewArticle';
 import Test from 'pages/Tets/Test';
 import { selectCurrentToken } from 'redux/authSlice';
+import { managerMode as managerModeState } from 'redux/managerModeSlice';
 
 const Routes = () => {
   // dev mode is true
   const isAuth = useSelector(selectCurrentToken) || true;
+  const managerMode = useSelector(managerModeState);
 
   return (
     <RouterRoutes>
@@ -31,13 +33,15 @@ const Routes = () => {
           <Route path='/video' element={<NewArticle />} />
           <Route path='/home/test' element={<NewArticle />} />
           <Route path='/test' element={<Test />} />
-          <Route path='/:category' element={<Category />} />
-          <Route path='/:category/new' element={<NewArticle />} />
           <Route path='/:category/:team' element={<Team />} />
           <Route path='/:category/:team/:article' element={<ArticlePage />} />
+          <Route element={<ProtectedRoute to={home} isAuth={managerMode} />}>
+            <Route path='/:category/new' element={<NewArticle />} />
+            <Route path='/:category' element={<Category />} />
+          </Route>
         </Route>
       </Route>
-      <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>
+      <Route element={<ProtectedRoute to={home} isAuth={!isAuth} />}>
         <Route path={logIn} element={<LogInLayout />}>
           <Route index element={<LogIn />} />
           <Route path={forgotPassword} element={<ForgotPassword />} />
