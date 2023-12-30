@@ -1,6 +1,6 @@
 import { UserRole } from 'features/auth/enums';
 
-import type { IUser } from 'features/auth/types';
+import type { IUser } from 'features/user/types';
 
 export const userMock: IUser = {
   role: UserRole.User,

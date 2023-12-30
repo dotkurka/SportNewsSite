@@ -1,19 +1,7 @@
-import type { UserRole } from 'features/auth/enums';
+import type { IUser } from 'features/user/types';
 
 export interface IForm {
   className?: string;
-}
-
-export interface IUser {
-  id: string;
-  role: UserRole;
-  firstName: string;
-  lastName: string;
-  email: string;
-  avatar?: string;
-  articles?: [];
-  surveys?: [];
-  teamHub?: [];
 }
 
 export interface IUserResponse {

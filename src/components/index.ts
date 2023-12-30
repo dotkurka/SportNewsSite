@@ -45,3 +45,5 @@ export { default as LangSelector } from './LangSelector/LangSelector';
 export { default as ShortArticle } from './ShortArticle/ShortArticle';
 
 export { default as DropdownButton } from './DropdownButton/DropdownButton';
+
+export { default as AvatarUpload } from './AvatarUpload/AvatarUpload';

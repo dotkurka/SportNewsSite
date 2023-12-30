@@ -15,3 +15,5 @@ export { default as Team } from './Team/Team';
 export { default as Category } from './Category/Category';
 
 export { default as ArticlePage } from './ArticlePage/ArticlePage';
+
+export { default as Personal } from './Personal/Personal';

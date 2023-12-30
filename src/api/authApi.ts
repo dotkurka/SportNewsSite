@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { ILoginRequest, ISignUpRequest, IUser, IUserResponse } from 'features/auth/types';
+import type { ILoginRequest, ISignUpRequest, IUserResponse } from 'features/auth/types';
+import type { IUser, UserUpdateType } from 'features/user/types';
 import type { RootState } from 'redux/store';
 
 export const authApi = createApi({
@@ -21,6 +22,17 @@ export const authApi = createApi({
     getUser: build.query<IUser, void>({
       query: () => 'user',
     }),
+    updateUser: build.mutation<IUserResponse, UserUpdateType>({
+      query: (body) => ({
+        url: 'user',
+        method: 'PATCH',
+        body,
+      }),
+      transformResponse: (result: IUserResponse) => {
+        return result;
+      },
+    }),
+
     logIn: build.mutation<IUserResponse, ILoginRequest>({
       query: (body) => ({
         url: 'login',
@@ -44,5 +56,10 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLazyGetUserQuery, useGetUserQuery, useLogInMutation, useSignUpMutation } =
-  authApi;
+export const {
+  useLazyGetUserQuery,
+  useGetUserQuery,
+  useLogInMutation,
+  useSignUpMutation,
+  useUpdateUserMutation,
+} = authApi;

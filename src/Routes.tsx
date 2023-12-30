@@ -12,6 +12,7 @@ import {
   Home,
   LogIn,
   NewPassword,
+  Personal,
   SignIn,
   Team,
 } from 'pages';
@@ -31,6 +32,7 @@ const Routes = () => {
         <Route path={home} element={<PageLayout />}>
           <Route index element={<Home />} />
           <Route path='/video' element={<NewArticle />} />
+          <Route path='/dealbook' element={<Personal />} />
           <Route path='/home/test' element={<NewArticle />} />
           <Route path='/test' element={<Test />} />
           <Route path='/:category/:team' element={<Team />} />

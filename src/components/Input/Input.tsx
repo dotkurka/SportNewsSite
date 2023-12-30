@@ -1,7 +1,8 @@
-import { useId } from 'react';
+import { useId, useState } from 'react';
 
 import checkMark from 'assets/images/check-mark.svg';
 import crossMark from 'assets/images/cross-mark.svg';
+import { ReactComponent as EyeIcon } from 'assets/images/password-eye-icon.svg';
 
 import { InputVariant } from './enums';
 
@@ -27,13 +28,23 @@ const Input = ({
   placeholder,
   disabledIcon,
   description,
+  showPassword,
   className,
   touched,
   errors,
   name,
   ...props
 }: IInput) => {
+  const [inputType, setInputType] = useState(type);
   const inputId = useId();
+
+  const handleTypeToggle = () => {
+    if (inputType === 'password') {
+      setInputType('text');
+    } else {
+      setInputType('password');
+    }
+  };
 
   const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
   const isValid = touched ? errorValid : InputVariant.Default;
@@ -51,11 +62,16 @@ const Input = ({
           {...props}
           id={inputId}
           name={name}
-          type={type}
+          type={inputType}
           placeholder={placeholder}
           className={`input input-${inputClass[isValid]}`}
         />
-        {imgVariant && !disabledIcon ? (
+        {showPassword && (
+          <button onClick={handleTypeToggle} className='input-password-eye' type='button'>
+            <EyeIcon />
+          </button>
+        )}
+        {imgVariant && !disabledIcon && !showPassword ? (
           <img src={imgVariant[isValid]} className={inputClass[isValid]} alt='' />
         ) : null}
       </div>

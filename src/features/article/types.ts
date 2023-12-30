@@ -1,4 +1,4 @@
-import type { IUser } from 'features/auth/types';
+import type { IUser } from 'features/user/types';
 
 export interface ICommentResponse {
   id: string;

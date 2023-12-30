@@ -207,7 +207,7 @@ export const articleCommentsData: ICommentResponse[] = [
 export const articleData: IArticleResponse = {
   id: '456746576745896756',
   img: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2022/11/20/242401.jpg',
-  content: `TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.
+  content: `TOKYO — Major League Baseball begins its 2019 [season](https://www.google.com/) season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.
 
   That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.
   
