@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Button } from 'components';
 import { ButtonVariant } from 'components/Button/enums';
+import { changePassword, personal } from 'constants/routesPath';
 import { UserRole } from 'features/auth/enums';
 import { logOut } from 'redux/authSlice';
 import { managerDisabled, managerEnabled, managerMode } from 'redux/managerModeSlice';
@@ -49,14 +50,11 @@ const NavBarUserMenu = ({ user, handleCloseMenu, className = '' }: INavBarUserMe
             {managerButtomText}
           </button>
         )}
-        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to='.'>
+        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to={personal}>
           Personal
         </Link>
-        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to='.'>
+        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to={changePassword}>
           Change password
-        </Link>
-        <Link onClick={handleCloseMenu} className='navbar-user-menu-list-item' to='.'>
-          My surveys
         </Link>
         <button onClick={handleLogOut} className='navbar-user-menu-list-item logout'>
           Log out

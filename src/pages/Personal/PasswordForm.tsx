@@ -14,7 +14,7 @@ const passwordInitialValue: IPasswordUpdate = {
   newPassword: '',
 };
 
-const PasswordForm = ({ handleSubmitForm }: IPasswordForm) => {
+const PasswordForm = ({ handleSubmitForm }: IPasswordForm<IPasswordUpdate>) => {
   return (
     <Formik
       validationSchema={updatePasswordSchema}

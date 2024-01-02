@@ -2,7 +2,16 @@ import { useSelector } from 'react-redux';
 import { Route, Routes as RouterRoutes } from 'react-router-dom';
 
 import { ProtectedRoute } from 'components';
-import { checkEmail, forgotPassword, home, logIn, newPassword, signIn } from 'constants/routesPath';
+import {
+  changePassword,
+  checkEmail,
+  forgotPassword,
+  home,
+  logIn,
+  newPassword,
+  personal,
+  signIn,
+} from 'constants/routesPath';
 import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
 import {
   ArticlePage,
@@ -32,8 +41,8 @@ const Routes = () => {
         <Route path={home} element={<PageLayout />}>
           <Route index element={<Home />} />
           <Route path='/video' element={<NewArticle />} />
-          <Route path='/dealbook' element={<Personal />} />
-          <Route path='/home/test' element={<NewArticle />} />
+          <Route path={changePassword} element={<Personal />} />
+          <Route path={personal} element={<Personal />} />
           <Route path='/test' element={<Test />} />
           <Route path='/:category/:team' element={<Team />} />
           <Route path='/:category/:team/:article' element={<ArticlePage />} />

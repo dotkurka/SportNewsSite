@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { useUpdateUserMutation } from 'api/authApi';
 import { useFileUploadMutation } from 'api/fileUploadApi';
 import { Modal } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
+import { changePassword, personal } from 'constants/routesPath';
 import PasswordForm from 'pages/Personal/PasswordForm';
 import PersonalForm from 'pages/Personal/PersonalForm';
+import { selectCurrentUser } from 'redux/authSlice';
 
 import type { IRequestError } from 'features/auth/types';
 import type { PersonalDataType } from 'pages/Personal/types';
@@ -20,6 +24,14 @@ const Personal = () => {
 
   const [updateUser, { isError: isUserError, error: userError }] = useUpdateUserMutation();
   const [uploadFile, { isError: isImageError, error: imageError }] = useFileUploadMutation();
+  const user = useSelector(selectCurrentUser);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === personal) setFormVariant('personal');
+    if (pathname === changePassword) setFormVariant('password');
+  }, [pathname]);
 
   useEffect(() => {
     if (imageError) {
@@ -90,6 +102,7 @@ const Personal = () => {
         </div>
         {personalVariant && (
           <PersonalForm
+            user={user}
             avatarOnChange={getAvatarImage}
             handleSubmitForm={handleSubmitForm}
             avatar={avatar}

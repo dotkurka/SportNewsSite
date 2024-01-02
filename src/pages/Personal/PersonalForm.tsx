@@ -7,13 +7,15 @@ import { updateUserSchema } from 'features/user/validationShema';
 import type { IUserUpdate } from 'features/user/types';
 import type { IPersonalForm } from 'pages/Personal/types';
 
+import './Personal.scss';
+
 const personalInitialValue: IUserUpdate = {
   firstName: '',
   lastName: '',
   email: '',
 };
 
-const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange }: IPersonalForm) => {
+const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange, user }: IPersonalForm) => {
   return (
     <Formik
       validationSchema={updateUserSchema}
@@ -29,6 +31,7 @@ const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange }: IPersonalFor
               className='personal-form-avatar'
             />
             <Input
+              placeholder={user.firstName}
               value={values.firstName}
               touched={touched.firstName}
               errors={errors.firstName}
@@ -39,6 +42,7 @@ const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange }: IPersonalFor
               type='text'
             />
             <Input
+              placeholder={user.lastName}
               value={values.lastName}
               touched={touched.lastName}
               errors={errors.lastName}
@@ -49,6 +53,7 @@ const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange }: IPersonalFor
               type='text'
             />
             <Input
+              placeholder={user.email}
               value={values.email}
               touched={touched.email}
               errors={errors.email}

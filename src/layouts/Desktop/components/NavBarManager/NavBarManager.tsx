@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams, useMatch, useLocation } from 'react-route
 import { Button, Modal } from 'components';
 import { ButtonVariant } from 'components/Button/enums';
 import { ModalVariant } from 'components/Modal/enums';
-import { newArticle } from 'constants/routesPath';
+import { changePassword, newArticle, personal } from 'constants/routesPath';
 
 import './NavBarManager.scss';
 import type { ICaregoryData } from 'features/category/types';
@@ -17,8 +17,8 @@ interface INavBarManager {
 const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
   const [showModal, setShowModal] = useState(false);
   const { category } = useParams();
+  const { pathname } = useLocation();
   const matchPath = useMatch(`${category}/${newArticle}`);
-  const location = useLocation();
   const navigate = useNavigate();
 
   const newArticleNavigate = () => {
@@ -34,8 +34,9 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
     setShowModal(false);
   };
 
-  const checkingLocation = location.pathname.split('/')[1] || 'Home';
-  const title = category || checkingLocation;
+  const myProfile = pathname === personal || pathname === changePassword ? 'My Profile' : category;
+  const checkingLocation = pathname.split('/')[1] || 'Home';
+  const title = myProfile || checkingLocation;
 
   return (
     <div className='navbar-manager'>
@@ -81,8 +82,7 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
       </div>
       <div className='navbar-manager-menu'>
         {data?.map((item) => {
-          const checkPath =
-            item.path.replace('/', '') === category || item.path === location.pathname;
+          const checkPath = item.path.replace('/', '') === category || item.path === pathname;
           const slected = checkPath ? 'selected' : '';
           return (
             <Link key={item.id} to={item.path} className={`navbar-manager-menu-item ${slected}`}>

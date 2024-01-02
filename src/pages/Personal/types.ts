@@ -1,13 +1,13 @@
-import type { IPasswordUpdate, IUserUpdate } from 'features/user/types';
+import type { IPasswordUpdate, IUser, IUserUpdate } from 'features/user/types';
 
-export interface IPersonalForm {
-  handleSubmitForm: (values: IUserUpdate) => void;
-  avatarOnChange: (file: File) => void;
-  avatar: string;
+export interface IPasswordForm<T> {
+  handleSubmitForm: (values: T) => void;
 }
 
-export interface IPasswordForm {
-  handleSubmitForm: (values: IPasswordUpdate) => void;
+export interface IPersonalForm extends IPasswordForm<IUserUpdate> {
+  avatarOnChange: (file: File) => void;
+  user: IUser;
+  avatar: string;
 }
 
 export type PersonalDataType = IPasswordUpdate | IUserUpdate;

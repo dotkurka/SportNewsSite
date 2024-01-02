@@ -4,12 +4,6 @@
 
 # To begin with you need to do
 
-- User personal menu
-
-  - user prifile
-  - change passowrd, full name and email
-  - add change avatar
-
 - Article:
 
   - make basic article home contructor
@@ -21,7 +15,3 @@
     - About page
 
 - it would be nice to add a survay
-
-- make all selects for sort workable
-
-- fix link in mani article content
