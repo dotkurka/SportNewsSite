@@ -31,6 +31,7 @@ const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange, user }: IPerso
               className='personal-form-avatar'
             />
             <Input
+              succesDisabled
               placeholder={user.firstName}
               value={values.firstName}
               touched={touched.firstName}
@@ -42,6 +43,7 @@ const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange, user }: IPerso
               type='text'
             />
             <Input
+              succesDisabled
               placeholder={user.lastName}
               value={values.lastName}
               touched={touched.lastName}
@@ -53,6 +55,7 @@ const PersonalForm = ({ handleSubmitForm, avatar, avatarOnChange, user }: IPerso
               type='text'
             />
             <Input
+              succesDisabled
               placeholder={user.email}
               value={values.email}
               touched={touched.email}

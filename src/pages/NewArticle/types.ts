@@ -15,11 +15,3 @@ export interface INewArticleForm {
   submitRef?: React.RefObject<HTMLButtonElement> | null;
   previewRef?: React.RefObject<HTMLButtonElement>;
 }
-
-export interface IImageFormik {
-  formikSetValue: (field: string, value: string, shouldValidate?: boolean | undefined) => void;
-  touched?: boolean;
-  errors?: string;
-  value: string;
-  name: string;
-}

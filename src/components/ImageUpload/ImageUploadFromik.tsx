@@ -1,9 +1,16 @@
 import { useFileUploadMutation } from 'api/fileUploadApi';
 import { ImageUpload } from 'components';
 
-import type { IImageFormik } from 'pages/NewArticle/types';
+import type { IImageFormik } from 'components/ImageUpload/types';
 
-const NewArticleImageForm = ({ formikSetValue, touched, errors, value, name }: IImageFormik) => {
+const ImageUploadFromik = ({
+  formikSetValue,
+  touched,
+  errors,
+  value,
+  name,
+  className = '',
+}: IImageFormik) => {
   const [uploadFile, { isLoading }] = useFileUploadMutation();
 
   const handleChangeImage = async (file: File) => {
@@ -18,6 +25,7 @@ const NewArticleImageForm = ({ formikSetValue, touched, errors, value, name }: I
 
   return (
     <ImageUpload
+      className={className}
       touched={touched}
       errors={errors}
       onChange={handleChangeImage}
@@ -28,4 +36,4 @@ const NewArticleImageForm = ({ formikSetValue, touched, errors, value, name }: I
   );
 };
 
-export default NewArticleImageForm;
+export default ImageUploadFromik;

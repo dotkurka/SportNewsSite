@@ -25,6 +25,7 @@ const imgVariant = {
 const Input = ({
   type,
   label,
+  succesDisabled,
   placeholder,
   disabledIcon,
   description,
@@ -46,7 +47,8 @@ const Input = ({
     }
   };
 
-  const errorValid = errors ? InputVariant.Error : InputVariant.Succes;
+  const succes = succesDisabled ? InputVariant.Default : InputVariant.Succes;
+  const errorValid = errors ? InputVariant.Error : succes;
   const isValid = touched ? errorValid : InputVariant.Default;
 
   return (

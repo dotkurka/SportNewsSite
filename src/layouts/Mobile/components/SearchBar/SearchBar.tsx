@@ -8,6 +8,7 @@ import useClickOutside from 'hooks/useClickOutside';
 import type { INavSearch } from 'layouts/Desktop/components/NavBar/NavBarSearch/types';
 
 import './SearchBar.scss';
+import { changePassword, personal } from 'constants/routesPath';
 
 const SearchBar = ({ onChange, result, isLoading }: INavSearch) => {
   const [focus, setFocus] = useState(false);
@@ -15,7 +16,7 @@ const SearchBar = ({ onChange, result, isLoading }: INavSearch) => {
   const inputId = useId();
 
   const { category, article } = useParams();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const searchRef = useClickOutside(() => setFocus(false));
@@ -29,8 +30,9 @@ const SearchBar = ({ onChange, result, isLoading }: INavSearch) => {
     navigate(-1);
   };
 
-  const checkingLocation = location.pathname.split('/')[1] || 'Home';
-  const checkingPath = category || checkingLocation;
+  const myProfile = pathname === personal || pathname === changePassword ? 'My Profile' : category;
+  const checkingLocation = pathname.split('/')[1] || 'Home';
+  const checkingPath = myProfile || checkingLocation;
   const checkingUnCorrectness = value && focus && !isLoading && !result?.length;
 
   return (

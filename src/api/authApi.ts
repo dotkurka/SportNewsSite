@@ -28,9 +28,7 @@ export const authApi = createApi({
         method: 'PATCH',
         body,
       }),
-      transformResponse: (result: IUserResponse) => {
-        return result;
-      },
+      transformResponse: (result: IUserResponse) => result,
     }),
 
     logIn: build.mutation<IUserResponse, ILoginRequest>({
@@ -39,9 +37,7 @@ export const authApi = createApi({
         method: 'POST',
         body,
       }),
-      transformResponse: (result: IUserResponse) => {
-        return result;
-      },
+      transformResponse: (result: IUserResponse) => result,
     }),
     signUp: build.mutation<IUserResponse, ISignUpRequest>({
       query: (body) => ({
@@ -49,9 +45,7 @@ export const authApi = createApi({
         method: 'POST',
         body,
       }),
-      transformResponse: (result: IUserResponse) => {
-        return result;
-      },
+      transformResponse: (result: IUserResponse) => result,
     }),
   }),
 });

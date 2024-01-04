@@ -12,5 +12,6 @@ export interface IInput extends ComponentProps<'input'> {
   description?: ReactNode;
   className?: string;
   name?: string;
+  succesDisabled?: boolean;
   showPassword?: boolean;
 }

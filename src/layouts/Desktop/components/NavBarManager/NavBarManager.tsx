@@ -5,14 +5,11 @@ import { Button, Modal } from 'components';
 import { ButtonVariant } from 'components/Button/enums';
 import { ModalVariant } from 'components/Modal/enums';
 import { changePassword, newArticle, personal } from 'constants/routesPath';
+import NavBarManagerButton from 'layouts/Desktop/components/NavBarManager/NavBarManagerButton';
+
+import type { INavBarManager } from 'layouts/Desktop/components/NavBarManager/types';
 
 import './NavBarManager.scss';
-import type { ICaregoryData } from 'features/category/types';
-
-interface INavBarManager {
-  submitArticleRef: React.RefObject<HTMLButtonElement>;
-  data?: ICaregoryData[];
-}
 
 const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
   const [showModal, setShowModal] = useState(false);
@@ -49,35 +46,24 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
         />
         <div className='navbar-manager-head-category'>
           <span>{title}</span>
-          {/* <Select
-            className='navbar-manager-head-category-select'
-            variant={SelectVariant.Dots}
-            options={['Edit', 'Delete']}
-          /> */}
         </div>
-        {matchPath ? (
-          <div className='navbar-manager-head-btn'>
-            <Button onClick={() => setShowModal(true)} variant={ButtonVariant.Text} type='button'>
-              Cancle
-            </Button>
-            <Button
-              onClick={handleSubmitArticle}
-              form='newarticle'
-              variant={ButtonVariant.Contained}
-              type='submit'
-            >
-              Save
-            </Button>
-          </div>
-        ) : (
+        {checkingLocation === 'Home' ? (
           <Button
-            disabled={!category}
-            onClick={newArticleNavigate}
+            onClick={handleSubmitArticle}
+            form='newarticle'
             variant={ButtonVariant.Contained}
-            type='button'
+            type='submit'
           >
-            + New Article
+            Save
           </Button>
+        ) : (
+          <NavBarManagerButton
+            cancelOnClick={() => setShowModal(true)}
+            saveOnClick={handleSubmitArticle}
+            newArtcleOnClick={newArticleNavigate}
+            disabled={!category}
+            matchPath={matchPath}
+          />
         )}
       </div>
       <div className='navbar-manager-menu'>

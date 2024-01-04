@@ -1,4 +1,4 @@
-interface IPhotoDayData {
+export interface IPhotoDayData {
   img: string;
   alt: string;
   title: string;

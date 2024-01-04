@@ -16,33 +16,43 @@ const selectVariant = {
 };
 
 const Select = <DataType,>({
-  onBlur,
   touched,
-  errors,
   options,
+  errors,
   label,
-  onChange,
-  clearValue,
-  variant = SelectVariant.Outline,
-  placeholder,
   disabled,
+  clearValue,
+  placeholder,
+  succesDisabled,
   formikSetValue,
+  onBlur,
+  onChange,
+  className = '',
   defaultValue = '',
   name = 'select',
-  className = '',
+  variant = SelectVariant.Outline,
 }: ISelect<DataType>) => {
   const [selected, setSelected] = useState(defaultValue);
   const [selectShow, setSelectShow] = useState(false);
+  const [optionsData, setOptionsData] = useState<DataType[] | null>();
 
-  const { primaryKey, options: optionsData } = options;
+  const { primaryKey, options: optionsValues } = options;
+
   const selectRef = useClickOutside(() => setSelectShow(false));
 
   useEffect(() => {
     if (clearValue) {
       formikSetValue?.(name, null);
+      setOptionsData(null);
       setSelected('');
     }
   }, [clearValue]);
+
+  useEffect(() => {
+    if (optionsValues?.length) {
+      setOptionsData(optionsValues);
+    }
+  }, [optionsValues]);
 
   const changeSelect = (item: DataType) => {
     const value = primaryKey ? item[primaryKey] : item;
@@ -56,7 +66,7 @@ const Select = <DataType,>({
     setSelectShow((show) => !show);
   };
 
-  const disabledWhenEmpty = !options.options ? true : disabled;
+  const disabledWhenEmpty = !optionsData?.length ? true : disabled;
   const selectOpen = selectShow ? 'open' : '';
 
   return (
@@ -75,6 +85,7 @@ const Select = <DataType,>({
             touched={touched}
             placeholder={placeholder}
             disabled={disabledWhenEmpty}
+            succesDisabled={succesDisabled}
             className='select-outline-input'
             onClick={() => handleShowMenu()}
           />

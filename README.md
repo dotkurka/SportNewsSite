@@ -9,7 +9,6 @@
   - make basic article home contructor
   - edit
   - it would be good to add skeleton
-  - create handler for the sort comments
 
   - Pages
     - About page

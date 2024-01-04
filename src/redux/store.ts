@@ -4,6 +4,7 @@ import { articlesApi } from 'api/articlesApi';
 import { authApi } from 'api/authApi';
 import { categoryApi } from 'api/categoryApi';
 import { fileUploadApi } from 'api/fileUploadApi';
+import { homeAPI } from 'api/homeApi';
 import auth from 'redux/authSlice';
 import managerMode from 'redux/managerModeSlice';
 
@@ -13,6 +14,7 @@ export const store = configureStore({
     [categoryApi.reducerPath]: categoryApi.reducer,
     [fileUploadApi.reducerPath]: fileUploadApi.reducer,
     [articlesApi.reducerPath]: articlesApi.reducer,
+    [homeAPI.reducerPath]: homeAPI.reducer,
     auth,
     managerMode,
   },
@@ -21,7 +23,8 @@ export const store = configureStore({
       .concat(authApi.middleware)
       .concat(categoryApi.middleware)
       .concat(fileUploadApi.middleware)
-      .concat(articlesApi.middleware),
+      .concat(articlesApi.middleware)
+      .concat(homeAPI.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

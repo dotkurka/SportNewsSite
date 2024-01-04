@@ -30,7 +30,7 @@ const NewArticle = () => {
 
   useEffect(() => {
     if (isError) {
-      const error = (articleError as IRequestError).data.message;
+      const error = (articleError as IRequestError).data?.message;
       setErrorMessage(error);
       setShowModal(true);
     }

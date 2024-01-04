@@ -30,6 +30,8 @@ export { default as MarkdownForm } from './MarkdownForm/MarkdownForm';
 
 export { default as ImageUpload } from './ImageUpload/ImageUpload';
 
+export { default as ImageUploadFromik } from './ImageUpload/ImageUploadFromik';
+
 export { default as PreviewButton } from './PreviewButton/PreviewButton';
 
 export { default as ArticleComments } from './ArticleComments/ArticleComments';
@@ -47,3 +49,5 @@ export { default as ShortArticle } from './ShortArticle/ShortArticle';
 export { default as DropdownButton } from './DropdownButton/DropdownButton';
 
 export { default as AvatarUpload } from './AvatarUpload/AvatarUpload';
+
+export { default as HomeComponent } from './HomeComponent/HomeComponent';

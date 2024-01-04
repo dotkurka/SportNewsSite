@@ -19,13 +19,14 @@ import {
   CheckEmail,
   ForgotPassword,
   Home,
+  HomeManager,
   LogIn,
+  NewArticle,
   NewPassword,
   Personal,
   SignIn,
   Team,
 } from 'pages';
-import NewArticle from 'pages/NewArticle/NewArticle';
 import Test from 'pages/Tets/Test';
 import { selectCurrentToken } from 'redux/authSlice';
 import { managerMode as managerModeState } from 'redux/managerModeSlice';
@@ -39,14 +40,14 @@ const Routes = () => {
     <RouterRoutes>
       <Route element={<ProtectedRoute to={logIn} isAuth={!!isAuth} />}>
         <Route path={home} element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route path='/video' element={<NewArticle />} />
+          {!managerMode && <Route index element={<Home />} />}
           <Route path={changePassword} element={<Personal />} />
           <Route path={personal} element={<Personal />} />
           <Route path='/test' element={<Test />} />
           <Route path='/:category/:team' element={<Team />} />
           <Route path='/:category/:team/:article' element={<ArticlePage />} />
           <Route element={<ProtectedRoute to={home} isAuth={managerMode} />}>
+            <Route index element={<HomeManager />} />
             <Route path='/:category/new' element={<NewArticle />} />
             <Route path='/:category' element={<Category />} />
           </Route>

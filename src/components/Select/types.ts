@@ -2,16 +2,17 @@ import type { SelectVariant } from 'components/Select/enums';
 
 export interface ISelect<T> {
   options: IOptions<T>;
-  touched?: boolean;
-  errors?: string | boolean;
-  className?: string;
-  defaultValue?: string;
   variant?: SelectVariant;
-  disabled?: boolean;
-  clearValue?: string;
+  defaultValue?: string | number;
   name?: string;
-  placeholder?: string;
   label?: string;
+  className?: string;
+  clearValue?: string;
+  placeholder?: string;
+  errors?: string | boolean;
+  touched?: boolean;
+  disabled?: boolean;
+  succesDisabled?: boolean;
   onChange?: (e: T) => void;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   formikSetValue?: (field: string, value?: T | null, shouldValidate?: boolean | undefined) => void;

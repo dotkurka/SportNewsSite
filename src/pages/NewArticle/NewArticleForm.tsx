@@ -2,10 +2,9 @@ import { Form, Formik, getIn } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Input, MarkdownForm, Select } from 'components';
+import { ImageUploadFromik, Input, MarkdownForm, Select } from 'components';
 import { sidebarData } from 'config/SideBarData/SidebarData';
 import { articleSchema } from 'features/article/validationSchema';
-import NewArticleImageForm from 'pages/NewArticle/NewArticleImageForm';
 
 import type { IConferenceData, ITeamData } from 'features/category/types';
 import type { FormikProps } from 'formik';
@@ -49,9 +48,9 @@ const NewArticleForm = ({
       onSubmit={onSubmit}
       initialValues={initialValues}
     >
-      {({ values, errors, touched, handleChange, setFieldValue, handleSubmit }) => (
+      {({ values, errors, touched, handleChange, setFieldValue }) => (
         <Form>
-          <NewArticleImageForm
+          <ImageUploadFromik
             touched={touched.img}
             errors={errors.img}
             formikSetValue={setFieldValue}
@@ -134,26 +133,10 @@ const NewArticleForm = ({
             value={values.content}
             name='content'
           />
-          <button
-            type='submit'
-            hidden
-            ref={submitRef}
-            onClick={() => {
-              submitAction('submit');
-              handleSubmit();
-            }}
-          >
+          <button type='submit' hidden ref={submitRef} onClick={() => submitAction('submit')}>
             submit
           </button>
-          <button
-            hidden
-            type='submit'
-            ref={previewRef}
-            onClick={() => {
-              submitAction('preview');
-              handleSubmit();
-            }}
-          >
+          <button hidden type='submit' ref={previewRef} onClick={() => submitAction('preview')}>
             preview
           </button>
         </Form>

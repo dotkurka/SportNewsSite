@@ -8,3 +8,12 @@ export interface IImageUpload {
   className?: string;
   isLoading?: boolean;
 }
+
+export interface IImageFormik {
+  formikSetValue: (field: string, value: string, shouldValidate?: boolean | undefined) => void;
+  touched?: boolean;
+  errors?: string;
+  className?: string;
+  value: string;
+  name: string;
+}

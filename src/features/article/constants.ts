@@ -10,19 +10,41 @@ export const previewArticleData = {
   comments: articleCommentsData,
 };
 
-export const commentsFilterSelectData = {
-  defaultValue: 'Most popular',
-  options: ['Most popular', 'Oldest', 'New'],
-};
-
-export const sortOptions: ISortOption[] = [
+export const commentsSortOptions: ISortOption[] = [
   {
-    title: 'Newest',
+    title: 'Most Recent',
     value: 'createdAt.asc',
   },
   {
     title: 'Oldest',
     value: 'createdAt.desc',
+  },
+  {
+    title: 'A - Z',
+    value: 'title.asc',
+  },
+  {
+    title: 'Z - A',
+    value: 'title.desc',
+  },
+];
+
+export const sortOptions: ISortOption[] = [
+  {
+    title: 'Most Recent',
+    value: 'createdAt.asc',
+  },
+  {
+    title: 'Oldest',
+    value: 'createdAt.desc',
+  },
+  {
+    title: 'Most commnets',
+    value: 'comments.asc',
+  },
+  {
+    title: 'Most views',
+    value: 'views.asc',
   },
   {
     title: 'A - Z',

@@ -5,7 +5,6 @@ import type { IPreviewButton } from 'components/PreviewButton/types';
 import './PreviewButton.scss';
 
 const PreviewButton = ({
-  onClick,
   disabled,
   children = 'Present',
   className = '',
@@ -13,7 +12,7 @@ const PreviewButton = ({
 }: IPreviewButton) => {
   return (
     <div className={`preview-button ${className}`}>
-      <button disabled={disabled} onClick={onClick} {...props}>
+      <button disabled={disabled} {...props}>
         <PreviewIcon className='preview-button-icon' />
         {children}
       </button>

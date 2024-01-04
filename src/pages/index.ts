@@ -17,3 +17,7 @@ export { default as Category } from './Category/Category';
 export { default as ArticlePage } from './ArticlePage/ArticlePage';
 
 export { default as Personal } from './Personal/Personal';
+
+export { default as HomeManager } from './HomeManager/HomeManager';
+
+export { default as NewArticle } from './NewArticle/NewArticle';
