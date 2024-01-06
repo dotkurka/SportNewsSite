@@ -17,29 +17,29 @@ const Article = ({
   className = '',
   user,
 }: IArticle) => {
-  const teamPath = `/${data.category}/${data.team}`;
+  const { category, team, path, title, showComments, comments } = data;
 
   return (
     <div className={`article ${className}`}>
       <div className='article-path'>
-        <span>{data.category}</span>
+        <span>{category.title}</span>
         <Arrow className='article-path-arrow' />
-        <Link to={teamPath}>{data.team}</Link>
+        <Link to={path}>{team.title}</Link>
         <Arrow className='article-path-arrow' />
-        <span>{data.title}</span>
+        <span>{title}</span>
       </div>
       <MainArticle
         className='article-main'
         variant={MainArticleVariant.Article}
         sliderData={[data]}
       />
-      {data.showComments && (
+      {showComments && (
         <ArticleComments
           handleSubmit={handleSubmit}
           handleChangeSort={handleChangeSort}
           handleShowMore={handleShowMore}
           disabledForm={disabledForm}
-          comments={data.comments}
+          comments={comments}
           user={user}
         />
       )}

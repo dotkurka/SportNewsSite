@@ -4,14 +4,13 @@ import { useLocation } from 'react-router-dom';
 
 import { useUpdateUserMutation } from 'api/authApi';
 import { useFileUploadMutation } from 'api/fileUploadApi';
-import { Modal } from 'components';
+import { ErrorModal, Modal } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
 import { changePassword, personal } from 'constants/routesPath';
 import PasswordForm from 'pages/Personal/PasswordForm';
 import PersonalForm from 'pages/Personal/PersonalForm';
 import { selectCurrentUser } from 'redux/authSlice';
 
-import type { IRequestError } from 'features/auth/types';
 import type { PersonalDataType } from 'pages/Personal/types';
 
 import './Personal.scss';
@@ -21,7 +20,6 @@ const Personal = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState<{ title: string; message: string }>();
   const [formVariant, setFormVariant] = useState<'personal' | 'password'>('personal');
-
   const [updateUser, { isError: isUserError, error: userError }] = useUpdateUserMutation();
   const [uploadFile, { isError: isImageError, error: imageError }] = useFileUploadMutation();
   const user = useSelector(selectCurrentUser);
@@ -32,19 +30,6 @@ const Personal = () => {
     if (pathname === personal) setFormVariant('personal');
     if (pathname === changePassword) setFormVariant('password');
   }, [pathname]);
-
-  useEffect(() => {
-    if (imageError) {
-      const error = (imageError as IRequestError).data?.message;
-      setModalMessage({ title: 'ERROR', message: error });
-      setShowModal(true);
-    }
-    if (userError) {
-      const error = (userError as IRequestError).data?.message;
-      setModalMessage({ title: 'ERROR', message: error });
-      setShowModal(true);
-    }
-  }, [isUserError, isImageError]);
 
   const getAvatarImage = async (file: File) => {
     if (file) {
@@ -79,11 +64,12 @@ const Personal = () => {
 
   return (
     <div className='personal'>
+      <ErrorModal isError={isUserError || isImageError} error={userError || imageError} />
       <Modal
-        variant={ModalVariant.Custom}
-        customText={modalMessage}
         show={showModal}
         handleShow={setShowModal}
+        variant={ModalVariant.Custom}
+        customText={modalMessage}
       />
       <div className='personal-contain'>
         <div className='personal-btn'>

@@ -9,6 +9,7 @@ import type { ICaregoryData, IConferenceData, ITeamData } from 'features/categor
 import type { IHomeManagerSelectGroup } from 'pages/HomeManager/types';
 
 // replace mock data
+// const { data: categoryData } = useGetCategoriesQuery({});
 const category = sidebarData.filter((item) => item.conference);
 
 const HomeManagerSelectGroup = ({

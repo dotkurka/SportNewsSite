@@ -48,6 +48,7 @@ const Routes = () => {
           <Route path='/:category/:team/:article' element={<ArticlePage />} />
           <Route element={<ProtectedRoute to={home} isAuth={managerMode} />}>
             <Route index element={<HomeManager />} />
+            <Route path='/:category/:team/:article/edit' element={<NewArticle />} />
             <Route path='/:category/new' element={<NewArticle />} />
             <Route path='/:category' element={<Category />} />
           </Route>

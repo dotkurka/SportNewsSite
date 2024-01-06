@@ -6,7 +6,7 @@
 
 - Article:
 
-  - make basic article home contructor
+  - more article section
   - edit
   - it would be good to add skeleton
 

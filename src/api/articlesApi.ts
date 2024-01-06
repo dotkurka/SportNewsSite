@@ -25,13 +25,13 @@ export const articlesApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getArticles: build.query<IArticleResponse[], IArticleQueryParams>({
-      query: (query) => ({
+    getArticles: build.query<IArticleResponse[], Partial<IArticleQueryParams>>({
+      query: ({ ...query }) => ({
         url: '',
         params: query,
       }),
     }),
-    getArticle: build.query<IArticleResponse, void>({
+    getArticle: build.query<IArticleResponse, string>({
       query: (title) => ({ url: `/${title}` }),
       transformResponse: (result: IArticleResponse) => result,
     }),
@@ -45,7 +45,7 @@ export const articlesApi = createApi({
     }),
     updateArticle: build.mutation<
       IArticleResponse,
-      Partial<IArticleResponse> & Pick<IArticleResponse, 'id'>
+      Partial<IArticleRequest> & Pick<IArticleResponse, 'id'>
     >({
       query: ({ id, ...body }) => ({
         url: `/${id}`,
@@ -60,7 +60,7 @@ export const articlesApi = createApi({
         method: 'DELETE',
       }),
     }),
-    getArticleComments: build.query<ICommentResponse[], ICommentsQueryParams>({
+    getArticleComments: build.query<ICommentResponse[], Partial<ICommentsQueryParams>>({
       query: ({ id, ...query }) => ({
         url: `/${id}/comments`,
         params: query,
@@ -89,6 +89,7 @@ export const {
   useGetArticlesQuery,
   useLazyGetArticlesQuery,
   useGetArticleQuery,
+  useLazyGetArticleQuery,
   useGetArticleCommentsQuery,
   useCreateArticleMutation,
   useUpdateArticleMutation,

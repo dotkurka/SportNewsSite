@@ -1,16 +1,19 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { useCreateArticleMutation } from 'api/articlesApi';
-import { Article, Modal, PreviewButton, SwitchButton } from 'components';
-import { ModalVariant } from 'components/Modal/enums';
+import {
+  useCreateArticleMutation,
+  useLazyGetArticleQuery,
+  useUpdateArticleMutation,
+} from 'api/articlesApi';
+import { Article, ErrorModal, PreviewButton, SwitchButton } from 'components';
 import ArticleSubmitContext from 'features/article/articleSubmitContext';
 import { intialArticleFormData, previewArticleData } from 'features/article/constants';
 import NewArticleForm from 'pages/NewArticle/NewArticleForm';
 import { selectCurrentUser } from 'redux/authSlice';
 
 import type { IArticleResponse, IArticleRequest } from 'features/article/types';
-import type { IRequestError } from 'features/auth/types';
 import type { IArticleFormData } from 'pages/NewArticle/types';
 
 import './NewArticle.scss';
@@ -19,22 +22,25 @@ const NewArticle = () => {
   const [preview, setPreview] = useState<IArticleResponse | null>();
   const [submitAction, setSubmitAction] = useState<'submit' | 'preview'>();
   const [showComments, setShowComments] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showModal, setShowModal] = useState(false);
 
+  const navitaion = useNavigate();
+  const { article: articleTitleParam } = useParams();
   const submitRef = useContext(ArticleSubmitContext);
   const previewRef = useRef<HTMLButtonElement>(null);
-
-  const [createArticle, { error: articleError, isError }] = useCreateArticleMutation();
   const user = useSelector(selectCurrentUser);
 
+  const [createArticle, { error: createError, isError: isCreateError }] =
+    useCreateArticleMutation();
+  const [updateArticle, { error: updateError, isError: isUpdateError }] =
+    useUpdateArticleMutation();
+  const [getAtricle, { data: article, isError: isArticleError, error: articleError }] =
+    useLazyGetArticleQuery();
+
   useEffect(() => {
-    if (isError) {
-      const error = (articleError as IRequestError).data?.message;
-      setErrorMessage(error);
-      setShowModal(true);
+    if (articleTitleParam) {
+      getAtricle(articleTitleParam);
     }
-  }, [isError]);
+  }, [articleTitleParam]);
 
   const handleShowPreview = () => {
     if (preview) {
@@ -45,13 +51,9 @@ const NewArticle = () => {
   };
 
   const handlePreview = (values: IArticleFormData) => {
-    const { category, conference, team, ...value } = values;
     const previewData: IArticleResponse = {
-      ...value,
+      ...values,
       ...previewArticleData,
-      category: category.title,
-      conference: conference.title,
-      team: team.title,
       showComments,
       user,
     };
@@ -68,7 +70,11 @@ const NewArticle = () => {
       showComments,
     };
 
-    await createArticle(newArticle);
+    if (article) {
+      await updateArticle({ id: article.id, ...newArticle });
+    } else {
+      await createArticle(newArticle);
+    }
   };
 
   const formikSubmit = (value: IArticleFormData) => {
@@ -81,11 +87,11 @@ const NewArticle = () => {
 
   return (
     <div className='create-article'>
-      <Modal
-        show={showModal}
-        handleShow={setShowModal}
-        variant={ModalVariant.Custom}
-        customText={{ title: 'ERROR', message: errorMessage }}
+      <ErrorModal isError={isCreateError || isUpdateError} error={createError || updateError} />
+      <ErrorModal
+        cancelHandler={() => navitaion(-1)}
+        isError={isArticleError}
+        error={articleError}
       />
       <PreviewButton
         type='button'
@@ -98,7 +104,7 @@ const NewArticle = () => {
       <div hidden={!!preview} className='create-article-form'>
         <NewArticleForm
           onSubmit={formikSubmit}
-          initialValues={intialArticleFormData}
+          initialValues={article || intialArticleFormData}
           submitAction={setSubmitAction}
           submitRef={submitRef}
           previewRef={previewRef}

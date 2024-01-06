@@ -34,6 +34,7 @@ const modalIconVarian = {
 const Modal = ({
   show,
   onClick,
+  cancelHandler,
   customText,
   handleShow,
   buttonConfirmText,
@@ -42,6 +43,8 @@ const Modal = ({
 }: IModal) => {
   const handleHidden = () => {
     handleShow(false);
+    unlockScrollbar();
+    cancelHandler?.();
   };
 
   const transitionRef = useRef(null);

@@ -8,7 +8,7 @@ import './ArticleBanner.scss';
 const ArticleBanner = ({ articleData }: IArticleBanner) => {
   return (
     <Link to={articleData.path} className='article-banner'>
-      <span className='article-banner-category'>{articleData.category}</span>
+      <span className='article-banner-category'>{articleData.category.title}</span>
       <img src={articleData.img} alt={articleData.alt} />
       <div className='article-banner-text'>
         <h2>{articleData.title}</h2>

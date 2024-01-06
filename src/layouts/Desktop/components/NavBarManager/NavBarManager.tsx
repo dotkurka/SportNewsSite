@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate, useParams, useMatch, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useParams, useLocation, matchRoutes } from 'react-router-dom';
 
 import { Button, Modal } from 'components';
 import { ButtonVariant } from 'components/Button/enums';
 import { ModalVariant } from 'components/Modal/enums';
-import { changePassword, newArticle, personal } from 'constants/routesPath';
+import { changePassword, editArticle, newArticle, personal } from 'constants/routesPath';
 import NavBarManagerButton from 'layouts/Desktop/components/NavBarManager/NavBarManagerButton';
 
 import type { INavBarManager } from 'layouts/Desktop/components/NavBarManager/types';
@@ -13,13 +13,18 @@ import './NavBarManager.scss';
 
 const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
   const [showModal, setShowModal] = useState(false);
-  const { category } = useParams();
-  const { pathname } = useLocation();
-  const matchPath = useMatch(`${category}/${newArticle}`);
+
   const navigate = useNavigate();
+  const { category, team, article } = useParams();
+  const { pathname } = useLocation();
+
+  const newArticlePath = `${category}/${newArticle}`;
+  const updateArticlePath = `${category}/${team}/${article}/${editArticle}`;
+
+  const matchPath = matchRoutes([{ path: newArticlePath }, { path: updateArticlePath }], pathname);
 
   const newArticleNavigate = () => {
-    navigate(`${category}/${newArticle}`);
+    navigate(newArticlePath);
   };
 
   const handleSubmitArticle = () => {
@@ -62,7 +67,7 @@ const NavBarManager = ({ data, submitArticleRef }: INavBarManager) => {
             saveOnClick={handleSubmitArticle}
             newArtcleOnClick={newArticleNavigate}
             disabled={!category}
-            matchPath={matchPath}
+            matchPath={!!matchPath}
           />
         )}
       </div>

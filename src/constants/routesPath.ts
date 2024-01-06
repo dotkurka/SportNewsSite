@@ -9,6 +9,7 @@ const changePassword = '/change-password';
 
 const home = '/';
 const newArticle = 'new';
+const editArticle = 'edit';
 
 export {
   signIn,
@@ -17,6 +18,7 @@ export {
   checkEmail,
   newPassword,
   home,
+  editArticle,
   newArticle,
   personal,
   changePassword,

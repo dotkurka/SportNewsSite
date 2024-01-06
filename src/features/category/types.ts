@@ -13,6 +13,6 @@ export interface ITeamData {
 }
 
 export interface ICategoryQueryParams {
-  category?: string;
-  select?: string;
+  category: string;
+  select: string;
 }

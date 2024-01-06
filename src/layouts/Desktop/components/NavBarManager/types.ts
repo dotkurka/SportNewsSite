@@ -1,5 +1,4 @@
 import type { ICaregoryData } from 'features/category/types';
-import type { PathMatch } from 'react-router-dom';
 
 export interface INavBarManager {
   submitArticleRef: React.RefObject<HTMLButtonElement>;
@@ -7,7 +6,7 @@ export interface INavBarManager {
 }
 
 export interface INavBarManagerButton {
-  matchPath: PathMatch<string> | null;
+  matchPath: boolean;
   disabled: boolean;
   newArtcleOnClick: () => void;
   cancelOnClick: () => void;

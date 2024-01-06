@@ -42,6 +42,8 @@ export { default as Article } from './Article/Article';
 
 export { default as Modal } from './Modal/Modal';
 
+export { default as ErrorModal } from './Modal/ErrorModal';
+
 export { default as LangSelector } from './LangSelector/LangSelector';
 
 export { default as ShortArticle } from './ShortArticle/ShortArticle';

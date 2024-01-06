@@ -19,7 +19,8 @@ const NewArticleForm = ({
   submitRef,
   previewRef,
 }: INewArticleForm) => {
-  const [team, setTeam] = useState<ITeamData[]>();
+  const [team, setTeam] = useState<ITeamData[]>(initialValues.conference.team);
+
   const [clearTeamValue, setClearTeamValue] = useState('');
 
   const { category: categoryParams } = useParams();
@@ -59,6 +60,7 @@ const NewArticleForm = ({
           />
           <div className='create-article-form-select'>
             <Select
+              succesDisabled
               defaultValue={values.conference?.title}
               touched={getIn(touched, 'conference.title')}
               errors={getIn(errors, 'conference.title')}
@@ -74,6 +76,7 @@ const NewArticleForm = ({
               onChange={(item) => setTeamData(item)}
             />
             <Select
+              succesDisabled
               clearValue={clearTeamValue}
               defaultValue={values.team?.title}
               touched={getIn(touched, 'team')}
@@ -89,6 +92,7 @@ const NewArticleForm = ({
               formikSetValue={setFieldValue}
             />
             <Select
+              succesDisabled
               defaultValue={values.location}
               touched={touched.location}
               errors={errors.location}
@@ -103,6 +107,7 @@ const NewArticleForm = ({
             />
           </div>
           <Input
+            succesDisabled
             autoComplete='off'
             touched={touched.alt}
             errors={errors.alt}
@@ -115,6 +120,7 @@ const NewArticleForm = ({
             className='create-article-form-input'
           />
           <Input
+            succesDisabled
             autoComplete='off'
             touched={touched.title}
             errors={errors.title}

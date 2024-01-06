@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 
 import {
@@ -6,17 +6,11 @@ import {
   useGetHomePreviewMutation,
   useUpdateHomeMutation,
 } from 'api/homeApi';
-import { HomeComponent, Modal, PreviewButton } from 'components';
-import { ModalVariant } from 'components/Modal/enums';
-import { homeMockData } from 'config/ArticleData/articleData';
+import { ErrorModal, HomeComponent, PreviewButton } from 'components';
 import ArticleSubmitContext from 'features/article/articleSubmitContext';
 import { homeInitialValue } from 'features/home/homeInitialValue';
 import HomeManagerForm from 'pages/HomeManager/HomeManagerForm';
 
-import type { SerializedError } from '@reduxjs/toolkit';
-import type { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
-import type { IModalCustomText } from 'components/Modal/types';
-import type { IRequestError } from 'features/auth/types';
 import type {
   HomeFormValueType,
   HomeRequestType,
@@ -26,33 +20,17 @@ import type {
 
 import './HomeManager.scss';
 
-const datas = homeMockData;
-
 const HomeManager = () => {
   const [submitAction, setSubmitAction] = useState<'preview' | 'submit'>();
   const [preview, setPreview] = useState<HomeResponseType | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState<IModalCustomText>();
 
   const submitRef = useContext(ArticleSubmitContext);
   const previewRef = useRef<HTMLButtonElement>(null);
 
-  const [getHomePreview, { isLoading, isError: previewIsError, error: previewError }] =
-    useGetHomePreviewMutation();
-  const [updateHome, { isError: updateIsError, error: updateError }] = useUpdateHomeMutation();
   const { data: homeFieldValue } = useGetHomeFormInitialQuery();
-
-  const modalErrorHandler = (errorData: FetchBaseQueryError | SerializedError) => {
-    const error = (errorData as IRequestError).data?.message;
-    setModalMessage({ title: 'ERROR', message: error });
-    setShowModal(true);
-  };
-
-  useEffect(() => {
-    if (previewError) modalErrorHandler(previewError);
-
-    if (updateError) modalErrorHandler(updateError);
-  }, [updateIsError, previewIsError]);
+  const [updateHome, { isError: isUpdateError, error: updateError }] = useUpdateHomeMutation();
+  const [getHomePreview, { isLoading, isError: isPreviewError, error: previewError }] =
+    useGetHomePreviewMutation();
 
   const handleShowPreview = () => {
     if (preview) {
@@ -104,7 +82,7 @@ const HomeManager = () => {
       <PreviewButton onClick={handleShowPreview} type='submit' className='home-manager-preview-btn'>
         {preview ? 'Back' : 'Preview'}
       </PreviewButton>
-      {showPreview && <HomeComponent className='home-manager-preview' data={datas} />}
+      {showPreview && <HomeComponent className='home-manager-preview' data={preview} />}
       <HomeManagerForm
         initialValues={homeFieldValue || homeInitialValue}
         onSubmit={handleSubmitFrom}
@@ -113,12 +91,7 @@ const HomeManager = () => {
         submitRef={submitRef}
         previewRef={previewRef}
       />
-      <Modal
-        show={showModal}
-        handleShow={setShowModal}
-        customText={modalMessage}
-        variant={ModalVariant.Custom}
-      />
+      <ErrorModal isError={isPreviewError || isUpdateError} error={previewError || updateError} />
     </div>
   );
 };

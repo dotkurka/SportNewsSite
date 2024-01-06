@@ -22,17 +22,20 @@ export const categoryApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getCategories: build.query<ICaregoryData[], ICategoryQueryParams>({
-      query: () => '',
+    getCategories: build.query<ICaregoryData[], Partial<ICategoryQueryParams>>({
+      query: ({ ...query }) => ({
+        url: '',
+        params: query,
+      }),
     }),
-    getConferences: build.query<IConferenceData[], ICategoryQueryParams>({
-      query: (query) => ({
+    getConferences: build.query<IConferenceData[], Partial<ICategoryQueryParams>>({
+      query: ({ ...query }) => ({
         url: '/conferences',
         params: query,
       }),
     }),
-    getTeams: build.query<ITeamData[], ICategoryQueryParams>({
-      query: (query) => ({
+    getTeams: build.query<ITeamData[], Partial<ICategoryQueryParams>>({
+      query: ({ ...query }) => ({
         url: '/teams',
         params: query,
       }),
