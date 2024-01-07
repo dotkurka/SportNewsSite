@@ -53,3 +53,5 @@ export { default as DropdownButton } from './DropdownButton/DropdownButton';
 export { default as AvatarUpload } from './AvatarUpload/AvatarUpload';
 
 export { default as HomeComponent } from './HomeComponent/HomeComponent';
+
+export { default as ScrollToTop } from './ScrollToTop/ScrollToTop';

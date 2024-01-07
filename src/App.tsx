@@ -2,8 +2,10 @@ import { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useLazyGetUserQuery } from 'api/authApi';
+import { ScrollToTop } from 'components';
 import { logOut, selectCurrentToken, setToken, setUser } from 'redux/authSlice';
 import Routes from 'Routes';
+
 import './styles/App.scss';
 
 const App = () => {
@@ -37,6 +39,7 @@ const App = () => {
 
   return (
     <div className='App'>
+      <ScrollToTop />
       <Routes />
     </div>
   );

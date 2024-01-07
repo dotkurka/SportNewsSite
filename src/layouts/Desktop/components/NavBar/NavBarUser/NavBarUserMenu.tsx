@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Button } from 'components';
-import { ButtonVariant } from 'components/Button/enums';
 import { changePassword, personal } from 'constants/routesPath';
 import { UserRole } from 'features/auth/enums';
 import { logOut } from 'redux/authSlice';
@@ -40,9 +38,6 @@ const NavBarUserMenu = ({ user, handleCloseMenu, className = '' }: INavBarUserMe
           {user?.firstName} {user?.lastName}
         </p>
         <p className='navbar-user-menu-head-email'>{user?.email}</p>
-        <Button className='navbar-user-menu-head-button' variant={ButtonVariant.Contained}>
-          View profile
-        </Button>
       </div>
       <div className='navbar-user-menu-list'>
         {checkUserRole && (

@@ -21,6 +21,7 @@ const Category = () => {
   const { data: conferences } = useGetConferencesQuery({ category });
   const { data: teams } = useGetTeamsQuery({ category });
 
+  // TODO add error handler
   // replace mock data with this
   // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
   const { data } = useGetArticlesQuery({ conference, team, limit: 10 });

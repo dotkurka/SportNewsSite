@@ -17,14 +17,14 @@ const Article = ({
   className = '',
   user,
 }: IArticle) => {
-  const { category, team, path, title, showComments, comments } = data;
+  const { category, team, title, showComments, comments } = data;
 
   return (
     <div className={`article ${className}`}>
       <div className='article-path'>
         <span>{category.title}</span>
         <Arrow className='article-path-arrow' />
-        <Link to={path}>{team.title}</Link>
+        <Link to={team.path}>{team.title}</Link>
         <Arrow className='article-path-arrow' />
         <span>{title}</span>
       </div>

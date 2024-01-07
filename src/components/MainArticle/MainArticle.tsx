@@ -40,7 +40,11 @@ const MainArticle = ({
     <div className={`main-article ${className}`}>
       <div className={`main-article-contain ${variantArticle ? '' : 'adaptive'}`}>
         <div className='main-article-img-area'>
-          <img src={sliderData[currentIndex].img} alt={sliderData[currentIndex].alt} />
+          <img
+            src={sliderData[currentIndex].img}
+            alt={sliderData[currentIndex].alt}
+            className={`main-article-img-area-image ${variantArticle ? 'max-img' : ''}`}
+          />
           {mainArticleVariant[variant] === mainArticleVariant.carousel && (
             <div className='main-article-img-area-mobile'>
               <button type='button' onClick={goToPrevious}>

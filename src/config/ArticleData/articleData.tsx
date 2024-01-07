@@ -13,7 +13,7 @@ export const dataMainArticle: IArticleResponse[] = [
     alt: 'sdsdsdsd',
     title: 'American Games come back in 2019',
     published: '2023-08-05T14:42:53.612+00:00',
-    path: 'lalsddsdklskd',
+    path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
       title: 'NFL',
@@ -28,7 +28,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'New York',
     user: {
@@ -48,7 +48,7 @@ export const dataMainArticle: IArticleResponse[] = [
     alt: 'sdsdsdsd',
     title: 'Italian Hokey come back in 2024',
     published: '2023-08-05T14:42:53.612+00:00',
-    path: 'lsddsdkl23skd',
+    path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
       title: 'NFL',
@@ -63,7 +63,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -83,7 +83,7 @@ export const dataMainArticle: IArticleResponse[] = [
     alt: 'sdsdsdsd',
     title: 'Romania so bad to play football',
     published: '2023-08-05T14:42:53.612+00:00',
-    path: 'lsddsdkl2323skd',
+    path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
       title: 'NFL',
@@ -98,7 +98,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -133,7 +133,7 @@ export const dataMainArticle: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'New York',
     user: {
@@ -171,7 +171,7 @@ export const dataSub: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'New York',
     user: {
@@ -206,7 +206,7 @@ export const dataSub: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -241,7 +241,7 @@ export const dataSub: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -276,7 +276,7 @@ export const dataSub: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -299,7 +299,7 @@ export const colectionArticleData: IArticleResponse[] = [
     alt: 'sdsdsdsd',
     title: 'American Games come back in 2019',
     published: '2023-08-05T14:42:53.612+00:00',
-    path: 'lalsddsdklskd',
+    path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
       title: 'NFL',
@@ -314,7 +314,7 @@ export const colectionArticleData: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'New York',
     user: {
@@ -334,7 +334,7 @@ export const colectionArticleData: IArticleResponse[] = [
     alt: 'sdsdsdsd',
     title: 'Italian Hokey come back in 2024',
     published: '2023-08-05T14:42:53.612+00:00',
-    path: 'lsddsdkl23skd',
+    path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
       title: 'NFL',
@@ -349,7 +349,7 @@ export const colectionArticleData: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -369,7 +369,7 @@ export const colectionArticleData: IArticleResponse[] = [
     alt: 'sdsdsdsd',
     title: 'Romania so bad to play football',
     published: '2023-08-05T14:42:53.612+00:00',
-    path: 'lsddsdkl2323skd',
+    path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
       title: 'NFL',
@@ -384,7 +384,7 @@ export const colectionArticleData: IArticleResponse[] = [
     team: {
       id: '4832642634762783648723',
       title: 'Buffalo Bills',
-      path: '/Buffalo+Bills',
+      path: '/NFL/Buffalo+Bills',
     },
     location: 'Italy',
     user: {
@@ -476,7 +476,7 @@ export const articleData: IArticleResponse = {
   team: {
     id: '4832642634762783648723',
     title: 'Buffalo Bills',
-    path: '/Buffalo+Bills',
+    path: '/NFL/Buffalo+Bills',
   },
   location: 'New York',
   showComments: true,

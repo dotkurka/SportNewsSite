@@ -4,7 +4,7 @@
   text-transform: uppercase;
   color: $black;
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 22px;
   letter-spacing: -0.24px;
 }
@@ -70,6 +70,7 @@
       &:focus {
         width: 100%;
         border-bottom: 1px solid $quillGrey;
+        border-radius: 0px;
       }
     }
 
