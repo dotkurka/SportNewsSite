@@ -1,79 +1,57 @@
 @import 'styles/Colors.scss';
 
 .article {
-  box-sizing: border-box;
   position: relative;
-  border: 1px solid $softPeach;
-  max-width: 390px;
-  width: 100%;
-  height: 295px;
 
-  &-category {
+  &-path {
     display: flex;
-    justify-content: center;
+    position: absolute;
+    top: -30px;
+    left: 0px;
     align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 134px;
-    height: 39px;
-    background-color: $heavyMetal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-    color: $white;
-  }
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    cursor: default;
 
-  img {
-    display: flex;
-    object-fit: cover;
-    height: 196px;
-    width: 100%;
-  }
-
-  &-text {
-    h2 {
-      margin: 12px 15px;
-      font-weight: 700;
-      font-size: 22px;
-      line-height: 30px;
-      color: $gunmetal;
+    & > :first-child {
+      color: $greyCloud;
+      text-transform: uppercase;
     }
-  }
 
-  &-button {
-    transition: 0.2s;
-    opacity: 0;
-    position: absolute;
-    height: 13px;
-    width: 16px;
-    bottom: 14px;
-    right: 12px;
-  }
-
-  &:hover {
-    transition: 0.2s;
-    background-color: $white;
-    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.110932);
-
-    .article-button {
-      opacity: 1;
+    a {
+      all: unset;
+      color: $greyCloud;
       cursor: pointer;
+      -webkit-user-drag: none;
+
+      &:hover {
+        color: $monza;
+      }
     }
+
+    &-arrow {
+      margin: 0 4px;
+      width: 9px;
+      transform: rotateZ(90deg);
+
+      path {
+        fill: $alizarinCrimson;
+      }
+    }
+
+    & > :last-child {
+      color: $alizarinCrimson;
+    }
+  }
+
+  &-main {
+    margin-bottom: 45px;
   }
 }
 
-@media screen and (max-width: 700px) {
-  .article {
-    height: max-content;
-    border: none;
-
-    &-category {
-      display: none;
-    }
-
-    &-text h2 {
-      margin-bottom: 30px;
-    }
+@media screen and (max-width: 1024px) {
+  .article-path {
+    display: none;
   }
 }

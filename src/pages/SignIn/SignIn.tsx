@@ -6,11 +6,11 @@ import { useSignUpMutation } from 'api/authApi';
 import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg';
 import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
 import { Button, Input, TextLink } from 'components';
-import { ButtonSize, ButtonVariant } from 'components/Button/types';
+import { ButtonSize, ButtonVariant } from 'components/Button/enums';
+import { logIn } from 'constants/routesPath';
 import { signInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
-import { logIn } from 'utils/routesPath';
 
 import type { IRequestError, ISignUpRequest } from 'features/auth/types';
 
@@ -26,19 +26,19 @@ const SignIn = () => {
   const isMobile = useMobileWidth(1024);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [signUp, { error: singInError, isError }] = useSignUpMutation();
+  const [signIn, { error: singInError, isError }] = useSignUpMutation();
 
   useEffect(() => {
     if (isError) {
-      const error = (singInError as IRequestError).data.errors.DuplicateEmail;
+      const error = (singInError as IRequestError).data.message;
       setErrorMessage(error);
     }
   }, [isError]);
 
   const submit = async (values: ISignUpRequest) => {
-    const result = await signUp(values);
-    if ('data' in result) {
-      dispatch(setToken(result.data));
+    const result = await signIn(values).unwrap();
+    if (result) {
+      dispatch(setToken(result));
     }
   };
 

@@ -1,0 +1,65 @@
+@import 'styles/Colors.scss';
+
+.create-article {
+  box-sizing: border-box;
+
+  &-preview-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+  }
+
+  &-form {
+    position: relative;
+
+    &-select {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+
+      &-item {
+        margin-bottom: 20px;
+        width: 250px;
+      }
+    }
+
+    &-input {
+      width: 100%;
+    }
+  }
+
+  &-comments-show {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: normal;
+    margin-top: 20px;
+
+    p {
+      color: $riverBed;
+    }
+
+    &-label {
+      text-align: center;
+      color: $gunmetal;
+      width: 53px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .create-article-form-select {
+    flex-direction: column;
+
+    &-item {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .create-article {
+    margin-top: 24px;
+    padding: 0 20px;
+  }
+}

@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux';
 
 import { useLogInMutation } from 'api/authApi';
 import { Button, Input, TextLink } from 'components';
-import { ButtonSize, ButtonVariant } from 'components/Button/types';
-import { TextLinkVariant } from 'components/TextLink/types';
+import { ButtonSize, ButtonVariant } from 'components/Button/enums';
+import { TextLinkVariant } from 'components/TextLink/enums';
+import { signIn } from 'constants/routesPath';
 import { logInValidation } from 'features/auth/validationSchema';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { setToken } from 'redux/authSlice';
-import { signIn } from 'utils/routesPath';
 
-import type { ILoginRequest } from 'features/auth/types';
+import type { ILoginRequest, IRequestError } from 'features/auth/types';
 
 import 'features/auth/style.scss';
 
@@ -19,12 +19,6 @@ const initialValues: ILoginRequest = {
   email: '',
   password: '',
 };
-
-interface IError {
-  data: {
-    title: string;
-  };
-}
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -35,15 +29,15 @@ const LogIn = () => {
 
   useEffect(() => {
     if (isError) {
-      const error = (logInError as IError).data.title;
+      const error = (logInError as IRequestError).data.message;
       setErrorMessage(error);
     }
   }, [isError]);
 
   const submit = async (values: ILoginRequest) => {
-    const result = await logIn(values);
-    if ('data' in result) {
-      dispatch(setToken(result.data));
+    const result = await logIn(values).unwrap();
+    if (result) {
+      dispatch(setToken(result));
     }
   };
 

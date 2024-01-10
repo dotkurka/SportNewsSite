@@ -1,5 +1,5 @@
-import type { ISubArticleData } from 'components/SubArticle/types';
+import type { IArticleResponse } from 'features/article/types';
 
 export interface IArticleCollection {
-  collection: ISubArticleData[];
+  collection: IArticleResponse[];
 }

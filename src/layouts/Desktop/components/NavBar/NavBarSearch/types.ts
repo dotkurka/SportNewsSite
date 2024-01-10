@@ -1,5 +1,7 @@
-import type { ISidebarData } from 'config/SideBarData/types';
+import type { IArticleResponse } from 'features/article/types';
 
 export interface INavSearch {
-  data?: ISidebarData[];
+  result?: IArticleResponse[];
+  isLoading?: boolean;
+  onChange: (value: string) => void;
 }

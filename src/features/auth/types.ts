@@ -1,11 +1,7 @@
+import type { IUser } from 'features/user/types';
+
 export interface IForm {
   className?: string;
-}
-
-export interface IUser {
-  firstName: string;
-  lastName: string;
-  email: string;
 }
 
 export interface IUserResponse {
@@ -28,9 +24,5 @@ export interface ISignUpRequest {
 export interface IRequestError {
   data: {
     message: string;
-    errors: {
-      DuplicateEmail: string;
-      DuplicateUserName: string;
-    };
   };
 }

@@ -1,7 +1,7 @@
 import { ReactComponent as EmailIcon } from 'assets/images/check-email-icon.svg';
 import { TextLink } from 'components';
+import { signIn } from 'constants/routesPath';
 import useMobileWidth from 'hooks/useWindowsWidth';
-import { signIn } from 'utils/routesPath';
 
 interface IEmail {
   email?: string;

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { TextLinkVariant } from './types';
+import { TextLinkVariant } from './enums';
 
 import type { ITextLink } from './types';
 

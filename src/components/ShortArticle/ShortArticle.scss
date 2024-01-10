@@ -1,0 +1,127 @@
+@import 'styles/Colors.scss';
+
+.short-article {
+  box-sizing: border-box;
+  padding: 25px 34px;
+  height: 210px;
+  width: 100%;
+  position: relative;
+
+  &-contain {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: $white;
+    transition: 0.2s;
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.11);
+
+    .short-article-select,
+    .short-article-arrow {
+      opacity: 1;
+    }
+  }
+
+  &-img {
+    height: 100%;
+    margin-right: 32px;
+    max-width: 284px;
+    width: 100%;
+
+    img {
+      object-fit: cover;
+      width: inherit;
+      height: inherit;
+    }
+  }
+
+  &-select {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    width: 22px;
+    opacity: 0;
+
+    &-list {
+      width: 100px !important;
+    }
+  }
+
+  &-text {
+    width: 100%;
+    min-width: 380px;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      color: $gunmetal;
+      font-weight: 700;
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
+
+    p,
+    span {
+      color: $friarGrey;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19px;
+    }
+
+    p {
+      margin-bottom: auto;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 17px;
+    height: 15px;
+    width: 19px;
+    transition: 0.2s;
+    opacity: 0;
+
+    * {
+      fill: $persianRed;
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .short-article-select-list {
+    left: -71px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .short-article {
+    height: unset;
+    padding: 36px 13px;
+
+    &-contain {
+      flex-direction: column;
+    }
+
+    &-select {
+      opacity: 1;
+    }
+
+    &-img {
+      max-width: unset;
+      margin-right: unset;
+      margin-bottom: 15px;
+    }
+
+    &-text {
+      min-width: unset;
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

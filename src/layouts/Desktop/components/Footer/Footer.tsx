@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as FbIcon } from 'assets/images/facebook-circle-icon.svg';
-import { ReactComponent as GmailIcon } from 'assets/images/gmail-circle-icon.svg';
-
 import './Footer.scss';
+
+// TODO add link for path
 
 const Footer = () => {
   return (
@@ -26,17 +25,11 @@ const Footer = () => {
         <div className='footer-nav-form'>
           <h4>NEWSLETTER</h4>
           <p>Sing up to recive the latest in sport news </p>
+          {/* Add hamdle submit */}
           <form>
             <input placeholder='Your email address' type='text' />
             <button type='submit'>Subscribe</button>
           </form>
-          <div className='footer-nav-form-sign'>
-            <span>Sing up by</span>
-            <div className='footer-nav-form-sign-icon'>
-              <FbIcon />
-              <GmailIcon />
-            </div>
-          </div>
         </div>
       </div>
       <div className='footer-sub'>

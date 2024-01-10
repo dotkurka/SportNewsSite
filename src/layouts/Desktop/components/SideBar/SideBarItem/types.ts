@@ -1,7 +1,7 @@
-import type { ISidebarData } from 'config/SideBarData/types';
+import type { ICaregoryData } from 'features/category/types';
 
 export interface ISideBarItem {
-  item: ISidebarData;
+  item: ICaregoryData;
   onClick?: () => void;
   isActive: boolean;
 }

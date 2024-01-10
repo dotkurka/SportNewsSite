@@ -1,17 +1,19 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useLazyGetUserQuery } from 'api/authApi';
-import { selectCurrentToken, setToken, setUser } from 'redux/authSlice';
+import { ScrollToTop } from 'components';
+import { logOut, selectCurrentToken, setToken, setUser } from 'redux/authSlice';
 import Routes from 'Routes';
+
 import './styles/App.scss';
 
 const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectCurrentToken);
-  const [getUser, { data: user }] = useLazyGetUserQuery();
+  const [getUser, { data: user, error }] = useLazyGetUserQuery();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!token) {
       const localToken = localStorage.getItem('token');
 
@@ -21,18 +23,23 @@ const App = () => {
     }
   }, [token]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    getUser();
+
     if (user) {
       dispatch(setUser(user));
     }
   }, [token, user]);
 
-  useEffect(() => {
-    getUser();
-  }, [token]);
+  useLayoutEffect(() => {
+    if (error) {
+      dispatch(logOut());
+    }
+  }, [error]);
 
   return (
     <div className='App'>
+      <ScrollToTop />
       <Routes />
     </div>
   );

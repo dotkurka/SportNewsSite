@@ -1,21 +1,17 @@
-import type { ReactNode } from 'react';
-import type React from 'react';
+import type { InputVariant } from 'components/Input/enums';
+import type { ComponentProps, ReactNode } from 'react';
 
-interface IInput {
-  errors?: string | undefined;
-  touched?: boolean;
+export interface IInput extends ComponentProps<'input'> {
   type: string;
+  errors?: string | boolean;
+  touched?: boolean;
+  disabledIcon?: boolean;
   label?: string;
   placeholder?: string;
   variant?: InputVariant;
   description?: ReactNode;
   className?: string;
+  name?: string;
+  succesDisabled?: boolean;
+  showPassword?: boolean;
 }
-
-export enum InputVariant {
-  Succes = 'succes',
-  Error = 'error',
-  Default = 'default',
-}
-
-export type TInput = IInput & React.HTMLProps<HTMLInputElement>;

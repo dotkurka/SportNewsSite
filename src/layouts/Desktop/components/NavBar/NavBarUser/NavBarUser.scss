@@ -67,7 +67,7 @@ $sizeImg: 34px;
     }
 
     &-head {
-      height: 115px;
+      height: 80px;
       background-color: $white;
       display: flex;
       flex-direction: column;
@@ -85,13 +85,6 @@ $sizeImg: 34px;
         color: $friarGrey;
         font-weight: 400;
         line-height: 19px;
-      }
-
-      &-button {
-        margin-top: 11px;
-        width: 109px;
-        height: 27px;
-        text-transform: uppercase;
       }
     }
 

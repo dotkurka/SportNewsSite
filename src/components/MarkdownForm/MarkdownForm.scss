@@ -1,0 +1,421 @@
+@import 'styles/Colors.scss';
+
+.markdown-form-label {
+  display: flex;
+  margin-bottom: 8px;
+  height: 11px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  color: $riverBed;
+}
+
+.markdown-form-bar {
+  position: absolute;
+  cursor: s-resize;
+  right: 0;
+  bottom: 0;
+  margin-top: -11px;
+  margin-right: 0;
+  width: 14px;
+  z-index: 3;
+  height: 10px;
+  border-radius: 0 0 3px 0;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.markdown-form-bar svg {
+  display: block;
+  margin: 0 auto;
+  height: 2;
+  color: $silver;
+}
+
+.markdown-form-area {
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.markdown-form-text {
+  min-height: 100%;
+  position: relative;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  -webkit-font-variant-ligatures: common-ligatures;
+  font-variant-ligatures: common-ligatures;
+}
+
+.markdown-form-text-pre,
+.markdown-form-text-input,
+.markdown-form-text > .markdown-form-text-pre {
+  margin: 0;
+  border: 0;
+  background: none;
+  box-sizing: inherit;
+  display: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-variant-ligatures: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  text-indent: inherit;
+  text-rendering: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  overflow-wrap: inherit;
+  word-break: inherit;
+  word-break: normal;
+  padding: 0;
+}
+
+.markdown-form-text-pre {
+  display: none;
+  position: relative;
+  margin: 0px !important;
+  pointer-events: none;
+  background-color: transparent !important;
+}
+
+.markdown-form-text-pre > code {
+  padding: 0 !important;
+  font-family: var(--md-editor-font-family) !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+}
+
+.markdown-form-text-input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  color: inherit;
+  overflow: hidden;
+  outline: 0;
+  padding: inherit;
+}
+
+.markdown-form-text-input:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+.markdown-form-text-pre,
+.markdown-form-text-input {
+  word-wrap: pre;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .markdown-form-text-input {
+    color: transparent !important;
+  }
+  .markdown-form-text-input::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+
+.markdown-form-text-pre .punctuation {
+  color: var(--color-prettylights-syntax-comment, #8b949e) !important;
+}
+
+.markdown-form-text-pre .token.url,
+.markdown-form-text-pre .token.content {
+  color: var(--color-prettylights-syntax-constant, #0550ae) !important;
+}
+
+.markdown-form-text-pre .token.title.important {
+  color: var(--color-prettylights-syntax-markup-bold, #24292f);
+}
+
+.markdown-form-text-pre .token.code-block .function {
+  color: var(--color-prettylights-syntax-entity, #8250df);
+}
+
+.markdown-form-text-pre .token.bold {
+  font-weight: unset !important;
+}
+
+.markdown-form-text-pre .token.title {
+  line-height: unset !important;
+  font-size: unset !important;
+  font-weight: unset !important;
+}
+
+.markdown-form-text-pre .token.code.keyword {
+  color: var(--color-prettylights-syntax-constant, #0550ae) !important;
+}
+
+.markdown-form-text-pre .token.strike,
+.markdown-form-text-pre .token.strike .content {
+  color: var(--color-prettylights-syntax-markup-deleted-text, #82071e) !important;
+}
+
+.markdown-form-toolbar-child {
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--md-editor-box-shadow-color), 0 0 0 var(--md-editor-box-shadow-color),
+    0 1px 1px var(--md-editor-box-shadow-color);
+  background-color: var(--md-editor-background-color);
+  z-index: 1;
+  display: none;
+}
+
+.markdown-form-toolbar-child.active {
+  display: block;
+}
+
+.markdown-form-toolbar-child .markdown-form-toolbar {
+  border-bottom: 0;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.markdown-form-toolbar-child .markdown-form-toolbar ul > li {
+  display: block;
+}
+
+.markdown-form-toolbar-child .markdown-form-toolbar ul > li button {
+  width: -webkit-fill-available;
+  height: initial;
+  box-sizing: border-box;
+  padding: 3px 4px 2px 4px;
+  margin: 0;
+}
+
+.markdown-form-toolbar {
+  height: 47px;
+  border-bottom: 1px solid $lightGrey;
+  background-color: var(--md-editor-background-color);
+  padding: 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3px 3px 0 0;
+  -webkit-user-select: none;
+  user-select: none;
+  flex-wrap: wrap;
+}
+
+.markdown-form-toolbar.bottom {
+  border-bottom: 0px;
+  border-top: 1px solid var(--md-editor-box-shadow-color);
+  border-radius: 0 0 3px 3px;
+}
+
+.markdown-form-toolbar ul,
+.markdown-form-toolbar li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.markdown-form-toolbar li {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.markdown-form-toolbar li + li {
+  margin: 0;
+}
+
+.markdown-form-toolbar li > button {
+  font-size: 16px;
+  border: none;
+  height: 20px;
+  line-height: 14px;
+  background: none;
+  padding: 4px;
+  margin: 0 8px;
+  border-radius: 2px;
+  text-transform: none;
+  font-weight: normal;
+  overflow: visible;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  color: $silver;
+}
+
+.markdown-form-toolbar li > button:hover,
+.markdown-form-toolbar li > button:focus {
+  color: $alizarinCrimson;
+  transition: 0.3s;
+}
+
+.markdown-form-toolbar li > button:active {
+  background-color: var(--color-neutral-muted);
+  color: var(--color-danger-fg);
+}
+
+.markdown-form-toolbar li > button:disabled {
+  color: var(--md-editor-box-shadow-color);
+  cursor: not-allowed;
+}
+
+.markdown-form-toolbar li > button:disabled:hover {
+  background-color: transparent;
+  color: var(--md-editor-box-shadow-color);
+}
+
+.markdown-form-toolbar li.active > button {
+  color: var(--color-accent-fg);
+  background-color: var(--color-neutral-muted);
+}
+
+.markdown-form-toolbar-divider {
+  height: 29px;
+  width: 1px;
+  margin: -3px 3px 0 3px !important;
+  vertical-align: middle;
+  background-color: $lightGrey;
+}
+
+.markdown-form {
+  text-align: left;
+  padding-bottom: 1px;
+  position: relative;
+  border: 1px solid $lightGrey;
+  color: $black;
+  --md-editor-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --md-editor-background-color: var(--color-canvas-default, #ffffff);
+  --md-editor-box-shadow-color: var(--color-border-default, $lightGrey);
+  background-color: $white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  &-error {
+    border-color: $paleRed;
+  }
+}
+
+.markdown-form-rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.markdown-form-rtl .markdown-form-preview {
+  right: unset !important;
+  left: 0;
+  text-align: right !important;
+  box-shadow: inset -1px 0 0 0 var(--md-editor-box-shadow-color);
+}
+
+.markdown-form-rtl .markdown-form-text {
+  text-align: right !important;
+}
+
+.markdown-form-content {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  border-radius: 0 0 3px 0;
+}
+
+.markdown-form {
+  height: 380px;
+}
+
+.markdown-form .copied {
+  display: none !important;
+}
+
+.markdown-form-input {
+  width: 50%;
+  height: 100%;
+}
+
+.markdown-form-text-pre > code {
+  word-break: break-word !important;
+  white-space: pre-wrap !important;
+}
+
+.markdown-form-preview {
+  width: 50%;
+  box-sizing: border-box;
+  box-shadow: inset 1px 0 0 0 var(--md-editor-box-shadow-color);
+  position: absolute;
+  padding: 10px 20px;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0 0 5px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-form-preview .anchor {
+  display: none;
+}
+
+.markdown-form-preview .contains-task-list li.task-list-item {
+  list-style: none;
+}
+
+.markdown-form-show-preview .markdown-form-input {
+  width: 0%;
+  overflow: hidden;
+  background-color: var(--md-editor-background-color);
+}
+
+.markdown-form-show-preview .markdown-form-preview {
+  width: 100%;
+  box-shadow: inset 0 0 0 0;
+}
+
+.markdown-form-show-edit .markdown-form-input {
+  width: 100%;
+}
+
+.markdown-form-show-edit .markdown-form-preview {
+  width: 0%;
+  padding: 0;
+}
+
+.markdown-form-fullscreen {
+  overflow: hidden;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100% !important;
+}
+
+.markdown-form-fullscreen .markdown-form-content {
+  height: 100%;
+}
+
+.markdown-form-toolbar-italic {
+  font-style: italic;
+}
+
+.markdown-form-toolbar-bold {
+  font-style: bold;
+}
+
+.markdown-form-toolbar-underline {
+  text-decoration: underline;
+}

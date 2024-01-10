@@ -1,31 +1,22 @@
-// import type { ReactNode } from 'react';
+import type { MainArticleVariant } from 'components/MainArticle/enums';
+import type { IArticleResponse } from 'features/article/types';
 
-export interface ISliderData {
-  img: string;
-  alt: string;
-  title: {
-    published: string;
-    head: string;
-    description: string;
-  };
-  article?: string;
+interface IControls {
+  goToNext: () => void;
+  goToPrevious: () => void;
+  goToSlide: (index: number) => void;
 }
 
 export interface IMainTitle {
-  sliderData: ISliderData[];
+  sliderData: IArticleResponse[];
   currentIndex: number;
-  setCurrentIndex: (index: number) => void;
+  controls: IControls;
   variant: MainArticleVariant;
 }
 
 export interface IMainArticle {
-  sliderData: ISliderData[];
+  sliderData: IArticleResponse[];
+
   className?: string;
   variant?: MainArticleVariant;
-}
-
-export enum MainArticleVariant {
-  Article = 'article',
-  Carousel = 'carousel',
-  Share = 'share',
 }

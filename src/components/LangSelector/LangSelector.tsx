@@ -4,7 +4,8 @@ import arrowFlag from 'assets/images/arrow-down-flag.svg';
 import useClickOutside from 'hooks/useClickOutside';
 
 import './LangSelector.scss';
-import type { ILangSelector, Langue } from 'components/LangSelector/types';
+import type { Langue } from 'components/LangSelector/enums';
+import type { ILangSelector } from 'components/LangSelector/types';
 
 const LangSelector = ({ langueages, initialLang }: ILangSelector) => {
   const [langue, setLangue] = useState<Langue>(initialLang);

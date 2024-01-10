@@ -1,13 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { UserRole } from 'features/auth/enums';
 import { removeInLocal, saveInLocal } from 'utils/localStorage';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IUserResponse, IUser } from 'features/auth/types';
+import type { IUserResponse } from 'features/auth/types';
+import type { IUser } from 'features/user/types';
 import type { RootState } from 'redux/store';
 
 const initialVlues: IUserResponse = {
   user: {
+    id: '',
+    role: UserRole.User,
     firstName: '',
     lastName: '',
     email: '',

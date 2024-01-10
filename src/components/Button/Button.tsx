@@ -1,4 +1,4 @@
-import { ButtonSize, ButtonVariant } from './types';
+import { ButtonSize, ButtonVariant } from './enums';
 
 import type { IButton } from './types';
 
@@ -7,7 +7,7 @@ import './Button.scss';
 const buttonClass = {
   [ButtonVariant.Text]: 'text',
   [ButtonVariant.Contained]: 'contained',
-  [ButtonVariant.Default]: 'outline',
+  [ButtonVariant.Outline]: 'outline',
 };
 
 const buttonSize = {
@@ -17,10 +17,10 @@ const buttonSize = {
 
 const Button = ({
   children,
-  variant = ButtonVariant.Default,
+  variant = ButtonVariant.Outline,
   type = 'button',
   size = ButtonSize.Medium,
-  className,
+  className = '',
   onClick,
   ...props
 }: IButton) => {
@@ -28,7 +28,7 @@ const Button = ({
     <button
       onClick={onClick}
       {...props}
-      className={`button button-${buttonClass[variant]} ${buttonSize[size]} ${className || ''}`}
+      className={`button button-${buttonClass[variant]} ${buttonSize[size]} ${className}`}
       type={type}
     >
       {children}

@@ -1,45 +1,47 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import arrowFlag from 'assets/images/arrow-down-flag.svg';
 import userAvatar from 'assets/images/profile-avatar.svg';
 import { Button } from 'components';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
+import { UserRole } from 'features/auth/enums';
 import useClickOutside from 'hooks/useClickOutside';
 import NavBarUserMenu from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUserMenu';
-import { selectCurrentUser } from 'redux/authSlice';
+
+import type { INavBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 
 import './NavBarUser.scss';
 
-const NavBarUser = () => {
-  const user = useSelector(selectCurrentUser);
-
+const NavBarUser = ({ user }: INavBarUser) => {
   const [showMenu, setShowMenu] = useState(false);
+  const userRef = useClickOutside(() => setShowMenu(false));
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   };
 
-  const userRef = useClickOutside(() => setShowMenu(false));
+  const userStatus = {
+    [UserRole.Admin]: 'Administrator',
+    [UserRole.User]: 'Active',
+  };
 
   if (user) {
-    // TODO add user image and status and fix types
     return (
       <div ref={userRef} className='navbar-user'>
         <div className='navbar-user-head'>
-          <img className='navbar-user-avatar' src={userAvatar} alt='avatar' />
+          <img className='navbar-user-avatar' src={user?.avatar || userAvatar} alt='avatar' />
           <div className='navbar-user-title'>
             <p className='navbar-user-title-name'>
               {user.firstName} {user.lastName}
             </p>
-            <p className='navbar-user-title-status'>{user.email ? 'Active' : ''}</p>
+            <p className='navbar-user-title-status'>{userStatus[user.role]}</p>
           </div>
           <button onClick={() => handleShowMenu()} className='navbar-user-flag'>
             <img src={arrowFlag} alt='>' />
           </button>
         </div>
 
-        {showMenu && <NavBarUserMenu user={user} />}
+        {showMenu && <NavBarUserMenu handleCloseMenu={handleShowMenu} user={user} />}
       </div>
     );
   }

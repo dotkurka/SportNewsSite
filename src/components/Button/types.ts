@@ -1,22 +1,10 @@
-import type { ReactNode } from 'react';
+import type { ButtonSize, ButtonVariant } from 'components/Button/enums';
+import type { ComponentProps, ReactNode } from 'react';
 
-export interface IButton {
+export interface IButton extends ComponentProps<'button'> {
   children: string | ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
   type?: 'button' | 'submit';
-  disabled?: boolean;
-  className?: string;
   onClick?: () => void;
-}
-
-export enum ButtonVariant {
-  Text = 'text',
-  Contained = 'contained',
-  Default = 'default',
-}
-
-export enum ButtonSize {
-  Large = 'large',
-  Medium = 'medium',
 }

@@ -1,23 +1,33 @@
-import { useState } from 'react';
+import { createContext, useCallback, useState } from 'react';
 
+import { Langue } from 'components/LangSelector/enums';
 import { LangBar } from 'layouts/Mobile/components';
 import BurgerMenuItem from 'layouts/Mobile/components/BurgerMenu/BurgerMenuItem';
 import SecondMenu from 'layouts/Mobile/components/BurgerMenu/SecondMenu';
-import { Langue } from 'layouts/Mobile/components/LangBar/types';
 
-import type { ISidebarData } from 'config/SideBarData/types';
-import type { IBurger } from 'layouts/Mobile/components/BurgerMenu/types';
+import type { ICaregoryData, IConferenceData } from 'features/category/types';
+import type { BurgerContextType, IBurger } from 'layouts/Mobile/components/BurgerMenu/types';
 
 import './BurgerMenu.scss';
 
-const BurgerMenu = ({ data, show }: IBurger) => {
-  const [secondMenu, setSecondMenu] = useState<ISidebarData>({ title: '', path: '' });
+export const BurgerMenuContext = createContext<BurgerContextType | undefined>(undefined);
+
+const BurgerMenu = ({ data, handleShow }: IBurger) => {
+  const [secondMenu, setSecondMenu] = useState<IConferenceData[] | null>(null);
   const [secondTitle, setSecondTitle] = useState<string | null>(null);
   const [check, setCheck] = useState<string | null>(null);
 
-  const getSecondMenu = (item: ISidebarData) => {
-    setSecondMenu(item);
-    setSecondTitle(item.title);
+  const handleHiddenMenu = useCallback(() => {
+    handleShow(false);
+  }, [handleShow]);
+
+  const getSecondMenu = (item: ICaregoryData) => {
+    if (item.conference) {
+      setSecondMenu(item?.conference || null);
+      setSecondTitle(item.title);
+    } else {
+      handleHiddenMenu();
+    }
   };
 
   const showDropMenu = (title: string) => {
@@ -29,25 +39,27 @@ const BurgerMenu = ({ data, show }: IBurger) => {
   };
 
   const handleCloseSecond = () => {
-    setSecondMenu({ title: '', path: '' });
+    setSecondMenu(null);
     setSecondTitle(null);
   };
 
   return (
-    <div className={`burger-menu ${show ? 'show' : ''} `}>
-      <div className={`burger-menu-contain ${secondMenu.subItem ? '' : 'show'}`}>
-        {data.map((item) => (
-          <BurgerMenuItem onClick={() => getSecondMenu(item)} key={item.path} item={item} />
+    <div className='burger-menu'>
+      <div className={`burger-menu-contain ${secondMenu ? '' : 'show'}`}>
+        {data?.map((item) => (
+          <BurgerMenuItem onClick={() => getSecondMenu(item)} key={item.id} item={item} />
         ))}
       </div>
-      <SecondMenu
-        className={`${secondMenu.subItem ? 'show' : ''}`}
-        close={handleCloseSecond}
-        check={check}
-        title={secondTitle}
-        showDrop={showDropMenu}
-        secondData={secondMenu.subItem}
-      />
+      <BurgerMenuContext.Provider value={handleHiddenMenu}>
+        <SecondMenu
+          className={`${secondMenu ? 'show' : ''}`}
+          close={handleCloseSecond}
+          check={check}
+          title={secondTitle}
+          onClick={showDropMenu}
+          secondData={secondMenu}
+        />
+      </BurgerMenuContext.Provider>
       <div className='burger-menu-lang'>
         <LangBar lang={[Langue.en, Langue.de, Langue.ua]} initialLang={Langue.en} />
       </div>

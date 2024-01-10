@@ -13,6 +13,8 @@
   position: relative;
   user-select: none;
   transition: 0.2s;
+  border: none;
+  background: none;
 
   &-focus {
     color: $alizarinCrimson;

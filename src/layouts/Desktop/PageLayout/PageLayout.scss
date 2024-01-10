@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import 'styles/Colors.scss';
 
 .page-layout {
@@ -9,42 +8,76 @@
   &-bg {
     font-size: 141px;
     line-height: 192px;
-    letter-spacing: 1.25893px;
-    color: rgba(204, 211, 224, 0.301628);
-    position: relative;
-    z-index: -999999;
+    letter-spacing: 1.26px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
     text-transform: uppercase;
+    color: $linkWater;
     user-select: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -999999;
 
     &-first {
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 700;
+      writing-mode: vertical-lr;
       position: absolute;
-      top: 135px;
-      left: 115px;
-      transform: rotate(90deg);
+      top: 23px;
+      left: 130px;
     }
 
     &-last {
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: 700;
+      writing-mode: vertical-lr;
       position: absolute;
-      right: 0;
-      top: 740px;
-      transform: rotate(90deg);
+      top: 554px;
+      right: 154px;
     }
   }
 
   &-contain {
-    display: flex;
     margin-left: 253px;
+    min-height: 650px;
+
+    &.center {
+      margin-left: unset;
+      padding-bottom: 150px;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
 
     &-children {
       padding-top: 82px;
+      margin-right: 20px;
+      max-width: 813px;
+      width: 100%;
+
+      &.manager {
+        padding-top: 42px;
+      }
     }
   }
+}
+
+@keyframes example {
+  0% {
+    filter: opacity(100%);
+  }
+  50% {
+    filter: opacity(0%);
+  }
+  100% {
+    filter: opacity(100%);
+  }
+}
+
+.page-layout-transition {
+  animation-iteration-count: 1;
+  animation-name: example;
+  animation-duration: 1s;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 1440px) {

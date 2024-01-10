@@ -1,12 +1,6 @@
-export interface ISubArticleData {
-  img: string;
-  alt: string;
-  title: string;
-  description: string;
-  path: string;
-}
+import type { IArticleResponse } from 'features/article/types';
 
 export interface ISubArticle {
-  subArticleData: ISubArticleData;
+  subArticleData: IArticleResponse;
   className?: string;
 }

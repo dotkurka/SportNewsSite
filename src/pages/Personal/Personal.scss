@@ -1,0 +1,76 @@
+@import 'styles/Colors.scss';
+
+.personal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &-contain {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 370px;
+  }
+
+  &-btn {
+    width: 100%;
+    display: flex;
+    border: 1px solid $softPeach;
+    margin-bottom: 60px;
+
+    &-item {
+      color: $black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 39px;
+      border: none;
+      background: $white;
+      cursor: pointer;
+      font-size: 14px;
+      transition-duration: 0.2s;
+
+      &:hover,
+      &.active {
+        color: $alizarinCrimson;
+        transform: scale(1.02);
+        filter: drop-shadow(3px 2px 14px rgba(0, 0, 0, 0.09));
+      }
+
+      &:active {
+        color: $monza;
+        filter: drop-shadow(3px 2px 14px rgba(0, 0, 0, 0.2));
+      }
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &-avatar {
+      margin-bottom: 27px;
+    }
+
+    &-input {
+      width: 100%;
+    }
+
+    &-btn {
+      text-transform: uppercase;
+      margin-top: 20px;
+      width: 100%;
+      height: 42px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .personal {
+    margin-top: 60px;
+  }
+}

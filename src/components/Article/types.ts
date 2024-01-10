@@ -1,11 +1,9 @@
-interface IArticleData {
-  img: string;
-  alt: string;
-  category: string;
-  description: string;
-  path: string;
-}
+import type { IArticleComments } from 'components/ArticleComments/types';
+import type { IArticleResponse } from 'features/article/types';
 
-export interface IArticle {
-  articleData: IArticleData;
+type TArticle = Omit<IArticleComments, 'comments'>;
+
+export interface IArticle extends TArticle {
+  data: IArticleResponse;
+  hiddenComments?: boolean;
 }

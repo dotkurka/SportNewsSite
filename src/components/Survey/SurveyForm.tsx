@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 
 import Button from 'components/Button/Button';
-import { ButtonVariant } from 'components/Button/types';
+import { ButtonVariant } from 'components/Button/enums';
 
 import type { ISurveyForm } from 'components/Survey/types';
 import './Survey.scss';
@@ -40,11 +40,7 @@ const SurveyForm = ({ inputValues, showResult }: ISurveyForm) => {
             >
               Submit
             </Button>
-            <Button
-              onClick={showResult}
-              className='survey-contain-button-large'
-              variant={ButtonVariant.Default}
-            >
+            <Button onClick={showResult} className='survey-contain-button-large'>
               Vote to see result
             </Button>
           </div>

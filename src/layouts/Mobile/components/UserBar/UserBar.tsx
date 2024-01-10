@@ -1,32 +1,30 @@
 import { useState } from 'react';
 
-import userAvatar from 'assets/images/profile-avatar.svg';
+import userAvatar from 'assets/images/profile-avatar-white.svg';
 import useClickOutside from 'hooks/useClickOutside';
-import UserBarMenu from 'layouts/Mobile/components/UserBar/UserBarMenu';
+import NavBarUserMenu from 'layouts/Desktop/components/NavBar/NavBarUser/NavBarUserMenu';
+
+import type { INavBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 
 import './UserBar.scss';
-import type { IBarUser } from 'layouts/Desktop/components/NavBar/NavBarUser/types';
 
-const UserBar = ({ user }: IBarUser) => {
+const UserBar = ({ user }: INavBarUser) => {
   const [showMenu, setShowMenu] = useState(false);
+  const userRef = useClickOutside(() => setShowMenu(false));
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   };
 
-  const userRef = useClickOutside(() => setShowMenu(false));
-
   return (
     <div ref={userRef} className='user-bar'>
       <button onClick={() => handleShowMenu()} className='user-bar-btn'>
-        <img
-          className='user-bar-avatar'
-          src={user?.image ? user?.image : userAvatar}
-          alt='avatar'
-        />
+        <img className='user-bar-avatar' src={user?.avatar || userAvatar} alt='avatar' />
       </button>
 
-      {showMenu && <UserBarMenu user={user} />}
+      {showMenu && (
+        <NavBarUserMenu handleCloseMenu={handleShowMenu} className='user-bar-menu' user={user} />
+      )}
     </div>
   );
 };

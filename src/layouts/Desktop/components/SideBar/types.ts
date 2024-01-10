@@ -1,5 +1,5 @@
-import type { ISidebarData } from 'config/SideBarData/types';
+import type { ICaregoryData } from 'features/category/types';
 
 export interface ISideBar {
-  data: ISidebarData[];
+  data: ICaregoryData[] | undefined;
 }

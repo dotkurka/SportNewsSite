@@ -7,7 +7,13 @@ $crossSize: 20px;
   width: 350px;
   display: flex;
   position: relative;
-  align-items: center;
+  flex-direction: column;
+
+  &-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .input {
@@ -19,9 +25,18 @@ $crossSize: 20px;
   line-height: 16px;
   padding: 0 14px;
   outline: none;
+  border-radius: 0px;
 
-  &:hover {
-    border-color: $greyChateau;
+  &[disabled] {
+    cursor: not-allowed;
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+
+    &:hover {
+      border-color: $lightGrey;
+    }
   }
 
   &:focus {
@@ -29,9 +44,8 @@ $crossSize: 20px;
   }
 
   &-label {
-    top: 0;
+    margin-bottom: 8px;
     height: 11px;
-    position: absolute;
     letter-spacing: 0.9px;
     text-transform: uppercase;
     font-family: 'Roboto';
@@ -63,6 +77,22 @@ $crossSize: 20px;
 
     &:focus {
       border-color: $paleRed;
+    }
+  }
+}
+
+.input-password-eye {
+  cursor: pointer;
+  border: none;
+  background: none;
+  position: absolute;
+  right: 15px;
+  width: 23px;
+  height: 20px;
+
+  &:hover {
+    & > svg * {
+      fill: $alizarinCrimson;
     }
   }
 }

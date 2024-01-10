@@ -1,26 +1,60 @@
 import { useSelector } from 'react-redux';
-import { Navigate, Route, Routes as RouterRoutes } from 'react-router-dom';
+import { Route, Routes as RouterRoutes } from 'react-router-dom';
 
 import { ProtectedRoute } from 'components';
+import {
+  changePassword,
+  checkEmail,
+  forgotPassword,
+  home,
+  logIn,
+  newPassword,
+  personal,
+  signIn,
+} from 'constants/routesPath';
 import { LogInLayout, PageLayout, SignInLayout } from 'layouts';
-import { CheckEmail, ForgotPassword, Home, LogIn, NewPassword, SignIn } from 'pages';
-import TestPage from 'pages/TetsPage/TestPage';
+import {
+  ArticlePage,
+  Category,
+  CheckEmail,
+  ForgotPassword,
+  Home,
+  HomeManager,
+  LogIn,
+  NewArticle,
+  NewPassword,
+  Personal,
+  SignIn,
+  Team,
+} from 'pages';
+import Test from 'pages/Tets/Test';
 import { selectCurrentToken } from 'redux/authSlice';
-import { checkEmail, forgotPassword, logIn, newPassword, signIn } from 'utils/routesPath';
+import { managerMode as managerModeState } from 'redux/managerModeSlice';
 
 const Routes = () => {
-  const isAuth1 = useSelector(selectCurrentToken);
-  const isAuth = true;
+  // dev mode is true
+  const isAuth = useSelector(selectCurrentToken) || true;
+  const managerMode = useSelector(managerModeState);
 
   return (
     <RouterRoutes>
       <Route element={<ProtectedRoute to={logIn} isAuth={!!isAuth} />}>
-        <Route path='/' element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route path='test' element={<TestPage />} />
+        <Route path={home} element={<PageLayout />}>
+          {!managerMode && <Route index element={<Home />} />}
+          <Route path={changePassword} element={<Personal />} />
+          <Route path={personal} element={<Personal />} />
+          <Route path='/test' element={<Test />} />
+          <Route path='/:category/:team' element={<Team />} />
+          <Route path='/:category/:team/:article' element={<ArticlePage />} />
+          <Route element={<ProtectedRoute to={home} isAuth={managerMode} />}>
+            <Route index element={<HomeManager />} />
+            <Route path='/:category/:team/:article/edit' element={<NewArticle />} />
+            <Route path='/:category/new' element={<NewArticle />} />
+            <Route path='/:category' element={<Category />} />
+          </Route>
         </Route>
       </Route>
-      <Route element={<ProtectedRoute to='/' isAuth={!isAuth} />}>
+      <Route element={<ProtectedRoute to={home} isAuth={!isAuth} />}>
         <Route path={logIn} element={<LogInLayout />}>
           <Route index element={<LogIn />} />
           <Route path={forgotPassword} element={<ForgotPassword />} />
@@ -32,7 +66,7 @@ const Routes = () => {
         </Route>
       </Route>
 
-      <Route path='*' element={<Navigate to='/' replace />} />
+      {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
     </RouterRoutes>
   );
 };
