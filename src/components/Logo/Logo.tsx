@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+
 import './Logo.scss';
+import { home } from 'constants/routesPath';
 
 interface ILogo {
   className?: string;
@@ -6,9 +9,9 @@ interface ILogo {
 
 const Logo = ({ className }: ILogo) => {
   return (
-    <div className={`logo ${className}`}>
+    <Link to={home} className={`logo ${className}`}>
       <span className='logo-text'>Sport News</span>
-    </div>
+    </Link>
   );
 };
 

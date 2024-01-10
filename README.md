@@ -6,8 +6,8 @@
 
 - Article:
 
+  - add sekeletom for Article and HomePage
   - more article section
-  - edit
   - it would be good to add skeleton
 
   - Pages

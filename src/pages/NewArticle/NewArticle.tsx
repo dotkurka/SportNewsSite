@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -19,7 +19,8 @@ import type { IArticleFormData } from 'pages/NewArticle/types';
 import './NewArticle.scss';
 
 const NewArticle = () => {
-  const [preview, setPreview] = useState<IArticleResponse | null>();
+  const [preview, setPreview] = useState<IArticleResponse>();
+  const [showPreview, setShowPreview] = useState(false);
   const [submitAction, setSubmitAction] = useState<'submit' | 'preview'>();
   const [showComments, setShowComments] = useState(true);
 
@@ -44,21 +45,25 @@ const NewArticle = () => {
 
   const handleShowPreview = () => {
     if (preview) {
-      setPreview(null);
+      setShowPreview(false);
     } else {
       previewRef.current?.click();
     }
   };
 
-  const handlePreview = (values: IArticleFormData) => {
-    const previewData: IArticleResponse = {
-      ...values,
-      ...previewArticleData,
-      showComments,
-      user,
-    };
-    setPreview(previewData);
-  };
+  const handlePreview = useCallback(
+    (values: IArticleFormData) => {
+      const previewData: IArticleResponse = {
+        ...values,
+        ...previewArticleData,
+        showComments,
+        user,
+      };
+      setPreview(previewData);
+      setShowPreview(true);
+    },
+    [preview],
+  );
 
   const handleSubmit = async (values: IArticleFormData) => {
     const { category, conference, team, ...value } = values;
@@ -100,7 +105,7 @@ const NewArticle = () => {
       >
         {preview ? 'Back' : 'Preview'}
       </PreviewButton>
-      {preview && <Article disabledForm data={preview} user={user} />}
+      {showPreview && preview && <Article disabledForm data={preview} user={user} />}
       <div hidden={!!preview} className='create-article-form'>
         <NewArticleForm
           onSubmit={formikSubmit}
