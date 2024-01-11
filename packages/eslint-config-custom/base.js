@@ -45,6 +45,7 @@ module.exports = {
     'import/namespace': 'error',
     'import/default': 'error',
     'import/export': 'error',
+    'unicorn/no-empty-file': 'error',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/order': [
       1,

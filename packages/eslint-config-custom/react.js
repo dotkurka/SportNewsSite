@@ -18,10 +18,8 @@ module.exports = {
     'plugin:@tanstack/eslint-plugin-query/recommended',
     'plugin:import/typescript',
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
   ],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react', '@typescript-eslint', 'import', 'unused-imports'],
+  plugins: ['react', 'import', 'unused-imports'],
   globals: {
     React: true,
     JSX: true,
