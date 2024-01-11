@@ -1,78 +1,34 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "sport-news-dotkurka",
   "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.2",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@types/react-redux": "^7.1.24",
-    "@uiw/react-md-editor": "^3.23.5",
-    "formik": "^2.2.9",
-    "html-react-parser": "^4.0.0",
-    "node-sass": "^9.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-loader-spinner": "^5.4.5",
-    "react-markdown": "^8.0.7",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.2",
-    "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5",
-    "redux-saga": "^1.2.1",
-    "typed-redux-saga": "^1.5.0",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0",
-    "yup": "^0.32.11"
-  },
+  "description": "Sport news site by dotkurka (Ostap Kurka)",
+  "repository": "https://github.com/BeerSolution/SportNewsSite.git",
+  "author": "dotkurka <ostapkurka@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "prepare": "husky install"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "deploy": "turbo run deploy",
+    "prepare": "husky install",
+    "frontend": "yarn workspace frontend dev",
+    "frontend:build": "yarn workspace frontend build",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@types/react-transition-group": "^4.4.10",
-    "@typescript-eslint/eslint-plugin": "^5.42.1",
-    "@typescript-eslint/parser": "^5.42.1",
-    "dotenv": "^16.0.3",
-    "eslint": "^8.27.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.10",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "file-loader": "^6.2.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "tsconfig": "*",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.3"
   },
+  "packageManager": "yarn@1.22.21",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,md}": [
-      "yarn run lint"
-    ]
+    "*.(md|json)": "prettier --write"
   }
 }
