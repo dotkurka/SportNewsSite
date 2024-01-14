@@ -17,7 +17,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node -r tsconfig-paths/register ../../node_modules/typeorm/cli.js",
+    "migration:generate": "yarn typeorm migration:generate -d ./src/data-source.ts",
+    "migration:create": "yarn typeorm migration:create",
+    "migration:run": "yarn typeorm migration:run -d ./src/data-source.ts",
+    "migration:revert": "yarn typeorm migration:revert -d ./src/data-source.ts",
+    "migration:show": "yarn typeorm migration:show -d ./src/data-source.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -28,6 +34,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.1",
     "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
     "dotenv": "^16.3.1",
     "passport": "^0.7.0",
     "passport-cookie": "^1.0.9",
@@ -78,7 +85,11 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
+    "moduleNameMapper": {
+      "src/(.*)": "<rootDir>/src/$1",
+      "test/(.*)": "<rootDir>/test/$1"
+    },
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

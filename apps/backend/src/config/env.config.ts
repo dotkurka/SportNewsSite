@@ -10,9 +10,17 @@ const mapEnvValues = {
 };
 
 const defaultAppPort = 3001;
+const defaultDbPort = 5432;
 
 const envConfig = registerAs('env', () => ({
   port: mapEnvValues.number(process.env.PORT || '', defaultAppPort),
+  database: {
+    host: process.env.DATABASE_HOST || '',
+    port: mapEnvValues.number(process.env.DATABASE_PORT || '', defaultDbPort),
+    username: process.env.DATABASE_USERNAME || '',
+    password: process.env.DATABASE_PASSWORD || '',
+    database: process.env.DATABASE_NAME || '',
+  },
 }));
 
 export default envConfig;

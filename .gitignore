@@ -34,3 +34,5 @@ apps/**/dist
 .vercel
 
 *.tsbuildinfo
+
+*.sql

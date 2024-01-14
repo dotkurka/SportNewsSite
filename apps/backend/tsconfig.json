@@ -2,6 +2,7 @@
   "extends": "tsconfig/nestjs.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "baseUrl": "src"
-  }
+    "baseUrl": "."
+  },
+  "exclude": ["node_modules", "../../node_modules", "dist"]
 }
