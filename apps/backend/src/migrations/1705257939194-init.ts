@@ -1,8 +1,8 @@
-import { genSaltSync, hashSync } from 'bcrypt';
+import { hashSync, genSaltSync } from 'bcrypt';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class UserInit1705158836981 implements MigrationInterface {
-  name = 'UserInit1705158836981';
+export class Init1705257939194 implements MigrationInterface {
+  name = 'Init1705257939194';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     const user = {
@@ -19,11 +19,11 @@ export class UserInit1705158836981 implements MigrationInterface {
     await queryRunner.query(`CREATE TYPE "public"."users_role_enum" AS ENUM('user', 'admin')`);
 
     await queryRunner.query(
-      `CREATE TABLE "users" ("id" uuid PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(), "firstName" character varying NOT NULL, "lastName" character varying NOT NULL, "email" character varying UNIQUE NOT NULL, "password" character varying NOT NULL, "avatar" character varying, "role" "public"."users_role_enum" NOT NULL DEFAULT 'user')`,
+      `CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "avatar" character varying, "role" "public"."users_role_enum" NOT NULL DEFAULT 'user', CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`,
     );
 
     await queryRunner.manager.query(
-      `INSERT INTO users (firstName, lastName, email, password, role) VALUES ('${user.firstName}', '${user.lastName}', '${user.email}', '${adminPassword}', 'admin')`,
+      `INSERT INTO users (first_name, last_name, email, password, role) VALUES ('${user.firstName}', '${user.lastName}', '${user.email}', '${adminPassword}', 'admin')`,
     );
   }
 

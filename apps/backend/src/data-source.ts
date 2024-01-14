@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
   entities: [`${__dirname}/**/*.entity.ts`],
   migrations: [`${__dirname}/migrations/*.ts`],
   migrationsTransactionMode: 'each',
-  migrationsTableName: 'migration',
+  migrationsTableName: 'migrations',
   namingStrategy: new SnakeNamingStrategy(),
   subscribers: [],
 });

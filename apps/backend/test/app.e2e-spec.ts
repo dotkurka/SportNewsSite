@@ -1,8 +1,10 @@
-import { INestApplication } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import request from 'supertest';
 
 import { AppModule } from 'src/app/app.module';
+
+import type { INestApplication } from '@nestjs/common';
+import type { TestingModule } from '@nestjs/testing';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -16,7 +18,12 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
+  afterEach(async () => {
+    await app.close();
+  });
+
   it('/ (GET)', () => {
-    return request(app.getHttpServer()).get('/').expect(200).expect('Hello World!');
+    const result = JSON.stringify({ app: 'Boilerplate', isHealthy: true, apiDocsPath: '/docs' });
+    return request(app.getHttpServer()).get('/').expect(200).expect(result);
   });
 });

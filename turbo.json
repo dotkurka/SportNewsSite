@@ -1,13 +1,22 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": ["**/.env"],
   "pipeline": {
     "build": {
-      "outputs": ["dist/**"]
+      "dependsOn": ["^build"]
     },
-    "dev": {
-      "cache": false,
-      "persistent": true
+    "backend#gen:api-client": {
+      "dependsOn": ["backend#build"]
+    },
+    "api-client#gen:api-client": {
+      "dependsOn": ["backend#gen:api-client"]
+    },
+    "gen:api-client": {},
+    "frontend#build": {
+      "dependsOn": ["api-client#gen:api-client"]
+    },
+    "frontend#build:tsc-only": {
+      "dependsOn": ["api-client#gen:api-client"]
     },
     "lint": {},
     "test": {
@@ -20,6 +29,15 @@
         "test/**/*.json"
       ]
     },
-    "type-check": {}
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "deploy": {
+      "dependsOn": ["build", "test"]
+    },
+    "docker:local": {
+      "cache": false
+    }
   }
 }

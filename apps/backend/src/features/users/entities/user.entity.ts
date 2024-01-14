@@ -11,20 +11,20 @@ export class User extends BaseEntity {
     Object.assign(this, partial);
   }
 
-  @Column({ nullable: true })
+  @Column()
   firstName: string;
 
-  @Column({ nullable: true })
+  @Column()
   lastName: string;
 
-  @Column({ nullable: true })
+  @Column()
   email: string;
 
   @Exclude()
-  @Column({ nullable: true })
+  @Column()
   password?: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: true })
   avatar: string | null;
 
   @Column({ type: 'enum', enum: Object.values(UserRole), default: UserRole.User })
