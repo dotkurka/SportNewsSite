@@ -1,4 +1,7 @@
 import { registerAs } from '@nestjs/config';
+import { config } from 'dotenv';
+
+config();
 
 const mapEnvValues = {
   bool: (envValue: string) => envValue === 'true',
@@ -14,6 +17,7 @@ const defaultDbPort = 5432;
 
 const envConfig = registerAs('env', () => ({
   port: mapEnvValues.number(process.env.PORT || '', defaultAppPort),
+  appName: process.env.APP_NAME || '',
   database: {
     host: process.env.DATABASE_HOST || '',
     port: mapEnvValues.number(process.env.DATABASE_PORT || '', defaultDbPort),
