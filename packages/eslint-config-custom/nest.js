@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/no-unnecessary-condition': 'off',
     '@typescript-eslint/no-extraneous-class': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     'import/no-cycle': ['error', { ignoreExternal: true }],
     '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/interface-name-prefix': 'off',

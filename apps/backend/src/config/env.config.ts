@@ -25,6 +25,11 @@ const envConfig = registerAs('env', () => ({
     password: process.env.DATABASE_PASSWORD || '',
     database: process.env.DATABASE_NAME || '',
   },
+  auth: {
+    apiKey: process.env.API_KEY || '',
+    jwtSecret: process.env.JWT_SECRET || '',
+    otpTokenDuration: process.env.OTP_TOKEN_EXPIRATION || '',
+  },
 }));
 
 export default envConfig;

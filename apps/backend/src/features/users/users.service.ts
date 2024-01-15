@@ -18,8 +18,18 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async findOne(id: string) {
+  async findOneById(id: string) {
     const user = await this.usersRepository.findOneBy({ id });
+
+    if (!user) {
+      throw new NotFoundException();
+    }
+
+    return user;
+  }
+
+  async findOneByEmail(email: string) {
+    const user = await this.usersRepository.findOneBy({ email });
 
     if (!user) {
       throw new NotFoundException();
@@ -37,7 +47,6 @@ export class UsersService {
 
     const password = await this.hashPass(createUserDto.password);
     const user = this.usersRepository.create({ ...createUserDto, password, role });
-
     const newUser = await this.usersRepository.save(user);
 
     return newUser;
@@ -52,18 +61,17 @@ export class UsersService {
 
     await this.usersRepository.update(user.id, { ...createUserDto });
 
-    return this.findOne(id);
+    return this.findOneById(id);
   }
 
   async updatePassword(id: string, password: string) {
-    const entity = await this.findOne(id);
-
+    const entity = await this.findOneById(id);
     const hashedPasswordUpdate = await this.hashPass(password);
 
     await this.usersRepository.update(entity.id, {
       password: hashedPasswordUpdate,
     });
 
-    return this.findOne(id);
+    return this.findOneById(id);
   }
 }

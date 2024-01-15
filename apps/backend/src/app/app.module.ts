@@ -8,6 +8,7 @@ import { AppController } from 'src/app/app.controller';
 import { AppService } from 'src/app/app.service';
 import getTypeOrmModuleOptions from 'src/config/db.config';
 import envConfig from 'src/config/env.config';
+import { AuthModule } from 'src/features/auth/auth.module';
 import { UsersModule } from 'src/features/users/users.module';
 
 @Module({
@@ -28,6 +29,7 @@ import { UsersModule } from 'src/features/users/users.module';
     }),
     TypeOrmModule.forRoot(getTypeOrmModuleOptions()),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
