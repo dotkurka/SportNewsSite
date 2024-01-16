@@ -26,9 +26,8 @@ const envConfig = registerAs('env', () => ({
     database: process.env.DATABASE_NAME || '',
   },
   auth: {
-    apiKey: process.env.API_KEY || '',
     jwtSecret: process.env.JWT_SECRET || '',
-    otpTokenDuration: process.env.OTP_TOKEN_EXPIRATION || '',
+    tokenDuration: process.env.TOKEN_EXPIRATION || '',
   },
 }));
 

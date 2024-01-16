@@ -52,14 +52,14 @@ export class UsersService {
     return newUser;
   }
 
-  async update(id: string, createUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.usersRepository.findOneBy({ id });
 
     if (!user) {
       throw new NotFoundException();
     }
 
-    await this.usersRepository.update(user.id, { ...createUserDto });
+    await this.usersRepository.update(user.id, { ...updateUserDto });
 
     return this.findOneById(id);
   }
