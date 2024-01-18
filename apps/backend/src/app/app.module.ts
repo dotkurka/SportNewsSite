@@ -8,8 +8,9 @@ import { AppController } from 'src/app/app.controller';
 import { AppService } from 'src/app/app.service';
 import getTypeOrmModuleOptions from 'src/config/db.config';
 import envConfig from 'src/config/env.config';
-import { AuthModule } from 'src/features/auth/auth.module';
-import { UsersModule } from 'src/features/users/users.module';
+import { AuthModule } from 'src/features/auth';
+import { FileUploadModule } from 'src/features/file-upload';
+import { UsersModule } from 'src/features/users';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { UsersModule } from 'src/features/users/users.module';
     TypeOrmModule.forRoot(getTypeOrmModuleOptions()),
     UsersModule,
     AuthModule,
+    FileUploadModule,
   ],
   controllers: [AppController],
   providers: [

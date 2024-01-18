@@ -18,6 +18,8 @@ const defaultDbPort = 5432;
 const envConfig = registerAs('env', () => ({
   port: mapEnvValues.number(process.env.PORT || '', defaultAppPort),
   appName: process.env.APP_NAME || '',
+  backendHostUrl: process.env.BACKEND_HOST_URL || '',
+  frontendHostUrl: process.env.FRONTEND_HOST_URL || '',
   database: {
     host: process.env.DATABASE_HOST || '',
     port: mapEnvValues.number(process.env.DATABASE_PORT || '', defaultDbPort),
