@@ -9,6 +9,7 @@ import { AppService } from 'src/app/app.service';
 import getTypeOrmModuleOptions from 'src/config/db.config';
 import envConfig from 'src/config/env.config';
 import { AuthModule } from 'src/features/auth';
+import { CategoriesModule } from 'src/features/categories';
 import { FileUploadModule } from 'src/features/file-upload';
 import { UsersModule } from 'src/features/users';
 
@@ -32,6 +33,7 @@ import { UsersModule } from 'src/features/users';
     UsersModule,
     AuthModule,
     FileUploadModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [

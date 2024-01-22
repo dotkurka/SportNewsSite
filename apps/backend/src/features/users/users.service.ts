@@ -20,7 +20,6 @@ export class UsersService {
 
   async findOneById(id: string) {
     const user = await this.usersRepository.findOneBy({ id });
-
     if (!user) {
       throw new NotFoundException();
     }
@@ -30,7 +29,6 @@ export class UsersService {
 
   async findOneByEmail(email: string) {
     const user = await this.usersRepository.findOneBy({ email });
-
     if (!user) {
       throw new NotFoundException();
     }
@@ -40,7 +38,6 @@ export class UsersService {
 
   async create({ role = UserRole.User, ...createUserDto }: CreateUserDto) {
     const userExists = await this.usersRepository.exists({ where: { email: createUserDto.email } });
-
     if (userExists) {
       throw new BadRequestException(errorMessages.userAlreadyExists);
     }
@@ -54,7 +51,6 @@ export class UsersService {
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.usersRepository.findOneBy({ id });
-
     if (!user) {
       throw new NotFoundException();
     }

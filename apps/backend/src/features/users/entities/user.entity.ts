@@ -1,16 +1,11 @@
 import { Exclude } from 'class-transformer';
 import { Column, Entity } from 'typeorm';
 
-import { UserRole } from '../../auth/enums';
-import { BaseEntity } from '../../common/entities';
+import { UserRole } from 'src/features/auth/enums';
+import { BaseEntity } from 'src/features/common/entities';
 
 @Entity({ name: 'users' })
-export class User extends BaseEntity {
-  constructor(partial: Partial<User>) {
-    super();
-    Object.assign(this, partial);
-  }
-
+export class User extends BaseEntity<User> {
   @Column()
   firstName: string;
 
