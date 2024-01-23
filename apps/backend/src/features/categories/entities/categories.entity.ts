@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany } from 'typeorm';
+import { AfterLoad, Column, Entity, OneToMany } from 'typeorm';
 
 import { BaseEntity } from 'src/features/common/entities';
+import { generatePath } from 'src/utils';
 
 import type { Conferences } from './conferences.entity';
 
@@ -12,7 +13,13 @@ export class Categories extends BaseEntity<Categories> {
   @OneToMany('Conferences', 'category', {
     onDelete: 'SET NULL',
     cascade: true,
-    eager: true,
   })
   conferences: Conferences[];
+
+  path: string;
+
+  @AfterLoad()
+  generateCategoryPath(): void {
+    this.path = generatePath(this.title);
+  }
 }

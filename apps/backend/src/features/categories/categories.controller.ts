@@ -60,7 +60,7 @@ export class CategoriesController {
     return result;
   }
 
-  @Post('conferences/:categoryId')
+  @Post(':categoryId/conferences')
   async createConference(
     @Param('categoryId') categoryId: string,
     @Body() createConferenceDto: CreateConferenceDto,
@@ -70,9 +70,9 @@ export class CategoriesController {
     return result;
   }
 
-  @Get('conferences')
-  async getAllConferences() {
-    const conferences = await this.conferencesService.getAll();
+  @Get(':category/conferences/')
+  async getConferencesByCategory(@Param('category') category: string) {
+    const conferences = await this.conferencesService.getByCategory(category);
 
     return conferences;
   }
@@ -101,7 +101,7 @@ export class CategoriesController {
     return result;
   }
 
-  @Post('teams/:conferenceId')
+  @Post(':conferenceId/teams')
   async createTeam(
     @Param('conferenceId') conferenceId: string,
     @Body() createTeamDto: CreateConferenceDto,
@@ -111,9 +111,9 @@ export class CategoriesController {
     return result;
   }
 
-  @Get('teams')
-  async geAllTeams() {
-    const teams = await this.teamsService.getAll();
+  @Get(':category/teams')
+  async geAllTeams(@Param('category') category: string) {
+    const teams = await this.teamsService.getByCategory(category);
 
     return teams;
   }

@@ -23,13 +23,19 @@ export class CategoriesService {
   }
   // TODO: make sort and filter
   async getAll() {
-    const categories = await this.categoriesRepository.find();
+    const categories = await this.categoriesRepository.find({
+      relations: { conferences: { category: true, teams: { conference: true } } },
+    });
 
     return categories;
   }
 
   async getById(id: string): Promise<Categories> {
-    const category = await this.categoriesRepository.findOneBy({ id });
+    const category = await this.categoriesRepository.findOne({
+      where: { id },
+      relations: { conferences: { category: true, teams: { conference: true } } },
+    });
+
     if (!category) {
       throw new NotFoundException();
     }

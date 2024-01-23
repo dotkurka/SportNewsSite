@@ -20,6 +20,9 @@ export class QueryFailedExceptionFilter implements ExceptionFilter {
     let message = exception.message || null;
     let status;
 
+    const defaultStatus =
+      exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
+
     switch (exception.code) {
       case '23505':
         status = HttpStatus.BAD_REQUEST;
@@ -32,7 +35,7 @@ export class QueryFailedExceptionFilter implements ExceptionFilter {
         break;
 
       default:
-        status = exception.getStatus();
+        status = defaultStatus;
     }
 
     const errorResponse = {

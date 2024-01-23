@@ -15,17 +15,21 @@ export class TeamsService {
 
   async create(conferenceId: string, createTeamDto: CreateTeamDto) {
     const conference = await this.conferencesServise.getById(conferenceId);
+
     const team = new Teams({ ...createTeamDto });
 
     conference.teams.push(team);
 
-    const result = await this.conferencesServise.saveConference(conference);
+    await this.conferencesServise.saveConference(conference);
 
-    return result;
+    return team;
   }
 
-  async getAll() {
-    const teams = await this.teamsRepository.find();
+  async getByCategory(category: string) {
+    const teams = await this.teamsRepository.find({
+      where: { conference: { category: { title: category } } },
+      relations: { conference: { category: true } },
+    });
 
     return teams;
   }
@@ -41,9 +45,12 @@ export class TeamsService {
 
   async update(id: string, updateTeamDto: UpdateTeamDto) {
     const { conferenceId, ...updateDto } = updateTeamDto;
-    const conference = await this.conferencesServise.getById(conferenceId);
-
-    await this.teamsRepository.update(id, { ...updateDto, conference });
+    if (conferenceId) {
+      const conference = await this.conferencesServise.getById(conferenceId);
+      await this.teamsRepository.update(id, { ...updateDto, conference });
+    } else {
+      await this.teamsRepository.update(id, { ...updateDto });
+    }
 
     return this.getById(id);
   }

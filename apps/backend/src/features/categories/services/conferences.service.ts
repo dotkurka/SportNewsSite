@@ -15,27 +15,34 @@ export class ConferencesService {
 
   async create(categoryId: string, createConferenceDto: CreateConferenceDto) {
     const categoty = await this.categoriesService.getById(categoryId);
-    const conference = new Conferences({
+    const newConference = new Conferences({
       ...createConferenceDto,
       teams: [],
     });
 
-    categoty.conferences.push(conference);
+    categoty.conferences.push(newConference);
 
-    const result = await this.categoriesService.saveCategory(categoty);
+    await this.categoriesService.saveCategory(categoty);
 
-    return result;
+    return newConference;
   }
 
   // TODO: get conference by category id and add sort
-  async getAll() {
-    const conferences = await this.conferencesRepository.find();
+  async getByCategory(category: string) {
+    const conferences = await this.conferencesRepository.find({
+      where: { category: { title: category } },
+      relations: { category: true, teams: { conference: true } },
+    });
 
     return conferences;
   }
 
   async getById(id: string): Promise<Conferences> {
-    const conference = await this.conferencesRepository.findOneBy({ id });
+    const conference = await this.conferencesRepository.findOneOrFail({
+      where: { id },
+      relations: { category: true, teams: { conference: true } },
+    });
+
     if (!conference) {
       throw new NotFoundException();
     }
@@ -45,9 +52,12 @@ export class ConferencesService {
 
   async update(id: string, updateConferenceDto: UpdateConferenceDto) {
     const { categoryId, ...updateDto } = updateConferenceDto;
-    const category = await this.categoriesService.getById(categoryId);
-
-    await this.conferencesRepository.update(id, { ...updateDto, category });
+    if (categoryId) {
+      const category = await this.categoriesService.getById(categoryId);
+      await this.conferencesRepository.update(id, { ...updateDto, category });
+    } else {
+      await this.conferencesRepository.update(id, { ...updateDto });
+    }
 
     return this.getById(id);
   }
