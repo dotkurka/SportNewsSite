@@ -5,6 +5,8 @@ import { Repository } from 'typeorm';
 import { CreateConferenceDto, UpdateConferenceDto } from 'src/features/categories/dto';
 import { Conferences } from 'src/features/categories/entities';
 import { CategoriesService } from 'src/features/categories/services/categories.service';
+import { Filtering, Sorting } from 'src/features/common/decorators';
+import { getOrder, getWhere } from 'src/utils';
 
 @Injectable()
 export class ConferencesService {
@@ -28,10 +30,13 @@ export class ConferencesService {
   }
 
   // TODO: get conference by category id and add sort
-  async getByCategory(category: string) {
+  async getByCategory(category: string, sort?: Sorting, filter?: Filtering) {
+    const order = getOrder(sort);
+    const where = getWhere(filter);
     const conferences = await this.conferencesRepository.find({
-      where: { category: { title: category } },
+      where: { ...where, category: { title: category } },
       relations: { category: true, teams: { conference: true } },
+      order,
     });
 
     return conferences;

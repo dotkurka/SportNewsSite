@@ -68,7 +68,7 @@ export class AuthService {
       const user = await this.usersService.findOneById(payload.sub);
 
       return user;
-    } catch (erorr) {
+    } catch (error) {
       return null;
     }
   }

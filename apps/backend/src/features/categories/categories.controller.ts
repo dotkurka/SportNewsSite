@@ -1,5 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseFilters } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UseFilters,
+  UseGuards,
+} from '@nestjs/common';
 
+import { Authorized, Roles, RolesGuard, UserRole } from 'src/features/auth';
 import {
   CreateCategoryDto,
   CreateConferenceDto,
@@ -11,8 +22,17 @@ import {
   ConferencesService,
   TeamsService,
 } from 'src/features/categories/services';
+import {
+  createCategoriesSchema,
+  updateCategorySchema,
+  updateConferenceSchema,
+  updateTeamSchema,
+} from 'src/features/categories/validations';
+import { Filtering, FilteringParams, Sorting, SortingParams } from 'src/features/common/decorators';
 import { QueryFailedExceptionFilter } from 'src/features/common/exceptions';
+import { ZodValidationPipe } from 'src/features/common/pipes';
 
+@Authorized(UserRole.Admin)
 @UseFilters(new QueryFailedExceptionFilter())
 @Controller('categories')
 export class CategoriesController {
@@ -22,16 +42,22 @@ export class CategoriesController {
     private teamsService: TeamsService,
   ) {}
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Post()
-  async createCategory(@Body() createCategoryDto: CreateCategoryDto) {
+  async createCategory(
+    @Body(new ZodValidationPipe(createCategoriesSchema)) createCategoryDto: CreateCategoryDto,
+  ) {
     const category = await this.categoriesService.create(createCategoryDto);
 
     return category;
   }
 
-  @Get()
-  async getAllCategories() {
-    const categories = await this.categoriesService.getAll();
+  async getAllCategories(
+    @SortingParams(['title']) sort?: Sorting,
+    @FilteringParams(['title', 'conferences.title']) filter?: Filtering,
+  ) {
+    const categories = await this.categoriesService.getAll(sort, filter);
 
     return categories;
   }
@@ -43,16 +69,20 @@ export class CategoriesController {
     return categories;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Patch(':categoryId')
   async updateCategory(
     @Param('categoryId') categoryId: string,
-    @Body() updateCategoryDto: CreateCategoryDto,
+    @Body(new ZodValidationPipe(updateCategorySchema)) updateCategoryDto: CreateCategoryDto,
   ) {
     const updatedCategory = await this.categoriesService.update(categoryId, updateCategoryDto);
 
     return updatedCategory;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Delete(':categoryId')
   async removeCategory(@Param('categoryId') categoryId: string) {
     const result = await this.categoriesService.remove(categoryId);
@@ -60,10 +90,12 @@ export class CategoriesController {
     return result;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Post(':categoryId/conferences')
   async createConference(
     @Param('categoryId') categoryId: string,
-    @Body() createConferenceDto: CreateConferenceDto,
+    @Body(new ZodValidationPipe(createCategoriesSchema)) createConferenceDto: CreateConferenceDto,
   ) {
     const result = await this.conferencesService.create(categoryId, createConferenceDto);
 
@@ -71,8 +103,12 @@ export class CategoriesController {
   }
 
   @Get(':category/conferences/')
-  async getConferencesByCategory(@Param('category') category: string) {
-    const conferences = await this.conferencesService.getByCategory(category);
+  async getConferencesByCategory(
+    @Param('category') category: string,
+    @SortingParams(['title']) sort?: Sorting,
+    @FilteringParams(['title', 'teams.title']) filter?: Filtering,
+  ) {
+    const conferences = await this.conferencesService.getByCategory(category, sort, filter);
 
     return conferences;
   }
@@ -84,16 +120,20 @@ export class CategoriesController {
     return conference;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Patch('conferences/:conferenceId')
   async updateConference(
     @Param('conferenceId') conferenceId: string,
-    @Body() updateConferenceDto: UpdateConferenceDto,
+    @Body(new ZodValidationPipe(updateConferenceSchema)) updateConferenceDto: UpdateConferenceDto,
   ) {
     const updatedConference = this.conferencesService.update(conferenceId, updateConferenceDto);
 
     return updatedConference;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Delete('conferences/:conferenceId')
   async removeConference(@Param('conferenceId') conferenceId: string) {
     const result = this.conferencesService.remove(conferenceId);
@@ -101,10 +141,12 @@ export class CategoriesController {
     return result;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Post(':conferenceId/teams')
   async createTeam(
     @Param('conferenceId') conferenceId: string,
-    @Body() createTeamDto: CreateConferenceDto,
+    @Body(new ZodValidationPipe(createCategoriesSchema)) createTeamDto: CreateConferenceDto,
   ) {
     const result = await this.teamsService.create(conferenceId, createTeamDto);
 
@@ -112,8 +154,12 @@ export class CategoriesController {
   }
 
   @Get(':category/teams')
-  async geAllTeams(@Param('category') category: string) {
-    const teams = await this.teamsService.getByCategory(category);
+  async geAllTeams(
+    @Param('category') category: string,
+    @SortingParams(['title']) sort?: Sorting,
+    @FilteringParams(['title']) filter?: Filtering,
+  ) {
+    const teams = await this.teamsService.getByCategory(category, sort, filter);
 
     return teams;
   }
@@ -125,13 +171,20 @@ export class CategoriesController {
     return team;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Patch('teams/:teamId')
-  async updateTeam(@Param('teamId') teamId: string, @Body() updateTeamDto: UpdateTeamDto) {
+  async updateTeam(
+    @Param('teamId') teamId: string,
+    @Body(new ZodValidationPipe(updateTeamSchema)) updateTeamDto: UpdateTeamDto,
+  ) {
     const updatedTeam = await this.teamsService.update(teamId, updateTeamDto);
 
     return updatedTeam;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Delete('teams/:teamId')
   async deleteTema(@Param('teamId') teamId: string) {
     const result = await this.teamsService.remove(teamId);

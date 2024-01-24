@@ -6,6 +6,9 @@ const validationMessages = {
   passwordMin: 'Password must be at least 8 characters',
   passwordNotMuch: 'Passwords does not match',
   fileSize: 'Max file size is 5MB.',
+  categotyTitleMax: 'Should not be longer than 30',
+  categotyTitleMin: 'Must be at least 2 characters',
+  fieldOnlyAlphabets: 'Field should contain only alphabets',
 };
 
 export default validationMessages;
