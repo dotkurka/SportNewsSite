@@ -13,5 +13,6 @@ import {
   imports: [TypeOrmModule.forFeature([Categories, Conferences, Teams])],
   controllers: [CategoriesController],
   providers: [CategoriesService, ConferencesService, TeamsService],
+  exports: [CategoriesService, ConferencesService, TeamsService],
 })
 export class CategoriesModule {}

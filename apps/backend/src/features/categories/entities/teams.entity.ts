@@ -1,10 +1,11 @@
 import { Exclude } from 'class-transformer';
-import { AfterLoad, Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { AfterLoad, Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { BaseEntity } from 'src/features/common/entities';
 import { generatePath } from 'src/utils';
 
 import type { Conferences } from './conferences.entity';
+import type { Article } from 'src/features/articles';
 
 @Entity({ name: 'teams' })
 export class Teams extends BaseEntity<Teams> {
@@ -15,6 +16,9 @@ export class Teams extends BaseEntity<Teams> {
   @ManyToOne('Conferences', 'teams', { eager: true })
   @JoinColumn()
   conference: Conferences;
+
+  @OneToMany('Article', 'team')
+  articles: Article[];
 
   path: string;
 

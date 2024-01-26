@@ -53,6 +53,7 @@ export class CategoriesController {
     return category;
   }
 
+  @Get()
   async getAllCategories(
     @SortingParams(['title']) sort?: Sorting,
     @FilteringParams(['title', 'conferences.title']) filter?: Filtering,

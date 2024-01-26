@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+import { errorMessages } from 'src/constants';
 import { CreateCategoryDto } from 'src/features/categories/dto';
 import { Categories } from 'src/features/categories/entities';
 import { Filtering, Sorting } from 'src/features/common/decorators';
@@ -37,15 +38,13 @@ export class CategoriesService {
     return categories;
   }
 
-  async getById(id: string) {
+  async getById(id: string, relations = true) {
     const category = await this.categoriesRepository.findOne({
       where: { id },
-      relations: { conferences: { category: true, teams: { conference: true } } },
+      relations: relations ? { conferences: { category: true, teams: { conference: true } } } : {},
     });
 
-    if (!category) {
-      throw new NotFoundException();
-    }
+    if (!category) throw new NotFoundException(`${errorMessages.notFound} category`);
 
     return category;
   }

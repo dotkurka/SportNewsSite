@@ -1,6 +1,7 @@
 import { BadRequestException, createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { Request } from 'express';
 
+import { errorMessages } from 'src/constants';
 import { FilterRule } from 'src/features/common/enums';
 
 export interface Filtering {
@@ -9,8 +10,6 @@ export interface Filtering {
   value: string;
 }
 
-// valid filter rules
-
 export const FilteringParams = createParamDecorator(
   (data, ctx: ExecutionContext): Filtering | null => {
     const req: Request = ctx.switchToHttp().getRequest();
@@ -18,14 +17,14 @@ export const FilteringParams = createParamDecorator(
     if (!filter) return null;
 
     // check if the valid params sent is an array
-    if (typeof data !== 'object') throw new BadRequestException('Invalid filter parameter');
+    if (typeof data !== 'object') throw new BadRequestException(errorMessages.invalidFilter);
 
     // validate the format of the filter, if the rule is 'isnull' or 'isnotnull' it don't need to have a value
     if (
       !/^[a-zA-Z0-9_.]+:(eq|neq|gt|gte|lt|lte|like|nlike|in|nin):[a-zA-Z0-9_, ]+$/.exec(filter) &&
       !/^[a-zA-Z0-9_.]+:(isnull|isnotnull)$/.exec(filter)
     ) {
-      throw new BadRequestException('Invalid filter parameter');
+      throw new BadRequestException(errorMessages.invalidFilter);
     }
 
     // extract the parameters and validate if the rule and the property are valid

@@ -41,9 +41,8 @@ export class TeamsService {
 
   async getById(id: string) {
     const team = await this.teamsRepository.findOneBy({ id });
-    if (!team) {
-      throw new NotFoundException();
-    }
+
+    if (!team) throw new NotFoundException();
 
     return team;
   }

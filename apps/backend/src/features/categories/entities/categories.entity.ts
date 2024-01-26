@@ -4,6 +4,7 @@ import { BaseEntity } from 'src/features/common/entities';
 import { generatePath } from 'src/utils';
 
 import type { Conferences } from './conferences.entity';
+import type { Article } from 'src/features/articles';
 
 @Entity({ name: 'categories' })
 export class Categories extends BaseEntity<Categories> {
@@ -15,6 +16,9 @@ export class Categories extends BaseEntity<Categories> {
     cascade: true,
   })
   conferences: Conferences[];
+
+  @OneToMany('Article', 'category')
+  articles: Article[];
 
   path: string;
 

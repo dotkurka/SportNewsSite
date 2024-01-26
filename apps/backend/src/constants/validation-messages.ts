@@ -9,6 +9,11 @@ const validationMessages = {
   categotyTitleMax: 'Should not be longer than 30',
   categotyTitleMin: 'Must be at least 2 characters',
   fieldOnlyAlphabets: 'Field should contain only alphabets',
+  articleTitleMin: 'Must be at least 15 characters',
+  articleTitleMax: 'Should not be longer than 100',
+  altMin: 'Must be at least 3 characters',
+  altMax: 'Should not be longer than 30',
+  articleContentMin: 'Must be at least 20 characters',
 };
 
 export default validationMessages;

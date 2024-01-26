@@ -10,10 +10,11 @@ import { Request, Response } from 'express';
 import { DatabaseError } from 'pg-protocol';
 
 import { errorMessages } from 'src/constants';
+import { ValidationBadRequestException } from 'src/features/common/exceptions/validation-bad-request-exception';
 
 @Catch()
 export class QueryFailedExceptionFilter implements ExceptionFilter {
-  catch(exception: DatabaseError & HttpException, host: ArgumentsHost) {
+  catch(exception: DatabaseError, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
@@ -38,11 +39,14 @@ export class QueryFailedExceptionFilter implements ExceptionFilter {
         status = defaultStatus;
     }
 
-    const errorResponse = {
+    const errorData = {
       code: status,
       path: request.url,
       message,
     };
+
+    const errorResponse =
+      exception instanceof ValidationBadRequestException ? exception.getResponse() : errorData;
 
     Logger.error(
       `${request.method} ${request.url}`,

@@ -1,17 +1,17 @@
 import {
+  AfterLoad,
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
   UpdateDateColumn,
 } from 'typeorm';
 
 import { Location } from 'src/features/articles/entities/location.entity';
 import { Categories, Conferences, Teams } from 'src/features/categories';
 import { BaseEntity } from 'src/features/common/entities';
+import { generatePath } from 'src/utils';
 
 import type { Comment } from 'src/features/articles/entities/comment.entity';
 import type { User } from 'src/features/users';
@@ -39,25 +39,34 @@ export class Article extends BaseEntity<Article> {
   @ManyToOne('User', 'articles', { eager: true })
   user: User;
 
-  @OneToOne(() => Categories, { eager: true })
-  @JoinColumn()
+  @ManyToOne('Location', 'articles', { eager: true })
+  location: Location;
+
+  @ManyToOne('Categories', 'articles', { eager: true })
   category: Categories;
 
-  @OneToOne(() => Conferences, { eager: true })
-  @JoinColumn()
+  @ManyToOne('Conferences', 'articles', { eager: true })
   conference: Conferences;
 
-  @OneToOne(() => Teams, { eager: true })
-  @JoinColumn()
+  @ManyToOne('Teams', 'articles', { eager: true })
   team: Teams;
 
-  @OneToOne(() => Location, { eager: true })
-  @JoinColumn()
-  location: Location;
+  @Column({ default: 0 })
+  views: number;
+
+  @Column()
+  slugId: string;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  path: string;
+
+  @AfterLoad()
+  generateArticlePath() {
+    this.path = generatePath(this.category.title, this.team.title, this.slugId);
+  }
 }

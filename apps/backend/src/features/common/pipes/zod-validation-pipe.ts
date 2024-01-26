@@ -1,17 +1,17 @@
 import { PipeTransform, Injectable, BadRequestException } from '@nestjs/common';
-import { ZodError, ZodObject, ZodRawShape } from 'zod';
+import { ZodError, ZodSchema } from 'zod';
 
 import { ValidationBadRequestException } from 'src/features/common/exceptions';
 
 @Injectable()
-export class ZodValidationPipe<T extends ZodRawShape> implements PipeTransform {
-  constructor(private schema: ZodObject<T>) {}
+export class ZodValidationPipe<T> implements PipeTransform {
+  constructor(private schema: ZodSchema<T>) {}
 
   async transform(value: T) {
     try {
       const result = await this.schema.parseAsync(value);
 
-      if (!Object.keys(result).length) {
+      if (result === null || result === undefined || !Object.keys(result).length) {
         throw new BadRequestException();
       }
 
