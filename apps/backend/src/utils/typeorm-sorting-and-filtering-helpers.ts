@@ -12,8 +12,6 @@ import {
 import { Filtering, Sorting } from 'src/features/common/decorators';
 import { FilterRule } from 'src/features/common/enums';
 
-export const getOrder = (sort?: Sorting) => (sort ? { [sort.property]: sort.direction } : {});
-
 const getCondition = (filter: Filtering) => {
   switch (filter.rule) {
     case FilterRule.IS_NULL: {
@@ -58,10 +56,10 @@ const getCondition = (filter: Filtering) => {
   }
 };
 
-const handleNestedProperty = (filter: Filtering) => {
-  const nestedProperties = filter.property.split('.');
+const handleNestedProperty = <T>(key: string, property: T) => {
+  const nestedProperties = key.split('.');
   const condition = nestedProperties.reduceRight((acc, prop, index, arr) => {
-    return index === arr.length - 1 ? { [prop]: getCondition(filter) } : { [prop]: acc };
+    return index === arr.length - 1 ? { [prop]: property } : { [prop]: acc };
   }, {});
 
   return condition;
@@ -71,7 +69,17 @@ export const getWhere = (filter?: Filtering) => {
   if (!filter) return {};
 
   if (filter.property.includes('.')) {
-    return handleNestedProperty(filter);
+    return handleNestedProperty(filter.property, getCondition(filter));
   }
   return { [filter.property]: getCondition(filter) };
+};
+
+export const getOrder = (sort?: Sorting) => {
+  if (!sort) return {};
+
+  if (sort.property.includes('.')) {
+    return handleNestedProperty(sort.property, sort.direction);
+  }
+
+  return { [sort.property]: sort.direction };
 };

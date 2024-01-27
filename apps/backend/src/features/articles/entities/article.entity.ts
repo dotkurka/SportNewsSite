@@ -8,9 +8,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Location } from 'src/features/articles/entities/location.entity';
 import { Categories, Conferences, Teams } from 'src/features/categories';
 import { BaseEntity } from 'src/features/common/entities';
+import { Location } from 'src/features/locations/entities/location.entity';
 import { generatePath } from 'src/utils';
 
 import type { Comment } from 'src/features/articles/entities/comment.entity';
@@ -67,6 +67,6 @@ export class Article extends BaseEntity<Article> {
 
   @AfterLoad()
   generateArticlePath() {
-    this.path = generatePath(this.category.title, this.team.title, this.slugId);
+    this.path = generatePath(this.category?.title || '', this.team?.title || '', this.slugId);
   }
 }

@@ -32,7 +32,7 @@ import { Filtering, FilteringParams, Sorting, SortingParams } from 'src/features
 import { QueryFailedExceptionFilter } from 'src/features/common/exceptions';
 import { ZodValidationPipe } from 'src/features/common/pipes';
 
-@Authorized(UserRole.Admin)
+@Authorized(UserRole.User)
 @UseFilters(new QueryFailedExceptionFilter())
 @Controller('categories')
 export class CategoriesController {

@@ -1,11 +1,30 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseFilters } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Req,
+  UseFilters,
+  UseGuards,
+} from '@nestjs/common';
 
-import { articleFilterParams, articleSortParams } from 'src/features/articles/constants';
-import { CreateArticleDto } from 'src/features/articles/dto';
-import { Article } from 'src/features/articles/entities';
-import { ArticlesService } from 'src/features/articles/services';
-import { createArticleSchema, updateArticleSchema } from 'src/features/articles/validations';
-import { Authorized } from 'src/features/auth';
+import {
+  articleFilterParams,
+  articleSortParams,
+  commentSortParams,
+} from 'src/features/articles/constants';
+import { CreateArticleDto, CreateCommnetDto } from 'src/features/articles/dto';
+import { Article, Comment } from 'src/features/articles/entities';
+import { ArticlesService, CommentsService } from 'src/features/articles/services';
+import {
+  createArticleSchema,
+  createCommentShema,
+  updateArticleSchema,
+} from 'src/features/articles/validations';
+import { Authorized, Roles, RolesGuard, UserRole } from 'src/features/auth';
 import { RequestWithUser } from 'src/features/auth/interfaces';
 import {
   Filtering,
@@ -19,12 +38,15 @@ import { PaginationResponseDto } from 'src/features/common/dto';
 import { QueryFailedExceptionFilter } from 'src/features/common/exceptions';
 import { ZodValidationPipe } from 'src/features/common/pipes';
 
-@UseFilters(new QueryFailedExceptionFilter())
+@Authorized(UserRole.Admin)
+@UseFilters(QueryFailedExceptionFilter)
 @Controller('articles')
 export class ArticlesController {
-  constructor(private readonly articlesService: ArticlesService) {}
+  constructor(
+    private readonly articlesService: ArticlesService,
+    private readonly commentsService: CommentsService,
+  ) {}
 
-  @Authorized()
   @Post()
   async createArticle(
     @Req() req: RequestWithUser,
@@ -35,6 +57,8 @@ export class ArticlesController {
     return article;
   }
 
+  @Roles(UserRole.User)
+  @UseGuards(RolesGuard)
   @Get()
   async getArticles(
     @PaginationParams() paginationParams: Pagination,
@@ -47,6 +71,8 @@ export class ArticlesController {
     return result;
   }
 
+  @Roles(UserRole.User)
+  @UseGuards(RolesGuard)
   @Get(':slugId')
   async getArticle(@Param('slugId') slugId: string) {
     const article = await this.articlesService.getBySlugId(slugId);
@@ -67,6 +93,39 @@ export class ArticlesController {
   @Delete(':id')
   async removeArticle(@Param('id') id: string) {
     const result = await this.articlesService.remove(id);
+
+    return result;
+  }
+
+  @Roles(UserRole.User)
+  @UseGuards(RolesGuard)
+  @Post(':articleId/comments')
+  async createComment(
+    @Param('articleId') articleId: string,
+    @Req() req: RequestWithUser,
+    @Body(new ZodValidationPipe(createCommentShema)) createCommnetDto: CreateCommnetDto,
+  ) {
+    const comment = await this.commentsService.create(articleId, req.user, createCommnetDto);
+
+    return comment;
+  }
+
+  @Roles(UserRole.User)
+  @UseGuards(RolesGuard)
+  @Get(':articleId/comments')
+  async getArticleComments(
+    @Param('articleId') articleId: string,
+    @PaginationParams() paginationParams: Pagination,
+    @SortingParams(commentSortParams) sort?: Sorting,
+  ): Promise<PaginationResponseDto<Comment>> {
+    const result = await this.commentsService.getByArticleId(articleId, paginationParams, sort);
+
+    return result;
+  }
+
+  @Delete('comments/:commentId')
+  async removeComment(@Param('commentId') commentId: string) {
+    const result = await this.commentsService.remove(commentId);
 
     return result;
   }

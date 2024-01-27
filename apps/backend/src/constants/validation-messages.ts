@@ -14,6 +14,8 @@ const validationMessages = {
   altMin: 'Must be at least 3 characters',
   altMax: 'Should not be longer than 30',
   articleContentMin: 'Must be at least 20 characters',
+  commentMax: 'Should not be longer than 350',
+  locationNameMax: 'Should not be longer than 50',
 };
 
 export default validationMessages;

@@ -18,7 +18,7 @@ export const SortingParams = createParamDecorator(
     if (typeof validParams !== 'object') throw new BadRequestException(errorMessages.invalidSort);
 
     // check the format of the sort query param
-    const sortPattern = /^([a-zA-Z0-9]+):(asc|desc)$/;
+    const sortPattern = /^([a-zA-Z0-9.]+):(asc|desc)$/;
     if (!sortPattern.exec(sort)) throw new BadRequestException(errorMessages.invalidSort);
 
     // extract the property name and direction and check if they are valid

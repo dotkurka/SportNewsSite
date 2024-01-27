@@ -8,7 +8,7 @@ export class ArticleInit1706199578948 implements MigrationInterface {
       `CREATE TABLE "locations" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "name" character varying(50) NOT NULL, CONSTRAINT "PK_7cc1c9e3853b94816c094825e74" PRIMARY KEY ("id"))`,
     );
     await queryRunner.query(
-      `CREATE TABLE "comments" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "commnet" character varying NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT now(), "user_id" uuid, "article_id" uuid, CONSTRAINT "PK_8bf68bc960f2b69e818bdb90dcb" PRIMARY KEY ("id"))`,
+      `CREATE TABLE "comments" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "comment" character varying NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT now(), "user_id" uuid, "article_id" uuid, CONSTRAINT "PK_8bf68bc960f2b69e818bdb90dcb" PRIMARY KEY ("id"))`,
     );
     await queryRunner.query(
       `CREATE TABLE "articles" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "title" character varying(100) NOT NULL, "img" character varying NOT NULL, "alt" character varying(40) NOT NULL, "content" character varying NOT NULL, "show_comments" boolean NOT NULL DEFAULT true, "views" integer NOT NULL DEFAULT '0', "created_at" TIMESTAMP NOT NULL DEFAULT now(), "updated_at" TIMESTAMP NOT NULL DEFAULT now(), "user_id" uuid, "category_id" uuid, "conference_id" uuid, "team_id" uuid, "location_id" uuid, CONSTRAINT "REL_e025eeefcdb2a269c42484ee43" UNIQUE ("category_id"), CONSTRAINT "REL_2067161fc435b1667e8ca2cf60" UNIQUE ("conference_id"), CONSTRAINT "REL_4a63a93bfda461a91c9e164eea" UNIQUE ("team_id"), CONSTRAINT "REL_b36526f80f53c410d4588791d3" UNIQUE ("location_id"), CONSTRAINT "PK_0a6e2c450d83e0b6052c2793334" PRIMARY KEY ("id"))`,

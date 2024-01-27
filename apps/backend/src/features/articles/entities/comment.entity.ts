@@ -8,9 +8,9 @@ import type { User } from 'src/features/users';
 @Entity({ name: 'comments' })
 export class Comment extends BaseEntity<Comment> {
   @Column()
-  commnet: string;
+  comment: string;
 
-  @ManyToOne('User', 'comments')
+  @ManyToOne('User', 'comments', { eager: true })
   user: User;
 
   @ManyToOne('Article', 'comments')

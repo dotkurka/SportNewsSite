@@ -1,3 +1,3 @@
 export * from './articles.service';
 
-export * from './locations.service';
+export * from './comments.service';

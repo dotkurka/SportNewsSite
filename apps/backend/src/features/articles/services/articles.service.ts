@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 
 import { CreateArticleDto } from 'src/features/articles/dto';
 import { Article } from 'src/features/articles/entities';
-import { LocationsService } from 'src/features/articles/services/locations.service';
 import { CategoriesService, ConferencesService, TeamsService } from 'src/features/categories';
 import { Filtering, Pagination, Sorting } from 'src/features/common/decorators';
 import { PaginationResponseDto } from 'src/features/common/dto';
+import { LocationsService } from 'src/features/locations';
 import { User } from 'src/features/users';
 import { generateSlugId, getOrder, getWhere } from 'src/utils';
 
@@ -81,6 +81,13 @@ export class ArticlesService {
     return article;
   }
 
+  async getById(id: string) {
+    const article = await this.articlesRepository.findOneBy({ id });
+    if (!article) throw new NotFoundException();
+
+    return article;
+  }
+
   async update(id: string, updateArticleDto: CreateArticleDto) {
     const {
       category: categoryId,
@@ -114,7 +121,7 @@ export class ArticlesService {
       article.location = location;
     }
 
-    const updatedArticle = await this.articlesRepository.save(article);
+    const updatedArticle = await this.saveArticle(article);
 
     return this.getById(updatedArticle.id);
   }
@@ -122,19 +129,14 @@ export class ArticlesService {
   async remove(id: string) {
     const article = await this.getById(id);
 
-    await this.articlesRepository.delete({ id: article.id });
+    await this.articlesRepository.remove(article);
 
     return { message: 'success' };
   }
 
-  async saveArticle(newArticle: Article) {
-    await this.articlesRepository.save(newArticle);
-  }
+  async saveArticle(article: Article) {
+    const newArticle = await this.articlesRepository.save(article);
 
-  async getById(id: string) {
-    const article = await this.articlesRepository.findOneBy({ id });
-    if (!article) throw new NotFoundException();
-
-    return article;
+    return newArticle;
   }
 }

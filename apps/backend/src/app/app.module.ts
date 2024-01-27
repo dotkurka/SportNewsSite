@@ -12,6 +12,7 @@ import { ArticlesModule } from 'src/features/articles';
 import { AuthModule } from 'src/features/auth';
 import { CategoriesModule } from 'src/features/categories';
 import { FileUploadModule } from 'src/features/file-upload';
+import { LocationModule } from 'src/features/locations';
 import { UsersModule } from 'src/features/users';
 
 @Module({
@@ -36,6 +37,7 @@ import { UsersModule } from 'src/features/users';
     FileUploadModule,
     CategoriesModule,
     ArticlesModule,
+    LocationModule,
   ],
   controllers: [AppController],
   providers: [
