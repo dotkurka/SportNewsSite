@@ -1,4 +1,5 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
+import { ThrottlerGuard } from '@nestjs/throttler';
 
 import { Authorized } from 'src/features/auth/decorators';
 import { SignUpDto } from 'src/features/auth/dto';
@@ -12,6 +13,7 @@ import { createUserSchema } from 'src/features/users/validations';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @UseGuards(ThrottlerGuard)
   @Post('sign-up')
   async singUp(@Body(new ZodValidationPipe(createUserSchema)) singUpDto: SignUpDto) {
     const token = await this.authService.signUp(singUpDto);

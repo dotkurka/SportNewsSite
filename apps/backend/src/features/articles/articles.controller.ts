@@ -10,6 +10,7 @@ import {
   UseFilters,
   UseGuards,
 } from '@nestjs/common';
+import { ThrottlerGuard } from '@nestjs/throttler';
 
 import {
   articleFilterParams,
@@ -111,7 +112,7 @@ export class ArticlesController {
   }
 
   @Roles(UserRole.User)
-  @UseGuards(RolesGuard)
+  @UseGuards(RolesGuard, ThrottlerGuard)
   @Get(':articleId/comments')
   async getArticleComments(
     @Param('articleId') articleId: string,
