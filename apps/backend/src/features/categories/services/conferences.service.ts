@@ -31,7 +31,7 @@ export class ConferencesService {
   }
 
   // TODO: get conference by category id and add sort
-  async getByCategory(category: string, sort?: Sorting, filter?: Filtering) {
+  async getByCategory(category: string, sort?: Sorting, filter?: Filtering[]) {
     const order = getOrder(sort);
     const where = getWhere(filter);
     const conferences = await this.conferencesRepository.find({

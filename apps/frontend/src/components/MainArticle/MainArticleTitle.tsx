@@ -12,7 +12,7 @@ import './MainArticle.scss';
 
 const MainArticleTitle = ({ sliderData, currentIndex, controls, variant }: IMainTitle) => {
   const currentArticle = sliderData[currentIndex];
-  const datePublished = convertDateISO(currentArticle.published);
+  const datePublished = convertDateISO(currentArticle.createdAt);
 
   const { goToNext, goToPrevious, goToSlide } = controls;
   const navigate = useNavigate();

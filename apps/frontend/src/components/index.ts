@@ -16,6 +16,8 @@ export { default as ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
 
 export { default as MainArticle } from './MainArticle/MainArticle';
 
+export { default as MainArticleSkeleton } from './MainArticleSkeleton/MainArticleSkeleton';
+
 export { default as SubArticle } from './SubArticle/SubArticle';
 
 export { default as ArticleCollection } from './ArticleCollection/ArticleCollection';

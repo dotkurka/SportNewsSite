@@ -37,7 +37,7 @@ export class LocationsController {
   @UseGuards(RolesGuard)
   @Get()
   async getAll(
-    @FilteringParams(['name']) filter?: Filtering,
+    @FilteringParams(['name']) filter?: Filtering[],
     @SortingParams(['name']) sort?: Sorting,
   ) {
     const locations = await this.locationsService.getAll(filter, sort);

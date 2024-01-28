@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^6.1.6",
+    "react-loading-skeleton": "^3.3.1",
     "react-markdown": "^8.0.7",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.2",
@@ -51,7 +52,6 @@
     ]
   },
   "devDependencies": {
-    "tsconfig": "*",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@tanstack/eslint-plugin-query": "^5.17.7",
     "@types/react-transition-group": "^4.4.10",
@@ -69,7 +69,8 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "file-loader": "^6.2.0",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "tsconfig": "*"
   },
   "lint-staged": {
     "*.(js|ts|tsx)": "eslint --fix",

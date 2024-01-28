@@ -26,7 +26,7 @@ export class CategoriesService {
   }
   // TODO: make sort and filter
 
-  async getAll(sort?: Sorting, filter?: Filtering) {
+  async getAll(sort?: Sorting, filter?: Filtering[]) {
     const where = getWhere(filter);
     const order = getOrder(sort);
     const categories = await this.categoriesRepository.find({

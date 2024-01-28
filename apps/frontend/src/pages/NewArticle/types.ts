@@ -1,5 +1,5 @@
 import type { IArticleRequest } from 'features/article/types';
-import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData, ITeamData } from 'features/categories/types';
 
 export interface IArticleFormData
   extends Omit<IArticleRequest, 'conference' | 'team' | 'category'> {

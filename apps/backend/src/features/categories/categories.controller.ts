@@ -32,7 +32,7 @@ import { Filtering, FilteringParams, Sorting, SortingParams } from 'src/features
 import { QueryFailedExceptionFilter } from 'src/features/common/exceptions';
 import { ZodValidationPipe } from 'src/features/common/pipes';
 
-@Authorized(UserRole.User)
+@Authorized()
 @UseFilters(new QueryFailedExceptionFilter())
 @Controller('categories')
 export class CategoriesController {
@@ -56,7 +56,7 @@ export class CategoriesController {
   @Get()
   async getAllCategories(
     @SortingParams(['title']) sort?: Sorting,
-    @FilteringParams(['title', 'conferences.title']) filter?: Filtering,
+    @FilteringParams(['title', 'conferences.title']) filter?: Filtering[],
   ) {
     const categories = await this.categoriesService.getAll(sort, filter);
 
@@ -107,7 +107,7 @@ export class CategoriesController {
   async getConferencesByCategory(
     @Param('category') category: string,
     @SortingParams(['title']) sort?: Sorting,
-    @FilteringParams(['title', 'teams.title']) filter?: Filtering,
+    @FilteringParams(['title', 'teams.title']) filter?: Filtering[],
   ) {
     const conferences = await this.conferencesService.getByCategory(category, sort, filter);
 
@@ -158,7 +158,7 @@ export class CategoriesController {
   async geAllTeams(
     @Param('category') category: string,
     @SortingParams(['title']) sort?: Sorting,
-    @FilteringParams(['title']) filter?: Filtering,
+    @FilteringParams(['title']) filter?: Filtering[],
   ) {
     const teams = await this.teamsService.getByCategory(category, sort, filter);
 

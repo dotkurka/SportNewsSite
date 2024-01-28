@@ -6,7 +6,7 @@ import { ImageUploadFromik, Input, MarkdownForm, Select } from 'components';
 import { sidebarData } from 'config/SideBarData/SidebarData';
 import { articleSchema } from 'features/article/validationSchema';
 
-import type { IConferenceData, ITeamData } from 'features/category/types';
+import type { IConferenceData, ITeamData } from 'features/categories/types';
 import type { FormikProps } from 'formik';
 import type { IArticleFormData, INewArticleForm } from 'pages/NewArticle/types';
 
@@ -19,7 +19,7 @@ const NewArticleForm = ({
   submitRef,
   previewRef,
 }: INewArticleForm) => {
-  const [team, setTeam] = useState<ITeamData[]>(initialValues.conference.team);
+  const [team, setTeam] = useState<ITeamData[]>(initialValues.conference.teams);
 
   const [clearTeamValue, setClearTeamValue] = useState('');
 
@@ -39,7 +39,7 @@ const NewArticleForm = ({
 
   const setTeamData = (item: IConferenceData) => {
     setClearTeamValue(item.title);
-    setTeam(item.team);
+    setTeam(item.teams);
   };
 
   return (
@@ -69,7 +69,7 @@ const NewArticleForm = ({
               onChange={(item) => setTeamData(item)}
               options={{
                 primaryKey: 'title',
-                options: category?.conference,
+                options: category?.conferences,
               }}
               placeholder='Not Selected'
               succesDisabled

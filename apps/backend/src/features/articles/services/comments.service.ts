@@ -37,6 +37,7 @@ export class CommentsService {
     const order = getOrder(sort);
 
     const [comments, total] = await this.commentsRepository.findAndCount({
+      relations: { user: true },
       where: { article: { id: articleId } },
       order,
       take: limit,

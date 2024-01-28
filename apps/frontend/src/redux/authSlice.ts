@@ -4,11 +4,11 @@ import { UserRole } from 'features/auth/enums';
 import { removeInLocal, saveInLocal } from 'utils/localStorage';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IUserResponse } from 'features/auth/types';
+import type { IAuthSliceInitialValue } from 'features/auth/types';
 import type { IUser } from 'features/user/types';
 import type { RootState } from 'redux/store';
 
-const initialVlues: IUserResponse = {
+const initialVlues: IAuthSliceInitialValue = {
   user: {
     id: '',
     role: UserRole.User,

@@ -27,7 +27,7 @@ export class TeamsService {
     return team;
   }
 
-  async getByCategory(category: string, sort?: Sorting, filter?: Filtering) {
+  async getByCategory(category: string, sort?: Sorting, filter?: Filtering[]) {
     const where = getWhere(filter);
     const order = getOrder(sort);
     const teams = await this.teamsRepository.find({

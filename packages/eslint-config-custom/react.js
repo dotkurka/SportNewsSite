@@ -35,7 +35,7 @@ module.exports = {
     'import/no-default-export': 'off',
     'turbo/no-undeclared-env-vars': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/non-nullable-type-assertion-style': 'off',
     '@typescript-eslint/no-invalid-void-type': 'off',
     '@typescript-eslint/naming-convention': 'off',
@@ -46,6 +46,7 @@ module.exports = {
     '@tanstack/query/stable-query-client': 'error',
     'react-hooks/exhaustive-deps': 'off',
     'react/display-name': 'off',
+    'import/namespace': 'off',
     'unicorn/filename-case': [
       'error',
       {
@@ -119,7 +120,6 @@ module.exports = {
     ],
     'import/no-unresolved': ['error', { commonjs: true, amd: true }],
     'import/named': 'error',
-    'import/namespace': 'error',
     'import/default': 'error',
     'import/export': 'error',
     '@next/next/inline-script-id': 'off',

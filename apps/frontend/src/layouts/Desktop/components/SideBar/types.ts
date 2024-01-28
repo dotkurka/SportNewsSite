@@ -1,4 +1,4 @@
-import type { ICaregoryData } from 'features/category/types';
+import type { ICaregoryData } from 'features/categories/types';
 
 export interface ISideBar {
   data: ICaregoryData[] | undefined;

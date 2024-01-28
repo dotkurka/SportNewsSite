@@ -31,9 +31,7 @@ const NavBarUser = ({ user }: INavBarUser) => {
         <div className='navbar-user-head'>
           <img alt='avatar' className='navbar-user-avatar' src={user?.avatar || userAvatar} />
           <div className='navbar-user-title'>
-            <p className='navbar-user-title-name'>
-              {user.firstName} {user.lastName}
-            </p>
+            <p className='navbar-user-title-name'>{user.firstName}</p>
             <p className='navbar-user-title-status'>{userStatus[user.role]}</p>
           </div>
           <button className='navbar-user-flag' onClick={() => handleShowMenu()}>

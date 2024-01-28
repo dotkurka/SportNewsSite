@@ -27,7 +27,7 @@ const ArticleComments = ({
   return (
     <div className={`article-comments ${className}`}>
       <div className='article-comments-head'>
-        <span className='article-comments-head-text'>Comments ({comments.length})</span>
+        <span className='article-comments-head-text'>Comments ({comments?.total || 0})</span>
         <Select
           defaultValue={commentsSortOptions[0].title}
           label='Sort by:'
@@ -45,8 +45,8 @@ const ArticleComments = ({
         />
       )}
       <div className='article-comments-contain'>
-        {comments.length ? (
-          comments.map((comment) => {
+        {comments?.data.length ? (
+          comments.data.map((comment) => {
             const date = convertDateISO(comment.createAt, 'mmm-d');
             return (
               <div className='article-comments-item' key={comment.id}>
@@ -67,7 +67,7 @@ const ArticleComments = ({
           <p className='article-comments-contain-empty'>There are no comments yet</p>
         )}
       </div>
-      {comments.length > 4 && (
+      {comments?.total || 0 > 4 ? (
         <div className='article-comments-contain-show-more'>
           <Button
             className='article-comments-contain-show-more-btn'
@@ -77,7 +77,7 @@ const ArticleComments = ({
             Show more
           </Button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

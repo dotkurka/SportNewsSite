@@ -65,13 +65,20 @@ const handleNestedProperty = <T>(key: string, property: T) => {
   return condition;
 };
 
-export const getWhere = (filter?: Filtering) => {
-  if (!filter) return {};
+export const getWhere = (filters?: Filtering[]) => {
+  if (!filters || filters.length === 0) return {};
 
-  if (filter.property.includes('.')) {
-    return handleNestedProperty(filter.property, getCondition(filter));
-  }
-  return { [filter.property]: getCondition(filter) };
+  const result = filters.reduce((acc, filter) => {
+    if (filter.property.includes('.')) {
+      const nestedCondition = handleNestedProperty(filter.property, getCondition(filter));
+
+      return { ...acc, ...nestedCondition };
+    }
+
+    return { ...acc, [filter.property]: getCondition(filter) };
+  }, {});
+
+  return result;
 };
 
 export const getOrder = (sort?: Sorting) => {

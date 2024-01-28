@@ -56,7 +56,7 @@ export class ArticlesService {
   async getAll(
     paginationParams: Pagination,
     sort?: Sorting,
-    filter?: Filtering,
+    filter?: Filtering[],
   ): Promise<PaginationResponseDto<Article>> {
     const where = getWhere(filter);
     const order = getOrder(sort);

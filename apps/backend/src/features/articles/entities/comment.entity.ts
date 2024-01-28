@@ -10,7 +10,7 @@ export class Comment extends BaseEntity<Comment> {
   @Column()
   comment: string;
 
-  @ManyToOne('User', 'comments', { eager: true })
+  @ManyToOne('User', 'comments')
   user: User;
 
   @ManyToOne('Article', 'comments')

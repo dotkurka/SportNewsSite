@@ -39,7 +39,7 @@ import { PaginationResponseDto } from 'src/features/common/dto';
 import { QueryFailedExceptionFilter } from 'src/features/common/exceptions';
 import { ZodValidationPipe } from 'src/features/common/pipes';
 
-@Authorized(UserRole.Admin)
+@Authorized()
 @UseFilters(QueryFailedExceptionFilter)
 @Controller('articles')
 export class ArticlesController {
@@ -48,6 +48,8 @@ export class ArticlesController {
     private readonly commentsService: CommentsService,
   ) {}
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Post()
   async createArticle(
     @Req() req: RequestWithUser,
@@ -58,22 +60,18 @@ export class ArticlesController {
     return article;
   }
 
-  @Roles(UserRole.User)
-  @UseGuards(RolesGuard)
   @Get()
   async getArticles(
     @PaginationParams() paginationParams: Pagination,
     @SortingParams(articleSortParams) sort?: Sorting,
     @FilteringParams(articleFilterParams)
-    filter?: Filtering,
+    filter?: Filtering[],
   ): Promise<PaginationResponseDto<Article>> {
     const result = await this.articlesService.getAll(paginationParams, sort, filter);
 
     return result;
   }
 
-  @Roles(UserRole.User)
-  @UseGuards(RolesGuard)
   @Get(':slugId')
   async getArticle(@Param('slugId') slugId: string) {
     const article = await this.articlesService.getBySlugId(slugId);
@@ -81,6 +79,8 @@ export class ArticlesController {
     return article;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Patch(':id')
   async updateArticle(
     @Param('id') id: string,
@@ -91,6 +91,8 @@ export class ArticlesController {
     return updatedArticle;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Delete(':id')
   async removeArticle(@Param('id') id: string) {
     const result = await this.articlesService.remove(id);
@@ -98,8 +100,7 @@ export class ArticlesController {
     return result;
   }
 
-  @Roles(UserRole.User)
-  @UseGuards(RolesGuard)
+  @UseGuards(ThrottlerGuard)
   @Post(':articleId/comments')
   async createComment(
     @Param('articleId') articleId: string,
@@ -111,8 +112,6 @@ export class ArticlesController {
     return comment;
   }
 
-  @Roles(UserRole.User)
-  @UseGuards(RolesGuard, ThrottlerGuard)
   @Get(':articleId/comments')
   async getArticleComments(
     @Param('articleId') articleId: string,
@@ -124,6 +123,8 @@ export class ArticlesController {
     return result;
   }
 
+  @Roles(UserRole.Admin)
+  @UseGuards(RolesGuard)
   @Delete('comments/:commentId')
   async removeComment(@Param('commentId') commentId: string) {
     const result = await this.commentsService.remove(commentId);

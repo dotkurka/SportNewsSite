@@ -5,10 +5,10 @@ import type { IBurgerItem } from 'layouts/Mobile/components/BurgerMenu/types';
 import './BurgerMenu.scss';
 
 const BurgerMenuItem = ({ item, onClick }: IBurgerItem) => {
-  if (item.conference) {
+  if (item.conferences) {
     return (
       <button
-        className={`burger-menu-item ${item.conference ? 'second-menu' : ''}`}
+        className={`burger-menu-item ${item.conferences ? 'second-menu' : ''}`}
         onClick={onClick}
       >
         {item.title}
@@ -17,7 +17,7 @@ const BurgerMenuItem = ({ item, onClick }: IBurgerItem) => {
   }
   return (
     <Link
-      className={`burger-menu-item ${item.conference ? 'second-menu' : ''}`}
+      className={`burger-menu-item ${item.conferences ? 'second-menu' : ''}`}
       onClick={onClick}
       to={item.path}
     >

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { IFileRequest, IFileResponse } from 'features/fileUpload/types';
+import type { IFileResponse } from 'features/fileUpload/types';
 import type { RootState } from 'redux/store';
 
 export const fileUploadApi = createApi({
@@ -17,7 +17,7 @@ export const fileUploadApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    fileUpload: build.mutation<IFileResponse, FormData | IFileRequest>({
+    fileUpload: build.mutation<IFileResponse, FormData | File>({
       query: (body) => ({
         url: '',
         method: 'POST',

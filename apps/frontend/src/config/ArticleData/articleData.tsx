@@ -12,7 +12,8 @@ export const dataMainArticle: IArticleResponse[] = [
       'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
     alt: 'sdsdsdsd',
     title: 'American Games come back in 2019',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -20,7 +21,7 @@ export const dataMainArticle: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -47,7 +48,8 @@ export const dataMainArticle: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Italian Hokey come back in 2024',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -55,7 +57,7 @@ export const dataMainArticle: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -82,7 +84,8 @@ export const dataMainArticle: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Romania so bad to play football',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -90,7 +93,7 @@ export const dataMainArticle: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -117,7 +120,8 @@ export const dataMainArticle: IArticleResponse[] = [
       'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
     alt: 'sdsdsdsd',
     title: 'American Games come back in 2019',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -125,7 +129,7 @@ export const dataMainArticle: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -155,7 +159,8 @@ export const dataSub: IArticleResponse[] = [
       'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
     alt: 'sdsdsdsd',
     title: 'American Games come back in 2019',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -163,7 +168,7 @@ export const dataSub: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -190,7 +195,8 @@ export const dataSub: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Italian Hokey come back in 2024',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NFL/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -198,7 +204,7 @@ export const dataSub: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -225,7 +231,8 @@ export const dataSub: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Romania so bad to play hokey',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NHL/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -233,7 +240,7 @@ export const dataSub: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -260,7 +267,8 @@ export const dataSub: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Romania so bad to play football',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/WHL/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -268,7 +276,7 @@ export const dataSub: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -298,7 +306,8 @@ export const colectionArticleData: IArticleResponse[] = [
       'TOKYO — Major League Baseball begins its 2019 season on Wednesday in Japan with the first of two games between the Oakland Athletics and the Seattle Mariners. NBA which equipe is the best? But when the teams take the field at the Tokyo Dome, don’t say they’re playing on foreign soil.',
     alt: 'sdsdsdsd',
     title: 'American Games come back in 2019',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -306,7 +315,7 @@ export const colectionArticleData: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -333,7 +342,8 @@ export const colectionArticleData: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Italian Hokey come back in 2024',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -341,7 +351,7 @@ export const colectionArticleData: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -368,7 +378,8 @@ export const colectionArticleData: IArticleResponse[] = [
       'That’s because 12 tons of clay, silt and sand mixtures have been shipped by boat from the United States to make the batter’s box, pitcher’s mound, base pits and bullpens feel like home. The dirt swap was news to the veteran Seattle pitcher Mike Leake, who nonetheless gave his stomp of approval after starting the first of two exhibition games each club played against teams from Japan’s Nippon Professional Baseball as a tuneup.',
     alt: 'sdsdsdsd',
     title: 'Romania so bad to play football',
-    published: '2023-08-05T14:42:53.612+00:00',
+    slugId: 'sdkjskdjsjdksjdk',
+    createdAt: '2023-08-05T14:42:53.612+00:00',
     path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
     category: {
       id: '3274673247832647623',
@@ -376,7 +387,7 @@ export const colectionArticleData: IArticleResponse[] = [
       path: '/NFL',
     },
     conference: {
-      team: [],
+      teams: [],
       id: '93449389472874982734',
       title: 'AFC South',
       path: '/AFC+South',
@@ -449,7 +460,8 @@ export const articleData: IArticleResponse = {
   “Oh, you mean we weren’t pitching on the same mound the Japanese teams use during their season?” Leake said Sunday. “It felt like the same mound that we pitch on in the States. The only thing I would say is that maybe they put a little too much water at first, so some of the clay stuck to my spikes in the first inning, but that happens at home, too. After that, it was perfect.”`,
   alt: 'football',
   title: 'As M.L.B.’s Season Opens in Japan, at Least the Dirt Is Familiar',
-  published: '2023-08-05T14:42:53.612+00:00',
+  slugId: 'sdkjskdjsjdksjdk',
+  createdAt: '2023-08-05T14:42:53.612+00:00',
   path: '/NBA/AFC+Sout/As-M.L.B-Season-Opens-in-Japan-at-Least-the-Dirt-Is-Familiar',
   category: {
     id: '3274673247832647623',
@@ -457,7 +469,7 @@ export const articleData: IArticleResponse = {
     path: '/NFL',
   },
   conference: {
-    team: [
+    teams: [
       {
         id: '8024989928343348',
         title: 'Buffalo Bills',

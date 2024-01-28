@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useParams } from 'react-router-dom';
 
-import { sidebarData } from 'config/SideBarData/SidebarData';
+import { useGetCategoriesQuery } from 'api/categoryApi';
 import ArticleSubmitContext from 'features/article/articleSubmitContext';
 import useMobileWidth from 'hooks/useWindowsWidth';
 import { MobilePageLayout } from 'layouts';
@@ -24,7 +24,7 @@ const PageLayout = () => {
 
   const managerMode = useSelector(managerModeState);
 
-  // const { data: sidebarData } = useGetAllCategoryQuery();
+  const { data: sidebarData } = useGetCategoriesQuery({});
 
   if (isMobile) {
     return <MobilePageLayout />;

@@ -22,7 +22,7 @@ export class LocationsService {
     return newLocation;
   }
 
-  async getAll(filter?: Filtering, sort?: Sorting) {
+  async getAll(filter?: Filtering[], sort?: Sorting) {
     const where = getWhere(filter);
     const order = getOrder(sort);
 

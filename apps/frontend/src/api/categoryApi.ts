@@ -4,8 +4,10 @@ import type {
   ICaregoryData,
   ICategoryQueryParams,
   IConferenceData,
+  IConferenceParams,
   ITeamData,
-} from 'features/category/types';
+  TeamParamsType,
+} from 'features/categories/types';
 import type { RootState } from 'redux/store';
 
 export const categoryApi = createApi({
@@ -28,19 +30,23 @@ export const categoryApi = createApi({
         params: query,
       }),
     }),
-    getConferences: build.query<IConferenceData[], Partial<ICategoryQueryParams>>({
-      query: ({ ...query }) => ({
-        url: '/conferences',
+    getConferencesByCategory: build.query<IConferenceData[], IConferenceParams>({
+      query: ({ category, ...query }) => ({
+        url: `/${category}/conferences`,
         params: query,
       }),
     }),
-    getTeams: build.query<ITeamData[], Partial<ICategoryQueryParams>>({
-      query: ({ ...query }) => ({
-        url: '/teams',
+    getTeamsByCategory: build.query<ITeamData[], TeamParamsType>({
+      query: ({ category, ...query }) => ({
+        url: `/${category}/teams`,
         params: query,
       }),
     }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetConferencesQuery, useGetTeamsQuery } = categoryApi;
+export const {
+  useGetCategoriesQuery,
+  useGetConferencesByCategoryQuery,
+  useGetTeamsByCategoryQuery,
+} = categoryApi;

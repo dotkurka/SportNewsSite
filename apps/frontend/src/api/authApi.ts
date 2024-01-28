@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { ILoginRequest, ISignUpRequest, IUserResponse } from 'features/auth/types';
-import type { IUser, UserUpdateType } from 'features/user/types';
+import type { IAuthResponse, ILoginRequest, ISignUpRequest } from 'features/auth/types';
+import type { IUser } from 'features/user/types';
 import type { RootState } from 'redux/store';
 
 export const authApi = createApi({
@@ -20,40 +20,26 @@ export const authApi = createApi({
   }),
   endpoints: (build) => ({
     getUser: build.query<IUser, void>({
-      query: () => 'user',
+      query: () => 'profile',
     }),
-    updateUser: build.mutation<IUserResponse, UserUpdateType>({
+    logIn: build.mutation<IAuthResponse, ILoginRequest>({
       query: (body) => ({
-        url: 'user',
-        method: 'PATCH',
-        body,
-      }),
-      transformResponse: (result: IUserResponse) => result,
-    }),
-
-    logIn: build.mutation<IUserResponse, ILoginRequest>({
-      query: (body) => ({
-        url: 'login',
+        url: 'sign-in',
         method: 'POST',
         body,
       }),
-      transformResponse: (result: IUserResponse) => result,
+      transformResponse: (result: IAuthResponse) => result,
     }),
-    signUp: build.mutation<IUserResponse, ISignUpRequest>({
+    signUp: build.mutation<IAuthResponse, ISignUpRequest>({
       query: (body) => ({
-        url: 'registration',
+        url: 'sign-up',
         method: 'POST',
         body,
       }),
-      transformResponse: (result: IUserResponse) => result,
+      transformResponse: (result: IAuthResponse) => result,
     }),
   }),
 });
 
-export const {
-  useLazyGetUserQuery,
-  useGetUserQuery,
-  useLogInMutation,
-  useSignUpMutation,
-  useUpdateUserMutation,
-} = authApi;
+export const { useLazyGetUserQuery, useGetUserQuery, useLogInMutation, useSignUpMutation } =
+  authApi;

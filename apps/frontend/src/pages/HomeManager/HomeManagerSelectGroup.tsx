@@ -1,16 +1,12 @@
 import { getIn } from 'formik';
 import { useState } from 'react';
 
+import { useGetCategoriesQuery } from 'api/categoryApi';
 import { Select } from 'components';
-import { sidebarData } from 'config/SideBarData/SidebarData';
 import { sortOptions } from 'features/article/constants';
 
-import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData, ITeamData } from 'features/categories/types';
 import type { IHomeManagerSelectGroup } from 'pages/HomeManager/types';
-
-// replace mock data
-// const { data: categoryData } = useGetCategoriesQuery({});
-const category = sidebarData.filter((item) => item.conference);
 
 const HomeManagerSelectGroup = ({
   values,
@@ -21,21 +17,23 @@ const HomeManagerSelectGroup = ({
   name,
 }: IHomeManagerSelectGroup) => {
   const [conference, setConference] = useState<IConferenceData[] | undefined>(
-    values.category?.conference,
+    values.category?.conferences,
   );
-  const [team, setTeam] = useState<ITeamData[]>(values.conference?.team);
+  const [team, setTeam] = useState<ITeamData[]>(values.conference.teams);
   const [clearConferenceValue, setClearConferenceValue] = useState('');
   const [clearTeamValue, setClearTeamValue] = useState('');
+
+  const { data: category } = useGetCategoriesQuery({});
 
   const handleSetConference = (item: ICaregoryData) => {
     setClearConferenceValue(item.title);
     setClearTeamValue(item.title);
-    setConference(item.conference);
+    setConference(item.conferences);
   };
 
   const handleSetTeam = (item: IConferenceData) => {
     setClearTeamValue(item.title);
-    setTeam(item.team);
+    setTeam(item.teams);
   };
 
   return (

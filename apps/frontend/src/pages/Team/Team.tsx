@@ -4,29 +4,30 @@ import { useParams } from 'react-router-dom';
 import { useGetArticlesQuery } from 'api/articlesApi';
 import { Select, ShortArticle } from 'components';
 import { SelectVariant } from 'components/Select/enums';
-import { dataSub } from 'config/ArticleData/articleData';
 import { sortOptions } from 'features/article/constants';
+import { FilterRule } from 'features/common/enums';
 
 import type { ISortOption } from 'features/article/types';
 
 import './Team.scss';
 
-const articlesByTeam = dataSub;
-
 const Team = () => {
   const [sortSelect, setSortSelect] = useState(sortOptions[0].value);
   const { team } = useParams();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-vars -- replace the mock data with this
-  const { data } = useGetArticlesQuery({
-    team,
-    limit: 10,
+  const teamFilter = team ? `team.title:${FilterRule.EQUALS}:${team.replace('-', ' ')}` : '';
+
+  const { data: articlesByTeam } = useGetArticlesQuery({
+    filter: teamFilter,
     sort: sortSelect,
+    limit: 10,
   });
 
   const handleChangeSort = (select: ISortOption) => {
     setSortSelect(select.value);
   };
+
+  // TODO: make loader for article
 
   return (
     <div className='team-page'>
@@ -38,9 +39,13 @@ const Team = () => {
         options={{ primaryKey: 'title', options: sortOptions }}
         variant={SelectVariant.Text}
       />
-      {articlesByTeam.map((item) => (
-        <ShortArticle className='team-page-article' data={item} key={item.id} />
-      ))}
+      {articlesByTeam?.data.length ? (
+        articlesByTeam.data.map((item) => (
+          <ShortArticle className='team-page-article' data={item} key={item.id} />
+        ))
+      ) : (
+        <div>article not found</div>
+      )}
     </div>
   );
 };

@@ -5,7 +5,8 @@ import type { IArticleFormData } from 'pages/NewArticle/types';
 
 export const previewArticleData = {
   id: '483757345734875',
-  published: new Date(Date.now()).toISOString(),
+  slugId: 'some-slug-28382738237',
+  createdAt: new Date(Date.now()).toISOString(),
   path: '/example',
   comments: articleCommentsData,
 };
@@ -13,34 +14,34 @@ export const previewArticleData = {
 export const commentsSortOptions: ISortOption[] = [
   {
     title: 'Most Recent',
-    value: 'createdAt.asc',
+    value: 'createdAt:asc',
   },
   {
     title: 'Oldest',
-    value: 'createdAt.desc',
+    value: 'createdAt:desc',
   },
   {
     title: 'A - Z',
-    value: 'title.asc',
+    value: 'title:asc',
   },
   {
     title: 'Z - A',
-    value: 'title.desc',
+    value: 'title:desc',
   },
 ];
 
 export const sortOptions: ISortOption[] = [
   {
     title: 'Most Recent',
-    value: 'createdAt.asc',
+    value: 'createdAt:asc',
   },
   {
     title: 'Oldest',
-    value: 'createdAt.desc',
+    value: 'createdAt:desc',
   },
   {
     title: 'Most commnets',
-    value: 'comments.asc',
+    value: 'comments.id:asc',
   },
   {
     title: 'Most views',
@@ -67,7 +68,7 @@ export const intialArticleFormData: IArticleFormData = {
     path: '',
   },
   conference: {
-    team: [],
+    teams: [],
     id: '',
     title: '',
     path: '',
