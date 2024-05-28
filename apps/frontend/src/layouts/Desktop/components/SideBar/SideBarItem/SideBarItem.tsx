@@ -4,7 +4,7 @@ import '../SideBar.scss';
 import type { ISideBarItem } from './types';
 
 const SideBarItem = ({ item, isActive, onClick }: ISideBarItem) => {
-  if (item.conference) {
+  if (item.conferences) {
     return (
       <button
         className={`sidebar-item ${isActive ? 'sidebar-item-focus' : ''}`}

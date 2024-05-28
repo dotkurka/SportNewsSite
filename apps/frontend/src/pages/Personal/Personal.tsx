@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { useUpdateUserMutation } from 'api/authApi';
 import { useFileUploadMutation } from 'api/fileUploadApi';
+import { useUpdateUserMutation } from 'api/usersApi';
 import { ErrorModal, Modal } from 'components';
 import { ModalVariant } from 'components/Modal/enums';
 import { changePassword, personal } from 'constants/routesPath';
@@ -38,8 +38,8 @@ const Personal = () => {
       const imageHref = await uploadFile(formData).unwrap();
 
       if (imageHref) {
-        await updateUser({ avatar: imageHref.path });
-        setAvatar(imageHref.path);
+        await updateUser({ avatar: imageHref.serverPath });
+        setAvatar(imageHref.serverPath);
       }
     }
   };

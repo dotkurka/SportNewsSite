@@ -6,13 +6,13 @@ import { BurgerMenuContext } from 'layouts/Mobile/components/BurgerMenu/BurgerMe
 import type { ISecondItem } from 'layouts/Mobile/components/BurgerMenu/types';
 
 const SecondMenuItem = ({ secondData, showDrop, check }: ISecondItem) => {
-  const openMenu = check === secondData.title && secondData.team ? 'open' : '';
-  const closeMenu = secondData.team ? 'close' : '';
+  const openMenu = check === secondData.title && secondData.teams ? 'open' : '';
+  const closeMenu = secondData.teams ? 'close' : '';
   const handleHidden = useContext(BurgerMenuContext);
 
   return (
     <>
-      {secondData.team ? (
+      {secondData.teams ? (
         <button
           className={`burger-menu-second-item ${closeMenu} ${openMenu}`}
           onClick={() => showDrop(secondData.title)}
@@ -31,7 +31,7 @@ const SecondMenuItem = ({ secondData, showDrop, check }: ISecondItem) => {
 
       <div className={`burger-menu-second-drop ${check === secondData.title ? 'show' : ''}`}>
         {check === secondData.title &&
-          secondData.team.map((drop) => (
+          secondData.teams.map((drop) => (
             <Link
               className='burger-menu-second-drop-item'
               key={drop.path}

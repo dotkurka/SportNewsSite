@@ -1,10 +1,10 @@
-import type { IConferenceData, ITeamData } from 'features/category/types';
+import type { IConferenceData, ITeamData } from 'features/categories/types';
 
 export const allConferenceItem: IConferenceData = {
   title: 'All Conference',
   path: '',
   id: '',
-  team: [],
+  teams: [],
 };
 
 export const allTeamsItem: ITeamData = {

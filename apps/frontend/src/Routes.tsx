@@ -33,7 +33,7 @@ import { managerMode as managerModeState } from 'redux/managerModeSlice';
 
 const Routes = () => {
   // dev mode is true
-  const isAuth = useSelector(selectCurrentToken) || true;
+  const isAuth = useSelector(selectCurrentToken);
   const managerMode = useSelector(managerModeState);
 
   return (

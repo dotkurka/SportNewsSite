@@ -1,9 +1,8 @@
 import type { IArticleComments } from 'components/ArticleComments/types';
 import type { IArticleResponse } from 'features/article/types';
 
-type TArticle = Omit<IArticleComments, 'comments'>;
-
-export interface IArticle extends TArticle {
-  data: IArticleResponse;
+export interface IArticle extends IArticleComments {
+  data?: IArticleResponse;
   hiddenComments?: boolean;
+  isLoading?: boolean;
 }

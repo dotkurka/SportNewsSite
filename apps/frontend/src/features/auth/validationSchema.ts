@@ -14,12 +14,7 @@ export const signInValidation = Yup.object().shape({
 
 export const logInValidation = Yup.object().shape({
   email: Yup.string().email('email inva').required('Required'),
-  password: Yup.string()
-    .required('Required')
-    .min(9, 'Too Short!')
-    .matches(/[0-9]/, 'Password requires a number')
-    .matches(/[a-z]/, 'Password requires a lowercase letter')
-    .matches(/[A-Z]/, 'Password requires an uppercase letter'),
+  password: Yup.string().required('Required'),
 });
 
 export const newPasswordValidation = Yup.object().shape({

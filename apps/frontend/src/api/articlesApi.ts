@@ -6,7 +6,8 @@ import type {
   IArticleResponse,
   ICommentRequest,
   ICommentResponse,
-  ICommentsQueryParams,
+  ICommentsParams,
+  IPaginationResponse,
 } from 'features/article/types';
 import type { RootState } from 'redux/store';
 
@@ -25,14 +26,18 @@ export const articlesApi = createApi({
     },
   }),
   endpoints: (build) => ({
-    getArticles: build.query<IArticleResponse[], Partial<IArticleQueryParams>>({
-      query: ({ ...query }) => ({
+    getArticles: build.query<IPaginationResponse<IArticleResponse>, Partial<IArticleQueryParams>>({
+      query: ({ page = 1, limit = 20, ...query }) => ({
         url: '',
-        params: query,
+        params: {
+          ...query,
+          page,
+          limit,
+        },
       }),
     }),
     getArticle: build.query<IArticleResponse, string>({
-      query: (title) => ({ url: `/${title}` }),
+      query: (slugId) => ({ url: `/${slugId}` }),
       transformResponse: (result: IArticleResponse) => result,
     }),
     createArticle: build.mutation<IArticleResponse, IArticleRequest>({
@@ -54,16 +59,23 @@ export const articlesApi = createApi({
       }),
       transformResponse: (result: IArticleResponse) => result,
     }),
-    deleteArticle: build.mutation<{ status: string }, string>({
+    deleteArticle: build.mutation<{ message: string }, string>({
       query: (id) => ({
         url: `/${id}`,
         method: 'DELETE',
       }),
     }),
-    getArticleComments: build.query<ICommentResponse[], Partial<ICommentsQueryParams>>({
-      query: ({ id, ...query }) => ({
-        url: `/${id}/comments`,
-        params: query,
+    getArticleComments: build.query<
+      IPaginationResponse<ICommentResponse>,
+      Partial<ICommentsParams>
+    >({
+      query: ({ articleId, page = 1, limit = 6, ...query }) => ({
+        url: `/${articleId}/comments`,
+        params: {
+          ...query,
+          limit,
+          page,
+        },
       }),
     }),
     addArticleComment: build.mutation<
@@ -76,9 +88,9 @@ export const articlesApi = createApi({
         body,
       }),
     }),
-    deleteArticleComment: build.mutation<{ status: string }, { id: string; commentId: string }>({
-      query: ({ id, commentId }) => ({
-        url: `/${id}/comments/${commentId}`,
+    deleteArticleComment: build.mutation<{ status: string }, { articleId: string; id: string }>({
+      query: ({ articleId, id }) => ({
+        url: `/${articleId}/comments/${id}`,
         method: 'DELETE',
       }),
     }),
@@ -91,6 +103,7 @@ export const {
   useGetArticleQuery,
   useLazyGetArticleQuery,
   useGetArticleCommentsQuery,
+  useLazyGetArticleCommentsQuery,
   useCreateArticleMutation,
   useUpdateArticleMutation,
   useDeleteArticleMutation,

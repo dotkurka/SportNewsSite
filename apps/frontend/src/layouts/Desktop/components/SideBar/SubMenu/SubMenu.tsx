@@ -1,6 +1,6 @@
 import SubMenuItem from 'layouts/Desktop/components/SideBar/SubMenuItem/SubMenuItem';
 
-import type { IConferenceData, ITeamData } from 'features/category/types';
+import type { IConferenceData, ITeamData } from 'features/categories/types';
 import type { ISubMenu } from 'layouts/Desktop/components/SideBar/SubMenu/types';
 
 import './SubMenu.scss';

@@ -9,11 +9,6 @@ export interface IFileRequest {
 }
 
 export interface IFileResponse {
-  id: string;
+  fileName: string;
   serverPath: string;
-  pathSmall?: string;
-  originalName: string;
-  name: string;
-  size: number;
-  path: string;
 }

@@ -10,12 +10,12 @@
     "inlineSources": false,
     "isolatedModules": true,
     "moduleResolution": "node",
-    "moduleDetection": "force",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true
-  }
+  },
+  "exclude": ["node_modules"]
 }

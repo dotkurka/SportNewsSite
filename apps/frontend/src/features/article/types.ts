@@ -1,4 +1,4 @@
-import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData, ITeamData } from 'features/categories/types';
 import type { IUser } from 'features/user/types';
 
 export interface ICommentResponse {
@@ -12,21 +12,18 @@ export interface ICommentRequest {
   comment: string;
 }
 
-export interface ICommentsQueryParams {
-  id: string;
-  page: number;
-  limit: number;
-  sort: string;
+export interface ICommentsParams {
+  articleId: string;
+  page?: number;
+  limit?: number;
+  sort?: string;
 }
 
 export interface IArticleQueryParams {
   page: number;
   limit: number;
-  category: string;
-  team: string;
+  filter: string;
   sort: string;
-  conference: string;
-  search: string;
 }
 
 export interface IArticleRequest {
@@ -43,7 +40,7 @@ export interface IArticleRequest {
 
 export interface IArticleResponse {
   id: string;
-  published: string;
+  slugId: string;
   path: string;
   user: IUser;
   comments: ICommentResponse[];
@@ -55,10 +52,18 @@ export interface IArticleResponse {
   category: ICaregoryData;
   team: ITeamData;
   location: string;
+  createdAt: string;
   showComments?: boolean;
 }
 
 export interface ISortOption {
   title: string;
   value: string;
+}
+
+export interface IPaginationResponse<T> {
+  total: number;
+  data: T[];
+  page: number;
+  limit: number;
 }

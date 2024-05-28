@@ -28,7 +28,7 @@ const NavBarUserMenu = ({ user, handleCloseMenu, className = '' }: INavBarUserMe
     handleCloseMenu();
   };
 
-  const checkUserRole = user?.role !== UserRole.Admin;
+  const checkUserRole = user?.role === UserRole.Admin;
   const managerButtomText = managerModState ? 'Exit Manager Mode' : 'Manager Mode';
 
   return (

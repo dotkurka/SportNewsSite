@@ -1,25 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import { useAddArticleCommentMutation, useGetArticleCommentsQuery } from 'api/articlesApi';
+import {
+  useAddArticleCommentMutation,
+  useGetArticleQuery,
+  useLazyGetArticleCommentsQuery,
+} from 'api/articlesApi';
 import { Article, ErrorModal } from 'components';
-import { articleData } from 'config/ArticleData/articleData';
-import { userMock } from 'config/UserData';
 import { sortOptions } from 'features/article/constants';
+import { selectCurrentUser } from 'redux/authSlice';
 
 import type { ICommentRequest, ISortOption } from 'features/article/types';
 
-const articleResponse = articleData;
-const user = userMock;
-
 const ArticlePage = () => {
   const [sortSelect, setSortSelect] = useState(sortOptions[0].value);
+  const { article } = useParams();
+  const user = useSelector(selectCurrentUser);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-vars -- replace mock data with this
-  const { data } = useGetArticleCommentsQuery({ sort: sortSelect });
+  const { data: articleResponse, isLoading } = useGetArticleQuery(article as string);
+
+  const [getComments, { data: comments }] = useLazyGetArticleCommentsQuery();
   const [addComment, { isError, error: commentError }] = useAddArticleCommentMutation();
+  console.log(articleResponse?.comments);
+
+  useEffect(() => {
+    if (articleResponse?.comments.length) {
+      void getComments({ articleId: articleResponse.id, sort: sortSelect });
+    }
+  }, [articleResponse?.comments.length]);
 
   const handleSubmitComment = (value: ICommentRequest) => {
-    void addComment({ articleId: articleResponse.id, body: value });
+    if (articleResponse) {
+      void addComment({ articleId: articleResponse.id, body: value });
+    }
   };
 
   const handleChangeSort = (select: ISortOption) => {
@@ -30,9 +44,11 @@ const ArticlePage = () => {
     <>
       <ErrorModal error={commentError} isError={isError} />
       <Article
+        comments={comments}
         data={articleResponse}
         handleChangeSort={handleChangeSort}
         handleSubmit={handleSubmitComment}
+        isLoading={isLoading}
         user={user}
       />
     </>

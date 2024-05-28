@@ -1,4 +1,4 @@
-import type { ICaregoryData } from 'features/category/types';
+import type { ICaregoryData } from 'features/categories/types';
 
 export const sidebarData: ICaregoryData[] = [
   {
@@ -10,12 +10,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '9348283402384998',
     title: 'NBA',
     path: '/NBA',
-    conference: [
+    conferences: [
       {
         id: '9348492834802398',
         title: 'Eastern',
         path: '/NBA/Eastern',
-        team: [
+        teams: [
           {
             id: '9922384834348098',
             title: 'New York Knicks',
@@ -32,7 +32,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9343024288984389',
         title: 'Western',
         path: '/NBA/Western',
-        team: [
+        teams: [
           {
             id: '9343489849238028',
             title: 'Detroit Pistons',
@@ -51,12 +51,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '9398494338024288',
     title: 'NFL',
     path: '/NFL',
-    conference: [
+    conferences: [
       {
         id: '2834299849433808',
         title: 'AFC East',
         path: '/NFL/AFC+East',
-        team: [
+        teams: [
           {
             id: '8024989928343348',
             title: 'Buffalo Bills',
@@ -73,7 +73,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9024983928433848',
         title: 'AFC North',
         path: '/NFL/AFC+North',
-        team: [
+        teams: [
           {
             id: '8024934984933288',
             title: 'Baltimore Ravens',
@@ -92,12 +92,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '2498493809243388',
     title: 'MLB',
     path: '/MLB',
-    conference: [
+    conferences: [
       {
         id: '9349283880234498',
         title: 'East',
         path: '/MLB/East',
-        team: [
+        teams: [
           {
             id: '9922343834848098',
             title: 'Boston Red Sox',
@@ -114,7 +114,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9343088984382429',
         title: 'Central',
         path: '/MLB/Central',
-        team: [
+        teams: [
           {
             id: '9343492348988028',
             title: 'Chicago White Sox',
@@ -133,12 +133,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '9249843433809288',
     title: 'NHL',
     path: '/NHL',
-    conference: [
+    conferences: [
       {
         id: '9928388023434498',
         title: 'NHL 1',
         path: '/NHL_1',
-        team: [
+        teams: [
           {
             id: '9938348223448098',
             title: 'NHL 11',
@@ -155,7 +155,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9382424984330889',
         title: 'NHL 2',
         path: '/NHL_2',
-        team: [
+        teams: [
           {
             id: '9344834923988028',
             title: 'NHL 21',
@@ -174,12 +174,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '8249892830944338',
     title: 'CBB',
     path: '/CBB',
-    conference: [
+    conferences: [
       {
         id: '9928803234834498',
         title: 'CBB 1',
         path: '/CBB_1',
-        team: [
+        teams: [
           {
             id: '9922334488348098',
             title: 'CBB 11',
@@ -196,7 +196,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9389244382430889',
         title: 'CBB 2',
         path: '/CBB_2',
-        team: [
+        teams: [
           {
             id: '9392833984448028',
             title: 'CBB 21',
@@ -215,12 +215,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '9394338024849288',
     title: 'CFB',
     path: '/CFB',
-    conference: [
+    conferences: [
       {
         id: '9923432844938808',
         title: 'CFB 1',
         path: '/CFB_1',
-        team: [
+        teams: [
           {
             id: '9922338348094488',
             title: 'CFB 11',
@@ -237,7 +237,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9343382424980889',
         title: 'CFB 2',
         path: '/CFB_2',
-        team: [
+        teams: [
           {
             id: '9349244339880828',
             title: 'CFB 21',
@@ -256,12 +256,12 @@ export const sidebarData: ICaregoryData[] = [
     id: '9024928983433848',
     title: 'NASCAR',
     path: '/NASCAR',
-    conference: [
+    conferences: [
       {
         id: '9928388023434498',
         title: 'NHL 1',
         path: '/NHL_1',
-        team: [
+        teams: [
           {
             id: '9938348223448098',
             title: 'NHL 11',
@@ -278,7 +278,7 @@ export const sidebarData: ICaregoryData[] = [
         id: '9382424984330889',
         title: 'NHL 2',
         path: '/NHL_2',
-        team: [
+        teams: [
           {
             id: '9344834923988028',
             title: 'NHL 21',

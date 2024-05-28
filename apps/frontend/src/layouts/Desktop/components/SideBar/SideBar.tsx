@@ -8,7 +8,7 @@ import SubMenu from 'layouts/Desktop/components/SideBar/SubMenu/SubMenu';
 import { lockScrollbar, unlockScrollbar } from 'utils/lockScrollbar';
 
 import type { ISideBar } from './types';
-import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData, ITeamData } from 'features/categories/types';
 
 import './SideBar.scss';
 
@@ -35,16 +35,16 @@ const SideBar = ({ data }: ISideBar) => {
     if (item.title === checkedSub) {
       setSecondSubMenu(null);
       setCheckedSub(null);
-    } else if (!item.team?.length) {
+    } else if (!item.teams?.length) {
       closeSubMenu();
     } else {
-      setSecondSubMenu(item.team);
+      setSecondSubMenu(item.teams);
       setCheckedSub(item.title);
     }
   };
 
   const setScrollbar = (item: ICaregoryData) => {
-    if (item.conference) {
+    if (item.conferences) {
       lockScrollbar();
     } else {
       unlockScrollbar();
@@ -57,7 +57,7 @@ const SideBar = ({ data }: ISideBar) => {
       setChecked(null);
     } else {
       setSecondSubMenu(null);
-      setSubMenu(item?.conference || null);
+      setSubMenu(item?.conferences || null);
       setChecked(item.title);
       setScrollbar(item);
     }

@@ -1,6 +1,6 @@
 import type { IPhotoDayData } from 'components/PhotoOfTheDay/types';
 import type { IArticleResponse, ISortOption } from 'features/article/types';
-import type { ICaregoryData, IConferenceData, ITeamData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData, ITeamData } from 'features/categories/types';
 
 export interface IHomeFormItem {
   category: ICaregoryData;

@@ -19,7 +19,7 @@ const ImageUploadFromik = ({
       formData.append('file', file);
       const imageHref = await uploadFile(formData).unwrap();
 
-      if (imageHref) formikSetValue(name, imageHref.path);
+      if (imageHref) formikSetValue(name, imageHref.serverPath);
     }
   };
 

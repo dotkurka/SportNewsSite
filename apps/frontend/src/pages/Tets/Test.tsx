@@ -1,5 +1,11 @@
+import MainArticleSkeleton from 'components/MainArticleSkeleton/MainArticleSkeleton';
+
 const Test = () => {
-  return <div>test</div>;
+  return (
+    <div>
+      <MainArticleSkeleton />
+    </div>
+  );
 };
 
 export default Test;

@@ -16,7 +16,6 @@ export interface IMainTitle {
 
 export interface IMainArticle {
   sliderData: IArticleResponse[];
-
   className?: string;
   variant?: MainArticleVariant;
 }

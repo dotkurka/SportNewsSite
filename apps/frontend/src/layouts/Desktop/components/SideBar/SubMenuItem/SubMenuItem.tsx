@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import type { IConferenceData, ITeamData } from 'features/category/types';
+import type { IConferenceData, ITeamData } from 'features/categories/types';
 import type { ISubMenuItem } from 'layouts/Desktop/components/SideBar/SubMenuItem/types';
 
 import './SubMenuItem.scss';
@@ -11,7 +11,7 @@ const SubMenuItem = <T extends IConferenceData | ITeamData>({
   className,
   onClick,
 }: ISubMenuItem<T>) => {
-  if ('team' in subData) {
+  if ('teams' in subData) {
     return (
       <button
         className={`sub-menu-item ${isActive ? 'sub-menu-item-focus' : ''} ${className}`}

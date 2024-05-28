@@ -5,7 +5,7 @@ import { LangBar } from 'layouts/Mobile/components';
 import BurgerMenuItem from 'layouts/Mobile/components/BurgerMenu/BurgerMenuItem';
 import SecondMenu from 'layouts/Mobile/components/BurgerMenu/SecondMenu';
 
-import type { ICaregoryData, IConferenceData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData } from 'features/categories/types';
 import type { BurgerContextType, IBurger } from 'layouts/Mobile/components/BurgerMenu/types';
 
 import './BurgerMenu.scss';
@@ -22,8 +22,8 @@ const BurgerMenu = ({ data, handleShow }: IBurger) => {
   }, [handleShow]);
 
   const getSecondMenu = (item: ICaregoryData) => {
-    if (item.conference) {
-      setSecondMenu(item?.conference || null);
+    if (item.conferences) {
+      setSecondMenu(item?.conferences || null);
       setSecondTitle(item.title);
     } else {
       handleHiddenMenu();

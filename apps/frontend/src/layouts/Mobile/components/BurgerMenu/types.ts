@@ -1,4 +1,4 @@
-import type { ICaregoryData, IConferenceData } from 'features/category/types';
+import type { ICaregoryData, IConferenceData } from 'features/categories/types';
 
 export interface IBurger {
   data?: ICaregoryData[];

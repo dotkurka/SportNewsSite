@@ -4,8 +4,7 @@ export interface IForm {
   className?: string;
 }
 
-export interface IUserResponse {
-  user: IUser;
+export interface IAuthResponse {
   token: string;
 }
 
@@ -25,4 +24,9 @@ export interface IRequestError {
   data: {
     message: string;
   };
+}
+
+export interface IAuthSliceInitialValue {
+  user: IUser;
+  token: string;
 }

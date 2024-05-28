@@ -1,4 +1,4 @@
-import type { ICaregoryData } from 'features/category/types';
+import type { ICaregoryData } from 'features/categories/types';
 
 export interface INavBarManager {
   submitArticleRef: React.RefObject<HTMLButtonElement>;
