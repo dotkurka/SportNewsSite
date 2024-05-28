@@ -1,0 +1,103 @@
+@import 'styles/Colors.scss';
+
+.navbar-manager {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  &-head {
+    box-sizing: border-box;
+    width: 100%;
+    height: 78px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+    align-items: center;
+    border-bottom: 1px solid $softPeach;
+    background-color: $white;
+
+    &-category {
+      display: flex;
+      align-items: center;
+
+      & > span {
+        color: $black;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-right: 15px;
+      }
+
+      &-select {
+        width: 25px;
+
+        &-list {
+          width: 120px;
+        }
+      }
+    }
+
+    &-btn {
+      display: flex;
+      width: 200px;
+    }
+  }
+
+  &-menu {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    height: 55px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    box-sizing: border-box;
+    box-shadow: 0px 12px 35px -22px rgba(0, 0, 0, 0.4);
+    background-color: $white;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &-item {
+      all: unset;
+      cursor: pointer;
+      color: $greyCloud;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 19px;
+      text-transform: uppercase;
+      transition: 0.2s;
+
+      &:hover,
+      &.selected {
+        color: $alizarinCrimson;
+      }
+
+      &:active {
+        color: $monza;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar-manager {
+    margin-bottom: unset;
+
+    &-head {
+      padding: 0 25px;
+    }
+
+    &-menu {
+      padding: 0 15px;
+
+      &-item {
+        margin: 0 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import 'styles/Colors.scss';
+
+$sizeImg: 25px;
+
+.user-bar {
+  position: relative;
+
+  &-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &-avatar {
+    width: $sizeImg;
+    height: $sizeImg;
+    border-radius: 50%;
+  }
+
+  &-menu {
+    right: -17px;
+    left: unset;
+  }
+
+  &-signup {
+    button {
+      width: 107px;
+    }
+  }
+}

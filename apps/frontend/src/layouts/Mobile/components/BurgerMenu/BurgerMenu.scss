@@ -1,0 +1,155 @@
+@import 'styles/Colors.scss';
+
+@mixin item($width, $fontHeight, $fontSize, $color) {
+  -webkit-user-drag: none;
+  user-select: none;
+  font-weight: $fontHeight;
+  font-size: $fontSize;
+  border: none;
+  cursor: pointer;
+  background: none;
+  line-height: 19px;
+  color: $color;
+  text-decoration: none;
+  height: 45px;
+  width: $width;
+  display: flex;
+  align-items: center;
+}
+
+.burger-menu {
+  z-index: 200;
+  overflow: hidden;
+  background-color: $alizarinCrimson;
+  width: 100%;
+  height: calc(100vh - 79px);
+  display: flex;
+  position: relative;
+
+  &-contain {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 13px 0 40px 49px;
+    transition: 0.5s;
+    transform: translateX(-200px);
+    visibility: hidden;
+
+    &.show {
+      transition: 0.5s;
+      transform: translateX(0px);
+      visibility: visible;
+    }
+  }
+
+  &-item {
+    @include item(105px, 700, 18px, $dawnPink);
+
+    text-transform: uppercase;
+    justify-content: space-between;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.second-menu {
+      &::after {
+        content: url('/assets/images/arrow-right-flag.svg');
+      }
+    }
+  }
+
+  &.second-menu {
+    &::after {
+      content: url('/assets/images/arrow-right-flag.svg');
+    }
+  }
+
+  &-second {
+    display: flex;
+    flex-direction: column;
+    padding: 13px 0 0 49px;
+    position: absolute;
+    transition: 0.5s;
+    transform: translateX(200px);
+    visibility: hidden;
+    opacity: 0;
+
+    &.show {
+      transition: 0.5s;
+      transform: translateX(0px);
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: $white;
+      height: 45px;
+      font-size: 17px;
+      line-height: 22px;
+      letter-spacing: -0.24px;
+      font-weight: 400;
+
+      &::before {
+        content: url('/assets/images/arrow-left-flag.svg');
+        margin-right: 10px;
+      }
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 19px;
+      color: $white;
+      margin: 13px 0 13px;
+    }
+
+    &-contain {
+      padding-left: 16px;
+    }
+
+    &-item {
+      @include item(93px, 400, 14px, $white);
+
+      justify-content: space-between;
+
+      &.close::after {
+        content: url('/assets/images/arrow-right-flag.svg');
+        transition-duration: 0.2s;
+      }
+
+      &.open::after {
+        content: url('/assets/images/arrow-right-flag.svg');
+        transform: rotateZ(90deg);
+        transition-duration: 0.2s;
+      }
+    }
+
+    &-drop {
+      display: flex;
+      flex-direction: column;
+      padding-left: 23px;
+      transform: translateY(-30px);
+      opacity: 0;
+
+      &.show {
+        transform: translateY(0px);
+        transition: 0.2s;
+        opacity: 1;
+      }
+
+      &-item {
+        @include item(100%, 400, 14px, $white);
+      }
+    }
+  }
+
+  &-lang {
+    position: fixed;
+    right: 21px;
+    bottom: 21px;
+  }
+}

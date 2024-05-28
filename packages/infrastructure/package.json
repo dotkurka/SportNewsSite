@@ -1,0 +1,20 @@
+{
+  "name": "infrastructure",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "frontend": "*",
+    "backend": "*"
+  },
+  "scripts": {
+    "deploy": "ansible-playbook ansible/production-deploy-playbook.yaml",
+    "docker:local": "docker compose --file docker-compose.dev.local.yml --env-file ../../apps/backend/.env -p \"postgres-mailhog-local\" up --build -d"
+  },
+  "lint-staged": {
+    "*.(md|json|yml)": "prettier --write"
+  }
+}

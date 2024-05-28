@@ -1,0 +1,57 @@
+@import 'styles/Colors.scss';
+
+.article {
+  position: relative;
+
+  &-path {
+    display: flex;
+    position: absolute;
+    top: -30px;
+    left: 0px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    cursor: default;
+
+    & > :first-child {
+      color: $greyCloud;
+      text-transform: uppercase;
+    }
+
+    a {
+      all: unset;
+      color: $greyCloud;
+      cursor: pointer;
+      -webkit-user-drag: none;
+
+      &:hover {
+        color: $monza;
+      }
+    }
+
+    &-arrow {
+      margin: 0 4px;
+      width: 9px;
+      transform: rotateZ(90deg);
+
+      path {
+        fill: $alizarinCrimson;
+      }
+    }
+
+    & > :last-child {
+      color: $alizarinCrimson;
+    }
+  }
+
+  &-main {
+    margin-bottom: 45px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .article-path {
+    display: none;
+  }
+}

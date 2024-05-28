@@ -1,0 +1,21 @@
+.team-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  &-select {
+    align-self: flex-end;
+    margin-bottom: 20px;
+  }
+
+  &-article {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .team-page {
+    margin-top: 25px;
+    padding: 0 15px;
+  }
+}
